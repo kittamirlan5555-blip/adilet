@@ -29,14 +29,17 @@ from pathlib import Path
 from collections import Counter
 from bs4 import BeautifulSoup, NavigableString
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
 APPLY = "--apply" in sys.argv
-BACKUP = ROOT / "data" / "final_backup_RECONCILE"
+BACKUP = paths.BACKUPS / "final_backup_RECONCILE"
 
 # переиспользуем norm_href/link_sigs/SELF_DOC/CODES из скрипта 29
 _spec = importlib.util.spec_from_file_location(
-    "diff29", ROOT / "scripts" / "29_diff_ready_structured.py")
+    "diff29", ROOT / "scripts" / "pipeline" / "29_diff_ready_structured.py")
 D = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(D)
 SELF_DOC = D.SELF_DOC

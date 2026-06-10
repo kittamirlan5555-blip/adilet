@@ -22,7 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import auditlib as al
 import r2_01_diag as d1
 
-R2 = al.ROOT / "data" / "reports" / "anara_r2"
+R2 = al.REPORTS / "anara_r2"
 ROOT_URL = "https://adilet.zan.kz/rus/docs/"
 
 # (slug, № флага) -> ("root", НГР) | ("anchor", "#id") | ("list", [(фраза, НГР)])

@@ -27,9 +27,12 @@ from pathlib import Path
 from collections import defaultdict, Counter
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-ROOT = Path(__file__).resolve().parents[1]
-FINAL = ROOT / "data/final"
-BACKUP = ROOT / "data/final_backup_DOBIVKA"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+BACKUP = paths.BACKUPS / "final_backup_DOBIVKA"
 APPLY = "--apply" in sys.argv
 
 # ── import audit module A (restore our stdout; detach A's wrapper) ──────────
@@ -285,7 +288,7 @@ def main():
     if not APPLY:
         P("\nDRY-RUN: ничего не записано. Запусти с --apply для правки _structured И _ready.")
         out = "\n".join(log) + "\n"
-        (ROOT / "data/reports/43_stage1_d.txt").write_text(out, encoding="utf-8")
+        (paths.REPORTS / "43_stage1_d.txt").write_text(out, encoding="utf-8")
         sys.stdout.write(out.encode("ascii", "replace").decode("ascii"))
         return
 
@@ -344,7 +347,7 @@ def main():
             P(f"  !! ГЕЙТ НЕ ПРОЙДЕН — {code} НЕ записан")
 
     out = "\n".join(log) + "\n"
-    (ROOT / "data/reports/43_stage1_d.txt").write_text(out, encoding="utf-8")
+    (paths.REPORTS / "43_stage1_d.txt").write_text(out, encoding="utf-8")
     sys.stdout.write(out.encode("ascii", "replace").decode("ascii"))
 
 

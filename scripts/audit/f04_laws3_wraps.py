@@ -87,7 +87,7 @@ def wrap_plain(raw, phrase_rx, href):
 
 def main():
     apply_mode = "--apply" in sys.argv
-    OUT = al.ROOT / "data" / "reports" / "laws3"
+    OUT = al.REPORTS / "laws3"
     OUT.mkdir(parents=True, exist_ok=True)
     L = ["# LAWS3 ФАЗА 2 — точечные обёртки", "",
          f"Режим: {'APPLY' if apply_mode else 'DRY-RUN'}.", "",

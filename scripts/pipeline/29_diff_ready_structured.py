@@ -20,8 +20,11 @@ from pathlib import Path
 from collections import Counter
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
 RECONCILE = "--reconcile" in sys.argv
 
 _spec = importlib.util.spec_from_file_location(

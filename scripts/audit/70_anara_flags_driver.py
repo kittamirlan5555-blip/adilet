@@ -28,11 +28,14 @@ import sys
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
-MAPS = ROOT / "data" / "maps"
-CONFIG = ROOT / "config"
-REPORTS = ROOT / "data" / "reports"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+MAPS = paths.MAPS
+CONFIG = paths.MAPS      # config/ слит в maps/ (Фаза A)
+REPORTS = paths.REPORTS
 
 HOST = "https://adilet.zan.kz/rus/docs/"
 UK_SLUG = "ugolovniy"

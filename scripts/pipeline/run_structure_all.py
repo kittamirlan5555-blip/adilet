@@ -1,10 +1,15 @@
 """Запускает 11_structure_html.py на всех кодексах и выводит статистику."""
 import sys, os, re
+from pathlib import Path
 sys.stdout.reconfigure(encoding='utf-8')
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
 
 # Import functions directly without triggering argparse
 import importlib.util
-spec = importlib.util.spec_from_file_location('s11', 'scripts/11_structure_html.py')
+spec = importlib.util.spec_from_file_location(
+    's11', str(Path(__file__).resolve().parent / '11_structure_html.py'))
 mod = importlib.util.module_from_spec(spec)
 # Monkey-patch argv so argparse in __main__ doesn't run
 _orig_argv = sys.argv[:]
@@ -36,8 +41,8 @@ codexes = [
 print('Структурирование кодексов...')
 results = []
 for inp, out, doc_id, label in codexes:
-    inp_path = f'data/final/{inp}'
-    out_path = f'data/final/{out}'
+    inp_path = str(paths.FINAL / inp)
+    out_path = str(paths.FINAL / out)
     if not os.path.exists(inp_path):
         print(f'  {label}: файл не найден ({inp_path})')
         continue
@@ -56,4 +61,4 @@ for s in results:
           f"{s.get('paragraph',0):>5} {s.get('article',0):>6}")
 
 print()
-print('Готово. Файлы *_structured.html записаны в data/final/')
+print('Готово. Файлы *_structured.html записаны в final/')

@@ -30,9 +30,12 @@ import hashlib
 from pathlib import Path
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
-REPORTS = ROOT / "data" / "reports"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+REPORTS = paths.REPORTS
 
 ORD = (r"перв|втор|трет|четверт|пят|шест|седьм|восьм|девят|десят|"
        r"одиннадц|двенадц|тринадц|четырнадц|пятнадц")

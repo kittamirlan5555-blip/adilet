@@ -15,11 +15,15 @@
 Ничего не пишет в корпус.
 """
 import re
+import sys
 from pathlib import Path
 from bs4 import BeautifulSoup
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
 
 CODES = ["nalog", "trudovoy", "grazhdanskiy", "grazhdanskiy_osob", "predprinimatel",
          "socialnyy", "ekologicheskiy", "zemelnyy", "upk", "koap", "appk",
@@ -303,7 +307,7 @@ def main():
         P("  => ЕСТЬ РАСХОЖДЕНИЯ — см. контекст выше.")
     P("=" * 104)
 
-    out = ROOT / "data" / "reports" / "67_independent_verify.txt"
+    out = paths.REPORTS / "67_independent_verify.txt"
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     print(f"written: {out}  mismatch={tot_mis}  ext_mismatch={ext_mis_total}  unresolved={tot_unr}")
 

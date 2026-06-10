@@ -6,14 +6,19 @@
 """
 import re
 import random
+import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent.parent
-FINAL = ROOT / "data" / "final"
-SOURCE = ROOT / "data" / "source"
-MAPS = ROOT / "data" / "maps"
-CONFIG = ROOT / "config"
-AUDIT_OUT = ROOT / "data" / "reports" / "audit"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+SOURCE = paths.SOURCE
+MAPS = paths.MAPS
+CONFIG = paths.MAPS      # config/ слит в maps/ (Фаза A)
+REPORTS = paths.REPORTS
+AUDIT_OUT = paths.AUDIT_OUT
 
 SOURCE_NAME = {"grazhdanskiy_osob": "GKosobenniy.html",
                "informatizacii": "obINFORM.html"}

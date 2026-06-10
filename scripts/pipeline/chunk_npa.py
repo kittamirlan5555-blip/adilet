@@ -19,14 +19,17 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
-TREE_DIR = ROOT / "data" / "tree"
-CHUNKS_DIR = ROOT / "data" / "chunks"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+TREE_DIR = paths.TREE
+CHUNKS_DIR = paths.CHUNKS
 TREE_DIR.mkdir(parents=True, exist_ok=True)
 CHUNKS_DIR.mkdir(parents=True, exist_ok=True)
 
-CODES_JSON = ROOT / "config" / "codes.json"
+CODES_JSON = paths.CODES_JSON
 codes_data = json.loads(CODES_JSON.read_text(encoding="utf-8"))
 CODES = {k: v for k, v in codes_data.items() if not k.startswith("_")}
 

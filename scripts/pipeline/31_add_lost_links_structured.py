@@ -19,10 +19,13 @@ import shutil
 from pathlib import Path
 from bs4 import BeautifulSoup, NavigableString
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
 APPLY = "--apply" in sys.argv
-BACKUP = ROOT / "data" / "final_backup_ADDLINKS"
+BACKUP = paths.BACKUPS / "final_backup_ADDLINKS"
 
 UK = "https://adilet.zan.kz/rus/docs/K1400000226"   # внешний таргет = Уголовный кодекс
 
@@ -69,7 +72,7 @@ def wrap_token(soup, art, token, href):
     return False, None, None
 
 
-REPORT = ROOT / "data" / "reports" / "31_addlinks_report.txt"
+REPORT = paths.REPORTS / "31_addlinks_report.txt"
 OUT = []
 
 

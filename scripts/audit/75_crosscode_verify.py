@@ -30,11 +30,14 @@ from pathlib import Path
 from collections import defaultdict
 from bs4 import BeautifulSoup
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
-MAPS = ROOT / "data" / "maps"
-CONFIG = ROOT / "config"
-REPORTS = ROOT / "data" / "reports"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+MAPS = paths.MAPS
+CONFIG = paths.MAPS      # config/ слит в maps/ (Фаза A)
+REPORTS = paths.REPORTS
 
 RE_HREF = re.compile(r"/docs/([A-Za-z0-9_]+)#(z[\w-]+)")
 # «стат[ье]», не «стать»: иначе «статей N» терял кандидата (аудит 2026-06-10)

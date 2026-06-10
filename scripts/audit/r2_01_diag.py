@@ -16,7 +16,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import auditlib as al
 
-R2 = al.ROOT / "data" / "reports" / "anara_r2"
+R2 = al.REPORTS / "anara_r2"
 SLUGS = ["informatizacii", "notariat", "obrazovanie"]
 EXPECTED = {"informatizacii": 20, "notariat": 5, "obrazovanie": 9}
 

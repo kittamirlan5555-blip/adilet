@@ -29,10 +29,13 @@ import json
 from pathlib import Path
 from collections import defaultdict
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
-CONFIG = ROOT / "config"
-REPORTS = ROOT / "data" / "reports"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+CONFIG = paths.MAPS      # config/ слит в maps/ (Фаза A)
+REPORTS = paths.REPORTS
 
 # ─────────────────────────────────────────────────────────────────────────────
 # КЛАССИФИКАЦИЯ ПРОТУХШИХ КОДОВ (§5). Авто-ремап разрешён ТОЛЬКО для подтверждённого

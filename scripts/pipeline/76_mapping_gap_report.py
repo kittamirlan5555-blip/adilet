@@ -22,10 +22,10 @@ import re
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent / "audit"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "audit"))
 import auditlib as al
 
-OUT = al.ROOT / "data" / "reports"
+OUT = al.REPORTS
 
 QT = str.maketrans({"«": '"', "»": '"', "“": '"', "”": '"', "„": '"',
                     "–": "-", "—": "-", "−": "-"})

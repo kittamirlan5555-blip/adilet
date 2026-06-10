@@ -36,6 +36,11 @@ data/final_backup_*/
 data/final_pre_links/
 data/final_pre_fix11_*
 
+# новое дерево (Фаза A): производные/бэкапы скриптов
+interm/
+backups/
+source/*_files/
+
 # heavy local artifacts: ревью-пакеты с docx (ПДн §11), старый архив
 anara_review/
 archive/

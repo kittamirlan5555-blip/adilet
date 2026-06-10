@@ -32,9 +32,12 @@
 import re
 import json
 import argparse
+import sys
 from pathlib import Path
 from bs4 import BeautifulSoup, NavigableString
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
 
 BASE_URL = "http://85.202.192.66:9096"
 
@@ -457,9 +460,9 @@ def main():
     ap = argparse.ArgumentParser(description="Добавляет cross-code ссылки одним <a>")
     ap.add_argument("--input", required=True)
     ap.add_argument("--output", required=True)
-    ap.add_argument("--codes-config", default="config/codes.json")
-    ap.add_argument("--npa-map", default="config/npa_mapping.json")
-    ap.add_argument("--maps-dir", default="data/maps")
+    ap.add_argument("--codes-config", default=str(paths.CODES_JSON))
+    ap.add_argument("--npa-map", default=str(paths.NPA_MAPPING))
+    ap.add_argument("--maps-dir", default=str(paths.MAPS))
     ap.add_argument("--include-snoska", action="store_true")
     args = ap.parse_args()
 

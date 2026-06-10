@@ -27,9 +27,12 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
-CODES = ROOT / "config" / "codes.json"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+CODES = paths.CODES_JSON
 
 KNOWN_HOSTS = r"adilet\.zan\.kz|85\.202\.192\.66:9096"
 

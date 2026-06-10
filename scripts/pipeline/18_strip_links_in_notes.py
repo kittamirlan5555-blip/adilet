@@ -26,9 +26,12 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
-CODES = ROOT / "config" / "codes.json"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+CODES = paths.CODES_JSON
 
 PRIM_RE = re.compile(r'^\s*Примечани[ея]\b')
 IZPI_RE = re.compile(r'Примечани[ея]\s+(ИЗПИ|РЦПИ)\s*!')

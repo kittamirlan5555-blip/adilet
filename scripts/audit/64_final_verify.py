@@ -23,12 +23,18 @@
 final_backup_ANARA_RECHECK => чанки, собранные из _structured, консистентны).
 """
 import re
+import sys
 from pathlib import Path
 from bs4 import BeautifulSoup
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
-BK = ROOT / "data" / "final_backup_ANARA_RECHECK"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+BK = paths.BACKUPS / "final_backup_ANARA_RECHECK"
+if not BK.exists():  # легаси-расположение, на диске до уборки Фазы B
+    BK = ROOT / "data" / "final_backup_ANARA_RECHECK"
 
 CODES = ["nalog", "trudovoy", "grazhdanskiy", "grazhdanskiy_osob", "predprinimatel",
          "socialnyy", "ekologicheskiy", "zemelnyy", "upk", "koap", "appk",
@@ -202,7 +208,7 @@ def main():
     P("\n" + "=" * 110)
     P(f"ИТОГ:  6-проверок-чисто={not bad}  |  get_text-заморозка(backup-коды)={gt_ok}")
     P("=" * 110)
-    out = ROOT / "data/reports/64_final_verify.txt"
+    out = paths.REPORTS / "64_final_verify.txt"
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     print(f"written: {out}  clean={not bad}  gettext_frozen={gt_ok}")
 

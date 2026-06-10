@@ -26,9 +26,12 @@ from pathlib import Path
 from collections import Counter
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
-BACKUP = ROOT / "data" / "final_backup_FIXLINKS"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+BACKUP = paths.BACKUPS / "final_backup_FIXLINKS"
 
 APPLY = "--apply" in sys.argv
 

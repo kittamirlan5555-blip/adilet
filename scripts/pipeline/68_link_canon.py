@@ -23,16 +23,19 @@ from collections import Counter
 from pathlib import Path
 from bs4 import BeautifulSoup
 
-ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
 
 
 def resolve_code(doc_id: str):
-    """Обратный поиск doc_id -> ключ кода по config/codes.json."""
-    codes = json.loads((ROOT / "config" / "codes.json").read_text(encoding="utf-8"))
+    """Обратный поиск doc_id -> ключ кода по maps/codes.json."""
+    codes = json.loads(paths.CODES_JSON.read_text(encoding="utf-8"))
     for k, v in codes.items():
         if isinstance(v, dict) and v.get("doc_id") == doc_id:
             return k
-    raise SystemExit(f"doc_id {doc_id} не найден в config/codes.json")
+    raise SystemExit(f"doc_id {doc_id} не найден в maps/codes.json")
 
 
 def gettext(html):
@@ -46,9 +49,9 @@ def main():
 
     SELF = args.doc_id
     code = resolve_code(SELF)
-    FP = ROOT / "data" / "final" / f"{code}_structured.html"
-    BK = ROOT / "data" / f"final_backup_{code}"
-    REPORT = ROOT / "data" / "reports" / f"68_{code}_link_canon.txt"
+    FP = paths.FINAL / f"{code}_structured.html"
+    BK = paths.BACKUPS / f"final_backup_{code}"
+    REPORT = paths.REPORTS / f"68_{code}_link_canon.txt"
 
     # self full-URL (любой base: 85.202… ИЛИ adilet) c фрагментом -> #zX
     RE_SELF_FRAG = re.compile(
@@ -170,7 +173,7 @@ def main():
     # якорь ЗАГОЛОВКА статьи — z{N}h (инжектирован шагом 07). Перенацеливаем
     # такие тело-ссылки на z{N}h: обе проверки (аудит и 67) резолвят их
     # единообразно. Только одиночные «статья N», только href.
-    amap = json.loads((ROOT / "data" / "maps" /
+    amap = json.loads((paths.MAPS /
                        f"article_map_{code}.json").read_text(encoding="utf-8"))
     ARTREF = re.compile(r'^(?:Стать[яиеью]+|статьей|статьи)\s+(\d+(?:-\d+)?)$', re.I)
     sp2 = BeautifulSoup(html, "html.parser")

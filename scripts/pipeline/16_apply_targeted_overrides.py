@@ -20,12 +20,16 @@
 import json
 import re
 import argparse
+import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
-CONFIG = ROOT / "config" / "manual_overrides.json"
-CODES_CFG = ROOT / "config" / "codes.json"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
+
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+CONFIG = paths.MANUAL_OVERRIDES
+CODES_CFG = paths.CODES_JSON
 BASE = "http://85.202.192.66:9096"
 
 

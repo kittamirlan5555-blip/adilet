@@ -12,9 +12,11 @@
     8. 76_mapping_gap_report.py       gap-отчёт маппинга (ОБЯЗАТЕЛЕН перед сдачей)
 
 Использование:
-    python scripts/run_pipeline.py socialnyy          # один кодекс
-    python scripts/run_pipeline.py --all              # все кодексы из codes.json
-    python scripts/run_pipeline.py socialnyy --keep   # не удалять промежуточные файлы
+    python scripts/pipeline/pipeline.py socialnyy          # один кодекс
+    python scripts/pipeline/pipeline.py --all              # все кодексы из codes.json
+    python scripts/pipeline/pipeline.py socialnyy --keep   # не удалять промежуточные файлы
+    python scripts/pipeline/pipeline.py socialnyy --verify-only
+        # read-only: только шаг 8 (76_mapping_gap_report), финальные файлы не трогаются
 """
 
 import argparse
@@ -34,11 +36,15 @@ except Exception:
 
 
 SCRIPTS = Path(__file__).resolve().parent
-ROOT = SCRIPTS.parent
+
+sys.path.insert(0, str(SCRIPTS.parent))
+import paths
+
+ROOT = paths.ROOT
 
 
 def load_codes():
-    with open(ROOT / "config" / "codes.json", encoding="utf-8") as f:
+    with open(paths.CODES_JSON, encoding="utf-8") as f:
         cfg = json.load(f)
     return {k: v for k, v in cfg.items() if not k.startswith("_")}
 
@@ -53,25 +59,32 @@ def run(cmd, label):
         sys.exit(result.returncode)
 
 
-def process_code(key, doc_id, keep=False):
+def process_code(key, doc_id, keep=False, verify_only=False):
     py = sys.executable
-    src = ROOT / "data" / "source" / f"{key}.html"
+
+    print(f"\n{'='*60}\n  {key.upper()}  doc_id={doc_id}\n{'='*60}")
+
+    if verify_only:
+        # read-only смоук: только gap-гейт по уже существующим финальным файлам
+        run([py, str(SCRIPTS / "76_mapping_gap_report.py"), "--doc", key],
+            "76_mapping_gap_report (verify-only)")
+        return True
+
+    src = paths.SOURCE / f"{key}.html"
     if not src.exists():
         print(f"[skip] Исходный файл не найден: {src}")
         return False
 
-    print(f"\n{'='*60}\n  {key.upper()}  doc_id={doc_id}\n{'='*60}")
-
-    maps = ROOT / "data" / "maps"
-    final = ROOT / "data" / "final"
-    reports = ROOT / "data" / "reports"
+    maps = paths.MAPS
+    final = paths.FINAL
+    reports = paths.REPORTS
     for d in (maps, final, reports):
         d.mkdir(parents=True, exist_ok=True)
 
     art_map = maps / f"article_map_{key}.json"
     subp_map = maps / f"subpoint_map_{key}.json"
 
-    interm = ROOT / "data" / "interm"
+    interm = paths.INTERM
     interm.mkdir(parents=True, exist_ok=True)
     anchored = interm / f"{key}_anchored.html"
     xref     = interm / f"{key}_xref.html"
@@ -96,8 +109,8 @@ def process_code(key, doc_id, keep=False):
     run([py, str(SCRIPTS / "10_cross_code_refs.py"),
          "--input", str(anchored),
          "--output", str(xref),
-         "--codes-config", str(ROOT / "config" / "codes.json"),
-         "--npa-map", str(ROOT / "config" / "npa_mapping.json"),
+         "--codes-config", str(paths.CODES_JSON),
+         "--npa-map", str(paths.NPA_MAPPING),
          "--maps-dir", str(maps)],
         "10_cross_code_refs")
 
@@ -114,7 +127,7 @@ def process_code(key, doc_id, keep=False):
     # 5. External NPA names
     run([py, str(SCRIPTS / "03_find_external_npa.py"),
          "--input", str(fixed),
-         "--npa-map", str(ROOT / "config" / "npa_mapping.json"),
+         "--npa-map", str(paths.NPA_MAPPING),
          "--output-html", str(npaed)],
         "03_find_external_npa")
 
@@ -151,6 +164,8 @@ def main():
     ap.add_argument("code", nargs="?", help="Ключ кодекса (socialnyy, nalog, ...)")
     ap.add_argument("--all", action="store_true", help="Прогнать все кодексы из codes.json")
     ap.add_argument("--keep", action="store_true", help="Сохранить промежуточные файлы")
+    ap.add_argument("--verify-only", action="store_true",
+                    help="Read-only: только gap-гейт (шаг 8), без перестроения")
     args = ap.parse_args()
 
     codes = load_codes()
@@ -167,7 +182,8 @@ def main():
 
     ok = 0
     for key, info in targets:
-        if process_code(key, info["doc_id"], keep=args.keep):
+        if process_code(key, info["doc_id"], keep=args.keep,
+                        verify_only=args.verify_only):
             ok += 1
     print(f"\n[OK] Готово: {ok}/{len(list(targets) if args.all else [args.code])} кодексов")
 

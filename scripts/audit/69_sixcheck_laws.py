@@ -21,10 +21,13 @@ import json
 from pathlib import Path
 from bs4 import BeautifulSoup
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import paths
 
-CODES_JSON = json.loads((ROOT / "config" / "codes.json").read_text(encoding="utf-8"))
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+
+CODES_JSON = json.loads(paths.CODES_JSON.read_text(encoding="utf-8"))
 SELF = {k: v["doc_id"] for k, v in CODES_JSON.items()
         if not k.startswith("_") and isinstance(v, dict)}
 
@@ -148,7 +151,7 @@ def main():
     P("\n" + "=" * 110)
     P(f"ИТОГ: 6-проверок-чисто={not bad}")
     P("=" * 110)
-    out = ROOT / "data" / "reports" / "69_sixcheck_laws.txt"
+    out = paths.REPORTS / "69_sixcheck_laws.txt"
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     print("\n".join(L))
     print(f"\nwritten: {out}  clean={not bad}")
