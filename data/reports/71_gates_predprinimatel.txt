@@ -1,0 +1,24 @@
+====================================================================================================
+71_gates — predprinimatel — формы: ['predprinimatel_structured.html', 'predprinimatel_ready.html']
+====================================================================================================
+
+-- predprinimatel_structured.html
+  [GREEN] G1 </a></a> raw              0
+  [GREEN] G2 вложенные <a> (depth)     nested=0 unbalanced=0
+  [GREEN] G3 двойной href              0
+  [GREEN] G4 битые внутренние #z       0
+  [GREEN] G5 cross-code якоря          missing=0 (все цели корпуса резолвятся)
+
+-- predprinimatel_ready.html
+  [GREEN] G1 </a></a> raw              0
+  [GREEN] G2 вложенные <a> (depth)     nested=0 unbalanced=0
+  [GREEN] G3 двойной href              0
+  [GREEN] G4 битые внутренние #z       0
+  [GREEN] G5 cross-code якоря          missing=0 (все цели корпуса резолвятся)
+
+  [RED] G6 синхронность форм        расхождений=3
+      только в predprinimatel_structured.html: ('#z156', 'статьи 156')
+      только в predprinimatel_ready.html: ('#z156', 'пунктом 2')
+      только в predprinimatel_ready.html: ('#z82', 'пунктом 3')
+
+ИТОГ predprinimatel: КРАСНЫХ ГЕЙТОВ: 1

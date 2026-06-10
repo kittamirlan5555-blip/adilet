@@ -1,0 +1,31 @@
+====================================================================================================
+71_gates — grazhdanskiy — формы: ['grazhdanskiy_structured.html', 'grazhdanskiy_ready.html']
+====================================================================================================
+
+-- grazhdanskiy_structured.html
+  [GREEN] G1 </a></a> raw              0
+  [GREEN] G2 вложенные <a> (depth)     nested=0 unbalanced=0
+  [GREEN] G3 двойной href              0
+  [GREEN] G4 битые внутренние #z       0
+  [GREEN] G5 cross-code якоря          missing=0 (все цели корпуса резолвятся)
+
+-- grazhdanskiy_ready.html
+  [GREEN] G1 </a></a> raw              0
+  [GREEN] G2 вложенные <a> (depth)     nested=0 unbalanced=0
+  [GREEN] G3 двойной href              0
+  [GREEN] G4 битые внутренние #z       0
+  [GREEN] G5 cross-code якоря          missing=0 (все цели корпуса резолвятся)
+
+  [RED] G6 синхронность форм        расхождений=77
+      только в grazhdanskiy_structured.html: ('#z1083', 'пункт 2')
+      только в grazhdanskiy_structured.html: ('#z109', 'статьи 50')
+      только в grazhdanskiy_structured.html: ('#z112', 'пунктами 3')
+      только в grazhdanskiy_structured.html: ('#z1135', 'пункт 3')
+      только в grazhdanskiy_structured.html: ('#z1233', 'пунктом 11')
+      только в grazhdanskiy_ready.html: ('#z1083', 'пункт 2 статьи 116')
+      только в grazhdanskiy_ready.html: ('#z112', 'пунктами 3 – 6')
+      только в grazhdanskiy_ready.html: ('#z1135', 'пункт 3 статьи 132')
+      только в grazhdanskiy_ready.html: ('#z1233', 'пунктом 11 статьи 159')
+      только в grazhdanskiy_ready.html: ('#z125', 'пункт 4 статьи 9')
+
+ИТОГ grazhdanskiy: КРАСНЫХ ГЕЙТОВ: 1

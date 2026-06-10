@@ -15,9 +15,9 @@
 
 ## SELF_ABSOLUTE (3) — первые 10
 
-- @1206026 `https://adilet.zan.kz/rus/docs/K2100000400#` 'Обратная связь'
-- @1206854 `https://adilet.zan.kz/rus/docs/K2100000400#` '(7172) - 572496'
-- @1210336 `https://adilet.zan.kz/rus/docs/K2100000400#header` ''
+- @1206029 `https://adilet.zan.kz/rus/docs/K2100000400#` 'Обратная связь'
+- @1206857 `https://adilet.zan.kz/rus/docs/K2100000400#` '(7172) - 572496'
+- @1210339 `https://adilet.zan.kz/rus/docs/K2100000400#header` ''
 
 ## Внешние НГР (частоты, сверка с npa_mapping)
 

@@ -15,10 +15,10 @@
 
 ## SELF_ABSOLUTE (4) — первые 10
 
-- @987175 `https://adilet.zan.kz/rus/docs/K1500000375#` 'Обратная связь'
-- @988003 `https://adilet.zan.kz/rus/docs/K1500000375#` '(7172) - 572496'
-- @991035 `https://adilet.zan.kz/rus/docs/K1500000375` 'Предпринимательский кодекс Республики Казахстан'
-- @991485 `https://adilet.zan.kz/rus/docs/K1500000375#header` ''
+- @987177 `https://adilet.zan.kz/rus/docs/K1500000375#` 'Обратная связь'
+- @988005 `https://adilet.zan.kz/rus/docs/K1500000375#` '(7172) - 572496'
+- @991037 `https://adilet.zan.kz/rus/docs/K1500000375` 'Предпринимательский кодекс Республики Казахстан'
+- @991487 `https://adilet.zan.kz/rus/docs/K1500000375#header` ''
 
 ## Внешние НГР (частоты, сверка с npa_mapping)
 
