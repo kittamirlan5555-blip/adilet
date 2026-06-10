@@ -196,5 +196,16 @@ python scripts/pipeline/76_mapping_gap_report.py --doc socialnyy     # или --
 | Бюджетный | byudzhet | K2500000171 |
 | Уголовный | ugolovniy | K1400000226 |
 
+Законы (помимо кодексов) — ключи в `maps/codes.json`; новые R3/R4:
+
+| Закон | Ключ | doc_id |
+|---|---|---|
+| О государственных и социально ответственных услугах | gosuslugi | Z1300000088 |
+| О правоохранительной службе | pravoohranitel | Z1100000380 |
+| О персональных данных и их защите | persdata | Z1300000094 |
+
+Структуризация для vector DB по схеме шефа (hier_id вида `UKCH1R1ST1P1`):
+`python scripts/pipeline/structurize.py --all` → `structured_out/` + QUALITY.md.
+
 Подробности по каждому скрипту — **`scripts/README.md`**.
-Содержимое папок данных — **`data/README.md`**.
+Старая раскладка данных (до Фазы A) — **`docs/DATA_LAYOUT_legacy.md`**.
