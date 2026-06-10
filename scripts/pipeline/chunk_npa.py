@@ -845,18 +845,35 @@ def process_code(code):
     return trees, chunks_all
 
 
+# get_text(" ") вставляет пробел на каждой границе тега; после по-номерного
+# оборачивания перечней в <a> (УПК-раунд) это даёт «263 , 264». В документе
+# текст корректен — артефакт только экстракции, чистим на выходе чанкера.
+RE_SPACE_BEFORE_PUNCT = re.compile(r" +(?=[,;:.!?»)\]])")
+
+
+def _norm_deep(o):
+    if isinstance(o, str):
+        return RE_SPACE_BEFORE_PUNCT.sub("", o)
+    if isinstance(o, list):
+        return [_norm_deep(x) for x in o]
+    if isinstance(o, dict):
+        return {k: _norm_deep(v) for k, v in o.items()}
+    return o
+
+
 def save_artifacts(code, trees, chunks):
     tree_path = TREE_DIR / f"{code}.json"
     tree_path.write_text(
         json.dumps(
-            {"code": code, "doc_id": CODES[code]["doc_id"], "articles": trees},
+            {"code": code, "doc_id": CODES[code]["doc_id"],
+             "articles": _norm_deep(trees)},
             ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
     chunks_path = CHUNKS_DIR / f"{code}.jsonl"
     with chunks_path.open("w", encoding="utf-8") as f:
         for c in chunks:
-            f.write(json.dumps(c, ensure_ascii=False) + "\n")
+            f.write(json.dumps(_norm_deep(c), ensure_ascii=False) + "\n")
     print(f"  {code}: {len(trees)} articles, {len(chunks)} chunks → {tree_path.name} + {chunks_path.name}")
 
 
