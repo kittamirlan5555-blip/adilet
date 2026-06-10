@@ -90,6 +90,20 @@ def files_for(codes):
 RE_BARE_NUM = re.compile(r"^\(?(\d+(?:-\d+)?)\)?$")
 
 
+def range_first_ok(resolved, cands):
+    """Класс RANGE-FIRST (прецеденты «статьями 249-257», ГК «статей 151-152»):
+    диапазон статей ведёт на ЗАГОЛОВОК ПЕРВОЙ статьи диапазона — сложившийся
+    корректный стиль, не мислинк. Кандидат «A-B» — диапазон, если B > A
+    (у суффиксных статей наоборот: «151-1» -> B=1 < A=151). OK, когда якорь
+    резолвится ровно в A."""
+    for c in cands:
+        m = re.match(r"^(\d+)-(\d+)$", str(c))
+        if m and int(m.group(2)) > int(m.group(1)) \
+                and str(resolved) == m.group(1):
+            return True
+    return False
+
+
 def article_candidates(a):
     """Множество КАНДИДАТ-номеров статьи для ссылки a.
 
@@ -165,6 +179,8 @@ def run(codes, strict, do_self):
                 continue
             if str(resolved) in {str(x) for x in cands}:
                 per["OK"] += 1
+            elif range_first_ok(resolved, cands):
+                per["OK"] += 1          # RANGE-FIRST: диапазон -> первая статья
             else:
                 per["MISMATCH"] += 1
                 mismatches.append((code, tgt_code, anchor, sorted(cands), resolved,
