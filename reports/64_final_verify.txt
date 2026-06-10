@@ -24,7 +24,7 @@ upk               ready      OK         0     0     0       0      0   [13 / 16|
 koap              structured OK         0     0     0       0      0   [2 / 17|28 / 0]
 koap              ready      OK         0     0     0       0      0   [2 / 17|28 / 0]
 appk              structured OK         0     0     0       0      0   [0 / 18|28 / 0]
-appk              ready      OK         0     0     0       0      0   [0 / 17|28 / 0]
+appk              ready      OK         0     0     0       0      0   [0 / 18|28 / 0]
 byudzhet          structured OK         0     0     0       0      0   [0 / 16|28 / 0]
 byudzhet          ready      OK         0     0     0       0      0   [0 / 16|28 / 0]
 ugolovniy         structured OK         0     0     0       0      0   [0 / 1|0 / 0]

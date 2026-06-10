@@ -6,7 +6,7 @@
 nalog                 1360     1360          0          0        0/15      
 trudovoy                67       67          0          0        0/0       
 grazhdanskiy           102      102          0          0        2/0       
-grazhdanskiy_osob      157      157          0          0        0/0       
+grazhdanskiy_osob      167      167          0          0        3/0       
 predprinimatel         223      223          0          0        0/0       
 socialnyy              228      228          0          0        0/0       
 ekologicheskiy         135      135          0          0        0/0       
@@ -25,7 +25,7 @@ ocorrupt                11       11          0          0        0/0
 bezhenci                 8        8          0          0        0/0       
 zhilishniy              80       80          0          0        0/0       
 --------------------------------------------------------------------------------------------------------
-ИТОГО                 4296     4296          0          0
+ИТОГО                 4306     4306          0          0
 
   (СОВПАЛО включает 20 якорей-закладок начала статьи [ИЗПИ/РЦПИ-граница]:
    <a id=zX> стоит у границы, след. <div data-type=статья data-number=N> в окне 600ch -> цель N, что РАВНО заявленному. Это не дефект, а семантика adilet;
@@ -43,18 +43,18 @@ zhilishniy              80       80          0          0        0/0
 ВНЕШНИЕ name<->NGR (сверка имени акта в тексте с NGR в href):
 ========================================================================================================
 код                 checked-внеш   name<->NGR несоотв.
-nalog                        181                     0
+nalog                        186                     0
 trudovoy                      22                     0
 grazhdanskiy                   5                     0
-grazhdanskiy_osob              7                     0
+grazhdanskiy_osob              8                     0
 predprinimatel                53                     0
 socialnyy                     79                     0
-ekologicheskiy                30                     0
-zemelnyy                      26                     0
+ekologicheskiy                33                     0
+zemelnyy                      27                     0
 upk                          253                     0
 koap                          60                     0
-appk                          29                     0
-byudzhet                      22                     0
+appk                          30                     0
+byudzhet                      24                     0
 ugolovniy                     12                     0
 informatizacii                13                     0
 notariat                       6                     0
