@@ -111,10 +111,13 @@ def main():
                 k = seen.get(key, 0)
                 seen[key] = k + 1
 
-                # привязка к статье: вхождения после позиции контекста
+                # привязка к статье: каскад полный контекст -> 60 -> 40
+                # (60 симв. неоднозначен: ст.11 п.2 и ст.61 п.2 informatizacii
+                # начинаются одинаково — флаги 5/16 били в одно вхождение)
                 ctx = re.sub(r"\s+", " ", f["context"].split(" - ", 1)[-1]
-                             ).translate(QT)[:60]
-                ctx_pos = occurrences(hay, ctx) or occurrences(hay, ctx[:40])
+                             ).translate(QT)
+                ctx_pos = (occurrences(hay, ctx) or occurrences(hay, ctx[:60])
+                           or occurrences(hay, ctx[:40]))
                 cand = occ
                 if ctx_pos:
                     near = [o for o in occ
