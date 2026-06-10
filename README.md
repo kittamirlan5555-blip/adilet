@@ -69,7 +69,7 @@ ADILETkz/
 ```
 data/source/{code}.html        ← read-only исходник с adilet.zan.kz
         │
-        │  run_pipeline.py  (оркестрирует 7 шагов, см. scripts/README.md)
+        │  run_pipeline.py  (оркестрирует 8 шагов, см. scripts/README.md)
         │   01 build_article_map   → статья → якорь
         │   07 add_subpoint_anchors→ якоря пунктов/подпунктов
         │   10 cross_code_refs     → «ст. N Налогового кодекса РК» одной ссылкой
@@ -77,6 +77,7 @@ data/source/{code}.html        ← read-only исходник с adilet.zan.kz
         │   03 find_external_npa   → голые названия НПА → внешние ссылки
         │   06 finalize            → CSS/JS подсветка :target
         │   13 cleanup_html        → нормализация вложенных <a>
+        │   76 mapping_gap_report  → gap-отчёт маппинга (ОБЯЗАТЕЛЕН перед сдачей)
         ▼
 data/final/{code}_ready.html   ← плоский HTML со ссылками
         │
@@ -125,6 +126,14 @@ python scripts/chunk_npa.py --all
 
 # (4) аудит покрытия + корректности (read-only)
 python scripts/audit_links_coverage.py
+
+# (5) ОБЯЗАТЕЛЬНО перед сдачей документа: gap-отчёт маппинга
+#     (plain/разорванные правовые фразы + дыры npa_mapping;
+#      сканирует _structured, при его отсутствии _ready)
+python scripts/76_mapping_gap_report.py --doc socialnyy     # или --all
+#  → data/reports/mapping_gap_{slug}.md
+#  Сдавать документ можно, только когда остаток в отчёте пуст
+#  или каждая строка объяснена в сдаточной записке.
 ```
 
 > ⚠️ Полный прогон Фазы A на уже-исправленных кодексах **не нужен** и сотрёт

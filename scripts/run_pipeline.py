@@ -9,6 +9,7 @@
     5. 03_find_external_npa.py        голые названия НПА
     6. 06_finalize.py                 CSS/JS подсветка
     7. 13_cleanup_html.py             чистка вложенных <a>
+    8. 76_mapping_gap_report.py       gap-отчёт маппинга (ОБЯЗАТЕЛЕН перед сдачей)
 
 Использование:
     python scripts/run_pipeline.py socialnyy          # один кодекс
@@ -128,6 +129,11 @@ def process_code(key, doc_id, keep=False):
          "--input", str(final_h),
          "--output", str(final_h)],
         "13_cleanup_html")
+
+    # 8. Gap-отчёт маппинга — ОБЯЗАТЕЛЕН перед сдачей: plain/разорванные
+    # правовые фразы + дыры npa_mapping (отчёт, пайплайн не прерывает)
+    run([py, str(SCRIPTS / "76_mapping_gap_report.py"), "--doc", key],
+        "76_mapping_gap_report")
 
     if not keep:
         for p in (anchored, xref, fixed, npaed):
