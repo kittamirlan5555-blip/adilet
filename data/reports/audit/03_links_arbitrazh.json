@@ -1,0 +1,77 @@
+{
+ "slug": "arbitrazh",
+ "form": "structured",
+ "stats": {
+  "total": 145,
+  "int_ok": 17,
+  "int_wrong": 0,
+  "int_broken": 0,
+  "int_nocand": 8,
+  "int_preamble": 0,
+  "xc_ok": 0,
+  "xc_wrong": 0,
+  "xc_broken": 0,
+  "xc_nocand": 0,
+  "xc_preamble": 0,
+  "ext_root": 19,
+  "ext_anchored": 41,
+  "self_abs": 3,
+  "chrome": 42,
+  "other": 15
+ },
+ "nested_close": 0,
+ "double_href": 0,
+ "ext_table": {
+  "Z1900000217": 27,
+  "Z2600000251": 4,
+  "K950001000_": 2,
+  "Z2400000097": 2,
+  "Z1700000049": 2,
+  "Z2200000157": 1,
+  "S2400000051": 1,
+  "Z040000022_": 1,
+  "Z040000023_": 1,
+  "rss": 1,
+  "H09T0000130": 1,
+  "K2500000214": 1,
+  "Z1200000552": 1,
+  "G26BG08401M": 1,
+  "G25NT000059": 1,
+  "sort_field": 1,
+  "K1500000414": 1,
+  "K1700000120": 1,
+  "K1400000235": 1,
+  "K1500000377": 1,
+  "Z1500000434": 1,
+  "K940001000_": 1,
+  "K1400000226": 1,
+  "K2000000350": 1,
+  "V1500012590": 1,
+  "K990000409_": 1,
+  "K1500000375": 1,
+  "K1400000231": 1
+ },
+ "problems": [
+  {
+   "type": "SELF_ABSOLUTE",
+   "pos": 109822,
+   "href": "https://adilet.zan.kz/rus/docs/Z1600000488#",
+   "text": "Обратная связь",
+   "snippet": "an.kz/rus/terms\">Пользовательское соглашение</a></li> <li class=\"feedback_link\"><a href=\"https://adilet.zan.kz/rus/docs/Z1600000488#\">Обратная связь</a></li> <li><a href=\"https://adilet.zan.kz/rus/help\">Руководство пользователя</a></li> <li"
+  },
+  {
+   "type": "SELF_ABSOLUTE",
+   "pos": 110650,
+   "href": "https://adilet.zan.kz/rus/docs/Z1600000488#",
+   "text": "(7172) - 572496",
+   "snippet": "pport@zqai.kz</a></li> <li>Телефон (по техническим вопросам работы сайта):<br/> <a href=\"https://adilet.zan.kz/rus/docs/Z1600000488#\" style=\"display: inline;\">(7172) - 572496</a></li> <li>Время работы: <span>09:00 - 18:00 <br/>(по времени г"
+  },
+  {
+   "type": "SELF_ABSOLUTE",
+   "pos": 114186,
+   "href": "https://adilet.zan.kz/rus/docs/Z1600000488#header",
+   "text": "",
+   "snippet": "азахстан» Министерства юстиции Республики Казахстан</p>\n</div>\n<!-- /footer -->\n<a class=\"below120 below30\" href=\"https://adilet.zan.kz/rus/docs/Z1600000488#header\" id=\"topLink\"> </a>\n</div> <!--! end of #container -->\n<div class=\"closed\" i"
+  }
+ ]
+}
