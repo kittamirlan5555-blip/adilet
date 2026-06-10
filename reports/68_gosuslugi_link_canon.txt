@@ -1,0 +1,43 @@
+================================================================================================
+КАНОН ССЫЛОК gosuslugi: self full-URL -> #z + нормализация внешних
+================================================================================================
+
+[self-URL -> #z]
+  с фрагментом сокращено : 33
+  «голый» #N -> #z{N}     : 0
+  без фрагмента -> #      : 2
+  остаточных self full-URL (вся стр., вкл. chrome): 16
+
+[внешние кросс-рефы]
+  нормализовано к канону : 15
+     https://adilet.zan.kz/rus/docs/Z1500000408#224  ->  https://adilet.zan.kz/rus/docs/Z1500000408
+     https://adilet.zan.kz/rus/docs/Z1500000433#127  ->  https://adilet.zan.kz/rus/docs/Z1500000433
+     https://adilet.zan.kz/rus/docs/Z1500000433#128  ->  https://adilet.zan.kz/rus/docs/Z1500000433
+     https://adilet.zan.kz/rus/docs/Z1500000384#19  ->  https://adilet.zan.kz/rus/docs/Z1500000384
+     https://adilet.zan.kz/rus/docs/Z1500000419#372  ->  https://adilet.zan.kz/rus/docs/Z1500000419
+     https://adilet.zan.kz/rus/docs/Z1500000419#373  ->  https://adilet.zan.kz/rus/docs/Z1500000419
+     https://adilet.zan.kz/rus/docs/Z1500000433#129  ->  https://adilet.zan.kz/rus/docs/Z1500000433
+     https://adilet.zan.kz/rus/docs/Z1500000419#374  ->  https://adilet.zan.kz/rus/docs/Z1500000419
+     https://adilet.zan.kz/rus/docs/Z1500000433#130  ->  https://adilet.zan.kz/rus/docs/Z1500000433
+     https://adilet.zan.kz/rus/docs/Z1600000484#27  ->  https://adilet.zan.kz/rus/docs/Z1600000484
+     https://adilet.zan.kz/rus/docs/Z1500000408#241  ->  https://adilet.zan.kz/rus/docs/Z1500000408
+     https://adilet.zan.kz/rus/docs/Z1500000419#376  ->  https://adilet.zan.kz/rus/docs/Z1500000419
+     https://adilet.zan.kz/rus/docs/Z1500000408#246  ->  https://adilet.zan.kz/rus/docs/Z1500000408
+     https://adilet.zan.kz/rus/docs/Z1500000419#377  ->  https://adilet.zan.kz/rus/docs/Z1500000419
+     https://adilet.zan.kz/rus/docs/Z1500000408#249  ->  https://adilet.zan.kz/rus/docs/Z1500000408
+  аномалий (архив/дата/?): 0
+
+[дедуп id] групп дублей: 1 | переименовано: 1 [('z5_2_1', 2)] | пропущено (адресуемые): []
+
+[норм self-якоря] тело-ссылок «статья N» -> z(N)h: 2 [('статьей 15', 'z30', 'z15h'), ('статьей 15', 'z30', 'z15h')]
+
+[ГЕЙТ] get_text(before)==get_text(after): OK
+  записан: gosuslugi_structured.html
+
+[ПОСТ] относительных #z: 33  | битых: 0
+[ПОСТ] внешних: 285  | не-канон: 0  | архив/дата: 0
+[ПОСТ] self full-URL в контенте (div[data-type]): 0  (гейт=0)  | вне контента (chrome-тулбар, не трогаем): 16
+
+================================================================================================
+ИТОГ: get_text=OK | self-битых=0 | внеш-не-канон=0 | self-остаток=0  =>  ВСЕ ГЕЙТЫ ОК
+================================================================================================

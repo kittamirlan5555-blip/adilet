@@ -45,13 +45,17 @@ def gettext(html):
 def main():
     ap = argparse.ArgumentParser(description="Канон ссылок: self full-URL -> #z")
     ap.add_argument("--doc-id", required=True, help="NGR кода (как в config/codes.json)")
+    ap.add_argument("--form", default="structured", choices=("structured", "ready"),
+                    help="какую форму канонизировать (для синхронности G6 — обе)")
     args = ap.parse_args()
 
     SELF = args.doc_id
     code = resolve_code(SELF)
-    FP = paths.FINAL / f"{code}_structured.html"
+    FP = paths.FINAL / f"{code}_{args.form}.html"
     BK = paths.BACKUPS / f"final_backup_{code}"
     REPORT = paths.REPORTS / f"68_{code}_link_canon.txt"
+    if args.form != "structured":
+        REPORT = paths.REPORTS / f"68_{code}_{args.form}_link_canon.txt"
 
     # self full-URL (любой base: 85.202… ИЛИ adilet) c фрагментом -> #zX
     RE_SELF_FRAG = re.compile(

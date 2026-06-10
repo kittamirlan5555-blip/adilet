@@ -354,16 +354,19 @@ class Test74Freshness(unittest.TestCase):
         self.assertEqual(cnt["Z9999999999"], 1)
         self.assertIn(stale, M74.STALE_REMAP)
 
-    def test_confirmed_remaps_are_our_own_codes(self):
-        # §5: оба подтверждённых ремапа целятся в doc_id наших же кодексов.
+    def test_confirmed_remaps_are_verified(self):
+        # §5: подтверждённые ремапы — либо наши же кодексы, либо веб-сверка
+        # (банки: R3 Блок 3, 2026-06-11 — закон 1995 утратил силу 19.03.2026).
         self.assertEqual(M74.STALE_REMAP["K1700000120"][0], "K2500000214")  # nalog
         self.assertEqual(M74.STALE_REMAP["K080000095_"][0], "K2500000171")  # byudzhet
-        self.assertEqual(set(M74.STALE_REMAP), {"K1700000120", "K080000095_"},
+        self.assertEqual(M74.STALE_REMAP["Z950002444_"][0], "Z2600000258")  # банки
+        self.assertEqual(set(M74.STALE_REMAP),
+                         {"K1700000120", "K080000095_", "Z950002444_"},
                          "в авто-ремапе ТОЛЬКО подтверждённые repeal-replace")
 
     def test_needs_review_not_in_auto_remap(self):
         # §5: кандидаты на ручной разбор НЕ должны попадать в авто-ремап STALE_REMAP.
-        for did in ("Z950002444_", "Z1500000383", "Z070000252_"):
+        for did in ("Z1500000383", "Z070000252_"):
             self.assertIn(did, M74.NEEDS_REVIEW)
             self.assertNotIn(did, M74.STALE_REMAP)
 

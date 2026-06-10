@@ -13,6 +13,7 @@
 | byudzhet | byudzhet.html | 1568 | 175 | 33 | 0 | 0 | 2 | 31 | 173 | -2 |
 | constitution | constitution.html | 294 | 5 | 0 | 0 | 63 | 0 | 64 | — | — |
 | ekologicheskiy | ekologicheskiy.html | 2153 | 419 | 31 | 8 | 0 | 1 | 107 | 418 | -1 |
+| gosuslugi | oGosUslug.html | 299 | 43 | 6 | 0 | 0 | 2 | 58 | 41 | -2 |
 | goszakup | goszakup.html | 281 | 29 | 5 | 0 | 0 | 0 | 10 | 29 | 0 |
 | grazhdanskiy | grazhdanskiy.html | 991 | 424 | 24 | 15 | 1 | 0 | 263 | 425 | 1 |
 | grazhdanskiy_osob | GKosobenniy.html | 1557 | 744 | 41 | 45 | 0 | 0 | 279 | 738 | -6 |
@@ -22,6 +23,8 @@
 | notariat | notariat.html | 420 | 126 | 18 | 0 | 11 | 0 | 108 | 126 | 0 |
 | obrazovanie | obrazovanie.html | 964 | 89 | 12 | 0 | 0 | 1 | 99 | 88 | -1 |
 | ocorrupt | ocorrupt.html | 232 | 33 | 5 | 0 | 0 | 0 | 24 | 33 | 0 |
+| persdata | personalDATA.html | 182 | 38 | 6 | 0 | 0 | 0 | 29 | 38 | 0 |
+| pravoohranitel | pravoohranitel.html | 592 | 98 | 12 | 0 | 0 | 0 | 99 | 98 | 0 |
 | predprinimatel | predprinimatel.html | 1747 | 382 | 36 | 12 | 24 | 3 | 297 | 379 | -3 |
 | prezident | prezident.html | 134 | 39 | 0 | 0 | 0 | 0 | 32 | — | — |
 | socialnyy | socialnyy.html | 1535 | 272 | 23 | 35 | 0 | 0 | 95 | 272 | 0 |

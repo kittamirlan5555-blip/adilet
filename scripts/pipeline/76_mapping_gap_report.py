@@ -31,6 +31,12 @@ QT = str.maketrans({"«": '"', "»": '"', "“": '"', "”": '"', "„": '"',
                     "–": "-", "—": "-", "−": "-"})
 RE_NOTE = re.compile(r'<(span|p)\b[^>]*class="note"[^>]*>.*?</\1\s*>',
                      re.I | re.S)
+# заголовки статей (h3 структурной формы / <b>Статья…</b> плоской; перед
+# словом «Статья» может стоять пустой якорь <a id></a>) не линкуем
+RE_HEAD = re.compile(
+    r"<h3\b[^>]*>.*?</h3\s*>"
+    r"|<b\b[^>]*>(?:\s|<a\b[^>]*>\s*</a\s*>)*Статья\b.*?</b\s*>",
+    re.I | re.S)
 
 # Семейства кандидатов (по нормализованному тексту, кавычки уже ")
 PATTERNS = [
@@ -58,6 +64,7 @@ def scan(slug, mapping_keys):
     hay = tmap.text.translate(QT)
     contents = [(m.start(2), m.end(2)) for m in al.RE_A_PAIR.finditer(raw)]
     notes = [(m.start(), m.end()) for m in RE_NOTE.finditer(raw)]
+    heads = [(m.start(), m.end()) for m in RE_HEAD.finditer(raw)]
 
     rows, in_notes = [], 0
     seen_spans = []
@@ -76,6 +83,8 @@ def scan(slug, mapping_keys):
             if any(a <= rs and re_ <= b for a, b in notes):
                 in_notes += 1
                 continue
+            if any(a <= rs < b for a, b in heads):
+                continue  # голова фразы в заголовке статьи — не линкуем
             frag = m.group(0)
             key = "ЕСТЬ" if any(
                 k.translate(QT) in frag or frag.startswith(k.translate(QT))

@@ -474,11 +474,12 @@ def process(doc):
 
 
 def main():
+    docs = [a for a in sys.argv[1:] if not a.startswith("--")] or DOCS
     P(f"# R3 БЛОК 1 — применение канона форм ({'APPLY' if APPLY else 'DRY-RUN'})")
     P("")
     total = Counter()
     all_manual = {}
-    for doc in DOCS:
+    for doc in docs:
         P(f"## {doc}")
         st, manual, ok = process(doc)
         total += st

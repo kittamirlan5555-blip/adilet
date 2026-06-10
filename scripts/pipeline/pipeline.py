@@ -59,7 +59,7 @@ def run(cmd, label):
         sys.exit(result.returncode)
 
 
-def process_code(key, doc_id, keep=False, verify_only=False):
+def process_code(key, doc_id, keep=False, verify_only=False, src_name=None):
     py = sys.executable
 
     print(f"\n{'='*60}\n  {key.upper()}  doc_id={doc_id}\n{'='*60}")
@@ -70,7 +70,7 @@ def process_code(key, doc_id, keep=False, verify_only=False):
             "76_mapping_gap_report (verify-only)")
         return True
 
-    src = paths.SOURCE / f"{key}.html"
+    src = paths.SOURCE / (src_name or f"{key}.html")
     if not src.exists():
         print(f"[skip] Исходный файл не найден: {src}")
         return False
@@ -183,7 +183,8 @@ def main():
     ok = 0
     for key, info in targets:
         if process_code(key, info["doc_id"], keep=args.keep,
-                        verify_only=args.verify_only):
+                        verify_only=args.verify_only,
+                        src_name=info.get("source")):
             ok += 1
     print(f"\n[OK] Готово: {ok}/{len(list(targets) if args.all else [args.code])} кодексов")
 

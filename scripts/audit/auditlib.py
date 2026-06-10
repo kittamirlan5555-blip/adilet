@@ -21,7 +21,9 @@ REPORTS = paths.REPORTS
 AUDIT_OUT = paths.AUDIT_OUT
 
 SOURCE_NAME = {"grazhdanskiy_osob": "GKosobenniy.html",
-               "informatizacii": "obINFORM.html"}
+               "informatizacii": "obINFORM.html",
+               "gosuslugi": "oGosUslug.html",
+               "persdata": "personalDATA.html"}
 
 ENTITIES = {"&nbsp;": " ", "&quot;": '"', "&amp;": "&", "&lt;": "<",
             "&gt;": ">", "&laquo;": "«", "&raquo;": "»", "&mdash;": "—",
