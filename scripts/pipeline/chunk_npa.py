@@ -296,7 +296,14 @@ def iter_segments(article_div):
                 buf.append(str(c))
             elif isinstance(c, Tag):
                 cls = c.get("class") or []
-                if "note" in cls or c.name == "font":
+                if "note" in cls:
+                    continue
+                if c.name == "font":
+                    # красный font = вставки «Примечание ИЗПИ» (не текст НПА);
+                    # синий/прочий font = выделение свежих поправок — ЭТО текст
+                    if (c.get("color") or "").upper() == "#FF0000":
+                        continue
+                    buf.append(c.get_text(" "))
                     continue
                 if c.name in ("p", "h3"):
                     txt = c.get_text(" ", strip=True)
