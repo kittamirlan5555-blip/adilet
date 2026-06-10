@@ -17,7 +17,7 @@
 |---|---|
 | arbitrazh, bezhenci, goszakup, ocorrupt, zhilishniy | ✅ приняты ревью |
 | informatizacii, notariat, obrazovanie | 📤 переданы Анаре 2026-06-10, ждут ревью (`deliverables/laws3/`) |
-| Конституция, prezident | ⏸ в холде до решения Анары (constitution.html и prezident.html лежат в `data/source`, НЕ обрабатывались) |
+| Конституция, prezident | ⏸ в холде до решения Анары (constitution.html и prezident.html лежат в `source/`, НЕ обрабатывались) |
 
 ---
 
@@ -64,12 +64,12 @@ ADILETkz/
 Две фазы. **Фаза A** строит ссылки с нуля; **Фаза B** — правки корректности,
 которые делались уже на `_structured` (он стал каноном).
 
-### Фаза A — построение (`run_pipeline.py` + структуризатор + чанкер)
+### Фаза A — построение (`pipeline.py` + структуризатор + чанкер)
 
 ```
-data/source/{code}.html        ← read-only исходник с adilet.zan.kz
+source/{code}.html             ← read-only исходник с adilet.zan.kz
         │
-        │  run_pipeline.py  (оркестрирует 8 шагов, см. scripts/README.md)
+        │  scripts/pipeline/pipeline.py  (оркестрирует 8 шагов)
         │   01 build_article_map   → статья → якорь
         │   07 add_subpoint_anchors→ якоря пунктов/подпунктов
         │   10 cross_code_refs     → «ст. N Налогового кодекса РК» одной ссылкой
@@ -79,15 +79,15 @@ data/source/{code}.html        ← read-only исходник с adilet.zan.kz
         │   13 cleanup_html        → нормализация вложенных <a>
         │   76 mapping_gap_report  → gap-отчёт маппинга (ОБЯЗАТЕЛЕН перед сдачей)
         ▼
-data/final/{code}_ready.html   ← плоский HTML со ссылками
+final/{code}_ready.html        ← плоский HTML со ссылками
         │
         │  11_structure_html.py   (добавляет иерархию div[data-type], не трогая текст/ссылки)
         ▼
-data/final/{code}_structured.html
+final/{code}_structured.html
         │
         │  chunk_npa.py           (state-machine по тексту → дерево + чанки)
         ▼
-data/tree/{code}.json  +  data/chunks/{code}.jsonl
+tree/{code}.json  +  chunks/{code}.jsonl
 ```
 
 Соотношение форм: **`_structured = _ready + иерархические обёртки`**.
@@ -113,16 +113,16 @@ data/tree/{code}.json  +  data/chunks/{code}.jsonl
 pip install -r requirements.txt          # Python 3.10+, bs4 + lxml
 
 # (1) построить _ready из source  (один код / все)
-python scripts/run_pipeline.py socialnyy
-python scripts/run_pipeline.py --all
+python scripts/pipeline/pipeline.py socialnyy
+python scripts/pipeline/pipeline.py --all
 
 # (2) построить _structured из _ready (один / все)
-python scripts/11_structure_html.py --input data/final/socialnyy_ready.html \
-                                    --output data/final/socialnyy_structured.html
-python scripts/run_structure_all.py
+python scripts/pipeline/11_structure_html.py --input final/socialnyy_ready.html \
+                                             --output final/socialnyy_structured.html
+python scripts/pipeline/run_structure_all.py
 
 # (3) пересобрать чанки/дерево из _structured
-python scripts/chunk_npa.py --all
+python scripts/pipeline/chunk_npa.py --all
 
 # (4) аудит покрытия + корректности (read-only)
 python scripts/audit_links_coverage.py
@@ -130,8 +130,8 @@ python scripts/audit_links_coverage.py
 # (5) ОБЯЗАТЕЛЬНО перед сдачей документа: gap-отчёт маппинга
 #     (plain/разорванные правовые фразы + дыры npa_mapping;
 #      сканирует _structured, при его отсутствии _ready)
-python scripts/76_mapping_gap_report.py --doc socialnyy     # или --all
-#  → data/reports/mapping_gap_{slug}.md
+python scripts/pipeline/76_mapping_gap_report.py --doc socialnyy     # или --all
+#  → reports/mapping_gap_{slug}.md
 #  Сдавать документ можно, только когда остаток в отчёте пуст
 #  или каждая строка объяснена в сдаточной записке.
 ```
@@ -162,13 +162,13 @@ python scripts/76_mapping_gap_report.py --doc socialnyy     # или --all
 
 ## 5. Конфигурация и расширение
 
-* **Новый кодекс:** положить `data/source/<key>.html`, добавить запись в
-  `config/codes.json` (`"<key>": {"doc_id": "Kxxxxxxxxxx", "title": "…"}`),
+* **Новый кодекс:** положить `source/<key>.html`, добавить запись в
+  `maps/codes.json` (`"<key>": {"doc_id": "Kxxxxxxxxxx", "title": "…"}`),
   прогнать Фазу A → B.
-* **Новый внешний НПА:** добавить точную фразу-ключ в `config/npa_mapping.json`
+* **Новый внешний НПА:** добавить точную фразу-ключ в `maps/npa_mapping.json`
   (`"Закона Республики Казахстан \"О …\"": "Zxxxxxxxxxx"`). Падеж — из текста.
 * **Ссылка на старую версию кодекса:** добавить старый doc_id в
-  `_deprecated_remaps` в `config/codes.json`.
+  `_deprecated_remaps` в `maps/codes.json`.
 
 Реестр обработанных кодексов:
 

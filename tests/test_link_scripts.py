@@ -22,6 +22,8 @@ from pathlib import Path
 from bs4 import BeautifulSoup, NavigableString
 
 SCRIPTS = Path(__file__).resolve().parent.parent / "scripts"
+PIPELINE = SCRIPTS / "pipeline"
+AUDIT = SCRIPTS / "audit"
 
 
 @contextlib.contextmanager
@@ -31,18 +33,18 @@ def quiet():
         yield
 
 
-def _load(modname, filename):
+def _load(modname, dirpath, filename):
     """Импорт модуля с числовым префиксом (нельзя обычным import)."""
-    spec = importlib.util.spec_from_file_location(modname, SCRIPTS / filename)
+    spec = importlib.util.spec_from_file_location(modname, dirpath / filename)
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     return mod
 
 
-M72 = _load("ext_root", "72_external_root_link.py")
-M73 = _load("chains", "73_fullspan_chains.py")
-M74 = _load("freshness", "74_code_freshness_check.py")
-M75 = _load("crosscode", "75_crosscode_verify.py")
+M72 = _load("ext_root", PIPELINE, "72_external_root_link.py")
+M73 = _load("chains", PIPELINE, "73_fullspan_chains.py")
+M74 = _load("freshness", AUDIT, "74_code_freshness_check.py")
+M75 = _load("crosscode", AUDIT, "75_crosscode_verify.py")
 
 
 def soup_of(html):

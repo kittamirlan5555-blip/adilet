@@ -14,7 +14,8 @@ from pathlib import Path
 
 SCRIPTS = Path(__file__).resolve().parent.parent / "scripts"
 
-spec = importlib.util.spec_from_file_location("fix02", SCRIPTS / "02_fix_internal_links.py")
+spec = importlib.util.spec_from_file_location(
+    "fix02", SCRIPTS / "pipeline" / "02_fix_internal_links.py")
 M = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(M)
 

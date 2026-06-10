@@ -13,7 +13,7 @@
 внутри текста («пунктом 2 статьи 35», «Законом РК "О банках…"», «статьёй 100 настоящего Кодекса»)
 должна стать рабочей гиперссылкой.
 
-Результат по каждому документу — один файл `*_ready.html` / `*_structured.html` в `ready/`.
+Результат по каждому документу — один файл `*_ready.html` / `*_structured.html` в `final/`.
 
 ---
 
@@ -199,12 +199,19 @@ cross-code помечай как зависящий от модели депло
 ## 10. Структура репо
 
 ```
-ready/codes/   — *_ready.html (кодексы)
-ready/laws/    — *_structured.html (законы)
-maps/          — npa_mapping.json (акт→НГР) + codes.json + article_map_* + subpoint_map_*
-scripts/       — канонические скрипты (нумерованные)
-source/        — текстовые выгрузки разметки Анары
+final/         — *_ready.html / *_structured.html (рабочие финальные формы)
+source/        — сырые HTML с adilet (read-only) + текстовые выгрузки разметки Анары
+maps/          — npa_mapping.json (акт→НГР) + codes.json + manual_overrides.json
+                 + article_map_* + subpoint_map_*
+reports/       — аудиты, SDACHA, флаги Анары, gap-отчёты
+deliverables/  — сдаточные пакеты (anara_package, send_chef, laws3)
+chunks/, tree/ — производные чанкера (перегенерируемы)
+scripts/       — paths.py (единая точка истины по путям) + audit_links_coverage.py
+scripts/pipeline/ — канонические шаги построения (вход: pipeline.py)
+scripts/audit/    — верификация и гейты раундов
+scripts/attic/    — исторические разовые скрипты (заморожены, пути не чинятся)
 docs/          — RUNBOOK, и т.п.
+MOVES.md       — карта переезда дерева (Фаза A); CLEANUP.md — что в attic и почему
 README.md      — обзор + статус-таблица (для людей)
 CLAUDE.md      — этот файл (для агента)
 ```
