@@ -8,8 +8,8 @@
   "int_broken": 0,
   "int_nocand": 29,
   "int_preamble": 0,
-  "xc_ok": 81,
-  "xc_wrong": 1,
+  "xc_ok": 82,
+  "xc_wrong": 0,
   "xc_broken": 0,
   "xc_nocand": 6,
   "xc_preamble": 0,
@@ -193,45 +193,29 @@
  },
  "problems": [
   {
-   "type": "XC_WRONG_TARGET",
-   "pos": 306055,
-   "href": "https://adilet.zan.kz/rus/docs/K940001000_#z320",
-   "text": "статей 151-152",
-   "target": "grazhdanskiy",
-   "resolved": [
-    "157-1"
-   ],
-   "candidates": [
-    "151",
-    "151-152"
-   ],
-   "snippet": ">\n      1. Договор займа должен быть заключен в форме, соответствующей правилам <a href=\"https://adilet.zan.kz/rus/docs/K940001000_#z320\">статей 151-152</a> настоящего Кодекса. </p><p id=\"z2723\">\n      2. Договор займа признается заключенны",
-   "target_snippet": "Республики Казахстан или не вытекает из существа или содержания сделки. </p>\n<p id=\"z320\">\n\n\n\n 3. При недействительности сделки каждая из сторон обязана возвратить другой все полученное по сделке, а при невозможности возврата в натуре (в то"
-  },
-  {
    "type": "SELF_ABSOLUTE",
-   "pos": 898151,
+   "pos": 898152,
    "href": "https://adilet.zan.kz/rus/docs/K990000409_#",
    "text": "Обратная связь",
    "snippet": "an.kz/rus/terms\">Пользовательское соглашение</a></li> <li class=\"feedback_link\"><a href=\"https://adilet.zan.kz/rus/docs/K990000409_#\">Обратная связь</a></li> <li><a href=\"https://adilet.zan.kz/rus/help\">Руководство пользователя</a></li> <li"
   },
   {
    "type": "SELF_ABSOLUTE",
-   "pos": 898979,
+   "pos": 898980,
    "href": "https://adilet.zan.kz/rus/docs/K990000409_#",
    "text": "(7172) - 572496",
    "snippet": "pport@zqai.kz</a></li> <li>Телефон (по техническим вопросам работы сайта):<br/> <a href=\"https://adilet.zan.kz/rus/docs/K990000409_#\" style=\"display: inline;\">(7172) - 572496</a></li> <li>Время работы: <span>09:00 - 18:00 <br/>(по времени г"
   },
   {
    "type": "SELF_ABSOLUTE",
-   "pos": 901884,
+   "pos": 901885,
    "href": "https://adilet.zan.kz/rus/docs/K990000409_",
    "text": "Гражданский кодекс Республики Казахстан (особенная часть)",
    "snippet": "012590\">Об утверждении Правил осуществления государственных закупок</a></li><li><a href=\"https://adilet.zan.kz/rus/docs/K990000409_\">Гражданский кодекс Республики Казахстан (особенная часть)</a></li><li><a href=\"https://adilet.zan.kz/rus/do"
   },
   {
    "type": "SELF_ABSOLUTE",
-   "pos": 902457,
+   "pos": 902458,
    "href": "https://adilet.zan.kz/rus/docs/K990000409_#header",
    "text": "",
    "snippet": "азахстан» Министерства юстиции Республики Казахстан</p>\n</div>\n<!-- /footer -->\n<a class=\"scrolledUp\" href=\"https://adilet.zan.kz/rus/docs/K990000409_#header\" id=\"topLink\"> </a>\n</div> <!--! end of #container -->\n<div class=\"closed\" id=\"sea"

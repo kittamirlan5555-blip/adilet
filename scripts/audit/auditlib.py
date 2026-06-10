@@ -142,13 +142,21 @@ def article_marks(raw):
     """Все маркеры статей: [(pos, num, anchor|None, family)]."""
     out = []
     for m in RE_HBLOCK.finditer(raw):
-        t = RE_TITLE.match(strip_tags(m.group(2)))
-        if not t:
+        inner_txt = strip_tags(m.group(2))
+        t = RE_TITLE.match(inner_txt)
+        if t:
+            anc = RE_ANYID.search(_opening_tag(raw, m.start()))
+            if not anc:
+                anc = RE_ANYID.search(m.group(2)[:200])
+            out.append((m.start(), t.group(1), anc.group(1) if anc else None, "h"))
             continue
-        anc = RE_ANYID.search(_opening_tag(raw, m.start()))
-        if not anc:
-            anc = RE_ANYID.search(m.group(2)[:200])
-        out.append((m.start(), t.group(1), anc.group(1) if anc else None, "h"))
+        # СЛИТЫЙ заголовок («Глава 4. Сделки Статья 147. …», прецеденты
+        # zhilishniy/grazhdanskiy): «Статья N.» ВНУТРИ h-блока не в начале —
+        # маркер ставим на позицию вхождения в raw (нужно для source-файлов,
+        # где слияние не расщеплено)
+        em = re.search(r"Статья\s+(\d+(?:-\d+)*)\s*\.", m.group(2))
+        if em and not inner_txt.lower().startswith("статья"):
+            out.append((m.start(2) + em.start(), em.group(1), None, "h-embed"))
     for m in RE_BBLOCK.finditer(raw):
         t = RE_TITLE.match(strip_tags(m.group(1)))
         if not t:

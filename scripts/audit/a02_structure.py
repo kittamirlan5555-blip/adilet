@@ -74,11 +74,20 @@ def article_diff(fraw, fclusters, sraw):
     fs, ss = segs(fraw, fclusters), segs(sraw, scl)
     common = sorted(set(fs) & set(ss),
                     key=lambda x: [int(p) for p in x.split("-")])
+    # хвост сегмента обрезаем на заголовке главы/раздела: при расщеплении
+    # слитых заголовков (ГК 147) границы сегментов final и source различаются
+    # на текст «Глава N. …» — он не часть статьи
+    RE_CHAPTER_TAIL = re.compile(r"(?:Глава|Параграф|Раздел|Подраздел)\d+(?:-\d+)*\.")
+
+    def cut_tail(nows):
+        m = RE_CHAPTER_TAIL.search(nows)
+        return nows[:m.start()] if m else nows
+
     diffs = []
     for num in common:
         tmF = al.TextMap("".join(fraw[a:b] for a, b in fs[num]), strip_labels=True)
         tmS = al.TextMap("".join(sraw[a:b] for a, b in ss[num]))
-        ft, st_ = tmF.nows, tmS.nows
+        ft, st_ = cut_tail(tmF.nows), cut_tail(tmS.nows)
         if ft == st_:
             continue
         n = min(len(ft), len(st_))
