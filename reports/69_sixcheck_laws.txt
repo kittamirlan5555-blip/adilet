@@ -3,6 +3,10 @@
 ==============================================================================================================
 код               форма      parse  nested empty B-real внеш-арх висяч     [B-список / chrome self|nondoc / frag]
 --------------------------------------------------------------------------------------------------------------
+arbitrazh         structured OK         0     0     0       0      0   [empty-chrome=2 / B-list=0 / chrome self|nondoc=18|25 / frag=0]
+goszakup          structured OK         0     0     0       0      0   [empty-chrome=2 / B-list=0 / chrome self|nondoc=18|25 / frag=0]
+ocorrupt          structured OK         0     0     0       0      0   [empty-chrome=2 / B-list=0 / chrome self|nondoc=18|25 / frag=0]
+bezhenci          structured OK         0     0     0       0      0   [empty-chrome=2 / B-list=0 / chrome self|nondoc=18|25 / frag=0]
 zhilishniy        structured OK         0     0     0       0      0   [empty-chrome=2 / B-list=0 / chrome self|nondoc=18|25 / frag=0]
 --------------------------------------------------------------------------------------------------------------
 

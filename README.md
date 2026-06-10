@@ -124,7 +124,12 @@ python scripts/pipeline/run_structure_all.py
 # (3) пересобрать чанки/дерево из _structured
 python scripts/pipeline/chunk_npa.py --all
 
-# (4) аудит покрытия + корректности (read-only)
+# (4) ЕДИНАЯ верификация (read-only): гейты 71/75/74/76 (+ 67/64/69 при --all)
+python scripts/verify.py --all                 # весь корпус, exit 1 при FAIL
+python scripts/verify.py socialnyy upk         # выбранные документы
+#     спот-чек 5-10 ссылок руками раннер НЕ заменяет (§6 CLAUDE.md)
+
+# (4а) аудит покрытия + корректности (read-only, подробный)
 python scripts/audit_links_coverage.py
 
 # (5) ОБЯЗАТЕЛЬНО перед сдачей документа: gap-отчёт маппинга

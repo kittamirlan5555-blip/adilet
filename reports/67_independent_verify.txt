@@ -3,14 +3,14 @@
 ========================================================================================================
 код                checked  СОВПАЛО НЕ совпало  не-резолв  [range/boundary]
 --------------------------------------------------------------------------------------------------------
-nalog                 1361     1361          0          0        1/15      
+nalog                 1360     1360          0          0        0/15      
 trudovoy                67       67          0          0        0/0       
 grazhdanskiy           102      102          0          0        2/0       
 grazhdanskiy_osob      157      157          0          0        0/0       
 predprinimatel         223      223          0          0        0/0       
-socialnyy              229      229          0          0        1/0       
+socialnyy              228      228          0          0        0/0       
 ekologicheskiy         135      135          0          0        0/0       
-zemelnyy               185      185          0          0        0/0       
+zemelnyy               186      186          0          0        0/0       
 upk                    678      678          0          0        0/0       
 koap                   487      487          0          0        0/0       
 appk                    58       58          0          0        0/0       
@@ -25,7 +25,7 @@ ocorrupt                11       11          0          0        0/0
 bezhenci                 8        8          0          0        0/0       
 zhilishniy              80       80          0          0        0/0       
 --------------------------------------------------------------------------------------------------------
-ИТОГО                 4297     4297          0          0
+ИТОГО                 4296     4296          0          0
 
   (СОВПАЛО включает 20 якорей-закладок начала статьи [ИЗПИ/РЦПИ-граница]:
    <a id=zX> стоит у границы, след. <div data-type=статья data-number=N> в окне 600ch -> цель N, что РАВНО заявленному. Это не дефект, а семантика adilet;
@@ -51,14 +51,14 @@ predprinimatel                53                     0
 socialnyy                     79                     0
 ekologicheskiy                30                     0
 zemelnyy                      26                     0
-upk                          252                     0
+upk                          253                     0
 koap                          60                     0
 appk                          29                     0
 byudzhet                      22                     0
 ugolovniy                     12                     0
-informatizacii                 5                     0
-notariat                       3                     0
-obrazovanie                    0                     0
+informatizacii                13                     0
+notariat                       6                     0
+obrazovanie                    4                     0
 arbitrazh                      0                     0
 goszakup                       1                     0
 ocorrupt                       0                     0

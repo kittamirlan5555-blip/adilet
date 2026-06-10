@@ -1,0 +1,10 @@
+# verify summary
+документы: socialnyy, koap
+
+FAIL  71_gates  RED у: socialnyy, koap
+PASS  75_crosscode  MISMATCH=0 UNRESOLVED=22
+PASS  74_freshness  ROOT-stale(авто-ремап-safe)=0  ART-stale(#z, ручной ре-резолв)=0  строк mapping=0 | NEEDS_REVIEW: ссылок=14 строк=7
+PASS  76_gap_report  gaps: 20/219
+
+ИТОГ: FAIL: 71_gates
+Напоминание §6: спот-чек 5-10 ссылок руками раннер не заменяет.
