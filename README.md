@@ -132,6 +132,9 @@ python scripts/verify.py socialnyy upk         # выбранные докуме
 # (4а) аудит покрытия + корректности (read-only, подробный)
 python scripts/audit_links_coverage.py
 
+# (4б) структурные профили source (статьи/главы/пропуски/дубли vs карты)
+python scripts/audit/a06_source_profiles.py   # -> reports/audit/source_profiles.*
+
 # (5) ОБЯЗАТЕЛЬНО перед сдачей документа: gap-отчёт маппинга
 #     (plain/разорванные правовые фразы + дыры npa_mapping;
 #      сканирует _structured, при его отсутствии _ready)
