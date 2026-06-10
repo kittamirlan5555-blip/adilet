@@ -50,16 +50,19 @@ REPORTS = paths.REPORTS
 STALE_REMAP = {
     "K1700000120": ("K2500000214", "Налоговый кодекс: ред. 2017 -> 2025 (наш byudzhet/nalog в codes.json)"),
     "K080000095_": ("K2500000171", "Бюджетный кодекс: ред. 2008 -> 2025 (наш byudzhet=K2500000171)"),
+    # ПОДТВЕРЖДЕНО вебом 2026-06-11 (R3 Блок 3): закон 1995 № 2444 утратил силу
+    # 19.03.2026 в соответствии с законом № 258-VIII от 16.01.2026; новый акт
+    # действует, название ИДЕНТИЧНО («О банках и банковской деятельности в РК»),
+    # тот же предмет -> repeal-replace, авто-ремап ROOT-ссылок безопасен.
+    # Остатки старого акта действуют точечно до 01.07.2026/01.01.2027 — это
+    # касается только АРТИКУЛЬНЫХ ссылок (их не ремапим подменой НГР).
+    "Z950002444_": ("Z2600000258", "О банках и банк. деятельности: 1995 -> 2026 (№258-VIII, в силе с 19.03.2026)"),
 }
 
 # NEEDS_REVIEW — НЕ ремапить автоматически. Кандидат указан, но требует ручной
 # сверки на живом adilet ПРЕЖДЕ чем доверять (причина каждого — почему авто-ремап
 # опасен). Эти коды НЕ попадают в strict-гейт и НЕ предлагаются как автозамена.
 NEEDS_REVIEW = {
-    "Z950002444_": ("Z2600000258?",
-                    "«О банках и банковской деятельности»: кандидат — новый закон 2026 "
-                    "(Z2600000258), но дата вступления в силу НЕ подтверждена; старый "
-                    "1995 мог ещё действовать на момент линковки. Сверить на adilet."),
     "Z1500000383": ("Z2300000030?",
                     "СМЕНА НАЗВАНИЯ: Z1500000383 = «Об общественных СОВЕТАХ», кандидат "
                     "Z2300000030 = «Об общественном КОНТРОЛЕ» — другой предмет/название. "
@@ -73,6 +76,10 @@ NEEDS_REVIEW = {
 # Удалён из STALE: Z1400000211 = «О профессиональных союзах» (№211-V, 27.06.2014) —
 # ДЕЙСТВУЮЩИЙ, не протух. «О профессиональных квалификациях» = отдельный акт
 # Z2300000014 (№14-VIII, 04.07.2023). Оба корректны в npa_mapping, ремап не нужен.
+
+# Документы НА РЕВЬЮ у Анары (laws3-r2): корпус не правится до возврата.
+# Их stale-ссылки идут отдельной корзиной [2wait] и НЕ гейтятся strict'ом.
+WAITING_REVIEW = {"informatizacii", "notariat", "obrazovanie"}
 
 DOCID_IN_HREF = re.compile(r"/docs/([A-Za-z0-9_]+)")
 
@@ -190,7 +197,14 @@ def run(codes, strict, online):
     global_art = defaultdict(int)
     review_links = defaultdict(int)
     all_external = defaultdict(int)
+    hist_links = defaultdict(int)
+    cj = json.loads((CONFIG / "codes.json").read_text(encoding="utf-8"))
+    slug_docid = {k: v["doc_id"] for k, v in cj.items()
+                  if isinstance(v, dict) and "doc_id" in v}
+    waiting_links = defaultdict(int)
     for p in files:
+        slug = re.sub(r"_(ready|structured)$", "", p.stem)
+        own_id = slug_docid.get(slug)
         cnt = scan_file_docids(p)
         for d, n in cnt.items():
             if d not in own:
@@ -200,6 +214,15 @@ def run(codes, strict, online):
         root_hits, art_hits = {}, {}
         for (d, kind), n in scan_file_links(p).items():
             if d not in STALE_REMAP:
+                continue
+            # ИСТОРИЧЕСКИЕ: документ-ПРЕЕМНИК ссылается на отменённый им акт
+            # («Признать утратившим силу…», переходные положения) — легитимно.
+            if STALE_REMAP[d][0] == own_id:
+                hist_links[d] += n
+                continue
+            # документ на ревью у Анары — не правим до возврата
+            if slug in WAITING_REVIEW:
+                waiting_links[d] += n
                 continue
             if kind == "root":
                 root_hits[d] = root_hits.get(d, 0) + n
@@ -230,6 +253,15 @@ def run(codes, strict, online):
         for d, n in sorted(hits.items(), key=lambda x: -x[1]):
             fresh, why = STALE_REMAP[d]
             P(f"    {fname:34} {d}#z ×{n}  -> ре-резолв статьи в {fresh}   ({why})")
+
+    if hist_links:
+        P(f"\n[2hist] Исторические ссылки преемника на отменённый им акт "
+          f"(легитимно, не stale): "
+          + ", ".join(f"{d} ×{n}" for d, n in hist_links.items()))
+    if waiting_links:
+        P(f"\n[2wait] Stale-ссылки в документах НА РЕВЬЮ у Анары (laws3-r2) — "
+          f"ремап ПОСЛЕ возврата: "
+          + ", ".join(f"{d} ×{n}" for d, n in waiting_links.items()))
 
     # ---- 2b) ссылки на NEEDS_REVIEW коды (mapping-уровень, ручной разбор) ----
     total_review_links = sum(review_links.values())
