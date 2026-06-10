@@ -16,16 +16,6 @@
   [GREEN] G4 битые внутренние #z       0
   [GREEN] G5 cross-code якоря          missing=0 (все цели корпуса резолвятся)
 
-  [RED] G6 синхронность форм        расхождений=136
-      только в grazhdanskiy_osob_structured.html: ('#z1061', 'статьи 922')
-      только в grazhdanskiy_osob_structured.html: ('#z1063', 'статьи 923')
-      только в grazhdanskiy_osob_structured.html: ('#z1087', 'статьи 935')
-      только в grazhdanskiy_osob_structured.html: ('#z109', 'пунктом 2')
-      только в grazhdanskiy_osob_structured.html: ('#z1206', 'статей 992')
-      только в grazhdanskiy_osob_ready.html: ('#z1061', 'пунктом 3 статьи 922')
-      только в grazhdanskiy_osob_ready.html: ('#z1063', 'пункт 1 статьи 923')
-      только в grazhdanskiy_osob_ready.html: ('#z1087', 'пункт 5 статьи 935')
-      только в grazhdanskiy_osob_ready.html: ('#z1087', 'пунктом 5 статьи 935')
-      только в grazhdanskiy_osob_ready.html: ('#z109', 'пунктом 2 статьи 742')
+  [GREEN] G6 синхронность форм        расхождений=0
 
-ИТОГ grazhdanskiy_osob: КРАСНЫХ ГЕЙТОВ: 1
+ИТОГ grazhdanskiy_osob: ВСЁ ЗЕЛЁНОЕ

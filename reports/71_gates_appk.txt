@@ -16,10 +16,6 @@
   [GREEN] G4 битые внутренние #z       0
   [GREEN] G5 cross-code якоря          missing=0 (все цели корпуса резолвятся)
 
-  [RED] G6 синхронность форм        расхождений=4
-      только в appk_structured.html: ('https://adilet.zan.kz/rus/docs/K1500000377#z27', 'статьи 27')
-      только в appk_structured.html: ('https://adilet.zan.kz/rus/docs/K2000000350/download', 'PDF')
-      только в appk_structured.html: ('https://adilet.zan.kz/rus/docs/K2000000350/download/docx', 'DOCX')
-      только в appk_ready.html: ('https://adilet.zan.kz/rus/docs/K2000000350/download/docx', 'PDF DOCX')
+  [GREEN] G6 синхронность форм        расхождений=0
 
-ИТОГ appk: КРАСНЫХ ГЕЙТОВ: 1
+ИТОГ appk: ВСЁ ЗЕЛЁНОЕ

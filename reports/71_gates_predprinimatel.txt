@@ -16,9 +16,6 @@
   [GREEN] G4 битые внутренние #z       0
   [GREEN] G5 cross-code якоря          missing=0 (все цели корпуса резолвятся)
 
-  [RED] G6 синхронность форм        расхождений=3
-      только в predprinimatel_structured.html: ('#z156', 'статьи 156')
-      только в predprinimatel_ready.html: ('#z156', 'пунктом 2')
-      только в predprinimatel_ready.html: ('#z82', 'пунктом 3')
+  [GREEN] G6 синхронность форм        расхождений=0
 
-ИТОГ predprinimatel: КРАСНЫХ ГЕЙТОВ: 1
+ИТОГ predprinimatel: ВСЁ ЗЕЛЁНОЕ

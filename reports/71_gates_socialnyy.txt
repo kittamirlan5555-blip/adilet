@@ -16,16 +16,6 @@
   [GREEN] G4 битые внутренние #z       0
   [GREEN] G5 cross-code якоря          missing=0 (все цели корпуса резолвятся)
 
-  [RED] G6 синхронность форм        расхождений=32
-      только в socialnyy_structured.html: ('#z1845', 'статьи 133')
-      только в socialnyy_structured.html: ('#z190', 'пункта 2')
-      только в socialnyy_structured.html: ('#z2278', '4)')
-      только в socialnyy_structured.html: ('#z3343', 'подпунктах 1) и 2) пункта 1')
-      только в socialnyy_structured.html: ('https://adilet.zan.kz/rus/docs/K2500000214', 'главе 94 Налогового кодекса Республики Казахстан')
-      только в socialnyy_ready.html: ('#z1845', 'пунктом 3 статьи 133')
-      только в socialnyy_ready.html: ('#z190', 'подпунктом 2)')
-      только в socialnyy_ready.html: ('#z3343', 'пункта 1')
-      только в socialnyy_ready.html: ('#z3538', 'статьях 101-1 и 102-1 настоящего Кодекса')
-      только в socialnyy_ready.html: ('#z634', 'статьи 35')
+  [GREEN] G6 синхронность форм        расхождений=0
 
-ИТОГ socialnyy: КРАСНЫХ ГЕЙТОВ: 1
+ИТОГ socialnyy: ВСЁ ЗЕЛЁНОЕ
