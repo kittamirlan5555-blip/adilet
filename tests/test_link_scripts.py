@@ -396,6 +396,26 @@ class Test74Freshness(unittest.TestCase):
 
 
 # ======================================================================
+# СТЕМ «стат[ье]» в 73/75 — род.падеж «статей» (находка аудит-раунда)
+# ======================================================================
+class TestStemStatey(unittest.TestCase):
+    """«стать\\w+» НЕ матчит «статей N» (нет мягкого знака) — фикс Блока 4."""
+
+    def test_statey_matched(self):
+        self.assertEqual(M75.RE_ART_IN_TEXT.findall("статей 58 и 59"), ["58"])
+        self.assertEqual(M75.RE_ART_IN_TEXT.findall("статьями 58 и 59"), ["58"])
+        self.assertTrue(M73.RE_HAS_ART.search("статей 441"))
+        self.assertTrue(M73.RE_ART_A.match("статей 58"))
+        self.assertTrue(M73.RE_ART_PLAIN.match("статей 58 настоящего Кодекса"))
+
+    def test_non_article_words_NOT_matched(self):
+        for w in ("состоятельный", "статус 5", "констатировать 7",
+                  "достаточно 9", "статистика 12"):
+            self.assertFalse(M73.RE_HAS_ART.search(w), w)
+            self.assertEqual(M75.RE_ART_IN_TEXT.findall(w), [], w)
+
+
+# ======================================================================
 # 75 — CROSS-CODE СВЕРКА ЯКОРЕЙ
 # ======================================================================
 class Test75CrossCode(unittest.TestCase):

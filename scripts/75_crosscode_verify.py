@@ -37,7 +37,8 @@ CONFIG = ROOT / "config"
 REPORTS = ROOT / "data" / "reports"
 
 RE_HREF = re.compile(r"/docs/([A-Za-z0-9_]+)#(z[\w-]+)")
-RE_ART_IN_TEXT = re.compile(r"стать\w+\s+(\d+(?:-\d+)?)", re.I)
+# «стат[ье]», не «стать»: иначе «статей N» терял кандидата (аудит 2026-06-10)
+RE_ART_IN_TEXT = re.compile(r"стат[ье]\w*\s+(\d+(?:-\d+)?)", re.I)
 
 
 def docid_to_code():
