@@ -30,7 +30,7 @@ ROOT = paths.ROOT
 FINAL = paths.FINAL
 CONFIG = paths.MANUAL_OVERRIDES
 CODES_CFG = paths.CODES_JSON
-BASE = "http://85.202.192.66:9096"
+BASE = "https://adilet.zan.kz"
 
 
 def collect_anchors(html: str):

@@ -237,7 +237,7 @@ def main():
     ap.add_argument("--input", required=True, help="HTML-файл кодекса")
     ap.add_argument("--output", default="npa_mentions.csv", help="CSV-отчёт")
     ap.add_argument("--npa-map", help="JSON маппинг название_НПА → doc_id (для автофикса)")
-    ap.add_argument("--base-url", default="http://85.202.192.66:9096")
+    ap.add_argument("--base-url", default="https://adilet.zan.kz")
     ap.add_argument("--output-html", help="Выходной HTML с исправленными ссылками")
     args = ap.parse_args()
 

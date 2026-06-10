@@ -16,7 +16,7 @@ import json
 import argparse
 from bs4 import BeautifulSoup, NavigableString
 
-BASE_URL = "http://85.202.192.66:9096"
+BASE_URL = "https://adilet.zan.kz"
 
 # "подпункт(ами/ом/е/а/у/ах) N), M), ... [пункта P] [настоящего пункта|настоящей статьи]"
 SELFREF_RE = re.compile(

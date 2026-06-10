@@ -1546,7 +1546,7 @@ def main():
     ap.add_argument("--input", required=True)
     ap.add_argument("--map", required=True)
     ap.add_argument("--doc-id", required=True)
-    ap.add_argument("--base-url", default="http://85.202.192.66:9096")
+    ap.add_argument("--base-url", default="https://adilet.zan.kz")
     ap.add_argument("--output", required=True)
     ap.add_argument("--report", default="fix_report.csv")
     ap.add_argument("--include-snoska", action="store_true")

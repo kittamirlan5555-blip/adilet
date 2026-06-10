@@ -39,7 +39,7 @@ from bs4 import BeautifulSoup, NavigableString
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import paths
 
-BASE_URL = "http://85.202.192.66:9096"
+BASE_URL = "https://adilet.zan.kz"
 
 
 # === ГРАММАТИЧЕСКИЕ ОКОНЧАНИЯ (все падежи) ===
