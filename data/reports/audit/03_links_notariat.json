@@ -2,13 +2,13 @@
  "slug": "notariat",
  "form": "structured",
  "stats": {
-  "total": 535,
+  "total": 534,
   "int_ok": 48,
   "int_wrong": 0,
   "int_broken": 0,
   "int_nocand": 46,
   "int_preamble": 0,
-  "xc_ok": 7,
+  "xc_ok": 6,
   "xc_wrong": 0,
   "xc_broken": 0,
   "xc_nocand": 3,
@@ -113,21 +113,21 @@
  "problems": [
   {
    "type": "SELF_ABSOLUTE",
-   "pos": 260414,
+   "pos": 260351,
    "href": "https://adilet.zan.kz/rus/docs/Z970000155_#",
    "text": "Обратная связь",
    "snippet": "an.kz/rus/terms\">Пользовательское соглашение</a></li> <li class=\"feedback_link\"><a href=\"https://adilet.zan.kz/rus/docs/Z970000155_#\">Обратная связь</a></li> <li><a href=\"https://adilet.zan.kz/rus/help\">Руководство пользователя</a></li> <li"
   },
   {
    "type": "SELF_ABSOLUTE",
-   "pos": 261242,
+   "pos": 261179,
    "href": "https://adilet.zan.kz/rus/docs/Z970000155_#",
    "text": "(7172) - 572496",
    "snippet": "pport@zqai.kz</a></li> <li>Телефон (по техническим вопросам работы сайта):<br/> <a href=\"https://adilet.zan.kz/rus/docs/Z970000155_#\" style=\"display: inline;\">(7172) - 572496</a></li> <li>Время работы: <span>09:00 - 18:00 <br/>(по времени г"
   },
   {
    "type": "SELF_ABSOLUTE",
-   "pos": 264697,
+   "pos": 264634,
    "href": "https://adilet.zan.kz/rus/docs/Z970000155_#header",
    "text": "",
    "snippet": "азахстан» Министерства юстиции Республики Казахстан</p>\n</div>\n<!-- /footer -->\n<a href=\"https://adilet.zan.kz/rus/docs/Z970000155_#header\" id=\"topLink\"> </a>\n</div> <!--! end of #container -->\n<div class=\"closed\" id=\"search_form\">\n<p>поиск"
