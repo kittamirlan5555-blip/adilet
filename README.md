@@ -17,7 +17,7 @@
 |---|---|
 | arbitrazh, bezhenci, goszakup, ocorrupt, zhilishniy | ✅ приняты ревью |
 | informatizacii, notariat, obrazovanie | 📤 переданы Анаре 2026-06-10, ждут ревью (`deliverables/laws3/`) |
-| Конституция, prezident | ⏸ в холде до решения Анары (prezident.html лежит в `data/source`, не обрабатывался; source-файла Конституции нет) |
+| Конституция, prezident | ⏸ в холде до решения Анары (constitution.html и prezident.html лежат в `data/source`, НЕ обрабатывались) |
 
 ---
 
