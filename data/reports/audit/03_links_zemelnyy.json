@@ -3,8 +3,8 @@
  "form": "ready",
  "stats": {
   "total": 557,
-  "int_ok": 281,
-  "int_wrong": 1,
+  "int_ok": 282,
+  "int_wrong": 0,
   "int_broken": 0,
   "int_nocand": 95,
   "int_preamble": 0,
@@ -64,37 +64,22 @@
  },
  "problems": [
   {
-   "type": "INT_WRONG_TARGET",
-   "pos": 332766,
-   "href": "#z2002",
-   "text": "44-2",
-   "resolved": [
-    "44-1"
-   ],
-   "candidates": [
-    "43",
-    "44-2"
-   ],
-   "snippet": " href=\"#z50\">статьях 43</a>, <a href=\"#z51\">44</a>, <a href=\"#z1568\">44-1</a> и <a href=\"#z2002\">44-2</a> настоящего Кодекса в зависимости от целевого назначения земельного участка. </p>\n<p id=\"z902\">\n\n\n\n      3. При намерении выкупа физиче",
-   "target_snippet": "\"#z927\">пунктом 3</a> <a href=\"#z121\">статьи 107</a> настоящего Кодекса;</p>\n<p id=\"z2002\">\n\n\n\n      категорию земель;</p>\n<p id=\"z2003\">\n\n\n\n      площадь земельного участка;</p>\n<p id=\"z2004\">\n\n\n\n      вид права на землю, обременения, серв"
-  },
-  {
    "type": "SELF_ABSOLUTE",
-   "pos": 737264,
+   "pos": 737266,
    "href": "https://adilet.zan.kz/rus/docs/K030000442_#",
    "text": "Обратная связь",
    "snippet": "an.kz/rus/terms\">Пользовательское соглашение</a></li> <li class=\"feedback_link\"><a href=\"https://adilet.zan.kz/rus/docs/K030000442_#\">Обратная связь</a></li> <li><a href=\"https://adilet.zan.kz/rus/help\">Руководство пользователя</a></li> <li"
   },
   {
    "type": "SELF_ABSOLUTE",
-   "pos": 738092,
+   "pos": 738094,
    "href": "https://adilet.zan.kz/rus/docs/K030000442_#",
    "text": "(7172) - 572496",
    "snippet": "pport@zqai.kz</a></li> <li>Телефон (по техническим вопросам работы сайта):<br/> <a href=\"https://adilet.zan.kz/rus/docs/K030000442_#\" style=\"display: inline;\">(7172) - 572496</a></li> <li>Время работы: <span>09:00 - 18:00 <br/>(по времени г"
   },
   {
    "type": "SELF_ABSOLUTE",
-   "pos": 741568,
+   "pos": 741570,
    "href": "https://adilet.zan.kz/rus/docs/K030000442_#header",
    "text": "",
    "snippet": "азахстан» Министерства юстиции Республики Казахстан</p>\n</div>\n<!-- /footer -->\n<a href=\"https://adilet.zan.kz/rus/docs/K030000442_#header\" id=\"topLink\"> </a>\n</div> <!--! end of #container -->\n<div class=\"closed\" id=\"search_form\">\n<p>поиск"

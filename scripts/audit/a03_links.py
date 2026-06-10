@@ -146,22 +146,35 @@ def candidates(raw, pos, href_text, match_len):
                 cands.add(lead.group(1))
                 cands.update(RE_ART_NUM.findall(before[-300:]))
                 cands.update(RE_ART_NUM.findall(after[:160]))
-                return cands
+                return _expand_ranges(cands)
             return None       # ведущий номер в не-статейном перечне — не судим
         if RE_SUBDIV_TXT.match(href_text):
             mn = re.search(r"настоящ", after)
             scope = after[:mn.start()] if mn else after
             got = RE_ART_NUM.findall(scope[:160])
-            return set(got) or None
+            return _expand_ranges(set(got)) or None
         if re.search(r"стат[ье]\w*\s*$", href_text, re.I):
             mn = RE_LEAD_NUM.match(after)
             if mn:
-                return {mn.group(1)}      # разорванный спан «статьей</a> 100»
+                return _expand_ranges({mn.group(1)})  # разорв. спан «статьей</a> 100»
         return None           # generic-текст без номера — не судим
 
     cands.update(RE_ART_NUM.findall(before[-160:]))
     cands.update(RE_ART_NUM.findall(after[:160]))
-    return cands
+    return _expand_ranges(cands)
+
+
+def _expand_ranges(cands):
+    """«статьями 249-257» — ДИАПАЗОН (B>A числами), не номер статьи «249-257»:
+    ссылка на ПЕРВУЮ статью диапазона корректна -> добавляем A в кандидаты.
+    Дефисные номера-суффиксы (351-1, 44-2: B<A) НЕ трогаем. Урок фикс-раунда:
+    7 ложных WRONG в ГК/ГК-осо."""
+    extra = set()
+    for c in cands:
+        m = re.fullmatch(r"(\d+)-(\d+)", c)
+        if m and int(m.group(2)) > int(m.group(1)):
+            extra.add(m.group(1))
+    return cands | extra
 
 
 def span_flags(text, raw, pos, mlen):
