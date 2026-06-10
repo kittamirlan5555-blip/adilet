@@ -1,0 +1,68 @@
+====================================================================================================
+LINK-LEVEL ДИФФ _ready vs _structured — режим: MEASURE (read-only); ключ: HREF-only
+====================================================================================================
+  код                 ready struct  retarget  only_ready  only_struct
+  nalog                4441   4445         0           1            5
+  trudovoy              303    303         0           0            0
+  grazhdanskiy          296    296         0           0            0
+  predprinimatel        892    892         0           1            1
+  socialnyy             783    788         0           1            6
+  ekologicheskiy        628    628         0           0            0
+  zemelnyy              515    515         0           0            0
+  upk                  2172   2171         0           7            6
+  koap                 3600   3600         0           1            1
+  appk                  247    249         0           0            2
+  byudzhet              635    635         0           1            1
+  ugolovniy             601    601         0           0            0
+----------------------------------------------------------------------------------------------------
+  ИТОГО                                    0          12           22
+
+ВСЕГО расхождений (href-уровень): 34
+
+ДЕТАЛИ:
+  nalog              ready_links= 4441 structured_links= 4445  расхождений:
+      ONLY_IN_STRUCT ('/docs/K1700000125#z36', 'пункта 2-1 статьи 36 Кодекса Республики Казахстан "О недрах и недропользовании"')  (в ready ссылки нет)
+      ONLY_IN_STRUCT ('/docs/Z1500000438#z6', 'статьи 6 Конституционного закона Республики Казахстан "О международном финансовом центре "Астана"')  (в ready ссылки нет)
+      ONLY_IN_STRUCT ('#z7412', 'статьи 439')  (в ready ссылки нет)
+      ONLY_IN_STRUCT ('/docs/Z040000588_#z13-1', 'статьи 13-1 Закона Республики Казахстан "Об электроэнергетике"')  (в ready ссылки нет)
+      ONLY_IN_READY  ('#z10397', 'пункта 11')  (в structured ссылки нет)
+      ONLY_IN_STRUCT ('#z10397', '11')  (в ready ссылки нет)
+  trudovoy           ready_links=  303 structured_links=  303  ДИФФ=0
+  grazhdanskiy       ready_links=  296 structured_links=  296  ДИФФ=0
+  predprinimatel     ready_links=  892 structured_links=  892  расхождений:
+      ONLY_IN_READY  ('#z82', 'статьи 82')  (в structured ссылки нет)
+      ONLY_IN_STRUCT ('#z82', 'подпункта 4) пункта 2')  (в ready ссылки нет)
+  socialnyy          ready_links=  783 structured_links=  788  расхождений:
+      ONLY_IN_STRUCT ('#z2278', '4)')  (в ready ссылки нет)
+      ONLY_IN_READY  ('#z190', 'подпунктом 2)')  (в structured ссылки нет)
+      ONLY_IN_STRUCT ('#z190', 'пункта 2')  (в ready ссылки нет)
+      ONLY_IN_STRUCT ('#z3485', '102-1')  (в ready ссылки нет)
+      ONLY_IN_STRUCT ('#z3263', 'пункта 1')  (в ready ссылки нет)
+      ONLY_IN_STRUCT ('#z3263', 'статьи 256')  (в ready ссылки нет)
+      ONLY_IN_STRUCT ('#z3485', '102-1')  (в ready ссылки нет)
+  ekologicheskiy     ready_links=  628 structured_links=  628  ДИФФ=0
+  zemelnyy           ready_links=  515 structured_links=  515  ДИФФ=0
+  upk                ready_links= 2172 structured_links= 2171  расхождений:
+      ONLY_IN_READY  ('#z192', 'статьи 32')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z192', 'статьи 32')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z192', 'статьи 32')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z5088', 'статьями 65-1')  (в structured ссылки нет)
+      ONLY_IN_STRUCT ('#z5088', 'статьи 65-1')  (в ready ссылки нет)
+      ONLY_IN_READY  ('#z1890', 'статьи 220')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z1890', 'статьи 220')  (в structured ссылки нет)
+      ONLY_IN_STRUCT ('#z1890', 'статьи 220')  (в ready ссылки нет)
+      ONLY_IN_STRUCT ('#z1890', 'статьи 220')  (в ready ссылки нет)
+      ONLY_IN_STRUCT ('#z192', 'статьи 32')  (в ready ссылки нет)
+      ONLY_IN_STRUCT ('#z192', 'статьи 32')  (в ready ссылки нет)
+      ONLY_IN_READY  ('/docs/K1400000231', 'первой')  (в structured ссылки нет)
+      ONLY_IN_STRUCT ('#z192', 'законодательством')  (в ready ссылки нет)
+  koap               ready_links= 3600 structured_links= 3600  расхождений:
+      ONLY_IN_READY  ('#z242', 'Особенной части настоящего раздела')  (в structured ссылки нет)
+      ONLY_IN_STRUCT ('#z242', 'Особенной части')  (в ready ссылки нет)
+  appk               ready_links=  247 structured_links=  249  расхождений:
+      ONLY_IN_STRUCT ('/docs/K2000000350', 'ҚАЗ')  (в ready ссылки нет)
+      ONLY_IN_STRUCT ('/docs/K1500000377', 'Гражданского процессуального кодекса Республики Казахстан')  (в ready ссылки нет)
+  byudzhet           ready_links=  635 structured_links=  635  расхождений:
+      ONLY_IN_STRUCT ('/docs/Z1500000438', 'Конституционным законом Республики Казахстан "О международном финансовом центре "Астана"')  (в ready ссылки нет)
+      ONLY_IN_READY  ('/docs/Z1500000438', 'Конституционным законом Республики Казахстан "О международном финансовом центре "Астана"')  (в structured ссылки нет)
+  ugolovniy          ready_links=  601 structured_links=  601  ДИФФ=0

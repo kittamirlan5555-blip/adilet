@@ -1,0 +1,284 @@
+{
+  "_comment": "Точечные правки финальных ready HTML. Каждый override = {code, find_phrase, anchor_phrase, doc_id, anchor, context_marker (optional)}. Скрипт 16 найдёт find_phrase в <code>_ready.html, и если anchor_phrase ещё не обёрнут в <a>, обернёт его (со ссылкой doc_id#anchor). context_marker (если задан) — текст, который должен находиться поблизости (для дезамбигуации повторов).",
+
+  "overrides": [
+    {
+      "id": "ekologicheskiy_003",
+      "code": "ekologicheskiy",
+      "find_phrase": "в соответствии с параграфом 4 настоящей главы",
+      "anchor_phrase": "параграфом 4",
+      "doc_id": "K2100000400",
+      "anchor": "z1024",
+      "context_marker": "Статья 61."
+    },
+    {
+      "id": "koap_004",
+      "code": "koap",
+      "find_phrase": "предусмотренных статьями Особенной части настоящего раздела",
+      "anchor_phrase": "Особенной части настоящего раздела",
+      "doc_id": "K1400000235",
+      "anchor": "z242",
+      "context_marker": "Статья 49."
+    },
+    {
+      "id": "koap_024",
+      "code": "koap",
+      "find_phrase": "Особенной части раздела 2 настоящего Кодекса",
+      "anchor_phrase": "раздела 2",
+      "doc_id": "K1400000235",
+      "anchor": "z80",
+      "context_marker": "Статья 822."
+    },
+    {
+      "id": "koap_025",
+      "code": "koap",
+      "find_phrase": "Особенной части раздела 2 настоящего Кодекса",
+      "anchor_phrase": "раздела 2",
+      "doc_id": "K1400000235",
+      "anchor": "z80",
+      "context_marker": "Статья 829-10."
+    },
+    {
+      "id": "nalog_020",
+      "code": "nalog",
+      "find_phrase": "в соответствии с параграфом 3 раздела 6 настоящего Кодекса",
+      "anchor_phrase": "параграфом 3 раздела 6",
+      "doc_id": "K2500000214",
+      "anchor": "z6546",
+      "context_marker": "Статья 724."
+    },
+    {
+      "id": "nalog_021",
+      "code": "nalog",
+      "find_phrase": "в соответствии с положениями раздела 6 настоящего Кодекса",
+      "anchor_phrase": "раздела 6",
+      "doc_id": "K2500000214",
+      "anchor": "z6277",
+      "context_marker": "Статья 820."
+    },
+
+    {
+      "id": "upk_001_108-1",
+      "code": "upk",
+      "find_phrase": "статьями 108-1 (частью первой)",
+      "anchor_phrase": "108-1",
+      "doc_id": "K1400000226",
+      "anchor": "z2902",
+      "context_marker": "Статья 32."
+    },
+    {
+      "id": "upk_001_109-1",
+      "code": "upk",
+      "find_phrase": "109-1 (частью первой)",
+      "anchor_phrase": "109-1",
+      "doc_id": "K1400000226",
+      "anchor": "z2915",
+      "context_marker": "Статья 32."
+    },
+    {
+      "id": "upk_001_115-1",
+      "code": "upk",
+      "find_phrase": ", 115-1, ",
+      "anchor_phrase": "115-1",
+      "doc_id": "K1400000226",
+      "anchor": "z3099",
+      "context_marker": "Статья 32."
+    },
+    {
+      "id": "upk_011_65-1",
+      "code": "upk",
+      "find_phrase": "предусмотренных статьями 65-1,",
+      "anchor_phrase": "статьями 65-1",
+      "doc_id": "K1400000231",
+      "anchor": "z5088",
+      "context_marker": "Статья 159."
+    },
+    {
+      "id": "upk_048_617-3",
+      "code": "upk",
+      "find_phrase": "статьями 617-3 и 617-4 настоящего Кодекса",
+      "anchor_phrase": "статьями 617-3",
+      "doc_id": "K1400000231",
+      "anchor": "z5335",
+      "context_marker": "Статья 617-5."
+    },
+    {
+      "id": "upk_048_617-4",
+      "code": "upk",
+      "find_phrase": "и 617-4 настоящего Кодекса",
+      "anchor_phrase": "617-4",
+      "doc_id": "K1400000231",
+      "anchor": "z5349",
+      "context_marker": "Статья 617-5."
+    },
+    {
+      "id": "upk_049_35",
+      "code": "upk",
+      "find_phrase": "предусмотренные статьями 35 и 36 настоящего Кодекса",
+      "anchor_phrase": "статьями 35",
+      "doc_id": "K1400000231",
+      "anchor": "z208",
+      "context_marker": "Статья 629-4."
+    },
+    {
+      "id": "upk_049_36",
+      "code": "upk",
+      "find_phrase": "и 36 настоящего Кодекса",
+      "anchor_phrase": "36",
+      "doc_id": "K1400000231",
+      "anchor": "z230",
+      "context_marker": "Статья 629-4."
+    },
+
+    {
+      "id": "koap_44_osobennaya_part_a",
+      "code": "koap",
+      "find_phrase": "в статьях Особенной части настоящего раздела, в размере",
+      "anchor_phrase": "Особенной части настоящего раздела",
+      "doc_id": "K1400000235",
+      "anchor": "z242",
+      "context_marker": "Статья 44."
+    },
+    {
+      "id": "koap_44_osobennaya_part_b",
+      "code": "koap",
+      "find_phrase": "в статьях Особенной части настоящего раздела, размер штрафа выражается",
+      "anchor_phrase": "Особенной части настоящего раздела",
+      "doc_id": "K1400000235",
+      "anchor": "z242",
+      "context_marker": "Статья 44."
+    },
+    {
+      "id": "koap_45_osobennaya_chastyu",
+      "code": "koap",
+      "find_phrase": "если иное не предусмотрено Особенной частью настоящего Кодекса",
+      "anchor_phrase": "Особенной частью настоящего Кодекса",
+      "doc_id": "K1400000235",
+      "anchor": "z242",
+      "context_marker": "Статья 45."
+    },
+    {
+      "id": "koap_50_osobennaya_part",
+      "code": "koap",
+      "find_phrase": "в пределах, предусмотренных в статьях Особенной части настоящего раздела",
+      "anchor_phrase": "Особенной части настоящего раздела",
+      "doc_id": "K1400000235",
+      "anchor": "z242",
+      "context_marker": "Статья 50."
+    },
+    {
+      "id": "koap_51_osobennaya_chastyu",
+      "code": "koap",
+      "find_phrase": "по основаниям, которые предусмотрены Особенной частью настоящего Кодекса",
+      "anchor_phrase": "Особенной частью настоящего Кодекса",
+      "doc_id": "K1400000235",
+      "anchor": "z242",
+      "context_marker": "Статья 51."
+    },
+    {
+      "id": "koap_62_osobennaya_part",
+      "code": "koap",
+      "find_phrase": "предусмотренного статьей Особенной части настоящего раздела",
+      "anchor_phrase": "Особенной части настоящего раздела",
+      "doc_id": "K1400000235",
+      "anchor": "z242",
+      "context_marker": "Статья 62."
+    },
+
+    {
+      "id": "koap_804_735-1",
+      "code": "koap",
+      "find_phrase": "685</a> – 735-1 настоящего Кодекса",
+      "anchor_phrase": "735-1",
+      "doc_id": "K1400000235",
+      "anchor": "z4536",
+      "context_marker": "Статья 804."
+    },
+
+    {
+      "id": "upk_63_192-1",
+      "code": "upk",
+      "find_phrase": "191</a>, 192-1 и 192-2 настоящего Кодекса",
+      "anchor_phrase": "192-1",
+      "doc_id": "K1400000231",
+      "anchor": "z5161",
+      "context_marker": "Статья 63."
+    },
+    {
+      "id": "upk_63_192-2",
+      "code": "upk",
+      "find_phrase": "и 192-2 настоящего Кодекса",
+      "anchor_phrase": "192-2",
+      "doc_id": "K1400000231",
+      "anchor": "z5164",
+      "context_marker": "Статья 63."
+    },
+
+    {
+      "id": "upk_136_108-1",
+      "code": "upk",
+      "find_phrase": "107</a>, 108-1 (частью второй)",
+      "anchor_phrase": "108-1",
+      "doc_id": "K1400000226",
+      "anchor": "z2902",
+      "context_marker": "Статья 136."
+    },
+    {
+      "id": "upk_136_109-1",
+      "code": "upk",
+      "find_phrase": ", 109-1 (частью второй),",
+      "anchor_phrase": "109-1",
+      "doc_id": "K1400000226",
+      "anchor": "z2915",
+      "context_marker": "Статья 136."
+    },
+
+    {
+      "id": "koap_802_6-3",
+      "code": "koap",
+      "find_phrase": "статьями 6-3, 6-4 и 6-5",
+      "anchor_phrase": "6-3",
+      "doc_id": "Z040000588_",
+      "anchor": "z1096",
+      "context_marker": "Статья 802."
+    },
+    {
+      "id": "koap_802_6-4",
+      "code": "koap",
+      "find_phrase": "6-3</a>, 6-4 и 6-5",
+      "anchor_phrase": "6-4",
+      "doc_id": "Z040000588_",
+      "anchor": "z1136",
+      "context_marker": "Статья 802."
+    },
+    {
+      "id": "koap_802_6-5",
+      "code": "koap",
+      "find_phrase": "6-4</a> и 6-5",
+      "anchor_phrase": "6-5",
+      "doc_id": "Z040000588_",
+      "anchor": "z1241",
+      "context_marker": "Статья 802."
+    },
+
+    {
+      "id": "soc_132_punkt3_st133",
+      "code": "socialnyy",
+      "find_phrase": "предусмотренного пунктом 3 <a href=\"https://adilet.zan.kz/rus/docs/K2300000224#z1845\">статьи 133</a>",
+      "anchor_phrase": "пунктом 3",
+      "doc_id": "K2300000224",
+      "anchor": "z1861",
+      "context_marker": "Статья 132."
+    },
+
+    {
+      "id": "soc_197_subp1_pt1",
+      "code": "socialnyy",
+      "find_phrase": "с соблюдением условий подпункта 1) пункта 1 и",
+      "anchor_phrase": "подпункта 1) пункта 1",
+      "doc_id": "K2300000224",
+      "anchor": "z2553",
+      "context_marker": "Статья 197."
+    }
+  ]
+}

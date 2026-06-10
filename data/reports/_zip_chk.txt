@@ -1,0 +1,12 @@
+9 ПОМЕЧЕННЫХ записей (проверка, что это только reports/*anara*.md, а не папки):
+  ADILETkz_гиперссылки_2026-06-02/data/reports/00_anara_context_reconstruction.md
+  ADILETkz_гиперссылки_2026-06-02/data/reports/01_anara_master_remarks_register.md
+  ADILETkz_гиперссылки_2026-06-02/data/reports/03_anara_current_state_audit.json
+  ADILETkz_гиперссылки_2026-06-02/data/reports/03_anara_current_state_audit.md
+  ADILETkz_гиперссылки_2026-06-02/data/reports/06_anara_final_audit_all_codes.md
+  ADILETkz_гиперссылки_2026-06-02/data/reports/18_targeted_anara_fix_plan.md
+  ADILETkz_гиперссылки_2026-06-02/data/reports/zemelnyy_anara_verification.docx
+  ADILETkz_гиперссылки_2026-06-02/data/reports/zemelnyy_anara_verification.md
+  ADILETkz_гиперссылки_2026-06-02/scripts/build_anara_verification.py
+
+Реально запрещённых (вне data/reports/): 1  -> ['ADILETkz_гиперссылки_2026-06-02/scripts/build_anara_verification.py']

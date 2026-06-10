@@ -1,0 +1,18 @@
+
+== data/final/upk_structured.html ==
+  art 32   108-1   unlinked=1 linked=0 expected=1  OK
+  art 32   109-1   unlinked=1 linked=0 expected=1  OK
+  art 32   115-1   unlinked=1 linked=0 expected=1  OK
+  art 63   192-1   unlinked=1 linked=0 expected=1  OK
+  art 63   192-2   unlinked=1 linked=0 expected=1  OK
+  art 136  108-1   unlinked=1 linked=0 expected=1  OK
+  art 136  109-1   unlinked=1 linked=0 expected=1  OK
+
+== data/final/upk_ready.html ==
+  art 32 NOT FOUND
+  art 32 NOT FOUND
+  art 32 NOT FOUND
+  art 63 NOT FOUND
+  art 63 NOT FOUND
+  art 136 NOT FOUND
+  art 136 NOT FOUND

@@ -1,0 +1,45 @@
+# secrets / creds
+.env
+.env.*
+secrets/
+credentials*
+*.key
+*.pem
+*.pfx
+*.p12
+id_rsa*
+*.ppk
+*.ovpn
+*.rdp
+
+# python / env
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# scratch / backups / archives
+tmp_*
+*.bak_*
+*.zip
+*.7z
+*~
+.DS_Store
+Thumbs.db
+
+# local agent settings
+.claude/
+
+# backup dirs / pre-snapshots (на диске остаются, в репо не идут)
+data/final_backup_*/
+data/final_pre_links/
+data/final_pre_fix11_*
+
+# heavy local artifacts: ревью-пакеты с docx (ПДн §11), старый архив
+anara_review/
+archive/
+*.docx
+
+# saved-page asset dirs из data/source (мусор браузера, сами .html остаются)
+data/source/*_files/

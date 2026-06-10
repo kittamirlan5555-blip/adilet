@@ -1,0 +1,10 @@
+=== upk ===
+  z192      body_art=      32  start_art=      32  claimed=      32  audit_OK=True
+  z5088     body_art=    65-1  start_art=    65-1  claimed=    65-1  audit_OK=True
+  z1890     body_art=     220  start_art=     220  claimed=     220  audit_OK=True
+  z5241     body_art=   551-1  start_art=   551-1  claimed=   551-1  audit_OK=True
+=== predprinimatel ===
+  z156      body_art=     156  start_art=     156  claimed=     156  audit_OK=True
+  z82       body_art=      82  start_art=      82  claimed=      82  audit_OK=True
+=== koap ===
+  z242      body_art=      72  start_art=      73  claimed=    None  audit_OK=False

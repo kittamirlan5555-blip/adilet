@@ -1,0 +1,18 @@
+ФИНАЛ-ГЕЙТ get_text vs backup_ANARA_FINISH
+======================================================================
+  код                    _structured    _ready
+  nalog                           OK        OK
+  trudovoy                        OK        OK
+  grazhdanskiy                    OK        OK
+  grazhdanskiy_osob               OK        OK
+  predprinimatel                  OK        OK
+  socialnyy                       OK        OK
+  ekologicheskiy                  OK        OK
+  zemelnyy                        OK        OK
+  upk                             OK        OK
+  koap                            OK        OK
+  appk                            OK        OK
+  byudzhet                        OK        OK
+  ugolovniy                       OK        OK
+----------------------------------------------------------------------
+  ИТОГ: ВСЕ OK — чанки валидны, пересборка не нужна

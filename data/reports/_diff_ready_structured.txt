@@ -1,0 +1,147 @@
+====================================================================================================
+LINK-LEVEL ДИФФ _ready vs _structured — режим: MEASURE (read-only); ключ: HREF-only
+====================================================================================================
+  код                 ready struct  retarget  only_ready  only_struct
+  nalog                4444   4445         3           2            3
+  trudovoy              304    303         0           1            0
+  grazhdanskiy          296    296         1           0            0
+  predprinimatel        893    891        15           3            1
+  socialnyy             793    788        21          10            5
+  ekologicheskiy        628    628         2           0            0
+  zemelnyy              512    512         5           0            0
+  upk                  2173   2156        11          17            0
+  koap                 3592   3591         7           1            0
+  appk                  247    249         1           0            2
+  byudzhet              635    635         2           0            0
+  ugolovniy             593    593         0           0            0
+----------------------------------------------------------------------------------------------------
+  ИТОГО                                   68          34           11
+
+ВСЕГО расхождений (href-уровень): 113
+
+ДЕТАЛИ:
+  nalog              ready_links= 4444 structured_links= 4445  расхождений:
+      REPLACE ready=('/docs/K940001000_#z564', 'подпунктами 1), 2), 3) и 4) пункта 2 статьи 49 Гражданского кодекса Республики Казахстан')  ->  structured=('/docs/K940001000_#z107', 'подпунктами 1), 2), 3) и 4) пункта 2 статьи 49 Гражданского кодекса Республики Казахстан')
+      ONLY_IN_STRUCT ('/docs/K1700000125#z36', 'пункта 2-1 статьи 36 Кодекса Республики Казахстан "О недрах и недропользовании"')  (в ready ссылки нет)
+      ONLY_IN_STRUCT ('/docs/Z1500000438#z6', 'статьи 6 Конституционного закона Республики Казахстан "О международном финансовом центре "Астана"')  (в ready ссылки нет)
+      REPLACE ready=('#z7429', 'подпункте 3)')  ->  structured=('#z7412', 'подпункте 3) пункта 1')
+      REPLACE ready=('#z7413', 'пункта 1')  ->  structured=None
+      ONLY_IN_STRUCT ('/docs/Z040000588_#z13-1', 'статьи 13-1 Закона Республики Казахстан "Об электроэнергетике"')  (в ready ссылки нет)
+      ONLY_IN_READY  ('#z10397', 'пункта 11')  (в structured ссылки нет)
+      REPLACE ready=('#z12718', 'подпунктом 1)')  ->  structured=('#z12726', 'подпунктом 1)')
+  trudovoy           ready_links=  304 structured_links=  303  расхождений:
+      ONLY_IN_READY  ('#z23', 'статьей 23-1')  (в structured ссылки нет)
+  grazhdanskiy       ready_links=  296 structured_links=  296  расхождений:
+      REPLACE ready=('#z332', 'пункте 3')  ->  structured=('#z313', 'пункте 3')
+  predprinimatel     ready_links=  893 structured_links=  891  расхождений:
+      REPLACE ready=('#z130', 'пункта 1')  ->  structured=('#z2573', 'пункта 1')
+      ONLY_IN_STRUCT ('#z2630', 'пунктом 6')  (в ready ссылки нет)
+      REPLACE ready=('#z141', 'статьи 141')  ->  structured=('#z2644', 'пунктом 1')
+      REPLACE ready=('#z143', 'пунктом 1')  ->  structured=None
+      REPLACE ready=('#z143', 'пункте 3')  ->  structured=('#z2649', 'пункте 3')
+      REPLACE ready=('#z143', 'пунктом 3')  ->  structured=('#z2649', 'пунктом 3')
+      REPLACE ready=('#z143', 'пунктом 3')  ->  structured=('#z2649', 'пунктом 3')
+      REPLACE ready=('#z143', 'пунктом 3')  ->  structured=('#z2649', 'пунктом 3')
+      REPLACE ready=('#z143', 'пунктом 3')  ->  structured=('#z2649', 'пунктом 3')
+      REPLACE ready=('#z144', 'пункта 5')  ->  structured=('#z2666', 'пункта 5')
+      REPLACE ready=('#z144', 'пункта 5')  ->  structured=('#z2666', 'пункта 5')
+      REPLACE ready=('#z147', 'пункте 1')  ->  structured=('#z2767', 'пункте 1')
+      REPLACE ready=('#z143', 'пунктом 3')  ->  structured=('#z2649', 'пунктом 3')
+      REPLACE ready=('#z144', 'пункта 5')  ->  structured=('#z2666', 'пункта 5')
+      REPLACE ready=('#z146', 'пунктом 1')  ->  structured=('#z2758', 'пунктом 1')
+      ONLY_IN_READY  ('#z156', 'статьи 156')  (в structured ссылки нет)
+      REPLACE ready=('#z146', 'пункта 1')  ->  structured=('#z2758', 'пункта 1')
+      REPLACE ready=('#z143', 'пунктом 3')  ->  structured=('#z2649', 'пунктом 3')
+      ONLY_IN_READY  ('#z82', 'статьи 82')  (в structured ссылки нет)
+  socialnyy          ready_links=  793 structured_links=  788  расхождений:
+      ONLY_IN_READY  ('#z644', 'пункта 2')  (в structured ссылки нет)
+      REPLACE ready=('#z1505', 'статьях 101-1')  ->  structured=('#z3538', 'статьях 101-1')
+      REPLACE ready=('#z1505', 'статьях 101-1')  ->  structured=('#z3538', 'статьях 101-1')
+      REPLACE ready=('#z1505', 'статьях 101-1')  ->  structured=('#z3538', 'статьях 101-1')
+      REPLACE ready=('/docs/K2500000214#z1941', 'подпунктом 1) пункта 1 статьи 117')  ->  structured=('/docs/K2500000214#z1939', 'подпунктом 1) пункта 1 статьи 117 Налогового кодекса Республики Казахстан')
+      REPLACE ready=('#z1861', 'пунктом 3 статьи 133')  ->  structured=('#z1845', 'статьи 133')
+      REPLACE ready=('#z2274', 'подпунктах 1)')  ->  structured=('#z2275', 'подпунктах 1)')
+      REPLACE ready=('#z2281', '2)')  ->  structured=('#z2276', '2)')
+      REPLACE ready=None  ->  structured=('#z2278', '4)')
+      REPLACE ready=('#z1505', 'статьях 101-1')  ->  structured=('#z3538', 'статьях 101-1')
+      ONLY_IN_READY  ('#z189', 'подпунктом 1)')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z190', 'подпунктом 2)')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z186', 'подпунктах 1)')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z187', '2)')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z2803', 'пункта 1')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z2816', 'пункта 1')  (в structured ссылки нет)
+      REPLACE ready=('#z1505', 'статьях 101-1')  ->  structured=('#z3538', 'статьях 101-1')
+      REPLACE ready=('#z1505', 'статье 101-1')  ->  structured=('#z3538', 'статье 101-1')
+      ONLY_IN_READY  ('#z3551', 'пунктом 2')  (в structured ссылки нет)
+      REPLACE ready=('/docs/K2500000214#z12999', 'пунктом 1 статьи 822')  ->  structured=('#z3485', 'статьи 102-1')
+      REPLACE ready=None  ->  structured=('/docs/K2500000214#z12998', 'пунктом 1 статьи 822 Налогового кодекса Республики Казахстан')
+      REPLACE ready=('/docs/K2500000214#z6907', 'пунктом 1 статьи 400')  ->  structured=('/docs/K2500000214#z6906', 'пунктом 1 статьи 400 Налогового кодекса Республики Казахстан')
+      REPLACE ready=('/docs/K2500000214#z6907', 'пунктом 1 статьи 400')  ->  structured=('/docs/K2500000214#z6906', 'пунктом 1 статьи 400 Налогового кодекса Республики Казахстан')
+      REPLACE ready=('/docs/K2500000214#z13013', 'пунктом 5 статьи 823')  ->  structured=('#z3485', '102-1')
+      REPLACE ready=('#z256_p1', 'частью первой пункта 1 статьи 256 настоящего Кодекса')  ->  structured=('/docs/K2500000214#z13008', 'пунктом 5 статьи 823 Налогового кодекса Республики Казахстан')
+      REPLACE ready=('#z1505', 'статье 101-1')  ->  structured=('#z3263', 'пункта 1')
+      REPLACE ready=None  ->  structured=('#z3263', 'статьи 256')
+      REPLACE ready=None  ->  structured=('#z3538', 'статье 101-1')
+      REPLACE ready=('#z1505', 'статье 101-1')  ->  structured=('#z3538', 'статье 101-1')
+      REPLACE ready=('#z1505', 'статье 101-1')  ->  structured=('#z3538', 'статье 101-1')
+      REPLACE ready=('/docs/K2500000214#z13013', 'пунктом 5 статьи 823')  ->  structured=('/docs/K2500000214#z13008', 'пунктом 5 статьи 823 Налогового кодекса Республики Казахстан')
+      ONLY_IN_STRUCT ('#z3485', '102-1')  (в ready ссылки нет)
+      REPLACE ready=('#z256_p1', 'пункта 1')  ->  structured=('#z3263', 'пункта 1')
+      REPLACE ready=('/docs/K2500000214#z3785', 'подпунктом 1) пункта 1 статьи 213 Кодекса Республики Казахстан "О налогах и других обязательных платежах в бюджет" (Налоговый кодекс)')  ->  structured=('/docs/K2500000214#z3784', 'подпунктом 1) пункта 1 статьи 213 Кодекса Республики Казахстан "О налогах и других обязательных платежах в бюджет" (Налоговый кодекс)')
+      ONLY_IN_READY  ('#z3364', 'подпунктах 1)')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z3366', '2)')  (в structured ссылки нет)
+  ekologicheskiy     ready_links=  628 structured_links=  628  расхождений:
+      REPLACE ready=('/docs/K2100000400', 'приложению 1')  ->  structured=('#z4516', 'приложению 1')
+      REPLACE ready=('/docs/K1500000375#z146', 'пунктом 3')  ->  structured=('/docs/K1500000375#z1588', 'пунктом 3')
+  zemelnyy           ready_links=  512 structured_links=  512  расхождений:
+      REPLACE ready=('/docs/K030000442_', '19')  ->  structured=('#z2147', '19')
+      REPLACE ready=('/docs/K030000442_', '19')  ->  structured=('#z2147', '19')
+      REPLACE ready=('#z51', 'пунктом 7')  ->  structured=('#z1988', 'пунктом 7')
+      REPLACE ready=('#z69', 'пунктом 2')  ->  structured=('#z1802', 'пунктом 2')
+      REPLACE ready=('/docs/K1500000375#z147', 'пунктом 3')  ->  structured=('/docs/K1500000375#z1594', 'пунктом 3')
+  upk                ready_links= 2173 structured_links= 2156  расхождений:
+      ONLY_IN_READY  ('/docs/K1400000226#z2902', '108-1')  (в structured ссылки нет)
+      ONLY_IN_READY  ('/docs/K1400000226#z2915', '109-1')  (в structured ссылки нет)
+      ONLY_IN_READY  ('/docs/K1400000226#z3099', '115-1')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z192', 'статьи 32')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z192', 'статьи 32')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z192', 'статьи 32')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z5161', '192-1')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z5164', '192-2')  (в structured ссылки нет)
+      ONLY_IN_READY  ('/docs/K1400000226#z2902', '108-1')  (в structured ссылки нет)
+      ONLY_IN_READY  ('/docs/K1400000226#z2915', '109-1')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z5088', 'статьями 65-1')  (в structured ссылки нет)
+      REPLACE ready=('/docs/K1400000226', 'Уголовным кодексом')  ->  structured=('/docs/K1400000226#z0', 'Уголовным кодексом')
+      REPLACE ready=('/docs/K1400000226', 'Уголовным кодексом')  ->  structured=('/docs/K1400000226#z0', 'Уголовным кодексом')
+      REPLACE ready=('/docs/K1400000226', 'Уголовным кодексом')  ->  structured=('/docs/K1400000226#z0', 'Уголовным кодексом')
+      REPLACE ready=('/docs/K1400000226', 'Уголовным кодексом')  ->  structured=('/docs/K1400000226#z0', 'Уголовным кодексом')
+      ONLY_IN_READY  ('#z1890', 'статьи 220')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z1890', 'статьи 220')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z1890', 'статьи 220')  (в structured ссылки нет)
+      ONLY_IN_READY  ('#z1890', 'статьи 220')  (в structured ссылки нет)
+      REPLACE ready=('/docs/K1400000226', 'Уголовным кодексом')  ->  structured=('/docs/K1400000226#z184', 'Уголовным кодексом')
+      ONLY_IN_READY  ('/docs/K1400000231', 'первой')  (в structured ссылки нет)
+      REPLACE ready=('/docs/K1400000226', 'Уголовного Кодекса')  ->  structured=('/docs/K1400000226#z0', 'Уголовного Кодекса')
+      ONLY_IN_READY  ('#z5241', 'статьи 551-1')  (в structured ссылки нет)
+      REPLACE ready=('/docs/K1400000226', 'Уголовного кодекса')  ->  structured=('/docs/K1400000226#z0', 'Уголовного кодекса')
+      REPLACE ready=('/docs/K1400000226', 'Уголовного кодекса')  ->  structured=('/docs/K1400000226#z0', 'Уголовного кодекса')
+      REPLACE ready=('/docs/K1400000226', 'Уголовным кодексом')  ->  structured=('/docs/K1400000226#z0', 'Уголовным кодексом')
+      REPLACE ready=('/docs/K1400000226', 'Уголовного кодекса')  ->  structured=('/docs/K1400000226#z0', 'Уголовного кодекса')
+      REPLACE ready=('/docs/K1400000226', 'Уголовного кодекса')  ->  structured=('/docs/K1400000226#z0', 'Уголовного кодекса')
+  koap               ready_links= 3592 structured_links= 3591  расхождений:
+      ONLY_IN_READY  ('#z242', 'Особенной части настоящего раздела')  (в structured ссылки нет)
+      REPLACE ready=('/docs/K1400000235', '352')  ->  structured=('#z5240', '352')
+      REPLACE ready=('/docs/K1400000235', '354')  ->  structured=('#z5242', '354')
+      REPLACE ready=('/docs/K1400000235', '329')  ->  structured=('#z5232', '329')
+      REPLACE ready=('/docs/K1400000235', '333')  ->  structured=('#z5237', '333')
+      REPLACE ready=('/docs/K1400000235', '352')  ->  structured=('#z5240', '352')
+      REPLACE ready=('/docs/K1400000235', '352')  ->  structured=('#z5240', '352')
+      REPLACE ready=('/docs/K1400000235', '333')  ->  structured=('#z5237', '333')
+  appk               ready_links=  247 structured_links=  249  расхождений:
+      ONLY_IN_STRUCT ('/docs/K2000000350', 'ҚАЗ')  (в ready ссылки нет)
+      REPLACE ready=('/docs/K080000095_', 'Бюджетным кодексом Республики Казахстан')  ->  structured=('/docs/K2500000171', 'Бюджетным кодексом Республики Казахстан')
+      ONLY_IN_STRUCT ('/docs/K1500000377', 'Гражданского процессуального кодекса Республики Казахстан')  (в ready ссылки нет)
+  byudzhet           ready_links=  635 structured_links=  635  расхождений:
+      REPLACE ready=('/docs/K2000000350', 'законодательством Республики Казахстан об административных процедурах')  ->  structured=('/docs/Z000000107_', 'законодательством Республики Казахстан об административных процедурах')
+      REPLACE ready=('/docs/Z1500000438', 'Конституционным законом Республики Казахстан "О международном финансовом центре "Астана"')  ->  structured=('/docs/Z1500000438#z1', 'Конституционным законом')
+  ugolovniy          ready_links=  593 structured_links=  593  ДИФФ=0

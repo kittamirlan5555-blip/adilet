@@ -1,0 +1,126 @@
+=== ТЗ-Ф2 Трудовой: обработано 85 строк ===
+новых ссылок добавлено: 0
+пропавших якорей: 0
+
+ID            локатор                 STATUS                  тип           фраза
+--------------------------------------------------------------------------------------------------------------------------------------------
+TK-001        header                  N/A->SKIP               header        № Наименование Примечание 1
+TK-002        label                   N/A->SKIP               label         Подпункт 27 п.2 ст.23
+TK-003        ст.23 п.2 пп.27         DONE->DONE              internal      подпунктами 1), 2), 3), 4), 5) и 13) пункта 1 статьи 28
+TK-003b       ст.23 п.2 пп.27         DONE->DONE              internal      статьей 99 настоящего Кодекса
+TK-004        label                   N/A->SKIP               label         пп.2 п.1 ст.30
+TK-005        ст.30 п.1 пп.2          DONE->DONE              internal      пунктом 2 статьи 51 настоящего Кодекса
+TK-006        label                   N/A->SKIP               label         пп.23,24 п.1 ст.52
+TK-007        ст.52 п.1 пп.23         DONE->DONE              external      Законом Республики Казахстан "Об акционерных обществах"
+TK-008        ст.52 п.1 пп.24         DONE->DONE              external      Социальным кодексом Республики Казахстан
+TK-009        label                   N/A->SKIP               label         п.1 ст.65
+TK-010        ст.65 п.1               DONE->DONE              internal      статьи 66 настоящего Кодекса
+TK-011        label                   N/A->SKIP               label         п.4 ст.73
+TK-012        ст.73 п.4               DONE->DONE              internal      статьей 86 настоящего Кодекса
+TK-013        label                   N/A->SKIP               label         п.2 ст.103
+TK-014        ст.103 п.2              DONE->DONE              internal      частью второй пункта 2 статьи 75 настоящего Кодекса
+TK-015        label                   N/A->SKIP               label         п.4 ст.127-3
+TK-016        ст.127-3 п.4            DONE->DONE              external      законом о республиканском бюджете
+TK-017        label                   N/A->SKIP               label         п.4-1 ст.133
+TK-018        ст.133 п.4-1            DONE->DONE              internal      пунктом 3 статьи 114 настоящего Кодекса
+TK-019        label                   N/A->SKIP               label         п.2 ст.137-1
+TK-020        ст.137-1 п.2            DONE->DONE              external      Закона Республики Казахстан "Об обязательном страховании работника ...
+TK-021        label                   N/A->SKIP               label         ст.141
+TK-022        ст.141                  DONE->DONE              external      Законом Республики Казахстан "Об использовании воздушного пространс...
+TK-023        label                   N/A->SKIP               label         ст.143-1
+TK-024        ст.143-1                DONE->DONE              external      Закона Республики Казахстан "О противодействии коррупции"
+TK-025        label                   N/A->SKIP               label         ст.145-1
+TK-026        ст.145-1                DONE->DONE              external      Законом Республики Казахстан "О государственном регулировании, конт...
+TK-027        label                   N/A->SKIP               label         п.2 ст.146-1
+TK-028        ст.146-1 п.2            DONE->DONE              internal      подпунктом 2) пункта 1 статьи 30 настоящего Кодекса
+TK-029        label                   N/A->SKIP               label         п.4-1 ст.159
+TK-030        ст.159 п.4-1            DONE->DONE              external      Законом Республики Казахстан "О противодействии коррупции"
+TK-031        ст.159 п.4-1            DONE->DONE              external      Законом Республики Казахстан "О противодействии коррупции"
+TK-032        ст.159 п.4-1            DONE->DONE              external      Законом Республики Казахстан "О противодействии коррупции"
+TK-033        label                   N/A->SKIP               label         пп.1) п.1 ст.176
+TK-034a       ст.176 п.1 пп.1 / воен  DONE->DONE              external      "О военном положении"
+TK-034b       ст.176 п.1 пп.1 / чрез  DONE->DONE              external      "О чрезвычайном положении"
+TK-035        label                   N/A->SKIP               label         п.5 ст.191
+TK-036        ст.191 п.5              DONE->DONE              external      Предпринимательским кодексом Республики Казахстан
+TK-037        label                   N/A->SKIP               label         п.1 ст.195
+TK-038        ст.195 п.1              DONE->DONE              external      Предпринимательским кодексом Республики Казахстан
+TK-039        label                   N/A->SKIP               label         п.2 ст.195
+TK-040        ст.195 п.2              DONE->DONE              internal      пункта 3 статьи 198 настоящего Кодекса
+TK-041        label                   N/A->SKIP               label         п.3 ст.198
+TK-042        ст.198 п.3              DONE->DONE              external      Законом Республики Казахстан "Об исполнительном производстве и стат...
+TK-043        ст.198 п.3              DONE->DONE              external      Законом Республики Казахстан "Об исполнительном производстве и стат...
+TK-044        label                   N/A->SKIP               label         ст.200
+TK-045        ст.200                  DONE->DONE              external      Предпринимательским кодексом Республики Казахстан
+TKX-001       ст.17                   DONE->DONE              note-strip    убрать ссылку в сносках
+TKX-002       ст.99                   EXISTS->DONE            anchor-check  якорь #z99
+TKX-003       ст.28                   EXISTS->DONE            anchor-check  якорь #z28
+TKX-004       ст.26 п.2               EXISTS->DONE            anchor-check  якорь #z26
+TKX-005       ст.51 п.2               EXISTS->DONE            anchor-check  якорь #z51
+TKX-006       ст.58                   EXISTS->DONE            anchor-check  якорь #z58
+TKX-007       ст.58                   EXISTS->DONE            anchor-check  якорь #z58
+TKX-008       ст.58                   EXISTS->DONE            anchor-check  якорь #z58
+TKX-009       ст.47                   DONE->DONE              note-strip    убрать ссылку в сносках
+TKX-010       ст.52 п.1-1 пп.2        DONE->DONE              note-strip    убрать ссылку в сносках (КС РК)
+TKX-011       ст.52                   EXISTS->DONE            anchor-check  якорь #z52
+TKX-012       ст.53                   DONE->DONE              note-strip    убрать ссылку в примечании
+TKX-013       ст.139                  EXISTS->DONE            anchor-check  якорь #z139
+TKX-014       ст.26                   EXISTS->DONE            anchor-check  якорь #z26
+TKX-015       ст.66                   EXISTS->DONE            anchor-check  якорь #z66
+TKX-016       ст.65                   EXISTS->DONE            anchor-check  якорь #z65
+TKX-017       ст.71                   EXISTS->DONE            anchor-check  якорь #z71
+TKX-018       ст.86                   EXISTS->DONE            anchor-check  якорь #z86
+TKX-019       ст.77                   EXISTS->DONE            anchor-check  якорь #z77
+TKX-020       ст.77                   EXISTS->DONE            anchor-check  якорь #z77
+TKX-021       ст.182                  EXISTS->DONE            anchor-check  якорь #z182
+TKX-022       ст.182-1                ALT->DONE               anchor-check  якорь #z182-1 (альтернатива #z1156)
+TKX-023       ст.140                  DONE->DONE              note-strip    убрать ссылку в сносках
+TKX-024       ст.30 п.1 пп.2          EXISTS->DONE            anchor-check  якорь #z30
+TKX-025       ст.30                   EXISTS->DONE            anchor-check  якорь #z30
+TKX-026       ст.160                  DONE->DONE              note-strip    убрать ссылку в примечании
+TKX-027       ст.176                  EXISTS->DONE            anchor-check  якорь #z176
+TKX-028       ст.176                  EXISTS->DONE            anchor-check  якорь #z176
+TKX-029       ст.164                  EXISTS->DONE            anchor-check  якорь #z164
+TKX-030       ст.171                  EXISTS->DONE            anchor-check  якорь #z171
+TKX-031       ст.198                  EXISTS->DONE            anchor-check  якорь #z198
+TKX-032       ст.197                  DONE->DONE              note-strip    убрать ссылку в сносках
+TKX-033       ст.199                  DONE->DONE              note-strip    убрать ссылку в сносках
+TKX-034       ст.1 п.1                EXISTS->DONE            anchor-check  якорь #z1
+TKX-035       ст.26                   EXISTS->DONE            anchor-check  якорь #z26
+TKX-036       ст.30                   EXISTS->DONE            anchor-check  якорь #z30
+TKX-037       ст.57                   EXISTS->DONE            anchor-check  якорь #z57
+TK-st30-extra поиск под-линка ст.30   ВСЕ-залинкованы->DONE   internal      статьи 30 / пункта 1 ст.30
+
+=== СВОДКА ===
+DONE:             64
+MISSING-fixed:    0
+AMBIG:            0
+NOTE-NEEDS-STRIP: 0
+MISSING-anchor:   0
+NOT-FOUND:        0
+NOTED (st30):     0
+SKIP (labels):    21
+новых <a>: 0
+
+=== WRONG-FIX (обнаружен при верификации) ===
+ID:        TK-WRONG-001 (вне чек-листа Анары)
+Дата:      2026-05-26
+Статья:    23, пункт 30) (id="w_z23", p id="z1311")
+pos≈92869
+
+ДО:
+  <a href="#z23">статьей 23-1</a>
+  <a href="https://adilet.zan.kz/rus/docs/Z050000030_">Закона РК "Об обязательном страховании..."</a>
+
+Баг:  «статьей 23-1» относится к ст.23-1 ВНЕШНЕГО закона Z050000030_.
+      href="#z23" → якорь ст.23 самого ТК (самозамыкание, суффикс-баг).
+      Якорь z23-1 в файле не существует.
+
+ФИКС: снята обёртка <a href="#z23">…</a>, «статьей 23-1» оставлено plain-text.
+      Соседняя ссылка на Z050000030_ не тронута.
+
+ПОСЛЕ:
+  статьей 23-1
+  <a href="https://adilet.zan.kz/rus/docs/Z050000030_">Закона РК "Об обязательном страховании..."</a>
+
+audit_TZ01 до:  A=0 C=0 D=0 L=464 PASS
+audit_TZ01 после: A=0 C=0 D=0 L=463 PASS  (L−1 = снятая внутренняя ссылка)

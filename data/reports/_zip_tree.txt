@@ -1,0 +1,41 @@
+ZIP файл: ADILETkz_гиперссылки_2026-06-02.zip
+Размер на диске: 7.76 MB (8,141,711 байт)
+Файлов: 216
+
+ADILETkz_гиперссылки_2026-06-02/
+├── README.md
+├── scripts/  [82 файлов]
+│     01_build_article_map.py
+│     02_fix_internal_links.py
+│     03_find_external_npa.py
+│     04_validate.py
+│     … ещё 78
+├── config/  [3 файлов]
+│     codes.json
+│     manual_overrides.json
+│     npa_mapping.json
+├── data/final/  [26 файлов]
+│     appk_ready.html
+│     appk_structured.html
+│     byudzhet_ready.html
+│     byudzhet_structured.html
+│     … ещё 22
+├── data/maps/  [24 файлов]
+│     article_map_appk.json
+│     article_map_byudzhet.json
+│     article_map_ekologicheskiy.json
+│     article_map_grazhdanskiy.json
+│     … ещё 20
+├── data/reports/  [79 файлов]
+│     00_anara_context_reconstruction.md
+│     01_anara_master_remarks_register.md
+│     01_master_remarks.json
+│     02_final_html_candidates.md
+│     … ещё 75
+
+ПРОВЕРКА ключевых файлов:
+  [OK] README.md
+  [OK] scripts/README.md
+  [OK] data/README.md
+  [OK] data/reports/ОТЧЁТ_гиперссылки.md
+  Запрещённого внутри (source/chunks/tree/anara/archive/pyc/rar): 9
