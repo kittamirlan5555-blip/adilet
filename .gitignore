@@ -52,3 +52,6 @@ archive/
 
 # saved-page asset dirs из data/source (мусор браузера, сами .html остаются)
 data/source/*_files/
+
+# трупы старого дерева (до v2), убраны с глаз 2026-06-11
+_old_tree_leftovers/
