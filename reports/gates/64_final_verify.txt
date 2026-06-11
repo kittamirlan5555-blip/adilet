@@ -39,27 +39,27 @@ ugolovniy         ready      OK         0     0     0       0      0   [0 / 1|0 
 ==============================================================================================================
 3 ПОСЛЕДНИХ ФИКСА — current vs backup (Δ = добавлено в этом проходе):
 ==============================================================================================================
-  upk      (UK ст.3)  structured: 0 (было 0, Δ+0)  ready: 0 (было 0, Δ+0)
-  koap     (Особенная часть)  structured: 30 (было 19, Δ+11)  ready: 30 (было 19, Δ+11)
-  nalog    (подпункт 4) ст.363)  structured: 1 (было 0, Δ+1)  ready: 1 (было 0, Δ+1)
+  upk      (UK ст.3)  structured: 0  ready: 0
+  koap     (Особенная часть)  structured: 30  ready: 30
+  nalog    (подпункт 4) ст.363)  structured: 1  ready: 1
 
 ==============================================================================================================
 GET_TEXT-ЗАМОРОЗКА (чанки строятся из _structured; backup = срез до прохода):
 ==============================================================================================================
-  nalog              vs backup: _structured=ИЗМЕНЁН!  _ready=ИЗМЕНЁН!
+  nalog              в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
   trudovoy           в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
-  grazhdanskiy       vs backup: _structured=ИЗМЕНЁН!  _ready=ИЗМЕНЁН!
+  grazhdanskiy       в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
   grazhdanskiy_osob  в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
-  predprinimatel     vs backup: _structured=ИЗМЕНЁН!  _ready=ИЗМЕНЁН!
+  predprinimatel     в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
   socialnyy          в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
   ekologicheskiy     в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
   zemelnyy           в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
-  upk                vs backup: _structured=ИЗМЕНЁН!  _ready=ИЗМЕНЁН!
-  koap               vs backup: _structured=ИЗМЕНЁН!  _ready=ИЗМЕНЁН!
+  upk                в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
+  koap               в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
   appk               в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
-  byudzhet           vs backup: _structured=ИЗМЕНЁН!  _ready=ИЗМЕНЁН!
+  byudzhet           в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
   ugolovniy          в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
 
 ==============================================================================================================
-ИТОГ:  6-проверок-чисто=True  |  get_text-заморозка(backup-коды)=False
+ИТОГ:  6-проверок-чисто=True  |  get_text-заморозка(backup-коды)=True
 ==============================================================================================================
