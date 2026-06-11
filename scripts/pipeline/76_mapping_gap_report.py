@@ -89,7 +89,11 @@ def scan(slug, mapping_keys):
             key = "ЕСТЬ" if any(
                 k.translate(QT) in frag or frag.startswith(k.translate(QT))
                 for k in mapping_keys) else "нет"
-            partial = any(cs < re_ and rs < ce for cs, ce in contents)
+            # «РАЗОРВАН» — пересечение с ЯДРОМ фразы, не с хвостом захвата:
+            # у A-семейства захват «с запасом» цеплял соседние перечни ссылок
+            # (17 ложняков R3) — ядро A = первые ~45 символов; B/C минимальны.
+            core_end = re_ if fam[0] in ("B", "C") else tmap.pos[min(e - 1, s + 45)]
+            partial = any(cs < core_end and rs < ce for cs, ce in contents)
             rows.append((fam, frag, key, partial))
             seen_spans.append((s, e))
     return path.name, rows, in_notes
