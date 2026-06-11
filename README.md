@@ -33,7 +33,8 @@ ADILETkz/
 |---|---|
 | 13 кодексов + arbitrazh, bezhenci, goszakup, ocorrupt, zhilishniy | ✅ приняты |
 | informatizacii, notariat, obrazovanie | 📤 у Анары (`deliverables/laws3/`) |
-| gosuslugi, pravoohranitel, persdata | 📤 пакет готов (`deliverables/laws_r3/`) |
+| gosuslugi, persdata | ✅ приняты ревью (без замечаний, 2026-06-11) |
+| pravoohranitel | 🔁 фидбек получен (6 флагов), правки внесены — v2 в `deliverables/laws_r3/` |
 | Конституция, prezident | ⏸ в холде (лежат в source/, не обрабатывались) |
 
 ## Типовые сценарии

@@ -1,10 +1,10 @@
 # verify summary
-документы: koap
+документы: appk, byudzhet, ekologicheskiy, grazhdanskiy_osob, koap, nalog, ocorrupt, persdata, predprinimatel, trudovoy, upk, zemelnyy, zhilishniy
 
 PASS  71_gates
-PASS  75_crosscode  MISMATCH=0 UNRESOLVED=1
-PASS  74_freshness  ROOT-stale(авто-ремап-safe)=0  ART-stale(#z, ручной ре-резолв)=0  строк mapping=0 | NEEDS_REVIEW: ссылок=0 строк=3
-PASS  76_gap_report  gaps: 122
+PASS  75_crosscode  MISMATCH=0 UNRESOLVED=17
+PASS  74_freshness  ROOT-stale(авто-ремап-safe)=0  ART-stale(#z, ручной ре-резолв)=0  строк mapping=0 | NEEDS_REVIEW: ссылок=10 строк=3
+PASS  76_gap_report  gaps: 13/20/43/41/116/184/16/0/134/6/8/19/43
 
 ИТОГ: ВСЕ ГЕЙТЫ PASS
 Напоминание §6: спот-чек 5-10 ссылок руками раннер не заменяет.

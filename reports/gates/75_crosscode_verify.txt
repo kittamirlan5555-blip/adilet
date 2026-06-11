@@ -3,9 +3,37 @@ CROSS-CODE СВЕРКА ЯКОРЕЙ (§4/§6.3) — READ-ONLY
 ВНИМАНИЕ: OK = согласовано с НАШЕЙ картой; корректность на adilet зависит
 от модели деплоя (§9). Если деплой != 'наши файлы' — такие ссылки -> КОРЕНЬ.
 ====================================================================================================
+
+appk                 OK=1  MISMATCH=0  UNRESOLVED=0  NO_ART_TEXT=0  NO_MAP=0  DEPLOY_PENDING=1
+
+byudzhet             OK=0  MISMATCH=0  UNRESOLVED=0  NO_ART_TEXT=1  NO_MAP=0
+
+ekologicheskiy       OK=0  MISMATCH=0  UNRESOLVED=0  NO_ART_TEXT=6  NO_MAP=0
+  [UNRESOLVED] grazhdanskiy_osob: 'главы 20' -> grazhdanskiy#z732 (якорь не статья/подпункт в карте grazhdanskiy)
+  [UNRESOLVED] grazhdanskiy_osob: 'главой 24' -> grazhdanskiy#z844 (якорь не статья/подпункт в карте grazhdanskiy)
+  [UNRESOLVED] grazhdanskiy_osob: 'глава 20' -> grazhdanskiy#z732 (якорь не статья/подпункт в карте grazhdanskiy)
+
+grazhdanskiy_osob    OK=84  MISMATCH=0  UNRESOLVED=3  NO_ART_TEXT=1  NO_MAP=0
   [UNRESOLVED] koap: '8' -> predprinimatel#z2534 (якорь не статья/подпункт в карте predprinimatel)
 
 koap                 OK=25  MISMATCH=0  UNRESOLVED=1  NO_ART_TEXT=8  NO_MAP=0
 
+nalog                OK=6  MISMATCH=0  UNRESOLVED=0  NO_ART_TEXT=65  NO_MAP=0
+
+predprinimatel       OK=4  MISMATCH=0  UNRESOLVED=0  NO_ART_TEXT=10  NO_MAP=0
+
+trudovoy             OK=4  MISMATCH=0  UNRESOLVED=0  NO_ART_TEXT=1  NO_MAP=0
+  [UNRESOLVED] upk: 'главой 9 Уголовного кодекса Республики К' -> ugolovniy#z925 (якорь не статья/подпункт в карте ugolovniy)
+  [UNRESOLVED] upk: 'пунктом 1' -> ugolovniy#z1711 (якорь не статья/подпункт в карте ugolovniy)
+  [UNRESOLVED] upk: 'пунктом 1' -> ugolovniy#z521 (якорь не статья/подпункт в карте ugolovniy)
+  [UNRESOLVED] upk: 'главами 1' -> ugolovniy#z579 (якорь не статья/подпункт в карте ugolovniy)
+  [UNRESOLVED] upk: '4' -> ugolovniy#z626 (якорь не статья/подпункт в карте ugolovniy)
+
+upk                  OK=934  MISMATCH=0  UNRESOLVED=13  NO_ART_TEXT=60  NO_MAP=0
+
+zemelnyy             OK=3  MISMATCH=0  UNRESOLVED=0  NO_ART_TEXT=7  NO_MAP=0
+
+zhilishniy           OK=3  MISMATCH=0  UNRESOLVED=0  NO_ART_TEXT=1  NO_MAP=0
+
 ====================================================================================================
-ИТОГО: OK=25  MISMATCH=0  UNRESOLVED=1  NO_ART_TEXT=8  NO_MAP=0
+ИТОГО: OK=1064  MISMATCH=0  UNRESOLVED=17  NO_ART_TEXT=160  NO_MAP=0

@@ -12,7 +12,10 @@
 2. **Ревью пакета laws_r4** — mestnoe_upravlenie (Z010000148_,
    deliverables/laws_r4/, SDACHA_R4.md) — после отправки владельцем;
    гейты зелёные, gap-остаток 3 (все объяснены в SDACHA).
-3. **Ревью пакета laws_r3** — gosuslugi, pravoohranitel, persdata
+3. **Повторное ревью pravoohranitel v2** — 6 флагов применены, пакет
+   обновлён (gosuslugi и persdata ПРИНЯТЫ без замечаний 2026-06-11 —
+   правило §4 самоотсылок де-факто принято; разморозка применена,
+   см. reports/r7/00_unfreeze_report.md). Было: ревью пакета laws_r3 —
    (deliverables/laws_r3/, SDACHA_R3.md) — разблокирует: приёмку трёх новых
    законов; в SDACHA одна вето-строка (самоотсылка pravoohranitel ведёт на
    ст.2 «Правовая основа…», т.к. статьи «Законодательство…» в законе нет).
