@@ -1,13 +1,10 @@
 # verify summary
-документы: appk, arbitrazh, bezhenci, byudzhet, ekologicheskiy, gosuslugi, goszakup, grazhdanskiy_osob, grazhdanskiy, informatizacii, koap, nalog, notariat, obrazovanie, ocorrupt, persdata, pravoohranitel, predprinimatel, socialnyy, trudovoy, ugolovniy, upk, zemelnyy, zhilishniy
+документы: mestnoe_upravlenie
 
 PASS  71_gates
-PASS  75_crosscode  MISMATCH=0 UNRESOLVED=186
-PASS  74_freshness  ROOT-stale(авто-ремап-safe)=0  ART-stale(#z, ручной ре-резолв)=0  строк mapping=0 | NEEDS_REVIEW: ссылок=10 строк=3
-PASS  76_gap_report  gaps: 19/2/6/27/51/0/27/42/6/23/122/188/20/22/21/0/0/136/15/9/7/9/20/51
-PASS  67_independent  mismatch=0 ext=0
-PASS  64_final
-PASS  69_sixcheck
+PASS  75_crosscode  MISMATCH=0 UNRESOLVED=0
+PASS  74_freshness  ROOT-stale(авто-ремап-safe)=0  ART-stale(#z, ручной ре-резолв)=0  строк mapping=0 | NEEDS_REVIEW: ссылок=8 строк=3
+PASS  76_gap_report  gaps: 3
 
 ИТОГ: ВСЕ ГЕЙТЫ PASS
 Напоминание §6: спот-чек 5-10 ссылок руками раннер не заменяет.

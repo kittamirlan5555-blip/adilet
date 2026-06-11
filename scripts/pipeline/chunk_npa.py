@@ -49,6 +49,7 @@ HIER_CODE = {
     "trudovoy": "TK", "socialnyy": "SK", "ekologicheskiy": "EK", "zemelnyy": "ZK",
     "predprinimatel": "PK", "byudzhet": "BK", "koap": "KOAP", "appk": "APPK",
     "grazhdanskiy_osob": "GK",
+    "mestnoe_upravlenie": "MGUS",
 }
 # CH1/CH2 (Общая/Особенная часть) только в этих кодексах
 CODES_WITH_CODE_PART = ("ugolovniy", "upk", "koap")
