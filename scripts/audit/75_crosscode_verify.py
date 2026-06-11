@@ -90,6 +90,16 @@ def files_for(codes):
 RE_BARE_NUM = re.compile(r"^\(?(\d+(?:-\d+)?)\)?$")
 
 
+# §9 НЕ РЕШЁН (модель деплоя якорей): известные кейсы, где якорь источника
+# совпадает со схемой ЖИВОГО adilet, но не с нашей картой. НЕ чинить до
+# решения шефа (правка предрешала бы ответ). Счётчик DEPLOY_PENDING, не гейт.
+DEPLOY_PENDING = {
+    # appk «статьи 4 Закона РК "О гос. услугах"» -> z4 (на живом adilet это
+    # ст.4; по нашей карте gosuslugi z4 = ст.2). Живой пример §9 для шефа.
+    ("appk", "gosuslugi", "z4"),
+}
+
+
 def range_first_ok(resolved, cands):
     """Класс RANGE-FIRST (прецеденты «статьями 249-257», ГК «статей 151-152»):
     диапазон статей ведёт на ЗАГОЛОВОК ПЕРВОЙ статьи диапазона — сложившийся
@@ -181,6 +191,8 @@ def run(codes, strict, do_self):
                 per["OK"] += 1
             elif range_first_ok(resolved, cands):
                 per["OK"] += 1          # RANGE-FIRST: диапазон -> первая статья
+            elif (code, tgt_code, anchor) in DEPLOY_PENDING:
+                per["DEPLOY_PENDING"] = per.get("DEPLOY_PENDING", 0) + 1
             else:
                 per["MISMATCH"] += 1
                 mismatches.append((code, tgt_code, anchor, sorted(cands), resolved,
@@ -188,9 +200,11 @@ def run(codes, strict, do_self):
         for k in tot:
             tot[k] += per[k]
         if any(per.values()):
+            dp = (f"  DEPLOY_PENDING={per['DEPLOY_PENDING']}"
+                  if per.get("DEPLOY_PENDING") else "")
             P(f"\n{code:20} OK={per['OK']}  MISMATCH={per['MISMATCH']}  "
               f"UNRESOLVED={per['UNRESOLVED']}  NO_ART_TEXT={per['NO_ART_TEXT']}  "
-              f"NO_MAP={per['NO_MAP']}")
+              f"NO_MAP={per['NO_MAP']}{dp}")
 
     P("\n" + "=" * 100)
     P(f"ИТОГО: OK={tot['OK']}  MISMATCH={tot['MISMATCH']}  UNRESOLVED={tot['UNRESOLVED']}  "
