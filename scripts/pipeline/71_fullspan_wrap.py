@@ -66,8 +66,11 @@ RE_BWD_QUAL = re.compile(r"(?P<unit>" + _QUAL + r")\s*$", re.I)
 RE_PUNKT_HEAD = re.compile(r"^\s*(?:под)?пункт\w*\s+\d", re.I)
 
 
+FORM = "ready"          # --form structured: для законов (у них одна форма)
+
+
 def code_path(code):
-    return FINAL / f"{code}_ready.html"
+    return FINAL / f"{code}_{FORM}.html"
 
 
 def gettext_sha(soup):
@@ -364,8 +367,12 @@ def run(code, apply_mode):
 
 
 def main():
+    global FORM
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     apply_mode = "--apply" in sys.argv
+    if "--form" in sys.argv:
+        FORM = sys.argv[sys.argv.index("--form") + 1]
+        args = [a for a in args if a != FORM]
     codes = args or ["grazhdanskiy", "grazhdanskiy_osob"]
     for code in codes:
         run(code, apply_mode)

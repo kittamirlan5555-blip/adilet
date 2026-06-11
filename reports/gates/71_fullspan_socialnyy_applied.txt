@@ -1,0 +1,205 @@
+====================================================================================================
+ПОЛНО-СПАНОВОЕ ОБОРАЧИВАНИЕ — socialnyy_ready.html — ФАЗА 2 APPLY
+====================================================================================================
+кандидатов: A(forward)=0  B(backward)=17  M(merge-2-links)=86  C(range)=3  COMPLEX(skip)=0
+----------------------------------------------------------------------------------------------------
+[M] before: 'пунктом 5 статьи 262'   ->   after: 'пунктом 5 статьи 262'   keep=#z3329 drop=#z3323
+[M] before: 'пунктом 1 статьи 222'   ->   after: 'пунктом 1 статьи 222'   keep=#z2824 drop=#z2823
+[M] before: 'пунктом 4 статьи 57'   ->   after: 'пунктом 4 статьи 57'   keep=#z951 drop=#z943
+[M] before: 'пунктом 5 статьи 256'   ->   after: 'пунктом 5 статьи 256'   keep=#z3275 drop=#z3263
+[M] before: 'пунктом 3 статьи 36'   ->   after: 'пунктом 3 статьи 36'   keep=#z695 drop=#z692
+[M] before: 'пункта 1 статьи 51'   ->   after: 'пункта 1 статьи 51'   keep=#z873 drop=#z872
+[M] before: 'пунктом 1 статьи 244'   ->   after: 'пунктом 1 статьи 244'   keep=#z3114 drop=#z3113
+[M] before: 'пунктом 1 статьи 207'   ->   after: 'пунктом 1 статьи 207'   keep=#z2650 drop=#z2649
+[C] before: '[пунктами 1]–[3]'   ->   after: '[пунктами 1–3]'   keep=#z2650 drop=#z2666
+[M] before: 'пунктом 1 статьи 207'   ->   after: 'пунктом 1 статьи 207'   keep=#z2650 drop=#z2649
+[M] before: 'пунктом 1 статьи 244'   ->   after: 'пунктом 1 статьи 244'   keep=#z3114 drop=#z3113
+[M] before: 'пункта 1 статьи 120'   ->   after: 'пункта 1 статьи 120'   keep=#z1742 drop=#z1741
+[M] before: 'пунктом 1 статьи 207'   ->   after: 'пунктом 1 статьи 207'   keep=#z2650 drop=#z2649
+[B] before: '…тью, указанное в части второй [пункта 1]'   ->   after: '…ностью, указанное в [части второй пункта 1]'   keep=#z2195
+[M] before: 'пунктом 1 статьи 207'   ->   after: 'пунктом 1 статьи 207'   keep=#z2650 drop=#z2649
+[M] before: 'пунктом 8 статьи 177'   ->   after: 'пунктом 8 статьи 177'   keep=#z2308 drop=#z2282
+[M] before: 'пунктом 3 статьи 118'   ->   after: 'пунктом 3 статьи 118'   keep=#z1712 drop=#z1703
+[M] before: 'пунктом 1 статьи 244'   ->   after: 'пунктом 1 статьи 244'   keep=#z3114 drop=#z3113
+[M] before: 'пунктом 3 статьи 172'   ->   after: 'пунктом 3 статьи 172'   keep=#z2240 drop=#z2228
+[M] before: 'пунктом 8 статьи 177'   ->   after: 'пунктом 8 статьи 177'   keep=#z2308 drop=#z2282
+[M] before: 'пунктом 8 статьи 177'   ->   after: 'пунктом 8 статьи 177'   keep=#z2308 drop=#z2282
+[M] before: 'пунктом 8 статьи 177'   ->   after: 'пунктом 8 статьи 177'   keep=#z2308 drop=#z2282
+[M] before: 'пунктом 6 статьи 210'   ->   after: 'пунктом 6 статьи 210'   keep=#z2711 drop=#z2700
+[M] before: 'пункта 2 статьи 6'   ->   after: 'пункта 2 статьи 6'   keep=#z190 drop=#z188
+[M] before: 'пункта 1 статьи 100 Трудового кодекса Республики Казахстан'   ->   after: 'пункта 1 статьи 100 Трудового кодекса Республики Казахстан'   keep=https://adilet.zan.kz/rus/docs/K1500000414#z582 drop=https://adilet.zan.kz/rus/docs/K1500000414#z100
+[C] before: '[пунктами 1] – [4]'   ->   after: '[пунктами 1 – 4]'   keep=#z2720 drop=#z2729
+[M] before: 'пунктом 3 статьи 212'   ->   after: 'пунктом 3 статьи 212'   keep=#z2728 drop=#z2719
+[M] before: 'пункте 8 статьи 212'   ->   after: 'пункте 8 статьи 212'   keep=#z2734 drop=#z2719
+[C] before: '[пунктами 2] – [5]'   ->   after: '[пунктами 2 – 5]'   keep=#z2743 drop=#z2747
+[M] before: 'пунктом 1 статьи 207'   ->   after: 'пунктом 1 статьи 207'   keep=#z2650 drop=#z2649
+[M] before: 'пункта 1 статьи 220'   ->   after: 'пункта 1 статьи 220'   keep=#z2803 drop=#z2802
+[M] before: 'пункта 1 статьи 221'   ->   after: 'пункта 1 статьи 221'   keep=#z2816 drop=#z2815
+[M] before: 'пункте 3 статьи 220'   ->   after: 'пункте 3 статьи 220'   keep=#z2809 drop=#z2802
+[M] before: 'пунктом 1 статьи 207'   ->   after: 'пунктом 1 статьи 207'   keep=#z2650 drop=#z2649
+[M] before: 'пункте 3 статьи 220'   ->   after: 'пункте 3 статьи 220'   keep=#z2809 drop=#z2802
+[M] before: 'пункте 1 статьи 218'   ->   after: 'пункте 1 статьи 218'   keep=#z2793 drop=#z2792
+[M] before: 'пункте 1 статьи 207'   ->   after: 'пункте 1 статьи 207'   keep=#z2650 drop=#z2649
+[M] before: 'пункте 4 статьи 207'   ->   after: 'пункте 4 статьи 207'   keep=#z2667 drop=#z2649
+[M] before: 'пункте 1 статьи 207'   ->   after: 'пункте 1 статьи 207'   keep=#z2650 drop=#z2649
+[M] before: 'пунктом 1 статьи 207'   ->   after: 'пунктом 1 статьи 207'   keep=#z2650 drop=#z2649
+[M] before: 'пункте 3 статьи 221'   ->   after: 'пункте 3 статьи 221'   keep=#z2822 drop=#z2815
+[M] before: 'пункте 3 статьи 220'   ->   after: 'пункте 3 статьи 220'   keep=#z2809 drop=#z2802
+[B] before: '…ам, указанным в абзаце втором [пункта 3]'   ->   after: '… лицам, указанным в [абзаце втором пункта 3]'   keep=#z2809
+[M] before: 'пункта 3 статьи 220'   ->   after: 'пункта 3 статьи 220'   keep=#z2809 drop=#z2802
+[B] before: '…м, указанным в абзаце третьем [пункта 3]'   ->   after: '… лицам, указанным в [абзаце третьем пункта 3]'   keep=#z2809
+[M] before: 'пункта 3 статьи 220'   ->   after: 'пункта 3 статьи 220'   keep=#z2809 drop=#z2802
+[B] before: '…м в абзацах четвертом и пятом [пункта 3]'   ->   after: '… лицам, указанным в [абзацах четвертом и пятом пункта 3]'   keep=#z2809
+[M] before: 'пункта 3 статьи 220'   ->   after: 'пункта 3 статьи 220'   keep=#z2809 drop=#z2802
+[M] before: 'пункте 3 статьи 220'   ->   after: 'пункте 3 статьи 220'   keep=#z2809 drop=#z2802
+[M] before: 'пункте 1 статьи 207'   ->   after: 'пункте 1 статьи 207'   keep=#z2650 drop=#z2649
+[B] before: '… пункта 1 [статьи 220]'   ->   after: '… [пункта 1 статьи 220]'   keep=#z2802
+[B] before: '… пункта 1 [статьи 221]'   ->   after: '… [пункта 1 статьи 221]'   keep=#z2815
+[M] before: 'пунктом 2 статьи 225'   ->   after: 'пунктом 2 статьи 225'   keep=#z2858 drop=#z2854
+[M] before: 'пунктом 13 статьи 226'   ->   after: 'пунктом 13 статьи 226'   keep=#z2896 drop=#z2860
+[M] before: 'пунктом 1 статьи 244'   ->   after: 'пунктом 1 статьи 244'   keep=#z3114 drop=#z3113
+[M] before: 'пунктом 3 статьи 118'   ->   after: 'пунктом 3 статьи 118'   keep=#z1712 drop=#z1703
+[M] before: 'пунктом 4 статьи 78'   ->   after: 'пунктом 4 статьи 78'   keep=#z1251 drop=#z1242
+[M] before: 'пунктом 4 статьи 85'   ->   after: 'пунктом 4 статьи 85'   keep=#z1325 drop=#z1314
+[M] before: 'пунктом 4 статьи 118'   ->   after: 'пунктом 4 статьи 118'   keep=#z1725 drop=#z1703
+[M] before: 'пунктом 3 статьи 240'   ->   after: 'пунктом 3 статьи 240'   keep=#z3065 drop=#z3048
+[M] before: 'пунктом 1 статьи 207'   ->   after: 'пунктом 1 статьи 207'   keep=#z2650 drop=#z2649
+[M] before: 'пунктом 1 статьи 207'   ->   after: 'пунктом 1 статьи 207'   keep=#z2650 drop=#z2649
+[M] before: 'пунктом 1 статьи 207'   ->   after: 'пунктом 1 статьи 207'   keep=#z2650 drop=#z2649
+[B] before: '…ой в соответствии с пунктом 1 [статьи 256]'   ->   after: '…ой в соответствии с [пунктом 1 статьи 256]'   keep=#z3263
+[B] before: '…дпунктах 1) и 2) части первой [пункта 2]'   ->   after: '… подпунктах 1) и 2) [части первой пункта 2]'   keep=#z3164
+[M] before: 'пункта 2 статьи 248'   ->   after: 'пункта 2 статьи 248'   keep=#z3164 drop=#z3162
+[M] before: 'пункта 4 статьи 248'   ->   after: 'пункта 4 статьи 248'   keep=#z3175 drop=#z3162
+[M] before: 'пункте 5 статьи 248'   ->   after: 'пункте 5 статьи 248'   keep=#z3179 drop=#z3162
+[M] before: 'пунктом 1 статьи 154 Предпринимательского кодекса Республики Казахстан'   ->   after: 'пунктом 1 статьи 154 Предпринимательского кодекса Республики Казахстан'   keep=https://adilet.zan.kz/rus/docs/K1500000375#z2870 drop=https://adilet.zan.kz/rus/docs/K1500000375#z154
+[M] before: 'пункте 3 статьи 154 Предпринимательского кодекса Республики Казахстан'   ->   after: 'пункте 3 статьи 154 Предпринимательского кодекса Республики Казахстан'   keep=https://adilet.zan.kz/rus/docs/K1500000375#z2877 drop=https://adilet.zan.kz/rus/docs/K1500000375#z154
+[B] before: '…\n\n\n\n\xa0\xa0\xa0\xa0\xa0 1) абзаца первого [пункта 2]'   ->   after: '…\n\n\n\n\xa0\xa0\xa0\xa0\xa0 1) [абзаца первого пункта 2]'   keep=#z555
+[M] before: 'пункта 2 статьи 27'   ->   after: 'пункта 2 статьи 27'   keep=#z555 drop=#z550
+[B] before: '…\n\n\n\n\xa0\xa0\xa0\xa0\xa0 2) части первой [пункта 1 статьи 256]'   ->   after: '…\n\n\n\n\xa0\xa0\xa0\xa0\xa0 2) [части первой пункта 1 статьи 256]'   keep=#z3263
+[B] before: '…\n\n\n\n\xa0\xa0\xa0\xa0\xa0 1) абзаца первого [подпункта 18)]'   ->   after: '…\n\n\n\n\xa0\xa0\xa0\xa0\xa0 1) [абзаца первого подпункта 18)]'   keep=#z26
+[M] before: 'подпункта 4) статьи 243'   ->   after: 'подпункта 4) статьи 243'   keep=#z3108 drop=#z3103
+[M] before: 'пункта 3 статьи 245'   ->   after: 'пункта 3 статьи 245'   keep=#z3134 drop=#z3124
+[M] before: 'пункта 3 статьи 246'   ->   after: 'пункта 3 статьи 246'   keep=#z3149 drop=#z3146
+[M] before: 'пункта 13 статьи 226'   ->   after: 'пункта 13 статьи 226'   keep=#z2896 drop=#z2860
+[B] before: '…, части четвертая и пятая [пункта 2]'   ->   after: '…, [части четвертая и пятая пункта 2]'   keep=#z1244
+[M] before: 'пункта 2 статьи 78'   ->   after: 'пункта 2 статьи 78'   keep=#z1244 drop=#z1242
+[B] before: '…, части пятая и шестая [пункта 1]'   ->   after: '…, [части пятая и шестая пункта 1]'   keep=#z1315
+[M] before: 'пункта 1 статьи 85'   ->   after: 'пункта 1 статьи 85'   keep=#z1315 drop=#z1314
+[B] before: '…, часть вторая [пункта 1]'   ->   after: '…, [часть вторая пункта 1]'   keep=#z1665
+[M] before: 'пункта 1 статьи 113'   ->   after: 'пункта 1 статьи 113'   keep=#z1665 drop=#z1664
+[M] before: 'пункт 3 статьи 181'   ->   after: 'пункт 3 статьи 181'   keep=#z2360 drop=#z2345
+[B] before: '…, части вторая и третья [пункта 1]'   ->   after: '…, [части вторая и третья пункта 1]'   keep=#z3049
+[M] before: 'пункта 1 статьи 240'   ->   after: 'пункта 1 статьи 240'   keep=#z3049 drop=#z3048
+[M] before: 'подпункт 5) статьи 243'   ->   after: 'подпункт 5) статьи 243'   keep=#z3109 drop=#z3103
+[M] before: 'пункт 2 статьи 244'   ->   after: 'пункт 2 статьи 244'   keep=#z3115 drop=#z3113
+[M] before: 'пункт 4 статьи 245'   ->   after: 'пункт 4 статьи 245'   keep=#z3135 drop=#z3124
+[M] before: 'пункт 4 статьи 246'   ->   after: 'пункт 4 статьи 246'   keep=#z3150 drop=#z3146
+[B] before: '…, абзацы третий и четвертый [пункта 4]'   ->   after: '…, [абзацы третий и четвертый пункта 4]'   keep=#z2864
+[M] before: 'пункт 5 статьи 226'   ->   after: 'пункт 5 статьи 226'   keep=#z2868 drop=#z2860
+[M] before: 'подпункт 5) статьи 138'   ->   after: 'подпункт 5) статьи 138'   keep=#z1906 drop=#z1900
+[M] before: 'пункт 2 статьи 142'   ->   after: 'пункт 2 статьи 142'   keep=#z1945 drop=#z1940
+[B] before: '…\n\n\n\n\xa0\xa0\xa0\xa0\xa0 1) абзац первый [пункта 5]'   ->   after: '…\n\n\n\n\xa0\xa0\xa0\xa0\xa0 1) [абзац первый пункта 5]'   keep=#z769
+[M] before: 'пункта 5 статьи 40'   ->   after: 'пункта 5 статьи 40'   keep=#z769 drop=#z747
+[M] before: 'пункт 1 статьи 122'   ->   after: 'пункт 1 статьи 122'   keep=#z1766 drop=#z1765
+[M] before: 'пункт 1 статьи 228'   ->   after: 'пункт 1 статьи 228'   keep=#z2918 drop=#z2917
+[M] before: 'пункт 3 статьи 120'   ->   after: 'пункт 3 статьи 120'   keep=#z1744 drop=#z1741
+[M] before: 'пункт 1 статьи 139'   ->   after: 'пункт 1 статьи 139'   keep=#z1909 drop=#z1908
+[M] before: 'пункт 3 статьи 202'   ->   after: 'пункт 3 статьи 202'   keep=#z2589 drop=#z2586
+[M] before: 'пунктом 6 статьи 210'   ->   after: 'пунктом 6 статьи 210'   keep=#z2711 drop=#z2700
+[M] before: 'пункт 5 статьи 210'   ->   after: 'пункт 5 статьи 210'   keep=#z2709 drop=#z2700
+[M] before: 'пункт 6 статьи 216'   ->   after: 'пункт 6 статьи 216'   keep=#z2765 drop=#z2757
+[M] before: 'пункт 2 статьи 220'   ->   after: 'пункт 2 статьи 220'   keep=#z2808 drop=#z2802
+----------------------------------------------------------------------------------------------------
+ПРИМЕНЕНО: A=0 B=17 M=87 C=3 (раундов=108)
+ГЕЙТЫ: get_text sha ДО==ПОСЛЕ=True (f49f1e67d19e)  nested<a>=0  dangling#z=0  href-diff-unexpected=0
+ПОГЛОЩЁННЫЕ href (M/C, менее конкретные): 90
+   M: keep #z3329  drop #z3323
+   M: keep #z2824  drop #z2823
+   M: keep #z951  drop #z943
+   M: keep #z3275  drop #z3263
+   M: keep #z695  drop #z692
+   M: keep #z873  drop #z872
+   M: keep #z3114  drop #z3113
+   M: keep #z2650  drop #z2649
+   C: keep #z2650  drop #z2666
+   M: keep #z2650  drop #z2649
+   M: keep #z2650  drop #z2649
+   M: keep #z3114  drop #z3113
+   M: keep #z1742  drop #z1741
+   M: keep #z2650  drop #z2649
+   M: keep #z2650  drop #z2649
+   M: keep #z2308  drop #z2282
+   M: keep #z1712  drop #z1703
+   M: keep #z3114  drop #z3113
+   M: keep #z2240  drop #z2228
+   M: keep #z2308  drop #z2282
+   M: keep #z2308  drop #z2282
+   M: keep #z2308  drop #z2282
+   M: keep #z2711  drop #z2700
+   M: keep #z190  drop #z188
+   M: keep https://adilet.zan.kz/rus/docs/K1500000414#z582  drop https://adilet.zan.kz/rus/docs/K1500000414#z100
+   C: keep #z2720  drop #z2729
+   M: keep #z2728  drop #z2719
+   M: keep #z2734  drop #z2719
+   C: keep #z2743  drop #z2747
+   M: keep #z2650  drop #z2649
+   M: keep #z2803  drop #z2802
+   M: keep #z2816  drop #z2815
+   M: keep #z2809  drop #z2802
+   M: keep #z2650  drop #z2649
+   M: keep #z2809  drop #z2802
+   M: keep #z2793  drop #z2792
+   M: keep #z2650  drop #z2649
+   M: keep #z2667  drop #z2649
+   M: keep #z2650  drop #z2649
+   M: keep #z2650  drop #z2649
+   M: keep #z2822  drop #z2815
+   M: keep #z2809  drop #z2802
+   M: keep #z2809  drop #z2802
+   M: keep #z2809  drop #z2802
+   M: keep #z2809  drop #z2802
+   M: keep #z2809  drop #z2802
+   M: keep #z2650  drop #z2649
+   M: keep #z2858  drop #z2854
+   M: keep #z2896  drop #z2860
+   M: keep #z3114  drop #z3113
+   M: keep #z1712  drop #z1703
+   M: keep #z1251  drop #z1242
+   M: keep #z1325  drop #z1314
+   M: keep #z1725  drop #z1703
+   M: keep #z3065  drop #z3048
+   M: keep #z2650  drop #z2649
+   M: keep #z2650  drop #z2649
+   M: keep #z2650  drop #z2649
+   M: keep #z3164  drop #z3162
+   M: keep #z3175  drop #z3162
+   M: keep #z3179  drop #z3162
+   M: keep https://adilet.zan.kz/rus/docs/K1500000375#z2870  drop https://adilet.zan.kz/rus/docs/K1500000375#z154
+   M: keep https://adilet.zan.kz/rus/docs/K1500000375#z2877  drop https://adilet.zan.kz/rus/docs/K1500000375#z154
+   M: keep #z555  drop #z550
+   M: keep #z3108  drop #z3103
+   M: keep #z3134  drop #z3124
+   M: keep #z3149  drop #z3146
+   M: keep #z2896  drop #z2860
+   M: keep #z1244  drop #z1242
+   M: keep #z1315  drop #z1314
+   M: keep #z1665  drop #z1664
+   M: keep #z2360  drop #z2345
+   M: keep #z3049  drop #z3048
+   M: keep #z3109  drop #z3103
+   M: keep #z3115  drop #z3113
+   M: keep #z3135  drop #z3124
+   M: keep #z3150  drop #z3146
+   M: keep #z2868  drop #z2860
+   M: keep #z1906  drop #z1900
+   M: keep #z1945  drop #z1940
+   M: keep #z769  drop #z747
+   M: keep #z1766  drop #z1765
+   M: keep #z2918  drop #z2917
+   M: keep #z1744  drop #z1741
+   M: keep #z1909  drop #z1908
+   M: keep #z2589  drop #z2586
+   M: keep #z2711  drop #z2700
+   M: keep #z2709  drop #z2700
+   M: keep #z2765  drop #z2757
+   M: keep #z2808  drop #z2802
