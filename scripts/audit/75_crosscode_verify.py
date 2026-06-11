@@ -125,9 +125,17 @@ def article_candidates(a):
     мислинка §4: «206 -> чужая статья», номер которой нигде не упомянут)."""
     cands = set()
     t = a.get_text(" ").strip()
+    # generic-текст без цифр («законом», «заведомо ложный донос») — семантическая
+    # ссылка, по номеру статьи НЕ судится (R6: 7 ложных MISMATCH по корпусу)
+    if not re.search(r"\d", t):
+        return None
     m = RE_BARE_NUM.match(t)
     if m:
         cands.add(m.group(1))
+    # ЛИДИРУЮЩИЙ номер полного спана «249 Уголовного кодекса РК» (R6)
+    lead = re.match(r"\(?(\d+(?:-\d+)?)(?![\w.])", t)
+    if lead:
+        cands.add(lead.group(1))
     cands.update(RE_ART_IN_TEXT.findall(t))
     prev = a.previous_sibling
     ctx = (str(prev)[-80:] if prev else "") + " " + t
@@ -188,6 +196,9 @@ def run(codes, strict, do_self):
                 continue
             resolved = rev.get(anchor)
             cands = article_candidates(a)
+            if cands is None:
+                per["NO_ART_TEXT"] += 1
+                continue
             if resolved is None:
                 per["UNRESOLVED"] += 1
                 if per["UNRESOLVED"] <= 5:

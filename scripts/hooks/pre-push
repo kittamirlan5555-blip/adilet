@@ -1,0 +1,18 @@
+#!/bin/sh
+# ЗАЩИТА ОТ РЕГРЕССИЙ (R6 Блок 5): перед пушем — тесты + verify по изменённым
+# слагам. Осознанный обход: git push --no-verify (см. README).
+cd "$(git rev-parse --show-toplevel)" || exit 1
+export PYTHONIOENCODING=utf-8
+echo "[pre-push] юнит-тесты…"
+python -m unittest discover -s scripts/tests -t . >/dev/null 2>&1 || {
+  echo "[pre-push] ТЕСТЫ КРАСНЫЕ — пуш заблокирован (обход: git push --no-verify)"; exit 1; }
+slugs=$(git diff --name-only @{push}..HEAD 2>/dev/null || git diff --name-only origin/audit..HEAD 2>/dev/null)
+slugs=$(echo "$slugs" | sed -n 's|^final/\(.*\)_ready\.html$|\1|p; s|^final/\(.*\)_structured\.html$|\1|p' | sort -u | tr '\n' ' ')
+if [ -n "$(echo $slugs)" ]; then
+  echo "[pre-push] verify по изменённым: $slugs"
+  out=$(python scripts/verify.py $slugs 2>&1)
+  echo "$out" | tail -3
+  echo "$out" | grep -q "ИТОГ: ВСЕ ГЕЙТЫ PASS" || {
+    echo "[pre-push] VERIFY КРАСНЫЙ — пуш заблокирован (обход: git push --no-verify)"; exit 1; }
+fi
+exit 0

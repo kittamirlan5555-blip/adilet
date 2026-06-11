@@ -51,6 +51,13 @@ python scripts/verify.py слаг                                # все гей
 python scripts/pipeline/chunk_npa.py слаг && python scripts/pipeline/structurize.py слаг
 ```
 
+**Защита от регрессий (pre-push hook):**
+```bash
+cp scripts/hooks/pre-push .git/hooks/pre-push   # установка (раз на клон)
+# на push: юнит-тесты + verify по изменённым слагам; FAIL = пуш блокируется.
+# Осознанный обход (например, пуш заведомо красного WIP): git push --no-verify
+```
+
 **Проверка корпуса целиком:**
 ```bash
 python scripts/verify.py --all          # exit 0 = зелёный; сводка reports/gates/verify_summary.txt

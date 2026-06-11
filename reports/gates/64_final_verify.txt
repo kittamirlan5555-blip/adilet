@@ -54,7 +54,7 @@ GET_TEXT-ЗАМОРОЗКА (чанки строятся из _structured; backu
   socialnyy          в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
   ekologicheskiy     в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
   zemelnyy           в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
-  upk                vs backup: _structured=НЕИЗМЕНЕН  _ready=НЕИЗМЕНЕН
+  upk                vs backup: _structured=ИЗМЕНЁН!  _ready=ИЗМЕНЁН!
   koap               vs backup: _structured=ИЗМЕНЁН!  _ready=ИЗМЕНЁН!
   appk               в этом проходе НЕ правился (нет backup) => чанки консистентны by-construction
   byudzhet           vs backup: _structured=ИЗМЕНЁН!  _ready=ИЗМЕНЁН!
