@@ -1,7 +1,8 @@
 """READ-ONLY АУДИТ: покрытие гиперссылок + корректность резолва + атрибуция.
-Ничего не меняет. Источники: data/final/{code}_structured.html + data/source/{src}.html.
+Ничего не меняет. Источники: final/{code}_structured.html + source/{src}.html.
 Запуск:  python scripts/audit_links_coverage.py
-Выводит сводку в stdout и собирает структуры для отчёта (см. результат в global RESULT).
+Выводит сводку в stdout и собирает структуры для отчёта (см. результат в
+global RESULT). Резолвер импортируется канон-скриптами 28/29/30/43.
 """
 import io
 import sys
@@ -13,18 +14,21 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-ROOT = Path(__file__).resolve().parent.parent
-FINAL = ROOT / "data" / "final"
-SRC = ROOT / "data" / "source"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import paths
 
-CODES = json.loads((ROOT / "config" / "codes.json").read_text(encoding="utf-8"))
+ROOT = paths.ROOT
+FINAL = paths.FINAL
+SRC = paths.SOURCE
+
+CODES = json.loads(paths.CODES_JSON.read_text(encoding="utf-8"))
 CODES = {k: v for k, v in CODES.items() if not k.startswith("_")}
 
-# источник по коду (имя в data/source)
-SRC_FILE = {"grazhdanskiy_osob": "GKosobenniy.html",
-            "informatizacii": "obINFORM.html"}
+
 def src_path(code):
-    return SRC / SRC_FILE.get(code, f"{code}.html")
+    """Имя source-файла: поле source в codes.json (иначе {code}.html)."""
+    name = CODES.get(code, {}).get("source") or f"{code}.html"
+    return SRC / name
 
 # реестр внешних актов: doc_id -> человекочитаемое имя (для PART 2 B)
 DOC_NAMES = {

@@ -40,8 +40,10 @@ saved = sys.stdout
 spec = importlib.util.spec_from_file_location("A", str(ROOT / "scripts/audit_links_coverage.py"))
 A = importlib.util.module_from_spec(spec); spec.loader.exec_module(A)
 w = sys.stdout; sys.stdout = saved
-try: w.detach()
-except Exception: pass
+try:
+    w.detach()
+except (AttributeError, ValueError):
+    pass  # намеренно: stdout-обёртка модуля A может быть уже отвязана
 
 LM = A.LINKMARK            # " ⟦L⟧ "
 LMS = LM.strip()           # "⟦L⟧"

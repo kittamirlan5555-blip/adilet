@@ -156,12 +156,14 @@ def get_unit_type(code, article_div, art_num=None):
             return "часть"
         # orphan КоАП article: heuristic by data-number (>=242 = Особенная часть)
         if art_num:
-            try:
-                base = int(re.match(r"(\d+)", art_num).group(1))
-                if base >= 242:
-                    return "часть"
-            except Exception:
-                pass
+            m = re.match(r"(\d+)", str(art_num))
+            if m is None:
+                # НЕ молча: нераспознанный номер статьи — скип эвристики + WARN
+                print(f"  [WARN] koap: нераспознанный номер статьи "
+                      f"{art_num!r} — unit_type по умолчанию «пункт»",
+                      file=sys.stderr)
+            elif int(m.group(1)) >= 242:
+                return "часть"
     return "пункт"
 
 

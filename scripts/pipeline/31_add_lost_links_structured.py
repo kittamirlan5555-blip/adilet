@@ -89,7 +89,8 @@ def main():
         by_code.setdefault(code, []).append((art, tok, exp, href))
     for code, items in by_code.items():
         sp = FINAL / f"{code}_structured.html"
-        soup = BeautifulSoup(sp.read_text(encoding="utf-8"), "html.parser")
+        raw_orig = sp.read_text(encoding="utf-8")
+        soup = BeautifulSoup(raw_orig, "html.parser")
         done = 0
         for art_num, tok, exp, href in items:
             art = find_article(soup, art_num)
@@ -108,6 +109,10 @@ def main():
                 emit(f"  [{code}] ст.{art_num} {tok:6} -> <a href=\"{href}\">  "
                      f"before→after: ...{b}[{tok}]{a_}...")
         if APPLY and done:
+            # ГЕЙТ §6.1: оборачиваются токены — текст обязан совпасть
+            if "".join(re.sub(r"<[^>]+>", " ", raw_orig).split()) != \
+                    "".join(re.sub(r"<[^>]+>", " ", str(soup)).split()):
+                raise SystemExit(f"TEXT-INVARIANCE FAIL: {sp.name}")
             bk = BACKUP / f"{code}_structured.html"
             if not bk.exists():
                 BACKUP.mkdir(parents=True, exist_ok=True)

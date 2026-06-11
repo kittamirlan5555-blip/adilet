@@ -18,7 +18,8 @@
  },
  "grazhdanskiy_osob": {
   "doc_id": "K990000409_",
-  "title": "Гражданский кодекс (Особенная часть)"
+  "title": "Гражданский кодекс (Особенная часть)",
+  "source": "GKosobenniy.html"
  },
  "predprinimatel": {
   "doc_id": "K1500000375",
@@ -58,7 +59,8 @@
  },
  "informatizacii": {
   "doc_id": "Z1500000418",
-  "title": "Об информатизации"
+  "title": "Об информатизации",
+  "source": "obINFORM.html"
  },
  "notariat": {
   "doc_id": "Z970000155_",

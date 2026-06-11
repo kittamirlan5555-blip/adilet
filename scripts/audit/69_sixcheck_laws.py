@@ -60,6 +60,17 @@ def check_file(code, form):
     for t in soup.find_all(attrs={"name": True}):
         ids.add(t["name"])
     self_id = SELF[code]
+    # СЫРОЙ скан вложенности: html.parser АВТОЗАКРЫВАЕТ вложенные <a> при
+    # парсинге, поэтому find_parent("a") почти всегда слеп — истина в raw
+    depth = 0
+    for t in re.finditer(r"<a\b[^>]*>|</a\s*>", html, re.I):
+        depth += 1 if t.group(0)[1] != "/" else -1
+        if depth > 1 or depth < 0:
+            r["nested"] += 1
+            if len(r["ctx"]["nested"]) < 3:
+                r["ctx"]["nested"].append(html[max(0, t.start() - 80):t.end() + 80])
+            if depth < 0:
+                depth = 0
     for a in soup.find_all("a"):
         if a.find_parent("a") is not None:
             r["nested"] += 1

@@ -121,6 +121,11 @@ def normalize_file(path, own_doc_ids):
     text2 = HOST_REWRITE_RE.sub("https://adilet.zan.kz", text2)
 
     if text2 != text:
+        # ГЕЙТ §6.1: правки только в href — видимый текст обязан совпасть
+        before = "".join(re.sub(r"<[^>]+>", " ", text).split())
+        after = "".join(re.sub(r"<[^>]+>", " ", text2).split())
+        if before != after:
+            raise SystemExit(f"TEXT-INVARIANCE FAIL: {path.name} — запись отменена")
         path.write_text(text2, encoding="utf-8")
 
     return localized, host_fix_count, missing_anchor

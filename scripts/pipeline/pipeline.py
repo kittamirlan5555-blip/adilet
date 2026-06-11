@@ -31,8 +31,8 @@ from pathlib import Path
 os.environ.setdefault("PYTHONIOENCODING", "utf-8")
 try:
     sys.stdout.reconfigure(encoding="utf-8")
-except Exception:
-    pass
+except (AttributeError, ValueError, OSError):
+    pass  # не-tty / уже переконфигурирован — некритично
 
 
 SCRIPTS = Path(__file__).resolve().parent

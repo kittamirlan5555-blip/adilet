@@ -237,7 +237,8 @@ def process():
         if not sp.exists():
             continue
         self_doc = SELF_DOC.get(code, "")
-        soup_s = BeautifulSoup(sp.read_text(encoding="utf-8"), "html.parser")
+        raw_s_orig = sp.read_text(encoding="utf-8")
+        soup_s = BeautifulSoup(raw_s_orig, "html.parser")
 
         fixes, unresolved, anchor, bad_anchor = collect_fixes(soup_s, code, self_doc)
 
@@ -285,7 +286,8 @@ def process():
         ren_r = []
         n_ready_href = 0
         if rp.exists():
-            soup_r = BeautifulSoup(rp.read_text(encoding="utf-8"), "html.parser")
+            raw_r_orig = rp.read_text(encoding="utf-8")
+            soup_r = BeautifulSoup(raw_r_orig, "html.parser")
             for a in soup_r.find_all("a", href=True):
                 fm = RE_FRAG.search(a["href"])
                 if not fm:
@@ -305,6 +307,10 @@ def process():
             print(f"  [_ready] href-правок применено={n_ready_href}, "
                   f"dupID переименовано={len(ren_r)}")
             if APPLY:
+                # ГЕЙТ §6.1: двигаются только href/якоря — текст обязан совпасть
+                if "".join(re.sub(r"<[^>]+>", " ", raw_r_orig).split()) != \
+                        "".join(re.sub(r"<[^>]+>", " ", str(soup_r)).split()):
+                    raise SystemExit(f"TEXT-INVARIANCE FAIL: {rp.name}")
                 bk = BACKUP / f"{code}_ready.html"
                 if not bk.exists():
                     shutil.copy2(rp, bk)
@@ -313,6 +319,10 @@ def process():
             print(f"  [_ready] файла нет (код без линк-пайплайна) — пропуск")
 
         if APPLY:
+            # ГЕЙТ §6.1
+            if "".join(re.sub(r"<[^>]+>", " ", raw_s_orig).split()) != \
+                    "".join(re.sub(r"<[^>]+>", " ", str(soup_s)).split()):
+                raise SystemExit(f"TEXT-INVARIANCE FAIL: {sp.name}")
             bk = BACKUP / f"{code}_structured.html"
             if not bk.exists():
                 shutil.copy2(sp, bk)

@@ -250,6 +250,11 @@ def process_file(path: Path):
 
     new_text = str(soup)
     if new_text != text:
+        # ГЕЙТ §6.1: unwrap двигает только теги <a> — текст обязан совпасть
+        before = "".join(re.sub(r"<[^>]+>", " ", text).split())
+        after = "".join(re.sub(r"<[^>]+>", " ", new_text).split())
+        if before != after:
+            raise SystemExit(f"TEXT-INVARIANCE FAIL: {path.name} — запись отменена")
         path.write_text(new_text, encoding="utf-8")
 
     return {

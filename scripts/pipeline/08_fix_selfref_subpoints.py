@@ -13,6 +13,7 @@
 
 import re
 import json
+import sys
 import argparse
 from bs4 import BeautifulSoup, NavigableString
 
@@ -58,7 +59,10 @@ def get_all_nums(first_num, extra_str):
 
 
 def build_linked(subp_word, nums, extra_str, art_n, punkt_n, subpoint_map, doc_id):
-    """Каждый номер — отдельная ссылка, разделители снаружи тега."""
+    """Каждый номер — отдельная ссылка, разделители снаружи тега.
+
+    Разделитель берётся ТОЛЬКО из исходного текста; не распознан ->
+    None + WARN (никаких молчаливых подмен «, » — класс порчи диапазонов)."""
     parts = [f'{subp_word} ']
     for i, num in enumerate(nums):
         anchor = (subpoint_map.get(f'{art_n}_{punkt_n}_{num}') if punkt_n else None) \
@@ -67,8 +71,12 @@ def build_linked(subp_word, nums, extra_str, art_n, punkt_n, subpoint_map, doc_i
             parts.append(make_link(f'{num})', anchor, doc_id) if anchor else f'{num})')
         else:
             sep_m = re.search(r'((?:\s*,\s*|\s+и\s+))' + re.escape(num) + r'\)', extra_str)
-            sep = sep_m.group(1) if sep_m else ', '
-            parts.append(sep)
+            if sep_m is None:
+                print(f'  [WARN] 08: разделитель перечня не распознан перед '
+                      f'{num!r}) в {extra_str!r:.60} — перечень пропущен',
+                      file=sys.stderr)
+                return None
+            parts.append(sep_m.group(1))
             parts.append(make_link(f'{num})', anchor, doc_id) if anchor else f'{num})')
     return ''.join(parts)
 
@@ -185,6 +193,8 @@ def fix_all(html_path, subpoint_map, doc_id, remove_wrong_links=False):
                     continue
 
                 linked = build_linked(subp_word, nums, extra, current_art, punkt_n, subpoint_map, doc_id)
+                if linked is None:
+                    continue  # разделитель не распознан — WARN уже выдан
                 # Составляем результат: до совпадения + linked + остаток совпадения начиная с "пункта N настоящ..."
                 before = txt[:m.start()]
                 # Хвост: "пункта N настоящего пункта" или "настоящей статьи"
@@ -250,6 +260,8 @@ def fix_all(html_path, subpoint_map, doc_id, remove_wrong_links=False):
 
             before = txt[:m2.start()]
             linked = build_linked(subp_word, nums, extra, art_n, punkt_n, subpoint_map, doc_id)
+            if linked is None:
+                continue  # разделитель не распознан — WARN уже выдан
             # Preserve trailing space from original text if punkt_ref_full is empty
             trailing_space = ' ' if (not punkt_ref_full and txt.endswith(' ')) else ''
             new_html = before + linked + punkt_ref_full + trailing_space
@@ -343,6 +355,14 @@ def main():
         article_map = json.load(f)
 
     soup, fixed, removed = fix_all(args.input, subpoint_map, args.doc_id, args.remove_wrong_links)
+
+    # ГЕЙТ §6.1: видимый текст входа и выхода обязан совпасть байт-в-байт
+    # (исключение: --remove-wrong-links снимает <a>, текст всё равно сохранён)
+    src_text = open(args.input, encoding='utf-8').read()
+    before = ''.join(re.sub(r'<[^>]+>', ' ', src_text).split())
+    after = ''.join(re.sub(r'<[^>]+>', ' ', str(soup)).split())
+    if before != after:
+        raise SystemExit(f'TEXT-INVARIANCE FAIL: {args.input} -> вывод НЕ записан')
 
     with open(args.output, 'w', encoding='utf-8') as f:
         f.write(str(soup))

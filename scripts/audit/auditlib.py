@@ -21,10 +21,13 @@ REPORTS = paths.REPORTS
 GATES = paths.GATES
 AUDIT_OUT = paths.AUDIT_OUT
 
-SOURCE_NAME = {"grazhdanskiy_osob": "GKosobenniy.html",
-               "informatizacii": "obINFORM.html",
-               "gosuslugi": "oGosUslug.html",
-               "persdata": "personalDATA.html"}
+# slug -> имя source-файла. ЕДИНЫЙ источник — поле "source" в codes.json
+# (дубль-словарь здесь был классом рассинхрона; оставлен интерфейс).
+import json as _json
+SOURCE_NAME = {k: v["source"]
+               for k, v in _json.loads(
+                   (paths.CODES_JSON).read_text(encoding="utf-8")).items()
+               if isinstance(v, dict) and v.get("source")}
 
 ENTITIES = {"&nbsp;": " ", "&quot;": '"', "&amp;": "&", "&lt;": "<",
             "&gt;": ">", "&laquo;": "«", "&raquo;": "»", "&mdash;": "—",

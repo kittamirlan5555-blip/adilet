@@ -7,7 +7,17 @@
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
     import paths
 """
+import sys
 from pathlib import Path
+
+# Побочный эффект НАМЕРЕННЫЙ: все канонические скрипты импортируют paths,
+# а консоль Windows по умолчанию cp866/cp1251 — кириллица в print ломалась
+# без PYTHONIOENCODING. Мягкий reconfigure снимает эту платформенную ловушку.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8")
+    except (AttributeError, ValueError, OSError):
+        pass  # не-tty/обёрнутый поток — некритично
 
 ROOT = Path(__file__).resolve().parents[1]
 

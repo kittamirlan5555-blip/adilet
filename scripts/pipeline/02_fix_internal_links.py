@@ -8,7 +8,8 @@ r"""
 ЛЕЧЕНИЕ: (а) SEP_PAT знает en/em-dash и «или» — диапазоны сохраняют тире;
 (б) центральный гейт в апплай-узле: замена, меняющая видимый текст, ПРОПУСКАЕТСЯ
 (SKIPPED_INVARIANT в отчёте); (в) файловый гейт перед записью: get_text(вход)
-!= get_text(выход) -> вывод НЕ пишется, exit 1. Тесты: tests/test_02_heal.py.
+!= get_text(выход) -> вывод НЕ пишется, exit 1; отказ замены дублируется
+WARN'ом в stderr. Тесты: scripts/tests/test_02_heal.py.
 """
 """
 Скрипт 2: Фиксер внутренних ссылок (v5)
@@ -875,6 +876,10 @@ def process_text_node(text, article_map, doc_id, base_url,
         # ЛЕЧЕНИЕ 2026-06-10: замена обязана сохранять видимый текст байт-в-байт
         # (без тегов/пробелов); иначе пропуск — это и был источник порчи диапазонов
         if _vis(link) != _vis(result[start:end]):
+            # НЕ МОЛЧА: отказ фиксируется и в CSV-отчёте, и в stderr
+            print(f"  [WARN] 02: замена отвергнута инвариант-гейтом "
+                  f"(ст.{art_num}, {original!r:.60}) — оставлено как было",
+                  file=sys.stderr)
             changes.append({"original": original, "article": art_num,
                             "anchor": "SKIPPED_INVARIANT", "link": link})
             continue
