@@ -36,21 +36,13 @@ CODES = {k: v for k, v in codes_data.items() if not k.startswith("_")}
 DISCREPANCIES = []
 ORPHAN_LOG = []
 
-CODE_LABELS = {
-    "nalog": "НК", "trudovoy": "ТК", "grazhdanskiy": "ГК", "predprinimatel": "ПК",
-    "socialnyy": "СК", "ekologicheskiy": "ЭК", "zemelnyy": "ЗК", "upk": "УПК",
-    "koap": "КоАП", "appk": "АППК", "byudzhet": "БК", "ugolovniy": "УК",
-    "grazhdanskiy_osob": "ГК",
-}
+# Реестр коротких кодов документов (внешняя проверка пакета, 2026-06-11):
+# maps/doc_codes.json — ЕДИНЫЙ источник hier-кодов (латиница, для hier_id)
+# и label'ов (кириллица, для текст-префиксов [БК | Статья N | пункт M]).
+DOC_CODES = json.loads((paths.MAPS / "doc_codes.json").read_text(encoding="utf-8"))
+CODE_LABELS = {k: v["label"] for k, v in DOC_CODES.items()}
+HIER_CODE = {k: v["hier"] for k, v in DOC_CODES.items()}
 
-# Латинские коды для иерархических hier_id (запрос шефа Yergali, v3)
-HIER_CODE = {
-    "ugolovniy": "UK", "upk": "UPK", "grazhdanskiy": "GK", "nalog": "NK",
-    "trudovoy": "TK", "socialnyy": "SK", "ekologicheskiy": "EK", "zemelnyy": "ZK",
-    "predprinimatel": "PK", "byudzhet": "BK", "koap": "KOAP", "appk": "APPK",
-    "grazhdanskiy_osob": "GK",
-    "mestnoe_upravlenie": "MGUS",
-}
 # CH1/CH2 (Общая/Особенная часть) только в этих кодексах
 CODES_WITH_CODE_PART = ("ugolovniy", "upk", "koap")
 

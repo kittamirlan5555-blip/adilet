@@ -1,0 +1,127 @@
+{
+ "nalog": {
+  "hier": "NK",
+  "label": "НК",
+  "title": "Налоговый кодекс"
+ },
+ "trudovoy": {
+  "hier": "TK",
+  "label": "ТК",
+  "title": "Трудовой кодекс"
+ },
+ "grazhdanskiy": {
+  "hier": "GK",
+  "label": "ГК",
+  "title": "Гражданский кодекс"
+ },
+ "grazhdanskiy_osob": {
+  "hier": "GKO",
+  "label": "ГКО",
+  "title": "Гражданский кодекс (Особенная часть)"
+ },
+ "predprinimatel": {
+  "hier": "PK",
+  "label": "ПК",
+  "title": "Предпринимательский кодекс"
+ },
+ "socialnyy": {
+  "hier": "SK",
+  "label": "СК",
+  "title": "Социальный кодекс"
+ },
+ "ekologicheskiy": {
+  "hier": "EK",
+  "label": "ЭК",
+  "title": "Экологический кодекс"
+ },
+ "zemelnyy": {
+  "hier": "ZK",
+  "label": "ЗК",
+  "title": "Земельный кодекс"
+ },
+ "upk": {
+  "hier": "UPK",
+  "label": "УПК",
+  "title": "Уголовно-процессуальный кодекс"
+ },
+ "koap": {
+  "hier": "KAP",
+  "label": "КоАП",
+  "title": "Кодекс об административных правонарушениях"
+ },
+ "appk": {
+  "hier": "APPK",
+  "label": "АППК",
+  "title": "Административный процедурно-процессуальный кодекс"
+ },
+ "byudzhet": {
+  "hier": "BK",
+  "label": "БК",
+  "title": "Бюджетный кодекс"
+ },
+ "ugolovniy": {
+  "hier": "UK",
+  "label": "УК",
+  "title": "Уголовный кодекс"
+ },
+ "notariat": {
+  "hier": "NT",
+  "label": "НТ",
+  "title": "О нотариате"
+ },
+ "obrazovanie": {
+  "hier": "OB",
+  "label": "ОБ",
+  "title": "Об образовании"
+ },
+ "informatizacii": {
+  "hier": "INF",
+  "label": "ИНФ",
+  "title": "Об информатизации"
+ },
+ "arbitrazh": {
+  "hier": "ARB",
+  "label": "АРБ",
+  "title": "Об арбитраже"
+ },
+ "goszakup": {
+  "hier": "GZ",
+  "label": "ГЗ",
+  "title": "О государственных закупках"
+ },
+ "ocorrupt": {
+  "hier": "OC",
+  "label": "КОРР",
+  "title": "О противодействии коррупции"
+ },
+ "bezhenci": {
+  "hier": "BEZ",
+  "label": "БЕЖ",
+  "title": "О беженцах"
+ },
+ "zhilishniy": {
+  "hier": "ZH",
+  "label": "ЖИЛ",
+  "title": "О жилищных отношениях"
+ },
+ "gosuslugi": {
+  "hier": "GU",
+  "label": "ГУ",
+  "title": "О государственных и социально ответственных услугах"
+ },
+ "pravoohranitel": {
+  "hier": "PO",
+  "label": "ПО",
+  "title": "О правоохранительной службе"
+ },
+ "persdata": {
+  "hier": "PD",
+  "label": "ПД",
+  "title": "О персональных данных и их защите"
+ },
+ "mestnoe_upravlenie": {
+  "hier": "MGU",
+  "label": "МГУ",
+  "title": "О местном государственном управлении и самоуправлении в Республике Казахстан"
+ }
+}

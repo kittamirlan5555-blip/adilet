@@ -140,7 +140,8 @@ RE_HBLOCK = re.compile(r"<h([1-6])\b[^>]*>(.*?)</h\1\s*>", re.I | re.S)
 RE_BBLOCK = re.compile(r"<b\b[^>]*>(.*?)</b\s*>", re.I | re.S)
 RE_DIVART = re.compile(r'<div\b[^>]*data-type="статья"[^>]*>', re.I)
 RE_DATanum = re.compile(r'data-number="([^"]+)"')
-RE_TITLE = re.compile(r"^\s*Статья\s+(\d+(?:-\d+)*)\s*[.\s]")
+# [СC] — ЛАТИНСКАЯ C-гомоглиф в источнике КоАП («Cтатья 69/312», R6-fix)
+RE_TITLE = re.compile(r"^\s*[СC]татья\s+(\d+(?:-\d+)*)\s*[.\s]")
 RE_ANYID = re.compile(r'(?:id|name)="([^"]+)"')
 
 
@@ -169,8 +170,15 @@ def article_marks(raw):
         if em and not inner_txt.lower().startswith("статья"):
             out.append((m.start(2) + em.start(), em.group(1), None, "h-embed"))
     for m in RE_BBLOCK.finditer(raw):
-        t = RE_TITLE.match(strip_tags(m.group(1)))
+        bt = strip_tags(m.group(1))
+        t = RE_TITLE.match(bt)
         if not t:
+            # БЕЗСЛОВНЫЙ заголовок («173. Незаконное вмешательство…», КоАП):
+            # номер + точка + Заглавная, и в <b> есть якорь (R6-fix)
+            wm = re.match(r"^(\d+(?:-\d+)*)\.\s+[А-ЯЁ]", bt)
+            if wm and RE_ANYID.search(m.group(1)[:200]):
+                out.append((m.start(), wm.group(1),
+                            RE_ANYID.search(m.group(1)[:200]).group(1), "b-wordless"))
             continue
         # якорь: сперва ВНУТРИ <b> (ready: <b><a id="zN"></a>Статья…), затем назад
         anc = RE_ANYID.search(m.group(1)[:200])
