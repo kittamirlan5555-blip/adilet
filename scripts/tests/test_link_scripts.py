@@ -21,7 +21,7 @@ from pathlib import Path
 
 from bs4 import BeautifulSoup, NavigableString
 
-SCRIPTS = Path(__file__).resolve().parent.parent / "scripts"
+SCRIPTS = Path(__file__).resolve().parents[1]      # scripts/ (тесты внутри)
 PIPELINE = SCRIPTS / "pipeline"
 AUDIT = SCRIPTS / "audit"
 

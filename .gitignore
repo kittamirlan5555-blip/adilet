@@ -41,9 +41,9 @@ interm/
 backups/
 source/*_files/
 
-# structured_out: jsonl — побайтовые копии chunks/ (переиздаются
-# scripts/pipeline/structurize.py --all); в гите только QUALITY.md
-structured_out/*.jsonl
+# derived/structured_out: jsonl — побайтовые копии derived/chunks/
+# (переиздаются scripts/pipeline/structurize.py --all); в гите только QUALITY.md
+derived/structured_out/*.jsonl
 
 # heavy local artifacts: ревью-пакеты с docx (ПДн §11), старый архив
 anara_review/

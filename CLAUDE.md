@@ -201,21 +201,25 @@ cross-code помечай как зависящий от модели депло
 
 ```
 final/         — *_ready.html / *_structured.html (рабочие финальные формы)
-source/        — сырые HTML с adilet (read-only) + текстовые выгрузки разметки Анары
-maps/          — npa_mapping.json (акт→НГР) + codes.json + manual_overrides.json
-                 + article_map_* + subpoint_map_*
-reports/       — аудиты, SDACHA, флаги Анары, gap-отчёты
-deliverables/  — сдаточные пакеты (anara_package, send_chef, laws3)
-chunks/, tree/ — производные чанкера (перегенерируемы)
-scripts/       — paths.py (единая точка истины по путям) + audit_links_coverage.py
+source/        — сырые HTML с adilet (read-only)
+maps/          — npa_mapping.json (акт→НГР) + codes.json (+поле source для имён
+                 выгрузок) + manual_overrides.json + article_map_* + subpoint_map_*
+reports/       — доски (WAITING_ON_HUMANS.md, needs_review_table.md)
+reports/gates/    — машинные отчёты гейтов (перегенерируемые)
+reports/history/  — россыпь прошлых раундов; reports/{audit,anara_r2,laws3,r3,r4,r5}
+deliverables/  — сдаточные пакеты (laws3 и laws_r3 — У АНАРЫ, не трогать) + law_kit
+derived/       — chunks/, tree/, structured_out/ (перегенерируемы; structurize.py)
+scripts/       — paths.py (ЕДИНАЯ точка истины по путям) + verify.py (единый гейт)
+                 + audit_links_coverage.py
 scripts/pipeline/ — канонические шаги построения (вход: pipeline.py)
 scripts/audit/    — верификация и гейты раундов
+scripts/tests/    — юнит-тесты (python -m unittest discover -s scripts/tests -t .)
 scripts/attic/    — исторические разовые скрипты (заморожены, пути не чинятся)
-docs/          — RUNBOOK, и т.п.
-MOVES.md       — карта переезда дерева (Фаза A); CLEANUP.md — что в attic и почему
-README.md      — обзор + статус-таблица (для людей)
+docs/          — RUNBOOK, brief/ (ТЗ), anara/ (история ревью), MOVES, CLEANUP*
+README.md      — карта проекта + типовые сценарии (для людей)
 CLAUDE.md      — этот файл (для агента)
 ```
+В каждой ключевой папке лежит свой README.md — при работе с папкой прочитай его.
 
 ---
 

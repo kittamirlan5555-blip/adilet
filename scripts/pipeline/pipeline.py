@@ -77,7 +77,7 @@ def process_code(key, doc_id, keep=False, verify_only=False, src_name=None):
 
     maps = paths.MAPS
     final = paths.FINAL
-    reports = paths.REPORTS
+    reports = paths.GATES    # машинные отчёты построения (дерево v2)
     for d in (maps, final, reports):
         d.mkdir(parents=True, exist_ok=True)
 

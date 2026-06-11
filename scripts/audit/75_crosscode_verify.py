@@ -37,7 +37,7 @@ ROOT = paths.ROOT
 FINAL = paths.FINAL
 MAPS = paths.MAPS
 CONFIG = paths.MAPS      # config/ слит в maps/ (Фаза A)
-REPORTS = paths.REPORTS
+REPORTS = paths.GATES    # машинные гейт-отчёты (дерево v2)
 
 RE_HREF = re.compile(r"/docs/([A-Za-z0-9_]+)#(z[\w-]+)")
 # «стат[ье]», не «стать»: иначе «статей N» терял кандидата (аудит 2026-06-10)

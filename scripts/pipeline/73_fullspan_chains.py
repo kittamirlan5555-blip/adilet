@@ -36,7 +36,7 @@ import paths
 
 ROOT = paths.ROOT
 FINAL = paths.FINAL
-REPORTS = paths.REPORTS
+REPORTS = paths.GATES    # машинные гейт-отчёты (дерево v2)
 
 ORD = (r"перв|втор|трет|четверт|пят|шест|седьм|восьм|девят|десят|"
        r"одиннадц|двенадц|тринадц|четырнадц|пятнадц")

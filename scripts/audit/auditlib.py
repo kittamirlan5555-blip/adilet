@@ -18,6 +18,7 @@ SOURCE = paths.SOURCE
 MAPS = paths.MAPS
 CONFIG = paths.MAPS      # config/ слит в maps/ (Фаза A)
 REPORTS = paths.REPORTS
+GATES = paths.GATES
 AUDIT_OUT = paths.AUDIT_OUT
 
 SOURCE_NAME = {"grazhdanskiy_osob": "GKosobenniy.html",

@@ -12,7 +12,7 @@ import importlib.util
 import unittest
 from pathlib import Path
 
-SCRIPTS = Path(__file__).resolve().parent.parent / "scripts"
+SCRIPTS = Path(__file__).resolve().parents[1]      # scripts/ (тесты внутри)
 
 spec = importlib.util.spec_from_file_location(
     "fix02", SCRIPTS / "pipeline" / "02_fix_internal_links.py")

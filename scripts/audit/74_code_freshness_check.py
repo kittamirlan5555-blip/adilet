@@ -35,7 +35,7 @@ import paths
 ROOT = paths.ROOT
 FINAL = paths.FINAL
 CONFIG = paths.MAPS      # config/ слит в maps/ (Фаза A)
-REPORTS = paths.REPORTS
+REPORTS = paths.GATES    # машинные гейт-отчёты (дерево v2)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # КЛАССИФИКАЦИЯ ПРОТУХШИХ КОДОВ (§5). Авто-ремап разрешён ТОЛЬКО для подтверждённого

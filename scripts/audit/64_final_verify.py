@@ -208,7 +208,7 @@ def main():
     P("\n" + "=" * 110)
     P(f"ИТОГ:  6-проверок-чисто={not bad}  |  get_text-заморозка(backup-коды)={gt_ok}")
     P("=" * 110)
-    out = paths.REPORTS / "64_final_verify.txt"
+    out = paths.GATES / "64_final_verify.txt"
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     print(f"written: {out}  clean={not bad}  gettext_frozen={gt_ok}")
 

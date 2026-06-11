@@ -151,7 +151,7 @@ def main():
     P("\n" + "=" * 110)
     P(f"ИТОГ: 6-проверок-чисто={not bad}")
     P("=" * 110)
-    out = paths.REPORTS / "69_sixcheck_laws.txt"
+    out = paths.GATES / "69_sixcheck_laws.txt"
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     print("\n".join(L))
     print(f"\nwritten: {out}  clean={not bad}")

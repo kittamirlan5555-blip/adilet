@@ -25,7 +25,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "audit"))
 import auditlib as al
 
-OUT = al.REPORTS
+OUT = al.GATES
 
 QT = str.maketrans({"«": '"', "»": '"', "“": '"', "”": '"', "„": '"',
                     "–": "-", "—": "-", "−": "-"})

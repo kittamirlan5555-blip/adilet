@@ -53,9 +53,9 @@ def main():
     code = resolve_code(SELF)
     FP = paths.FINAL / f"{code}_{args.form}.html"
     BK = paths.BACKUPS / f"final_backup_{code}"
-    REPORT = paths.REPORTS / f"68_{code}_link_canon.txt"
+    REPORT = paths.GATES / f"68_{code}_link_canon.txt"
     if args.form != "structured":
-        REPORT = paths.REPORTS / f"68_{code}_{args.form}_link_canon.txt"
+        REPORT = paths.GATES / f"68_{code}_{args.form}_link_canon.txt"
 
     # self full-URL (любой base: 85.202… ИЛИ adilet) c фрагментом -> #zX
     RE_SELF_FRAG = re.compile(

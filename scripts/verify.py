@@ -143,7 +143,7 @@ def main():
                              else f"FAIL: {', '.join(r[0] for r in failed)}"))
     lines.append("Напоминание §6: спот-чек 5-10 ссылок руками раннер не заменяет.")
     summary = "\n".join(lines) + "\n"
-    out_fp = paths.REPORTS / "verify_summary.txt"
+    out_fp = paths.GATES / "verify_summary.txt"
     out_fp.write_text(summary, encoding="utf-8")
     print("\n" + summary + f"-> {out_fp}")
     sys.exit(1 if failed else 0)

@@ -307,7 +307,7 @@ def main():
         P("  => ЕСТЬ РАСХОЖДЕНИЯ — см. контекст выше.")
     P("=" * 104)
 
-    out = paths.REPORTS / "67_independent_verify.txt"
+    out = paths.GATES / "67_independent_verify.txt"
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     print(f"written: {out}  mismatch={tot_mis}  ext_mismatch={ext_mis_total}  unresolved={tot_unr}")
 
