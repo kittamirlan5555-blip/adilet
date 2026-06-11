@@ -47,9 +47,9 @@ nalog                        186                     0
 trudovoy                      22                     0
 grazhdanskiy                   5                     0
 grazhdanskiy_osob              8                     0
-predprinimatel                53                     0
+predprinimatel                56                     0
 socialnyy                     79                     0
-ekologicheskiy                33                     0
+ekologicheskiy                34                     0
 zemelnyy                      27                     0
 upk                          253                     0
 koap                          60                     0
