@@ -49,19 +49,19 @@ grazhdanskiy                   5                     0
 grazhdanskiy_osob              8                     0
 predprinimatel                56                     0
 socialnyy                     79                     0
-ekologicheskiy                34                     0
+ekologicheskiy                37                     0
 zemelnyy                      27                     0
 upk                          253                     0
 koap                          60                     0
-appk                          30                     0
-byudzhet                      24                     0
+appk                          33                     0
+byudzhet                      30                     0
 ugolovniy                     12                     0
 informatizacii                13                     0
 notariat                       6                     0
 obrazovanie                    4                     0
 arbitrazh                      0                     0
 goszakup                       1                     0
-ocorrupt                       0                     0
+ocorrupt                       2                     0
 bezhenci                       0                     0
 zhilishniy                     1                     0
 
