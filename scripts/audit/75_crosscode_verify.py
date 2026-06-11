@@ -132,6 +132,16 @@ def article_candidates(a):
     prev = a.previous_sibling
     ctx = (str(prev)[-80:] if prev else "") + " " + t
     cands.update(RE_ART_IN_TEXT.findall(ctx))
+    # ВПЕРЁД-контекст (R6 Блок 3): в «пунктами 5), 6) … статьи 129 ПК» терминатор
+    # «статьи N» стоит ПОСЛЕ перечня — без него голые номера пунктов давали
+    # ложный MISMATCH при обогащённых subpoint-картах.
+    fwd, node, budget = "", a.next_sibling, 200
+    while node is not None and budget > 0:
+        s = node.get_text(" ") if hasattr(node, "get_text") else str(node)
+        fwd += " " + s
+        budget -= len(s)
+        node = node.next_sibling
+    cands.update(RE_ART_IN_TEXT.findall(fwd[:240]))
     return cands
 
 

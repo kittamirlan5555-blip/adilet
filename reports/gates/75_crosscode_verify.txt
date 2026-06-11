@@ -3,13 +3,11 @@ CROSS-CODE СВЕРКА ЯКОРЕЙ (§4/§6.3) — READ-ONLY
 ВНИМАНИЕ: OK = согласовано с НАШЕЙ картой; корректность на adilet зависит
 от модели деплоя (§9). Если деплой != 'наши файлы' — такие ссылки -> КОРЕНЬ.
 ====================================================================================================
-  [UNRESOLVED] nalog: 'Социальным кодексом Республики Казахстан' -> socialnyy#z4 (якорь не статья/подпункт в карте socialnyy)
-  [UNRESOLVED] nalog: 'Социальным кодексом Республики Казахстан' -> socialnyy#z4 (якорь не статья/подпункт в карте socialnyy)
-  [UNRESOLVED] nalog: 'Бюджетным кодексом Республики Казахстан' -> byudzhet#z4 (якорь не статья/подпункт в карте byudzhet)
-  [UNRESOLVED] nalog: 'Кодексом Республики Казахстан' -> koap#z2 (якорь не статья/подпункт в карте koap)
-  [UNRESOLVED] nalog: 'Бюджетным кодексом Республики Казахстан' -> byudzhet#z4 (якорь не статья/подпункт в карте byudzhet)
+  [UNRESOLVED] grazhdanskiy_osob: 'главы 20' -> grazhdanskiy#z732 (якорь не статья/подпункт в карте grazhdanskiy)
+  [UNRESOLVED] grazhdanskiy_osob: 'главой 24' -> grazhdanskiy#z844 (якорь не статья/подпункт в карте grazhdanskiy)
+  [UNRESOLVED] grazhdanskiy_osob: 'глава 20' -> grazhdanskiy#z732 (якорь не статья/подпункт в карте grazhdanskiy)
 
-nalog                OK=4  MISMATCH=0  UNRESOLVED=65  NO_ART_TEXT=2  NO_MAP=0
+grazhdanskiy_osob    OK=84  MISMATCH=0  UNRESOLVED=3  NO_ART_TEXT=1  NO_MAP=0
 
 ====================================================================================================
-ИТОГО: OK=4  MISMATCH=0  UNRESOLVED=65  NO_ART_TEXT=2  NO_MAP=0
+ИТОГО: OK=84  MISMATCH=0  UNRESOLVED=3  NO_ART_TEXT=1  NO_MAP=0
