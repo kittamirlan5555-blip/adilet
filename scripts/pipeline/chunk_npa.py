@@ -74,7 +74,12 @@ RE_BARE_FULL = re.compile(
 # Если итоговый чанк > порога И тело преимущественно состоит из подпунктов
 # «N)» (root-список ИЛИ один пункт с длинным списком подпунктов), режем
 # КАЖДЫЙ подпункт в отдельный чанк. Обычные пункты/части НЕ трогаем.
-DICT_SPLIT_CHARS = 6000      # порог размера чанка
+DICT_SPLIT_CHARS = 6000      # порог размера чанка (для списков ВНУТРИ пунктов)
+# R7-фикс (вопрос ревью по appk ст.58): скобочные «N)» на УРОВНЕ СТАТЬИ — всегда
+# отдельные чанки (>=2 шт.), без порога размера. Списки внутри пунктов — по
+# старому правилу (ПК ст.82 остаётся одним чанком, майский формат).
+DICT_ROOT_MIN = 2
+DICT_ROOT_EXEMPT = {"ugolovniy"}   # майский УК-эталон: байт-в-байт регресс
 DICT_MIN_SUBPOINTS = 3       # «длинный список» = минимум столько подпунктов
 DICT_SUBPOINT_RATIO = 0.5    # подпункты должны давать ≥ 50% длины тела
 
@@ -524,7 +529,11 @@ def _build_tree_and_chunks(code, art_num, title_anchor, title_clean, segments,
 
         # ── SPLIT крупных статей-словарей: чанк > порога И преимущественно
         #    подпункты → каждый подпункт отдельным чанком (id …_пп{K}).
-        if len(chunk_text) > DICT_SPLIT_CHARS and _is_dict_list_unit(unit, body):
+        root_list_split = (unit["number"] is None
+                           and code not in DICT_ROOT_EXEMPT
+                           and len(unit.get("children", [])) >= DICT_ROOT_MIN)
+        if root_list_split or (
+                len(chunk_text) > DICT_SPLIT_CHARS and _is_dict_list_unit(unit, body)):
             di_parts = list(intro_parts)
             if u_idx == 0 and standalone:
                 di_parts = list(standalone) + di_parts

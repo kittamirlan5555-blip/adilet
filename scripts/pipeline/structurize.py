@@ -193,6 +193,21 @@ def process(slug):
         if not (p3 and any("4-1)" in r["text"] for r in p3)):
             res["fails"].append("T5: ПК-82 п.3 — подпункт 4-1 не в чанке пункта")
 
+    # T6 (R7-фикс, вопрос ревью по appk ст.58): нет статей со СПРЯТАННЫМИ
+    # скобочными пунктами — root-чанк (unit_type пуст) не должен содержать
+    # >=2 строк «N)» в теле. Исключение: ugolovniy (майский эталон).
+    if slug != "ugolovniy":
+        hidden = []
+        for r_ in rows:
+            if r_["meta"].get("unit_type"):
+                continue
+            body = r_["text"].split("\n", 1)[-1]
+            subs = re.findall(r"(?m)^\s*\d+(?:-\d+)?\)\s", body)
+            if len(subs) >= 2:
+                hidden.append(r_["meta"]["article"])
+        if hidden:
+            res["fails"].append(f"T6: спрятанные скобочные пункты: {hidden[:6]}")
+
     OUT.mkdir(exist_ok=True)
     (OUT / f"{slug}.jsonl").write_text(
         fchunks.read_text(encoding="utf-8"), encoding="utf-8")
@@ -230,10 +245,13 @@ def main():
          "T5 сложные случаи (дефисные номера статей и т.п.). Поле status: "
          "active — действующая единица, repealed — исключённая/утратившая "
          "силу (включены намеренно: на них ссылаются действующие нормы).", "",
-         "| документ | чанков | статей | покрытие текста | дефисные | тесты |",
-         "|---|---|---|---|---|---|"]
+         "| документ | чанков | Δ чанков | статей | покрытие текста | дефисные | тесты |",
+         "|---|---|---|---|---|---|---|"]
+    _bl_p = paths.REPORTS / "history" / "chunk_counts_baseline.json"
+    _bl = json.loads(_bl_p.read_text(encoding="utf-8")) if _bl_p.exists() else {}
     for r in results:
-        L.append(f"| {r['slug']} | {r['chunks']} | {r['articles']} "
+        _d = r['chunks'] - _bl.get(r['slug'], r['chunks'])
+        L.append(f"| {r['slug']} | {r['chunks']} | {('+' if _d > 0 else '') + str(_d)} | {r['articles']} "
                  f"| {r.get('coverage')} | {r.get('dash', '—')} "
                  f"| {'OK' if not r['fails'] else '; '.join(r['fails'])} |")
     L += ["", "Замечания (не-фейлы):"]
