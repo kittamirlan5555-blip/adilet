@@ -103,6 +103,8 @@ def process(slug):
         res["notes"].append(f"T1: исключённых статей без div (чанков нет "
                             f"легитимно): {len(excl)}")
     res["articles"] = len(in_jsonl)
+    res["articles_base"] = len([a for a in in_jsonl if "-" not in str(a)])
+    res["articles_dash"] = res["articles"] - res["articles_base"]
 
     # T2 текст: чанк = сегменты (вводная пункта, подпункты, продолжения),
     # каждый сегмент НЕПРЕРЫВЕН в источнике; скобочные заголовки [..] — служебные.
@@ -189,7 +191,9 @@ def process(slug):
             res["fails"].append("T5: ST-сегмент дефисной статьи искажён")
 
     if slug == "predprinimatel":
-        p3 = [r for r in rows if r["id"].startswith("predprinimatel_ст82_п3")]
+        # id = hier_id с 2026-06-12; человекочитаемый адрес — meta.legacy_id
+        p3 = [r for r in rows
+              if r["meta"].get("legacy_id", "").startswith("predprinimatel_ст82_п3")]
         if not (p3 and any("4-1)" in r["text"] for r in p3)):
             res["fails"].append("T5: ПК-82 п.3 — подпункт 4-1 не в чанке пункта")
 
@@ -242,16 +246,21 @@ def main():
          "T1 все статьи карты присутствуют; T2 текст чанка — подстрока статьи "
          "источника (показано покрытие); T3 id уникальны, hier_id соответствует "
          "грамматике и восстанавливается из hier_path; T4 сирот нет; "
+         "Формат id обновлён по решению ревьюера 2026-06-12: id = hier_id, прежний "
+         "id сохранён в meta.legacy_id. Методика счёта: статей = уникальных "
+         "номеров, включая дефисные (N-M) и исключённые (repealed). "
          "T5 сложные случаи (дефисные номера статей и т.п.). Поле status: "
          "active — действующая единица, repealed — исключённая/утратившая "
          "силу (включены намеренно: на них ссылаются действующие нормы).", "",
-         "| документ | чанков | Δ чанков | статей | покрытие текста | дефисные | тесты |",
+         "| документ | чанков | Δ чанков | статей (базовых+дефисных) | покрытие текста | дефисные | тесты |",
          "|---|---|---|---|---|---|---|"]
     _bl_p = paths.REPORTS / "history" / "chunk_counts_baseline.json"
     _bl = json.loads(_bl_p.read_text(encoding="utf-8")) if _bl_p.exists() else {}
     for r in results:
         _d = r['chunks'] - _bl.get(r['slug'], r['chunks'])
-        L.append(f"| {r['slug']} | {r['chunks']} | {('+' if _d > 0 else '') + str(_d)} | {r['articles']} "
+        _ab = r.get('articles_base'); _ad = r.get('articles_dash')
+        _art = f"{r['articles']} ({_ab}+{_ad})" if _ab is not None else str(r['articles'])
+        L.append(f"| {r['slug']} | {r['chunks']} | {('+' if _d > 0 else '') + str(_d)} | {_art} "
                  f"| {r.get('coverage')} | {r.get('dash', '—')} "
                  f"| {'OK' if not r['fails'] else '; '.join(r['fails'])} |")
     L += ["", "Замечания (не-фейлы):"]

@@ -380,8 +380,9 @@ def _build_tree_and_chunks(code, art_num, title_anchor, title_clean, segments,
             "char_len": len(repealed_text),
         }
         meta.update(_meta_hier())
+        meta["legacy_id"] = f"{code}_ст{art_num}"
         chunks = [{
-            "id": f"{code}_ст{art_num}",
+            "id": meta["hier_id"],
             "text": repealed_text,
             "meta": meta,
         }]
@@ -469,8 +470,9 @@ def _build_tree_and_chunks(code, art_num, title_anchor, title_clean, segments,
             "char_len": len(single_text),
         }
         meta.update(_meta_hier())
+        meta["legacy_id"] = f"{code}_ст{art_num}"
         chunks = [{
-            "id": f"{code}_ст{art_num}",
+            "id": meta["hier_id"],
             "text": single_text,
             "meta": meta,
         }]
@@ -573,7 +575,8 @@ def _build_tree_and_chunks(code, art_num, title_anchor, title_clean, segments,
                     sp_meta["hier_dup_seq"] = dup_seq
                 if hier_partial:
                     sp_meta["hier_partial"] = True
-                chunks.append({"id": sp_id, "text": sp_text, "meta": sp_meta})
+                sp_meta["legacy_id"] = sp_id
+                chunks.append({"id": sp_hid, "text": sp_text, "meta": sp_meta})
             continue
 
         # ── Обычный чанк-юнит (НЕ режем) ──────────────────────────────────
@@ -592,8 +595,9 @@ def _build_tree_and_chunks(code, art_num, title_anchor, title_clean, segments,
             meta["hier_dup_seq"] = dup_seq
         if hier_partial:
             meta["hier_partial"] = True
+        meta["legacy_id"] = chunk_id
         chunks.append({
-            "id": chunk_id,
+            "id": hid,
             "text": chunk_text,
             "meta": meta,
         })
