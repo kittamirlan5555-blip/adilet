@@ -4,7 +4,7 @@ CROSS-CODE СВЕРКА ЯКОРЕЙ (§4/§6.3) — READ-ONLY
 от модели деплоя (§9). Если деплой != 'наши файлы' — такие ссылки -> КОРЕНЬ.
 ====================================================================================================
 
-pravoohranitel       OK=13  MISMATCH=0  UNRESOLVED=0  NO_ART_TEXT=0  NO_MAP=0
+predprinimatel       OK=4  MISMATCH=0  UNRESOLVED=0  NO_ART_TEXT=10  NO_MAP=0
 
 ====================================================================================================
-ИТОГО: OK=13  MISMATCH=0  UNRESOLVED=0  NO_ART_TEXT=0  NO_MAP=0
+ИТОГО: OK=4  MISMATCH=0  UNRESOLVED=0  NO_ART_TEXT=10  NO_MAP=0

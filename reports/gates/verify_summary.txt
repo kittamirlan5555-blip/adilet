@@ -1,10 +1,10 @@
 # verify summary
-документы: pravoohranitel
+документы: predprinimatel
 
 PASS  71_gates
 PASS  75_crosscode  MISMATCH=0 UNRESOLVED=0
 PASS  74_freshness  ROOT-stale(авто-ремап-safe)=0  ART-stale(#z, ручной ре-резолв)=0  строк mapping=0 | NEEDS_REVIEW: ссылок=0 строк=3
-PASS  76_gap_report  gaps: 0
+PASS  76_gap_report  gaps: 134
 
 ИТОГ: ВСЕ ГЕЙТЫ PASS
 Напоминание §6: спот-чек 5-10 ссылок руками раннер не заменяет.
