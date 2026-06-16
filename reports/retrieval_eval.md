@@ -1,6 +1,6 @@
 # Ретрив-эвал вектор-слоя (small-to-big)
 
-Модель: `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` (384-dim), индекс faiss (12013 векторов: текст мелких статей + сабчанки с заголовком + summary крупных). «Эталон» запроса — статьи, чей ЗАГОЛОВОК содержит тему.
+Модель: `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` (384-dim), индекс faiss (11840 векторов: текст мелких статей + сабчанки с заголовком + summary крупных). «Эталон» запроса — статьи, чей ЗАГОЛОВОК содержит тему.
 
 | запрос | эталон (код/ст.) | топ-3 (код/ст: score, тип) | hit@1 | hit@3 |
 |---|---|---|---|---|
@@ -18,7 +18,7 @@
 | договор купли-продажи товара | grazhdanskiy_osob/406, grazhdanskiy_osob | grazhdanskiy_osob/445:0.75·art, grazhdanskiy_osob/450:0.74·art, grazhdanskiy_osob/406:0.74·art | ✅ | ✅ |
 | пенсионные выплаты по возрасту | socialnyy/199, socialnyy/200, socialnyy/ | socialnyy/207:0.86·art, socialnyy/210:0.82·sub, socialnyy/263:0.81·sub | ✅ | ✅ |
 | приватизация жилища | zhilishniy/13 | zhilishniy/13:0.81·sub, zhilishniy/98-2:0.67·art, zhilishniy/105:0.66·art | ✅ | ✅ |
-| управление объектом кондоминиума | zhilishniy/31, zhilishniy/32, zhilishniy | zhilishniy/2:0.52·sub, zhilishniy/51-4:0.51·sub, zhilishniy/38:0.49·sub | — | ✅ |
+| управление объектом кондоминиума | zhilishniy/31, zhilishniy/33, zhilishniy | zhilishniy/2:0.52·sub, zhilishniy/51-4:0.51·sub, zhilishniy/38:0.49·sub | — | ✅ |
 | оценка воздействия на окружающую среду | ekologicheskiy/38, ekologicheskiy/64, ek | ekologicheskiy/65:0.86·sub, ekologicheskiy/64:0.82·art, ekologicheskiy/72:0.81·sub | ✅ | ✅ |
 | экологический аудит | ekologicheskiy/100, ekologicheskiy/101,  | ekologicheskiy/104:0.76·sub, ekologicheskiy/105:0.76·art, ekologicheskiy/88:0.74·sub | ✅ | ✅ |
 | право частной собственности на земельный у | zemelnyy/133, zemelnyy/137, zemelnyy/138 | zemelnyy/47:0.87·sub, zemelnyy/69:0.86·sub, zemelnyy/25:0.86·art | ✅ | ✅ |

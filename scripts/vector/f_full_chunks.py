@@ -28,6 +28,25 @@ SUB_MAX = 1500         # цель сабчанка по телу (запас п�
 RE_PUNKT = re.compile(r"^\s*\d+(?:-\d+)?[.)]\s")
 RE_TITLE = re.compile(r"^\s*Стать\w*\s+\d")
 RE_SENT = re.compile(r"(?<=[.;])\s+(?=[А-ЯЁ0-9])")
+RE_REPEALED = re.compile(r"Стать[яи]\s+[\d\-]+\s+исключена", re.I)
+RE_DATE = re.compile(r"от\s+(\d{1,2}\.\d{2}\.\d{4})")
+RE_LAWNO = re.compile(r"(№\s*\d+(?:-[A-ZА-Я]+)?)")   # «№ 15-VIII», «№ 479-V»
+RE_DOCID = re.compile(r"/docs/([A-Za-z0-9_]+)")
+
+
+def repeal_meta(div):
+    """(текст-сноски, {repealing_law, repealing_date}) для исключённой статьи."""
+    notes = div.find_all(class_="note")
+    foot = next((n.get_text(" ", strip=True) for n in notes
+                 if "исключен" in n.get_text().lower()),
+                div.get_text(" ", strip=True))
+    txt = div.get_text(" ", strip=True)
+    date = RE_DATE.search(txt)
+    no = RE_LAWNO.search(txt)
+    doc = RE_DOCID.search(str(div))
+    return foot, {"repealing_law": (no.group(1).replace(" ", " ") if no else None),
+                  "repealing_ngr": doc.group(1) if doc else None,
+                  "repealing_date": date.group(1) if date else None}
 
 
 def article_units(div):
@@ -91,8 +110,9 @@ def main():
             CHUNKS.read_text(encoding="utf-8"), encoding="utf-8")
 
     rows = []
-    n_art = n_small = n_large = n_noanchor = 0
+    n_art = n_small = n_large = n_noanchor = n_repealed = 0
     carried = 0
+    repealed_by_doc = {}
     for slug in slugs:
         code = cj[slug]["doc_id"]
         amap = json.loads((paths.MAPS / f"article_map_{slug}.json").read_text(encoding="utf-8"))
@@ -103,6 +123,21 @@ def main():
                 continue
             num = d.get("data-number")
             anc = amap.get(str(num))
+            # ИСКЛЮЧЁННАЯ статья (единое правило для всех 25 док) — проверяем ДО якоря:
+            # repealed бывает и без живого якоря (статья удалена из карты). parent
+            # kind=repealed, текст = сноска, meta = закон/дата; не сабчанкуется, без
+            # summary, ВНЕ индекса. Якоря нет -> синтетический chunk_id z{num}rep.
+            if RE_REPEALED.search(d.get_text(" ")):
+                rep_anc = anc or f"z{num}rep"
+                foot, rmeta = repeal_meta(d)
+                n_repealed += 1
+                repealed_by_doc.setdefault(slug, []).append(str(num))
+                rows.append({"chunk_id": rep_anc, "parent_id": None, "article_no": str(num),
+                             "kind": "repealed", "order": 0, "doc_id": code, "code": slug,
+                             "anchor": anc, "uid": f"{slug}_{rep_anc}", "article_title": "",
+                             "text": foot, "char_len": len(foot), "summary": None,
+                             "n_subchunks": 0, **rmeta})
+                continue
             if not anc:
                 n_noanchor += 1
                 continue
@@ -143,7 +178,10 @@ def main():
          f"режется по смыслу на сабчанки ≤ {SUB_MAX} симв (additive zX_1..).", "",
          f"- мелких статей (тело ≤ окна, без сабчанков): **{n_small}**",
          f"- крупных (с сабчанками): **{n_large}**, сабчанков всего **{len(sub)}**",
-         f"- всего чанков: **{len(rows)}** ({n_art} parent + {len(sub)} subchunk)",
+         f"- ИСКЛЮЧЁННЫХ (kind=repealed, без сабчанков/summary, ВНЕ индекса): "
+         f"**{n_repealed}** в {len(repealed_by_doc)} док.",
+         f"- всего чанков: **{len(rows)}** ({n_art} parent + {len(sub)} subchunk "
+         f"+ {n_repealed} repealed)",
          f"- сабчанков длиннее окна (должно быть 0): **{over}**",
          f"- длина сабчанка: медиана {int(st.median([r['char_len'] for r in sub]))}, "
          f"макс {max(r['char_len'] for r in sub)}",

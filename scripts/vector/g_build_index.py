@@ -41,6 +41,8 @@ def main():
 
     passages, meta = [], []
     for r in rows:
+        if r["kind"] == "repealed":                          # исключённые — ВНЕ индекса
+            continue
         if r["kind"] == "parent":
             if r.get("n_subchunks", 0) == 0:                 # мелкая статья — целиком
                 passages.append(r["text"][:WIN]); src = "article"
