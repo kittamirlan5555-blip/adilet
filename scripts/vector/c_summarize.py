@@ -34,9 +34,14 @@ def load():
 
 
 def save(rows):
-    with CHUNKS.open("w", encoding="utf-8") as f:
+    # атомарно: пишем во временный и заменяем — иначе параллельное ЧТЕНИЕ файла
+    # сталкивается с записью (Windows OSError 22) и роняет инкрементальный прогон
+    import os
+    tmp = CHUNKS.with_suffix(".jsonl.tmp")
+    with tmp.open("w", encoding="utf-8") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
+    os.replace(tmp, CHUNKS)
 
 
 def summarize(text, key):
@@ -86,6 +91,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sample", type=int)
     ap.add_argument("--all", action="store_true")
+    ap.add_argument("--min-body", type=int, default=0,
+                    help="суммаризировать только статьи с телом > N символов")
     args = ap.parse_args()
     key = os.environ.get("DEEPSEEK_API_KEY")
     if not key:
@@ -93,8 +100,14 @@ def main():
                  "Задай ключ и повтори (он не пишется в файлы/логи).")
     rows = load()
     parents = [r for r in rows if r["kind"] == "parent"]
+
+    def body_len(p):
+        t = p.get("article_title") or ""
+        return p["char_len"] - (len(t) + 1 if t else 0)
+
     targets = (pick_sample(parents, args.sample) if args.sample
-               else [p for p in parents if not p.get("summary")])
+               else [p for p in parents if not p.get("summary")
+                     and body_len(p) > args.min_body])
     print(f"к суммаризации: {len(targets)} статей "
           f"(всего без summary: {sum(1 for p in parents if not p.get('summary'))})")
     done = 0
