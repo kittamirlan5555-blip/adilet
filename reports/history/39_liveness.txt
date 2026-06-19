@@ -1,5 +1,0 @@
-TOTAL probed: 424  (foreign 411 + ours 13)
-ALIVE 423 (foreign 410/411, ours 13/13)  SUSPECT 0  DEAD 1
-
-DEAD/MISSING:
-  Z040000576_  status=ERR:TimeoutError  kind=foreign  refs=10

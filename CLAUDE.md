@@ -200,26 +200,34 @@ cross-code помечай как зависящий от модели депло
 ## 10. Структура репо
 
 ```
-final/         — *_ready.html / *_structured.html (рабочие финальные формы)
-source/        — сырые HTML с adilet (read-only)
+source/        — сырые HTML с adilet (read-only, ВХОД)
+final/         — *_ready.html / *_structured.html (финальные формы; КАНОН = _structured)
 maps/          — npa_mapping.json (акт→НГР) + codes.json (+поле source для имён
                  выгрузок) + manual_overrides.json + article_map_* + subpoint_map_*
-reports/       — доски (WAITING_ON_HUMANS.md, needs_review_table.md)
-reports/gates/    — машинные отчёты гейтов (перегенерируемые)
-reports/history/  — россыпь прошлых раундов; reports/{audit,anara_r2,laws3,r3,r4,r5}
-deliverables/  — сдаточные пакеты (laws3 и laws_r3 — У АНАРЫ, не трогать) + law_kit
-derived/       — chunks/, tree/, structured_out/ (перегенерируемы; structurize.py)
+derived/       — перегенерируемое из final/: chunks/, tree/, structured_out/,
+                 vector_layer/ (chunks.jsonl + index.faiss + meta/config)
+reports/       — ТОЛЬКО актуальное: доски (WAITING_ON_HUMANS.md, needs_review_table.md),
+                 вектор-отчёты (retrieval_eval, repealed_uniformity, …) + audit/ + gates/
+reports/gates/    — машинные отчёты verify.py (перегенерируемые, gitignored, на диске)
+deliverables/  — ТОЛЬКО последний пакет (vector_layer/ + structured_out_package.zip)
 scripts/       — paths.py (ЕДИНАЯ точка истины по путям) + verify.py (единый гейт)
                  + audit_links_coverage.py
 scripts/pipeline/ — канонические шаги построения (вход: pipeline.py)
 scripts/audit/    — верификация и гейты раундов
+scripts/vector/   — вектор-слой a..j (чанкинг→summary→faiss→эвал)
 scripts/tests/    — юнит-тесты (python -m unittest discover -s scripts/tests -t .)
-scripts/attic/    — исторические разовые скрипты (заморожены, пути не чинятся)
-docs/          — RUNBOOK, brief/ (ТЗ), anara/ (история ревью), MOVES, CLEANUP*
+scripts/hooks/    — pre-push (тесты + verify по изменённым слагам)
+docs/          — brief/ (ТЗ), anara/ (история ревью)
+archive/       — ВСЁ историческое (прошлые раунды reports/deliverables, attic,
+                 MOVES/CLEANUP*); НА ДИСКЕ, вне git (gitignored) — восстановимо из
+                 истории коммитов
 README.md      — карта проекта + типовые сценарии (для людей)
 CLAUDE.md      — этот файл (для агента)
 ```
 В каждой ключевой папке лежит свой README.md — при работе с папкой прочитай его.
+Дубль карт УК: `article_map_ugolovniy.json` (читает пайплайн) и `*_rebuilt.json`
+(читают аудит-скрипты `70_anara_flags_driver`, `a07_uk_live_compare`) — ОБЕ живые,
+слияние ждёт приёмки УК-раунда (см. reports/WAITING_ON_HUMANS.md). Не удалять.
 
 ---
 

@@ -59,3 +59,7 @@ _old_tree_leftovers/
 # вектор-слой: редундантный бэкап и tmp (chunks.jsonl каноничен)
 derived/vector_layer/chunks_top100_backup.jsonl
 derived/vector_layer/*.tmp
+
+# reports/gates: машинные гейт-отчёты verify.py — перегенерируемые (paths.GATES).
+# Папка остаётся на диске (verify пишет туда), но в репо не идёт.
+reports/gates/

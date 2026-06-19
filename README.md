@@ -2,39 +2,54 @@
 
 Конвейер превращает сырой HTML кодексов и законов РК с **adilet.zan.kz** в
 согласованные артефакты: `*_ready.html` (плоская форма со ссылками),
-`*_structured.html` (она же с иерархией, КАНОН по ссылкам) и jsonl-чанки для
-vector DB. Сейчас в корпусе **24 документа** (13 кодексов + 11 законов).
+`*_structured.html` (она же с иерархией, КАНОН по ссылкам) и jsonl-чанки +
+faiss-индекс для vector DB. Сейчас в корпусе **25 документов** (13 кодексов +
+12 законов).
 
 Агентские правила (полный спан, гейты, грабли) — **CLAUDE.md**. Кто чего
 ждёт — **reports/WAITING_ON_HUMANS.md**.
 
 ## Карта проекта
 
+Единая точка истины по путям — `scripts/paths.py`. Каждый скрипт берёт пути ТОЛЬКО оттуда.
+
 ```
 ADILETkz/
 ├── README.md, CLAUDE.md, requirements.txt
-├── source/        сырые выгрузки adilet (READ-ONLY)         → source/README.md
-├── final/         *_ready + *_structured — продукт          → final/README.md
-├── maps/          codes.json, npa_mapping.json, карты якорей → maps/README.md
-├── scripts/       весь код: paths.py + verify.py
-│   ├── pipeline/  шаги построения (вход: pipeline.py)       → scripts/pipeline/README.md
-│   ├── audit/     гейты и верификация                       → scripts/audit/README.md
-│   ├── tests/     юнит-тесты линковки
-│   └── attic/     исторические скрипты (заморожены)
-├── derived/       чанки/деревья/structured_out (перегенерируемые) → derived/README.md
-├── reports/       доски (WAITING_ON_HUMANS) + gates/ + history/ + раунды → reports/README.md
-├── deliverables/  сдаточные пакеты по раундам               → deliverables/README.md
-└── docs/          RUNBOOK, brief/, anara/ (история ревью), MOVES, CLEANUP*
+├── source/        сырой HTML adilet — ВХОД (READ-ONLY)            → source/README.md
+├── final/         *_ready + *_structured — ПРОДУКТ (канон=_structured) → final/README.md
+├── maps/          codes.json, npa_mapping.json, article_map_*, subpoint_map_* → maps/README.md
+├── derived/       перегенерируемое из final/                      → derived/README.md
+│   ├── tree/          деревья структуры (hier_id)
+│   ├── chunks/        чанки по документам
+│   ├── structured_out/ jsonl по схеме шефа (hier_id UKCH1R1ST1P1)
+│   └── vector_layer/  chunks.jsonl + index.faiss + meta/config (small-to-big retrieval)
+├── scripts/       весь код; пути — ТОЛЬКО из paths.py
+│   ├── paths.py      единая точка истины по путям
+│   ├── verify.py     оркестратор гейтов (verify.py слаг | --all)
+│   ├── pipeline/     шаги построения (вход pipeline.py)           → scripts/pipeline/README.md
+│   ├── audit/        гейты и независимая верификация              → scripts/audit/README.md
+│   ├── vector/       вектор-слой a..j (чанкинг→summary→faiss→эвал)
+│   ├── tests/        юнит-тесты линковки
+│   └── hooks/        pre-push (тесты + verify по изменённым слагам)
+├── reports/       ТОЛЬКО актуальное: доски + вектор-отчёты + audit/ + gates/ → reports/README.md
+├── deliverables/  ТОЛЬКО последний пакет (vector_layer/)          → deliverables/README.md
+├── docs/          brief/, anara/ — история ревью
+└── archive/       всё историческое (раунды, старые пакеты, attic) — НА ДИСКЕ, вне git
 ```
+
+Локально на диске, но **вне репозитория** (в `.gitignore`): `archive/`, `reports/gates/`
+(перегенерируемые гейты), `_old_tree_leftovers/`, `backups/`, `venv/`. История в git
+сохранена — архивные файлы восстановимы из прошлых коммитов.
 
 ## Статус документов
 
 | документы | статус |
 |---|---|
 | 13 кодексов + arbitrazh, bezhenci, goszakup, ocorrupt, zhilishniy | ✅ приняты |
-| informatizacii, notariat, obrazovanie | 📤 у Анары (`deliverables/laws3/`) |
+| informatizacii, notariat, obrazovanie | 📤 у Анары (пакет — `archive/deliverables/laws3/`) |
 | gosuslugi, persdata | ✅ приняты ревью (без замечаний, 2026-06-11) |
-| pravoohranitel | 🔁 фидбек получен (6 флагов), правки внесены — v2 в `deliverables/laws_r3/` |
+| pravoohranitel | 🔁 фидбек получен (6 флагов), правки внесены (пакет — `archive/deliverables/laws_r3/`) |
 | Конституция, prezident | ⏸ в холде (лежат в source/, не обрабатывались) |
 
 ## Типовые сценарии
@@ -113,5 +128,21 @@ python -m unittest discover -s scripts/tests -t .
 Структуризация для vector DB по схеме шефа (hier_id вида `UKCH1R1ST1P1`):
 `python scripts/pipeline/structurize.py --all` → `derived/structured_out/`.
 
-История переездов дерева: `docs/MOVES.md` (Фаза A), `docs/CLEANUP.md` (Фаза B),
-`docs/CLEANUP_v2.md` (дерево v2, R5).
+## Вектор-слой (semantic retrieval)
+
+Small-to-big: parent-чанк на статью (`chunk_id` = якорь `zX`, НЕ меняется),
+additive-сабчанки `zX_1..` для длинных статей, summary (DeepSeek) для крупных,
+faiss-индекс по эмбеддингам MiniLM; исключённые (`kind=repealed`) — в `chunks.jsonl`,
+но ВНЕ индекса. Артефакты — `derived/vector_layer/`.
+
+```bash
+python scripts/vector/f_full_chunks.py      # чанкинг всех статей → chunks.jsonl
+python scripts/vector/c_summarize.py --all   # summary крупных (ключ из env DEEPSEEK_API_KEY)
+python scripts/vector/g_build_index.py       # faiss-индекс (MiniLM; --model e5 для e5-large)
+python scripts/vector/i_retrieval_eval.py    # hit@1/hit@3 → reports/retrieval_eval.md
+python scripts/vector/j_repealed_audit.py    # единый repealed-подход → reports/repealed_uniformity.md
+```
+
+История переездов дерева и прошлых раундов — в `archive/` (`archive/docs/MOVES.md`,
+`archive/docs/CLEANUP.md`, `archive/docs/CLEANUP_v2.md`; раунды — `archive/reports/`,
+`archive/deliverables/`).

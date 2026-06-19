@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """R6 БЛОК 4: сверка якорей УК с ЖИВЫМ adilet. READ-ONLY.
 
-python scripts/audit/a07_uk_live_compare.py [--snapshot reports/r6/uk_live_snapshot.html] [--n 25]
+python scripts/audit/a07_uk_live_compare.py [--snapshot archive/reports/r6/uk_live_snapshot.html] [--n 25]
 
 Снапшот живой страницы: curl -A "Mozilla/5.0" https://adilet.zan.kz/rus/docs/K1400000226
 (adilet доступен напрямую — проверено 2026-06-11). Сравнение: для выборки статей
 (спорные 45/206/301/303/3 + N детерминированно-случайных) якорь rebuilt-карты
 резолвится на живой странице в номер статьи (ближайший маркер над якорем) и
 сравнивается. Расхождения — ТАБЛИЦА, ничего не чинится (вход §9 для шефа).
--> reports/r6/BLOCK4_uk_live.md
+-> archive/reports/r6/BLOCK4_uk_live.md   (исторический раунд R6; снапшот в archive/)
 """
 import argparse
 import bisect
@@ -23,7 +23,7 @@ import auditlib as al
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--snapshot", default="reports/r6/uk_live_snapshot.html")
+    ap.add_argument("--snapshot", default="archive/reports/r6/uk_live_snapshot.html")
     ap.add_argument("--n", type=int, default=25)
     a = ap.parse_args()
     live = (al.ROOT / a.snapshot).read_text(encoding="utf-8")
@@ -74,7 +74,7 @@ def main():
           "  301/303 имеют живые аналоги (z1124/z1132 — ремап возможен по решению);",
           "  45/206 на живом БЕЗ якорей вовсе — наши синтетические единственная",
           "  адресация: при модели Б ссылки на них вести на корень, при модели А — ок."]
-    out = al.ROOT / "reports" / "r6" / "BLOCK4_uk_live.md"
+    out = al.ROOT / "archive" / "reports" / "r6" / "BLOCK4_uk_live.md"
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     print("\n".join(L[-12:]))
     print(f"-> {out}")

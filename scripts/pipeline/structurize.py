@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Структуризация корпуса по схеме шефа (формат принят в мае: чанковый jsonl
 с meta.hier_id вида UKCH1R1ST1P1 и hier_path; эталон —
-deliverables/send_chef/chunks_ugolovniy.jsonl).
+archive/deliverables/send_chef/chunks_ugolovniy.jsonl).
 
 python scripts/pipeline/structurize.py --all | {slug...}
 -> structured_out/{slug}.jsonl + structured_out/QUALITY.md

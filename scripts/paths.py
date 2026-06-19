@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Единая точка истины по путям проекта (дерево v2, раунд R5; история
-переездов — docs/MOVES.md и docs/CLEANUP_v2.md).
+"""Единая точка истины по путям проекта (дерево v2; история
+переездов — archive/docs/MOVES.md, archive/docs/CLEANUP_v2.md).
 
 Канонические скрипты обязаны брать пути отсюда:
     import sys; from pathlib import Path
