@@ -44,6 +44,7 @@ def _vis(s):
 
 import json
 import csv
+import sys
 import argparse
 from bs4 import BeautifulSoup, NavigableString
 
