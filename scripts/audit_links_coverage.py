@@ -504,6 +504,9 @@ def main():
              "upk", "koap", "appk", "byudzhet", "ugolovniy", "informatizacii",
              "notariat", "obrazovanie",
              "arbitrazh", "goszakup", "ocorrupt", "bezhenci", "zhilishniy"]
+    # добор всех остальных кодов из codes.json (пропущенные + новые доки),
+    # чтобы покрытие считалось по ВСЕМ 34, а не по застывшему списку
+    order += [c for c in CODES if c not in order]
     results = []
     for code in order:
         r = analyze_code(code)
