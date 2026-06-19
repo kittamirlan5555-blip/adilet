@@ -85,5 +85,41 @@
  "zhilishniy": [],
  "gosuslugi": [],
  "pravoohranitel": [],
- "mestnoe_upravlenie": []
+ "mestnoe_upravlenie": [],
+ "lesnoy": [],
+ "zdorovyenaroda": [],
+ "oBrake": [
+  204,
+  205,
+  206,
+  207,
+  208,
+  209,
+  210,
+  211,
+  212,
+  213,
+  214,
+  215,
+  216,
+  217,
+  218,
+  219,
+  248,
+  249,
+  250,
+  251,
+  252,
+  253,
+  254,
+  255,
+  256
+ ],
+ "tamozhenniy": [],
+ "oNedrah": [],
+ "UIK": [
+  158,
+  159,
+  160
+ ]
 }

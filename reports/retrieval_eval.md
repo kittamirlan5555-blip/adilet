@@ -1,6 +1,6 @@
 # Ретрив-эвал вектор-слоя (small-to-big)
 
-Модель: `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` (384-dim), индекс faiss (11840 векторов: текст мелких статей + сабчанки с заголовком + summary крупных). «Эталон» запроса — статьи, чей ЗАГОЛОВОК содержит тему.
+Модель: `sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2` (384-dim), индекс faiss (16856 векторов: текст мелких статей + сабчанки с заголовком + summary крупных). «Эталон» запроса — статьи, чей ЗАГОЛОВОК содержит тему.
 
 | запрос | эталон (код/ст.) | топ-3 (код/ст: score, тип) | hit@1 | hit@3 |
 |---|---|---|---|---|
@@ -18,7 +18,7 @@
 | договор купли-продажи товара | grazhdanskiy_osob/406, grazhdanskiy_osob | grazhdanskiy_osob/445:0.75·art, grazhdanskiy_osob/450:0.74·art, grazhdanskiy_osob/406:0.74·art | ✅ | ✅ |
 | пенсионные выплаты по возрасту | socialnyy/199, socialnyy/200, socialnyy/ | socialnyy/207:0.86·art, socialnyy/210:0.82·sub, socialnyy/263:0.81·sub | ✅ | ✅ |
 | приватизация жилища | zhilishniy/13 | zhilishniy/13:0.81·sub, zhilishniy/98-2:0.67·art, zhilishniy/105:0.66·art | ✅ | ✅ |
-| управление объектом кондоминиума | zhilishniy/31, zhilishniy/33, zhilishniy | zhilishniy/2:0.52·sub, zhilishniy/51-4:0.51·sub, zhilishniy/38:0.49·sub | — | ✅ |
+| управление объектом кондоминиума | zhilishniy/31, zhilishniy/33, zhilishniy | zdorovyenaroda/55:0.54·sub, zdorovyenaroda/152:0.53·art, zhilishniy/2:0.52·sub | — | ❌ |
 | оценка воздействия на окружающую среду | ekologicheskiy/38, ekologicheskiy/64, ek | ekologicheskiy/65:0.86·sub, ekologicheskiy/64:0.82·art, ekologicheskiy/72:0.81·sub | ✅ | ✅ |
 | экологический аудит | ekologicheskiy/100, ekologicheskiy/101,  | ekologicheskiy/104:0.76·sub, ekologicheskiy/105:0.76·art, ekologicheskiy/88:0.74·sub | ✅ | ✅ |
 | право частной собственности на земельный у | zemelnyy/133, zemelnyy/137, zemelnyy/138 | zemelnyy/47:0.87·sub, zemelnyy/69:0.86·sub, zemelnyy/25:0.86·art | ✅ | ✅ |
@@ -30,10 +30,10 @@
 | понятие административного акта | appk/1, appk/10, appk/102, appk/103, app | appk/80:0.86·sub, appk/69:0.83·art, appk/167-2:0.82·art | ✅ | ✅ |
 | способы осуществления государственных заку | goszakup/10, goszakup/12, goszakup/16 | goszakup/6:0.75·sub, goszakup/16:0.73·sub, goszakup/10:0.72·sub | — | ✅ |
 | противодействие коррупции и антикоррупцион | koap/439, koap/680, koap/681, ocorrupt/1 | ocorrupt/18:0.81·art, ocorrupt/5:0.76·art, ocorrupt/23:0.76·art | ✅ | ✅ |
-| защита персональных данных | persdata/10, persdata/11, persdata/12, p | informatizacii/56:0.75·art, persdata/20:0.74·art, persdata/21:0.71·art | — | ✅ |
+| защита персональных данных | persdata/10, persdata/11, persdata/12, p | informatizacii/56:0.75·art, persdata/20:0.74·art, zdorovyenaroda/62:0.73·art | — | ✅ |
 | порядок назначения акима района | mestnoe_upravlenie/23-1, mestnoe_upravle | mestnoe_upravlenie/38-1:0.69·sub, mestnoe_upravlenie/32:0.69·sub, mestnoe_upravlenie/38:0.67·sub | ✅ | ✅ |
 
-**Итог: hit@1 = 17/28 (61%), hit@3 = 24/28 (86%).**
+**Итог: hit@1 = 17/28 (61%), hit@3 = 23/28 (82%).**
 
 ### Анализ (честно)
 
