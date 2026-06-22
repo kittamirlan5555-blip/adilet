@@ -1,13 +1,7 @@
 {
  "trudovoy": [],
  "grazhdanskiy": [],
- "grazhdanskiy_osob": [
-  420,
-  435,
-  578,
-  643,
-  661
- ],
+ "grazhdanskiy_osob": [],
  "predprinimatel": [
   158,
   159,
@@ -121,5 +115,8 @@
   158,
   159,
   160
- ]
+ ],
+ "sudsystema": [],
+ "vybory": [],
+ "stolitsa": []
 }
