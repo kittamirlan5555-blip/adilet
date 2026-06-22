@@ -168,5 +168,50 @@
   "hier": "UIK",
   "label": "УИК",
   "title": "Уголовно-исполнительный кодекс"
+ },
+ "prezident": {
+  "hier": "PREZ",
+  "label": "През",
+  "title": "О Президенте"
+ },
+ "parlament": {
+  "hier": "PARL",
+  "label": "Парл",
+  "title": "О Парламенте и статусе его депутатов"
+ },
+ "sudsystema": {
+  "hier": "SUD",
+  "label": "Суд",
+  "title": "О судебной системе и статусе судей"
+ },
+ "vybory": {
+  "hier": "VYB",
+  "label": "Выб",
+  "title": "О выборах в Республике Казахстан"
+ },
+ "konstsud": {
+  "hier": "KS",
+  "label": "КС",
+  "title": "О Конституционном Суде"
+ },
+ "gossimvoly": {
+  "hier": "SIMV",
+  "label": "Симв",
+  "title": "О государственных символах"
+ },
+ "referendum": {
+  "hier": "REF",
+  "label": "Реф",
+  "title": "О республиканском референдуме"
+ },
+ "stolitsa": {
+  "hier": "STOL",
+  "label": "Стол",
+  "title": "О статусе столицы"
+ },
+ "alatau": {
+  "hier": "ALT",
+  "label": "Алат",
+  "title": "О специальном правовом режиме города Алатау"
  }
 }
