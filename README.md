@@ -6,7 +6,8 @@
 faiss-индекс для vector DB. Каждая правовая отсылка внутри текста («пунктом 2
 статьи 35», «Законом РК "О банках…"») становится рабочей гиперссылкой — для
 публикации на adilet.kz и для семантического поиска. Сейчас в корпусе
-**34 документа** (22 кодекса + 12 законов), **все обработаны, все гейты GREEN**.
+**43 документа** (22 кодекса + 12 законов + 9 конституционных законов),
+**все обработаны, все гейты GREEN**.
 
 ## Документация
 
@@ -24,7 +25,7 @@ git clone <repo> && cd ADILETkz
 python -m venv venv && . venv/Scripts/activate   # Windows; на *nix venv/bin/activate
 pip install -r requirements.txt
 
-python scripts/verify.py --all        # ОЖИДАЕМО: «ИТОГ: ВСЕ ГЕЙТЫ PASS» (34 дока)
+python scripts/verify.py --all        # ОЖИДАЕМО: «ИТОГ: ВСЕ ГЕЙТЫ PASS» (43 дока)
 python -m unittest discover -s scripts/tests -t .   # юнит-тесты зелёные
 ```
 Продукт — `final/*_structured.html` (открывать в БРАУЗЕРЕ). Вектор-слой —
@@ -45,7 +46,8 @@ ADILETkz/
 │   ├── tree/          деревья структуры (hier_id)
 │   ├── chunks/        чанки по документам
 │   ├── structured_out/ jsonl по схеме шефа (hier_id UKCH1R1ST1P1)
-│   └── vector_layer/  chunks.jsonl + index.faiss + meta/config (small-to-big retrieval)
+│   └── vector_layer/  index_config + repealed_gaps (в гите); chunks.jsonl + index.faiss +
+│                       index_meta.jsonl ТЯЖЁЛЫЕ → gitignored, пересборка скриптами
 ├── scripts/       весь код; пути — ТОЛЬКО из paths.py
 │   ├── paths.py      единая точка истины по путям
 │   ├── verify.py     оркестратор гейтов (verify.py слаг | --all)
@@ -55,27 +57,32 @@ ADILETkz/
 │   ├── tests/        юнит-тесты линковки
 │   └── hooks/        pre-push (тесты + verify по изменённым слагам)
 ├── reports/       ТОЛЬКО актуальное: доски + вектор-отчёты + audit/ + gates/ → reports/README.md
-├── deliverables/  ТОЛЬКО последний пакет (vector_layer/)          → deliverables/README.md
-├── docs/          brief/, anara/ — история ревью
+├── deliverables/  актуальные пакеты Анары (anara_batch9, anara_const_laws + zip) → deliverables/README.md
+├── docs/          HANDOFF.md, pipeline_logic.md, zNh_fix_plan.md, brief/, anara/
 └── archive/       всё историческое (раунды, старые пакеты, attic) — НА ДИСКЕ, вне git
 ```
 
-Локально на диске, но **вне репозитория** (в `.gitignore`): `archive/`, `reports/gates/`
-(перегенерируемые гейты), `_old_tree_leftovers/`, `backups/`, `venv/`. История в git
-сохранена — архивные файлы восстановимы из прошлых коммитов.
+Локально на диске, но **вне репозитория** (в `.gitignore`): тяжёлый вектор-слой
+`derived/vector_layer/{chunks.jsonl, index.faiss, index_meta.jsonl}` (перегенерируемый
+— `f_full_chunks` + `g_build_index`; в гите только лёгкие `index_config.json` +
+`repealed_gaps.json`), `archive/`, `reports/gates/` + `reports/r3/` (перегенер. гейты),
+`_old_tree_leftovers/`, `backups/`, `venv/`. История в git сохранена.
 
 ## Статус документов
 
-**34 документа обработаны · `verify.py --all` — ВСЕ ГЕЙТЫ GREEN · вектор-слой собран**
-(19194 чанка, индекс 16856 векторов, repealed вне индекса).
+**43 документа обработаны · `verify.py --all` — ВСЕ ГЕЙТЫ GREEN · вектор-слой собран**
+(20265 чанков, индекс 17786 векторов, repealed вне индекса).
 
 | документы | статус |
 |---|---|
 | 13 исходных кодексов (nalog…ugolovniy) + 12 законов | ✅ обработаны/приняты |
-| **batch9** (9 кодексов): lesnoy, vodniy, zdorovyenaroda, oBrake, tamozhenniy, oNedrah, stroitelniy, cifrovoy, UIK | ✅ обработаны; пакет `deliverables/anara_batch9/` (у Анары) |
-| Конституция, prezident | ⏸ в холде (в `source/`, ждут батча конституционных законов) |
+| **batch9** (9 кодексов): lesnoy, vodniy, zdorovyenaroda, oBrake, tamozhenniy, oNedrah, stroitelniy, cifrovoy, UIK | ✅ обработаны; пакет `deliverables/anara_batch9/` |
+| **конституционные законы** (9): prezident, parlament, sudsystema, vybory, konstsud, gossimvoly, referendum, stolitsa, alatau | ✅ обработаны; пакет `deliverables/anara_const_laws/` |
+| **pravitelstvo** («О Правительстве») | ⏸ ХОЛД — на adilet старый формат 1995 (номер статьи в `<a href>`); ждём свежую выгрузку |
+| Конституция (`constitution`) | ⏸ ХОЛД — формат «Статья N» без точки; рефреш конст. законов — после новой Конституции **01.07.2026** |
 
-Полный реестр слаг→НГР — `maps/codes.json` (34 записи).
+Полный реестр слаг→НГР — `maps/codes.json` (43 записи). Отложенный фикс структур
+(само-ссылки на примечания / zNh) — `docs/zNh_fix_plan.md`.
 
 ## Типовые сценарии
 
