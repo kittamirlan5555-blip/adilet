@@ -459,7 +459,7 @@
     {
       "article": "420",
       "title": "Ассортимент товаров",
-      "anchor": null,
+      "anchor": "z420h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "GKOR4G25PG1ST420",
@@ -1120,7 +1120,7 @@
     {
       "article": "435",
       "title": "Последствия передачи товара без тары и (или) упаковки либо в ненадлежащей таре и (или) упаковке",
-      "anchor": null,
+      "anchor": "z435h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "GKOR4G25PG1ST435",
@@ -5942,7 +5942,7 @@
     {
       "article": "578",
       "title": "Пользование имуществом арендованного предприятия",
-      "anchor": null,
+      "anchor": "z578h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "GKOR4G29PG3ST578",
@@ -6319,7 +6319,7 @@
     {
       "article": "594-5",
       "title": "Договоры с третьими лицами об использовании транспортного средства",
-      "anchor": null,
+      "anchor": "z594-5h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "GKOR4G29PG5ST594-5",
@@ -7714,7 +7714,7 @@
     {
       "article": "643",
       "title": "Представление заказчику информации о результатах работы",
-      "anchor": null,
+      "anchor": "z643h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "GKOR4G32PG2ST643",
@@ -8239,7 +8239,7 @@
     {
       "article": "661",
       "title": "Обязанности подрядчика по охране окружающей среды и безопасности ведения строительных работ",
-      "anchor": null,
+      "anchor": "z661h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "GKOR4G32PG3ST661",

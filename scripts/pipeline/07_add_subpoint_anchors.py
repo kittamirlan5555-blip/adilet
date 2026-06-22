@@ -85,6 +85,22 @@ def inject_synthetic_anchors(soup, article_map):
         new_anchor = soup.new_tag('a', attrs={'id': target_anchor, 'name': target_anchor})
         b.insert(0, new_anchor)
         injected += 1
+    # <h3>Статья N. ...</h3> без id (konstsud и пр.) — СТРОГО паттерн «Статья N.»
+    for h3 in soup.find_all('h3'):
+        if h3.get('id'):
+            continue
+        htxt = h3.get_text(' ', strip=True)
+        m = re.match(r'^Статья\s+(\d+(?:-\d+)?)\s*\.', htxt)
+        if not m:
+            continue
+        target_anchor = article_map.get(m.group(1))
+        if not target_anchor or not target_anchor.endswith('h'):
+            continue
+        if h3.find('a', attrs={'name': True}) or h3.find('a', attrs={'id': True}):
+            continue
+        new_anchor = soup.new_tag('a', attrs={'id': target_anchor, 'name': target_anchor})
+        h3.insert(0, new_anchor)
+        injected += 1
     return injected
 
 

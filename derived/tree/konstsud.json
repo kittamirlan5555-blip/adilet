@@ -88,7 +88,7 @@
     {
       "article": "4",
       "title": "Председатель, заместитель Председателя и судьи Конституционного Суда",
-      "anchor": null,
+      "anchor": "z4h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR1G2ST4",
@@ -925,7 +925,7 @@
     {
       "article": "23",
       "title": "Компетенция Конституционного Суда",
-      "anchor": null,
+      "anchor": "z23h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR1G5ST23",
@@ -1388,7 +1388,7 @@
     {
       "article": "30",
       "title": "Особенности электронного формата конституционного производства",
-      "anchor": null,
+      "anchor": "z30h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G6ST30",
@@ -1434,7 +1434,7 @@
     {
       "article": "31",
       "title": "Верховенство Конституции Республики Казахстан",
-      "anchor": null,
+      "anchor": "z31h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G6ST31",
@@ -1443,7 +1443,7 @@
     {
       "article": "32",
       "title": "Всестороннее, полное и объективное исследование обстоятельств обращения",
-      "anchor": null,
+      "anchor": "z32h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G6ST32",
@@ -1452,7 +1452,7 @@
     {
       "article": "33",
       "title": "Коллегиальность",
-      "anchor": null,
+      "anchor": "z33h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G6ST33",
@@ -1461,7 +1461,7 @@
     {
       "article": "34",
       "title": "Гласность",
-      "anchor": null,
+      "anchor": "z34h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G6ST34",
@@ -1470,7 +1470,7 @@
     {
       "article": "35",
       "title": "Равноправие участников конституционного производства",
-      "anchor": null,
+      "anchor": "z35h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G6ST35",
@@ -1479,7 +1479,7 @@
     {
       "article": "36",
       "title": "Язык конституционного производства",
-      "anchor": null,
+      "anchor": "z36h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G6ST36",
@@ -1516,7 +1516,7 @@
     {
       "article": "37",
       "title": "Приостановление конституционного производства",
-      "anchor": null,
+      "anchor": "z37h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G6ST37",
@@ -1544,7 +1544,7 @@
     {
       "article": "38",
       "title": "Прекращение конституционного производства",
-      "anchor": null,
+      "anchor": "z38h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G6ST38",
@@ -1609,7 +1609,7 @@
     {
       "article": "39",
       "title": "Протоколирование заседания Конституционного Суда",
-      "anchor": null,
+      "anchor": "z39h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G6ST39",
@@ -1646,7 +1646,7 @@
     {
       "article": "40",
       "title": "Государственная пошлина",
-      "anchor": null,
+      "anchor": "z40h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G6ST40",
@@ -2053,7 +2053,7 @@
     {
       "article": "43",
       "title": "Виды обращений в Конституционный Суд",
-      "anchor": null,
+      "anchor": "z43h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G8ST43",
@@ -2335,7 +2335,7 @@
     {
       "article": "45",
       "title": "Обращения граждан на нарушение конституционных прав и свобод человека и гражданина",
-      "anchor": null,
+      "anchor": "z45h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G8ST45",
@@ -2539,7 +2539,7 @@
     {
       "article": "48",
       "title": "Принятие или отказ в принятии обращения к конституционному производству",
-      "anchor": null,
+      "anchor": "z48h",
       "status": "active",
       "unit_type": "пункт",
       "hier_id": "KSR2G9ST48",

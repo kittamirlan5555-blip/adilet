@@ -103,6 +103,26 @@ def build_article_map(html_path: str) -> dict:
         synth = f"z{article_num}h"
         article_map[article_num] = synth
 
+    # === Способ 5: <h3>Статья N. ...</h3> БЕЗ id (konstsud, часть ГК/УК/ЗК) ===
+    # Заголовок-статья в <h3>, но adilet не дал id (Способ 2 его не поймал).
+    # СТРОГО паттерн "Статья N." в начале — НЕ любой <h3> (секционные «Глава…»,
+    # «Раздел…», «ПОЛОЖЕНИЯ» НЕ якорим). Аддитивно: только где якоря ещё нет.
+    # Скрипт 07 затем инжектирует <a id="z<N>h"> в начало <h3>.
+    for h3 in soup.find_all("h3"):
+        if h3.get("id"):
+            continue  # уже учтён Способом 2
+        htxt = h3.get_text(" ", strip=True)
+        m = re.match(r"^Статья\s+(\d+(?:-\d+)?)\s*\.", htxt)
+        if not m:
+            continue
+        article_num = m.group(1)
+        if article_num in article_map:
+            continue
+        if h3.find("a", attrs={"name": True}) or h3.find("a", attrs={"id": True}):
+            continue
+        synth = f"z{article_num}h"
+        article_map[article_num] = synth
+
     return article_map
 
 
