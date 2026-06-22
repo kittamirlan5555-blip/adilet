@@ -61,9 +61,17 @@ _old_tree_leftovers/
 # docs/HANDOFF.md. Если нужна эта версия в репо — сначала вычистить ПДн.
 ADILETkz_HANDOFF.md
 
-# вектор-слой: редундантный бэкап и tmp (chunks.jsonl каноничен)
+# вектор-слой: ТЯЖЁЛЫЕ перегенерируемые артефакты — на диске остаются, в репо НЕ идут.
+# Пересборка: f_full_chunks -> chunks.jsonl; g_build_index -> index.faiss + index_meta.
+# Анаре уходят файлом (deliverables/*/chunks/ + zip). В гите — лёгкие config/gaps.
+derived/vector_layer/chunks.jsonl
+derived/vector_layer/index.faiss
+derived/vector_layer/index_meta.jsonl
 derived/vector_layer/chunks_top100_backup.jsonl
 derived/vector_layer/*.tmp
+
+# машинный отчёт g6-апплая (перегенерируемый r3_02_g6_apply.py)
+reports/r3/
 
 # reports/gates: машинные гейт-отчёты verify.py — перегенерируемые (paths.GATES).
 # Папка остаётся на диске (verify пишет туда), но в репо не идёт.
