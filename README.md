@@ -3,11 +3,33 @@
 Конвейер превращает сырой HTML кодексов и законов РК с **adilet.zan.kz** в
 согласованные артефакты: `*_ready.html` (плоская форма со ссылками),
 `*_structured.html` (она же с иерархией, КАНОН по ссылкам) и jsonl-чанки +
-faiss-индекс для vector DB. Сейчас в корпусе **25 документов** (13 кодексов +
-12 законов).
+faiss-индекс для vector DB. Каждая правовая отсылка внутри текста («пунктом 2
+статьи 35», «Законом РК "О банках…"») становится рабочей гиперссылкой — для
+публикации на adilet.kz и для семантического поиска. Сейчас в корпусе
+**34 документа** (22 кодекса + 12 законов), **все обработаны, все гейты GREEN**.
 
-Агентские правила (полный спан, гейты, грабли) — **CLAUDE.md**. Кто чего
-ждёт — **reports/WAITING_ON_HUMANS.md**.
+## Документация
+
+| читать | про что |
+|---|---|
+| **[docs/HANDOFF.md](docs/HANDOFF.md)** | приём проекта: что/кто/где/состояние/как продолжать (10 мин) |
+| **[docs/pipeline_logic.md](docs/pipeline_logic.md)** | как пайплайн собирает/проверяет/векторизует (техника) |
+| **CLAUDE.md** | жёсткие правила агента (полный спан, гейты, грабли) |
+| **reports/WAITING_ON_HUMANS.md** | что ждёт решения людей |
+
+## Старт за 2 минуты
+
+```bash
+git clone <repo> && cd ADILETkz
+python -m venv venv && . venv/Scripts/activate   # Windows; на *nix venv/bin/activate
+pip install -r requirements.txt
+
+python scripts/verify.py --all        # ОЖИДАЕМО: «ИТОГ: ВСЕ ГЕЙТЫ PASS» (34 дока)
+python -m unittest discover -s scripts/tests -t .   # юнит-тесты зелёные
+```
+Продукт — `final/*_structured.html` (открывать в БРАУЗЕРЕ). Вектор-слой —
+`derived/vector_layer/`. Как прогнать новый документ или батч — ниже «Типовые
+сценарии» и [docs/pipeline_logic.md](docs/pipeline_logic.md).
 
 ## Карта проекта
 
@@ -44,13 +66,16 @@ ADILETkz/
 
 ## Статус документов
 
+**34 документа обработаны · `verify.py --all` — ВСЕ ГЕЙТЫ GREEN · вектор-слой собран**
+(19194 чанка, индекс 16856 векторов, repealed вне индекса).
+
 | документы | статус |
 |---|---|
-| 13 кодексов + arbitrazh, bezhenci, goszakup, ocorrupt, zhilishniy | ✅ приняты |
-| informatizacii, notariat, obrazovanie | 📤 у Анары (пакет — `archive/deliverables/laws3/`) |
-| gosuslugi, persdata | ✅ приняты ревью (без замечаний, 2026-06-11) |
-| pravoohranitel | 🔁 фидбек получен (6 флагов), правки внесены (пакет — `archive/deliverables/laws_r3/`) |
-| Конституция, prezident | ⏸ в холде (лежат в source/, не обрабатывались) |
+| 13 исходных кодексов (nalog…ugolovniy) + 12 законов | ✅ обработаны/приняты |
+| **batch9** (9 кодексов): lesnoy, vodniy, zdorovyenaroda, oBrake, tamozhenniy, oNedrah, stroitelniy, cifrovoy, UIK | ✅ обработаны; пакет `deliverables/anara_batch9/` (у Анары) |
+| Конституция, prezident | ⏸ в холде (в `source/`, ждут батча конституционных законов) |
+
+Полный реестр слаг→НГР — `maps/codes.json` (34 записи).
 
 ## Типовые сценарии
 
@@ -62,7 +87,12 @@ python scripts/pipeline/11_structure_html.py --input final/слаг_ready.html -
 python scripts/pipeline/68_link_canon.py --doc-id Zxxxxxxxxxx               # канон structured
 python scripts/pipeline/68_link_canon.py --doc-id Zxxxxxxxxxx --form ready  # канон ready
 python scripts/pipeline/71_fullspan_wrap.py слаг --apply
+python scripts/pipeline/71_fullspan_wrap.py слаг --form structured --apply
 python scripts/verify.py слаг                                # все гейты + gap-остаток
+# по флагам verify (batch9-фиксеры, text-invariant; см. docs/pipeline_logic.md):
+#   G6 рассинхрон форм          → python scripts/pipeline/79_canon_self_anchor.py слаг --apply
+#   cross-code на чужой/нет якорь → python scripts/pipeline/78_crosscode_root.py слаг --apply
+#   висячие self-#z              → python scripts/pipeline/77_unwrap_dangling.py слаг --apply
 # gap-остаток ≠ 0 → закрыть кандидатов (ключи в npa_mapping ТОЛЬКО после сверки НГР, §5)
 python scripts/pipeline/chunk_npa.py слаг && python scripts/pipeline/structurize.py слаг
 ```
@@ -117,13 +147,15 @@ python -m unittest discover -s scripts/tests -t .
 | Бюджетный | byudzhet | K2500000171 |
 | Уголовный | ugolovniy | K1400000226 |
 
-Законы — ключи в `maps/codes.json`; новые R3/R4:
++ **9 кодексов batch9**: лесной (lesnoy K030000477_), водный (vodniy K2500000178),
+о здоровье народа (zdorovyenaroda K2000000360), о браке/семье (oBrake K1100000518),
+таможенный (tamozhenniy K1700000123), о недрах (oNedrah K1700000125), строительный
+(stroitelniy K2600000253), цифровой (cifrovoy K2600000255), уголовно-исполнительный
+(UIK K1400000234).
 
-| Закон | Ключ | doc_id |
-|---|---|---|
-| О государственных и социально ответственных услугах | gosuslugi | Z1300000088 |
-| О правоохранительной службе | pravoohranitel | Z1100000380 |
-| О персональных данных и их защите | persdata | Z1300000094 |
+**12 законов** (informatizacii, notariat, obrazovanie, arbitrazh, goszakup, ocorrupt,
+bezhenci, zhilishniy, gosuslugi, pravoohranitel, persdata, mestnoe_upravlenie) —
+ключи и НГР в `maps/codes.json`.
 
 Структуризация для vector DB по схеме шефа (hier_id вида `UKCH1R1ST1P1`):
 `python scripts/pipeline/structurize.py --all` → `derived/structured_out/`.
