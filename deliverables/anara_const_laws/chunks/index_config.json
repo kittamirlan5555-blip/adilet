@@ -1,0 +1,8 @@
+{
+ "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+ "dim": 384,
+ "vectors": 17786,
+ "prefix_query": "",
+ "prefix_passage": "",
+ "metric": "cosine(IP/normalized)"
+}
