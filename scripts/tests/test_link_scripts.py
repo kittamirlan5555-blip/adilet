@@ -360,9 +360,16 @@ class Test74Freshness(unittest.TestCase):
         self.assertEqual(M74.STALE_REMAP["K1700000120"][0], "K2500000214")  # nalog
         self.assertEqual(M74.STALE_REMAP["K080000095_"][0], "K2500000171")  # byudzhet
         self.assertEqual(M74.STALE_REMAP["Z950002444_"][0], "Z2600000258")  # банки
+        self.assertEqual(M74.STALE_REMAP["K100000296_"][0], "K1700000123")  # tamozhenniy (2010 О тамож. деле -> 2017 О тамож. регулировании)
         self.assertEqual(set(M74.STALE_REMAP),
-                         {"K1700000120", "K080000095_", "Z950002444_"},
+                         {"K1700000120", "K080000095_", "Z950002444_", "K100000296_"},
                          "в авто-ремапе ТОЛЬКО подтверждённые repeal-replace")
+
+    def test_historical_dated_exemption(self):
+        # §4: намеренная ДАТИРОВАННАЯ истор. отсылка (видимая фраза называет редакцию
+        # по дате) — ремап ЗАПРЕЩЁН, освобождается как hist. Отдельный механизм, НЕ
+        # авто-ремап: при сканировании такой (slug,docid) уходит в hist_links, не в stale.
+        self.assertIn(("tamozhenniy", "K1700000120"), M74.HISTORICAL_DATED)
 
     def test_needs_review_not_in_auto_remap(self):
         # §5: кандидаты на ручной разбор НЕ должны попадать в авто-ремап STALE_REMAP.
