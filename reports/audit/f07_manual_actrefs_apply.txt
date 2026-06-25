@@ -1,0 +1,27 @@
+APPLY (запись обеих форм)
+
+актов-целей: 7  найдено в плейне: 7  ожид. structured-вхожд.: 9
+== grazhdanskiy_osob: {'structured': 2, 'ready': 2}
+   [structured] ЗАПИСАНО +2 sha-inv=True nested=0 dangling 0->0
+   [ready] ЗАПИСАНО +2 sha-inv=True nested=0 dangling 0->0
+== ocorrupt: {'structured': 2}
+   [structured] ЗАПИСАНО +2 sha-inv=True nested=0 dangling 0->0
+== socialnyy: {'structured': 1, 'ready': 1}
+   [structured] ЗАПИСАНО +1 sha-inv=True nested=0 dangling 0->0
+   [ready] ЗАПИСАНО +1 sha-inv=True nested=0 dangling 0->0
+== zdorovyenaroda: {'structured': 1, 'ready': 1}
+   [structured] ЗАПИСАНО +1 sha-inv=True nested=0 dangling 0->0
+   [ready] ЗАПИСАНО +1 sha-inv=True nested=0 dangling 0->0
+== zhilishniy: {'structured': 3}
+   [structured] ЗАПИСАНО +3 sha-inv=True nested=0 dangling 0->0
+
+applied (structured)/акт:
+  2× [Z1100000380] «О правоохранительной службе»
+  2× [Z1100000477] «О миграции населения»
+  1× [Z950002710_] «Об органах национальной безопасности Республики Казахст»
+  1× [Z990000422_] «Об охране селекционных достижений»
+  1× [Z070000219_] «Об игорном бизнесе»
+  1× [Z930002200_] «О реабилитации жертв массовых политических репрессий»
+  1× [Z000000110_] «О жилищных строительных сбережениях в Республике Казахс»
+
+ИТОГО обёрток по всем формам: 13  (structured 9)
