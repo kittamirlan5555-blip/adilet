@@ -218,10 +218,111 @@ def fmt_table(rows):
     return "".join(out)
 
 
+# --- КОРПУСНЫЙ резолвер NGR (Партия 2, шаг 1) ------------------------------
+# Ручные NGR, подтверждённые владельцем (идут в (a) даже если корпус молчит/спорит).
+KNOWN_NGR = {
+    "о банках и банковской деятельности в республике казахстан": "Z2600000258",
+    "об электронном документе и электронной цифровой подписи": "Z030000370_",
+    "о персональных данных и их защите": "Z1300000094",
+}
+# Не применять — закон не принят, остаётся ПЛЕЙН.
+SKIP_TITLES = {"о кибербезопасности"}
+
+
+def build_corpus_linkmap(files):
+    """norm(title) → {NGR: {doc: count}} по ВСЕМ файлам корпуса (живые <a>)."""
+    from collections import defaultdict, Counter
+    cm = defaultdict(lambda: defaultdict(Counter))
+    for f in files:
+        doc = f.stem.replace("_structured", "")
+        soup = BeautifulSoup(f.read_text(encoding="utf-8", errors="replace"), "lxml")
+        for a in soup.find_all("a", href=True):
+            m = NGR_IN_HREF.search(a.get("href", ""))
+            if not m:
+                continue
+            title = extract_title(a.get_text())
+            if title:
+                cm[norm(title)][m.group(1)][doc] += 1
+    return cm
+
+
+def corpus_resolve_report(all_plain, files):
+    """Резолв 29 нерешённых актов по ВСЕМУ корпусу. → markdown (a)/(b)/конфликт/skip."""
+    from collections import defaultdict
+    groups, disp = defaultdict(list), {}
+    for r in all_plain:
+        if r["ngr_src"] != "—":
+            continue
+        key = norm(r["title"]) if r["title"] else norm(r["phrase"])
+        groups[key].append((r["doc"], r["article"]))
+        disp.setdefault(key, r["title"] or r["phrase"])
+
+    cm = build_corpus_linkmap(files)
+    resolved, conflict, missing, skipped = [], [], [], []
+    for key, occ in sorted(groups.items(), key=lambda kv: (-len(kv[1]), kv[0])):
+        name = disp[key]
+        occ_str = ", ".join(f"{d}/{a}" for d, a in occ)
+        ngrs = cm.get(key, {})
+        if key in SKIP_TITLES:
+            skipped.append((name, len(occ), occ_str)); continue
+        if key in KNOWN_NGR:
+            ngr = KNOWN_NGR[key]
+            src = "ручной (владелец)"
+            if ngrs:
+                corp = {n: sum(d.values()) for n, d in ngrs.items()}
+                src += "; корпус=" + str(corp) + ("" if list(corp) == [ngr] else " ⚠расхожд.")
+            resolved.append((name, ngr, src, len(occ), occ_str)); continue
+        if not ngrs:
+            missing.append((name, len(occ), occ_str))
+        elif len(ngrs) == 1:
+            ngr = next(iter(ngrs)); where = ngrs[ngr]; tot = sum(where.values())
+            wh = ", ".join(f"{d}×{c}" for d, c in sorted(where.items(), key=lambda x: -x[1])[:4])
+            resolved.append((name, ngr, f"{tot} ссыл.: {wh}", len(occ), occ_str))
+        else:
+            parts = [f"{n}({sum(d.values())}: {','.join(sorted(d))})"
+                     for n, d in sorted(ngrs.items(), key=lambda x: -sum(x[1].values()))]
+            conflict.append((name, " ╱ ".join(parts), len(occ), occ_str))
+
+    L = []
+    P = L.append
+    nocc = lambda rows: sum(r[-2] for r in rows)
+    P("# Корпусный резолвер NGR (Партия 2, шаг 1) — ОТЧЁТ, НЕ ПРИМЕНЯТЬ\n")
+    P(f"Файлов корпуса: {len(files)}. Нерешённых актов: {len(groups)} "
+      f"({sum(len(v) for v in groups.values())} вхожд.)\n")
+
+    P(f"\n## (a) РЕЗОЛВ из корпуса/владельца — актов {len(resolved)}, вхожд. {nocc(resolved)}\n")
+    P("| акт | NGR | где живая ссылка (корпус) | вхождения для фикса (док/ст.) |")
+    P("|---|---|---|---|")
+    for name, ngr, src, n, occ in sorted(resolved, key=lambda x: -x[3]):
+        P(f"| {name} | **{ngr}** | {src} | {n}×: {occ} |")
+
+    P(f"\n## ⚠ КОНФЛИКТ NGR (в корпусе >1 разный) — НЕ брать вслепую: {len(conflict)}\n")
+    if conflict:
+        P("| акт | NGR-кандидаты (счёт: доки) | вхождения |")
+        P("|---|---|---|")
+        for name, parts, n, occ in conflict:
+            P(f"| {name} | {parts} | {n}×: {occ} |")
+    else:
+        P("_(нет)_")
+
+    P(f"\n## (b) НЕ резолвится нигде в корпусе — ручной поиск: актов {len(missing)}, вхожд. {nocc(missing)}\n")
+    P("| акт | вхождения (док/ст.) |")
+    P("|---|---|")
+    for name, n, occ in sorted(missing, key=lambda x: -x[1]):
+        P(f"| {name} | {n}×: {occ} |")
+
+    P(f"\n## SKIP (закон не принят, остаётся плейн): {len(skipped)}\n")
+    for name, n, occ in skipped:
+        P(f"- {name} — {n}×: {occ}")
+    return "\n".join(L) + "\n"
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("slugs", nargs="*", help="слаги (без _structured); пусто = все")
     ap.add_argument("--no-md", action="store_true", help="не писать markdown-отчёт")
+    ap.add_argument("--corpus", action="store_true",
+                    help="доп. отчёт: корпусный резолв NGR нерешённых актов (a)/(b)")
     args = ap.parse_args()
 
     files = sorted(paths.FINAL.glob("*_structured.html"))
@@ -260,6 +361,15 @@ def main():
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(report, encoding="utf-8")
         print(f"\n[отчёт записан] {out}")
+
+    if args.corpus:
+        # корпусный резолв всегда по ВСЕМ файлам (резолв ищем по всему корпусу)
+        all_files = sorted(paths.FINAL.glob("*_structured.html"))
+        creport = corpus_resolve_report(all_plain, all_files)
+        out2 = paths.AUDIT_OUT / "corpus_resolve.md"
+        out2.write_text(creport, encoding="utf-8")
+        print("\n" + creport)
+        print(f"\n[корпус-отчёт записан] {out2}")
 
 
 def fmt_table_torn(rows):
