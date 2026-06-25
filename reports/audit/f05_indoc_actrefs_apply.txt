@@ -1,0 +1,60 @@
+APPLY (запись обеих форм)
+
+== vodniy: ожидаем 1/форму; найдено {'structured': 1, 'ready': 1}
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z2300000030> Законом Республики Казахстан "Об общественном контроле"
+   [structured] ЗАПИСАНО +1  sha-inv=True nested=0 dangling 0->0
+   [ready] +<a https://adilet.zan.kz/rus/docs/Z2300000030> Законом Республики Казахстан "Об общественном контроле"
+   [ready] ЗАПИСАНО +1  sha-inv=True nested=0 dangling 0->0
+== oNedrah: ожидаем 4/форму; найдено {'structured': 4, 'ready': 4}
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z100000291_> Закона Республики Казахстан от 24 июня 2010 года "О недрах и недропользовании"
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z100000291_> Закона Республики Казахстан "О недрах и недропользовании"
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z100000291_> Закона Республики Казахстан "О недрах и недропользовании"
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z100000291_> Закона Республики Казахстан "О недрах и недропользовании"
+   [structured] ЗАПИСАНО +4  sha-inv=True nested=0 dangling 0->0
+   [ready] +<a https://adilet.zan.kz/rus/docs/Z100000291_> Закона Республики Казахстан от 24 июня 2010 года "О недрах и недропользовании"
+   [ready] +<a https://adilet.zan.kz/rus/docs/Z100000291_> Закона Республики Казахстан "О недрах и недропользовании"
+   [ready] +<a https://adilet.zan.kz/rus/docs/Z100000291_> Закона Республики Казахстан "О недрах и недропользовании"
+   [ready] +<a https://adilet.zan.kz/rus/docs/Z100000291_> Закона Республики Казахстан "О недрах и недропользовании"
+   [ready] ЗАПИСАНО +4  sha-inv=True nested=0 dangling 0->0
+  [zhilishniy/ready] нет файла — пропуск
+== zhilishniy: ожидаем 4/форму; найдено {'structured': 4}
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z070000310_#z2> Законом Республики Казахстан "О государственной регистрации прав на недвижимое и
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z070000310_#z2> Закона Республики Казахстан "О государственной регистрации прав на недвижимое им
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z070000310_#z2> Законом Республики Казахстан "О государственной регистрации прав на недвижимое и
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z2300000014#z0> Закону Республики Казахстан "О профессиональных квалификациях"
+   [structured] ЗАПИСАНО +4  sha-inv=True nested=0 dangling 0->0
+== grazhdanskiy_osob: ожидаем 2/форму; найдено {'structured': 2, 'ready': 2}
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z990000456_#z1> Законом Республики Казахстан "О товарных знаках, знаках обслуживания, географиче
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z990000456_#z1> Законом Республики Казахстан "О товарных знаках, знаках обслуживания, географиче
+   [structured] ЗАПИСАНО +2  sha-inv=True nested=0 dangling 0->0
+   [ready] +<a https://adilet.zan.kz/rus/docs/Z990000456_#z1> Законом Республики Казахстан "О товарных знаках, знаках обслуживания, географиче
+   [ready] +<a https://adilet.zan.kz/rus/docs/Z990000456_#z1> Законом Республики Казахстан "О товарных знаках, знаках обслуживания, географиче
+   [ready] ЗАПИСАНО +2  sha-inv=True nested=0 dangling 0->0
+== koap: ожидаем 3/форму; найдено {'structured': 3, 'ready': 3}
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z1400000202> Законом Республики Казахстан "О разрешениях и уведомлениях"
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z030000415_> Закона Республики Казахстан "Об акционерных обществах"
+   [structured] +<a https://adilet.zan.kz/rus/docs/K1700000123> Кодексом Республики Казахстан "О таможенном регулировании в Республике Казахстан
+   [structured] ЗАПИСАНО +3  sha-inv=True nested=0 dangling 0->0
+   [ready] +<a https://adilet.zan.kz/rus/docs/Z1400000202> Законом Республики Казахстан "О разрешениях и уведомлениях"
+   [ready] +<a https://adilet.zan.kz/rus/docs/Z030000415_> Закона Республики Казахстан "Об акционерных обществах"
+   [ready] +<a https://adilet.zan.kz/rus/docs/K1700000123> Кодексом Республики Казахстан "О таможенном регулировании в Республике Казахстан
+   [ready] ЗАПИСАНО +3  sha-inv=True nested=0 dangling 0->0
+== ugolovniy: ожидаем 1/форму; найдено {'structured': 1, 'ready': 1}
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z1400000213> Законом Республики Казахстан "Об амнистии граждан Республики Казахстан, оралмано
+   [structured] ЗАПИСАНО +1  sha-inv=True nested=0 dangling 0->0
+   [ready] +<a https://adilet.zan.kz/rus/docs/Z1400000213> Законом Республики Казахстан "Об амнистии граждан Республики Казахстан, оралмано
+   [ready] ЗАПИСАНО +1  sha-inv=True nested=0 dangling 0->0
+== nalog: ожидаем 2/форму; найдено {'structured': 2, 'ready': 2}
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z070000234_> Законом Республики Казахстан "О бухгалтерском учете и финансовой отчетности"
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z1500000405> Закона Республики Казахстан "Об обязательном социальном медицинском страховании"
+   [structured] ЗАПИСАНО +2  sha-inv=True nested=0 dangling 0->0
+   [ready] +<a https://adilet.zan.kz/rus/docs/Z070000234_> Законом Республики Казахстан "О бухгалтерском учете и финансовой отчетности"
+   [ready] +<a https://adilet.zan.kz/rus/docs/Z1500000405> Закона Республики Казахстан "Об обязательном социальном медицинском страховании"
+   [ready] ЗАПИСАНО +2  sha-inv=True nested=0 dangling 0->0
+  [goszakup/ready] нет файла — пропуск
+== goszakup: ожидаем 2/форму; найдено {'structured': 2}
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z2300000030#z0> Законом Республики Казахстан "Об общественном контроле"
+   [structured] +<a https://adilet.zan.kz/rus/docs/Z2300000030#z0> Законом Республики Казахстан "Об общественном контроле"
+   [structured] ЗАПИСАНО +2  sha-inv=True nested=0 dangling 0->0
+
+ИТОГО обёрток по всем формам: 32
