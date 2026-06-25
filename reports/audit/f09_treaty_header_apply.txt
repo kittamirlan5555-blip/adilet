@@ -1,0 +1,8 @@
+[ПЕРЕПРОВЕРКА] ПЛЕЙН «стать N Договора о Союзе/ЕАЭС» по корпусу: 1
+    tamozhenniy ст.211 [ЗАГОЛОВОК] статьей 50 Договора о Союзе
+
+[ФИКС] tamozhenniy ст.211 заголовок «статьел 50» -> Z1400000240 (root): {'structured': 1, 'ready': 1} (ожид 1)
+    [structured] +<a Z1400000240> статьей 50
+    [structured] ЗАПИСАНО +1 sha-inv=True nested=0 dangling 0->0 href#z50=0
+    [ready] +<a Z1400000240> статьей 50
+    [ready] ЗАПИСАНО +1 sha-inv=True nested=0 dangling 0->0 href#z50=0
