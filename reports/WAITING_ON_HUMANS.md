@@ -2,6 +2,31 @@
 
 Формат строки: **вопрос** — контекст — что разблокирует.
 
+## Вектор-слой: миграция на e5-large (БИЛД ПРЕРВАН на эмбеддинге, возобновляемо) — 2026-06-26
+
+Ергали велел перейти на `intfloat/multilingual-e5-large` (1024-dim). **СДЕЛАНО в коде:**
+- `scripts/vector/embedder.py` — единый модуль (модель + префиксы `passage:`/`query:`, L2-норм, sentence-transformers);
+- `g_build_index.py` — рефактор на e5 (+ переиспользуемая `build_passages()`; config пишет model/dim=1024/префиксы/max_tokens);
+- `i_retrieval_eval.py`, `e_retrieval_smoke.py` — поиск/смоук на e5 (`query:`-префикс);
+- `h_token_audit.py` — аудит лимита 512 токенов.
+
+**Токен-аудит готов** (`reports/e5_token_audit.md`): из 17786 индексируемых только **25 (0.1%) > 512 токенов**
+(медиана 253, p90 336); единственный выброс — `zdorovyenaroda_z8` summary **3106 ток** (аномально длинный
+summary, глянуть отдельно). Вывод: до-резка под-чанков практически не нужна.
+
+**НЕ ГОТОВО:** `index.faiss` НЕ построен — CPU-эмбеддинг e5-large ~3.5 ч (≈24 с/батч × 556), **прерван на
+12% по просьбе владельца. Это ОЖИДАЕМО, не баг.** `index_config.json` пока остаётся MiniLM/384 (`g` пишет
+конфиг только в конце билда) — честно отражает «e5-индекса ещё нет».
+
+**ВОЗОБНОВЛЕНИЕ** (разовый пересбор, когда будет время/GPU):
+1. зависимости (`sentence-transformers faiss-cpu transformers torch`) уже стоят локально;
+2. `python scripts/vector/g_build_index.py` — читает `derived/vector_layer/chunks.jsonl` (20265 строк),
+   эмбеддит 17786 пассажей `passage:`-префиксом → `index.faiss` + `index_meta.jsonl` + `index_config.json`;
+3. валидация: dim=1024, vectors=17786, 0 orphans, repealed=0 (`j_repealed_audit.py`);
+4. sanity: `python scripts/vector/i_retrieval_eval.py` (28 запросов `query:`; сверить с базой MiniLM
+   hit@1 17/28, hit@3 23/28).
+Ускорение: GPU-машина (`torch.cuda`) сократит билд с ~3.5 ч до минут.
+
 ## Ждёт АНАРУ
 
 1. **Вето-ответ по SDACHA_R2** — три закона (informatizacii, notariat,

@@ -19,7 +19,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import paths
 
 CHUNKS = paths.ROOT / "derived" / "vector_layer" / "chunks.jsonl"
-MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+# Модель/префиксы — из единого embedder (e5-large). NB: этот смоук РЕ-ЭМБЕДДИТ весь
+# корпус инлайн (с e5 на CPU — долго); для рутинного поиска используй
+# i_retrieval_eval (персистентный faiss-индекс, эмбеддит только запрос).
 
 # (запрос, ожидаемая статья (code, article)) — все цели в наборе top-100
 QUERIES = [
@@ -42,12 +44,7 @@ def main():
     if not all(p.get("summary") for p in parents.values()):
         sys.exit("STOP: не у всех parent есть summary — сперва c_summarize --all.")
 
-    try:
-        from fastembed import TextEmbedding
-    except Exception as e:
-        sys.exit(f"STOP: fastembed не установлен ({e}). Харнесс готов; "
-                 "поднять: pip install fastembed (ONNX, без torch).")
-    emb = TextEmbedding(model_name=MODEL)
+    import embedder
 
     # заголовок статьи как КОНТЕКСТ при эмбеддинге сабчанка (chunks.jsonl не меняем —
     # это только представление для эмбеддинга; заголовок — сильный топик-сигнал)
@@ -69,13 +66,12 @@ def main():
                for r in rows if r["kind"] == "parent"}
     meta = [(c, anc2art.get((c, a), a), kind) for (c, a, kind) in meta]
 
-    M = np.array(list(emb.embed(corpus)), dtype="float32")
-    M /= (np.linalg.norm(M, axis=1, keepdims=True) + 1e-9)
-    Q = np.array(list(emb.embed([q for q, _ in QUERIES])), dtype="float32")
-    Q /= (np.linalg.norm(Q, axis=1, keepdims=True) + 1e-9)
+    M = embedder.encode_passages(corpus)                       # 'passage: ' + L2-норм
+    Q = embedder.encode_queries([q for q, _ in QUERIES], show=False)   # 'query: ' + L2-норм
 
     L = ["", "## Ретрив-смоук (small-to-big)", "",
-         f"Эмбеддер: `{MODEL}` (fastembed/ONNX, 384-dim, лёгкий). Индекс: косинус "
+         f"Эмбеддер: `{embedder.MODEL}` ({embedder.DIM}-dim, e5, префиксы "
+         f"passage:/query:). Индекс: косинус "
          f"(numpy) по {len(corpus)} векторам (summary parent + сабчанки). Ретрив "
          "возвращает полный текст родительской статьи. 10 запросов, топ-3 разных "
          "статей.", "", "| запрос | ожидалось | топ-3 (статья: score) | вердикт |",

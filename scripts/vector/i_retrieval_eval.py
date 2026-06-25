@@ -56,12 +56,11 @@ QUERIES = [
 
 def load_index():
     import faiss
-    from fastembed import TextEmbedding
+    import embedder                       # единый эмбеддер: модель+префиксы (e5)
     cfg = json.loads((OUT / "index_config.json").read_text(encoding="utf-8"))
     idx = faiss.read_index(str(OUT / "index.faiss"))
     meta = [json.loads(l) for l in (OUT / "index_meta.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
-    emb = TextEmbedding(model_name=cfg["model"])
-    return idx, meta, emb, cfg
+    return idx, meta, embedder, cfg
 
 
 def main():
@@ -74,8 +73,7 @@ def main():
     idx, meta, emb, cfg = load_index()
 
     def retrieve(q, k=3):
-        v = np.array(list(emb.embed([cfg["prefix_query"] + q])), dtype="float32")
-        v /= (np.linalg.norm(v, axis=1, keepdims=True) + 1e-9)
+        v = emb.encode_queries([q], show=False)   # 'query: ' + e5 + L2-норм
         D, I = idx.search(v, 60)
         out, seen = [], set()
         for rank, j in enumerate(I[0]):
