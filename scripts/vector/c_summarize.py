@@ -23,10 +23,30 @@ import paths
 
 CHUNKS = paths.ROOT / "derived" / "vector_layer" / "chunks.jsonl"
 URL = "https://api.deepseek.com/chat/completions"
+# Cap: summary — это представление для эмбеддинга (модель усекает вход), поэтому
+# держим его сжатым. Особый случай — статьи-словари («Основные понятия»): без
+# ограничителя DeepSeek перечисляет ВСЕ термины и summary раздувается на тысячи
+# токенов (был случай zdorovyenaroda z8: 13264 симв). Просим описание, а не
+# перечень. max_tokens (REST) + хард-кап по символам — подстраховка.
 PROMPT = ("Сделай краткую фактологическую выжимку статьи закона на русском, "
-          "3-5 предложений, строго по тексту, ничего не добавляй и не "
-          "интерпретируй; сохрани ключевые понятия и нормы для семантического "
-          "поиска.")
+          "3-5 предложений и НЕ длиннее ~1500 символов. Строго по тексту, ничего "
+          "не добавляй и не интерпретируй; сохрани ключевые понятия и нормы для "
+          "семантического поиска. Если статья — словарь терминов («основные "
+          "понятия», перечень определений), НЕ перечисляй все термины: укажи, "
+          "сколько примерно понятий определяет статья, приведи 5-7 наиболее "
+          "значимых как примеры и заверши «и другие — полный перечень в тексте "
+          "статьи».")
+MAX_TOKENS = 512          # потолок вывода DeepSeek (~ цель 300-400 ток.)
+HARD_CAP_CHARS = 1600     # хард-кап по символам (бэкстоп к промпту/max_tokens)
+
+
+def _cap(s):
+    """Хард-кап summary по символам, обрезая по границе предложения."""
+    if len(s) <= HARD_CAP_CHARS:
+        return s
+    cut = s[:HARD_CAP_CHARS]
+    p = cut.rfind(". ")
+    return cut[:p + 1] if p > HARD_CAP_CHARS * 0.5 else cut.rstrip() + "…"
 
 
 def load():
@@ -45,14 +65,14 @@ def save(rows):
 
 
 def summarize(text, key):
-    payload = {"model": "deepseek-chat", "temperature": 0.2,
+    payload = {"model": "deepseek-chat", "temperature": 0.2, "max_tokens": MAX_TOKENS,
                "messages": [{"role": "system", "content": PROMPT},
                             {"role": "user", "content": "Текст статьи закона:\n\n" + text}]}
     for attempt in range(3):
         r = requests.post(URL, json=payload, timeout=180, headers={
             "Authorization": f"Bearer {key}", "Content-Type": "application/json"})
         if r.status_code == 200:
-            return r.json()["choices"][0]["message"]["content"].strip()
+            return _cap(r.json()["choices"][0]["message"]["content"].strip())
         # не ретраим аутентификацию/баланс — это не временная ошибка
         if r.status_code in (401, 402, 403):
             msg = ""
