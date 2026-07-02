@@ -401,6 +401,65 @@ def find_content_article(soup: BeautifulSoup):
     return max(articles, key=lambda a: len(a.get_text()))
 
 
+def _has_direct_marker(article: Tag) -> bool:
+    """Есть ли структурный маркер (h3-заголовок или p>b>Статья) среди ПРЯМЫХ
+    детей <article> — то, что видит flatten_article."""
+    for el in article.children:
+        if not isinstance(el, Tag):
+            continue
+        if el.name in ('h2', 'h3', 'h4') and (
+                classify(el.get_text(' ', strip=True)) or split_compound(el.get_text(' ', strip=True))):
+            return True
+        if el.name == 'p' and is_article_b_marker(el):
+            return True
+    return False
+
+
+def _has_deep_marker(article: Tag) -> bool:
+    """Есть ли маркеры статей где-то ВНУТРИ (не обязательно прямыми детьми)."""
+    for p in article.find_all('p'):
+        if is_article_b_marker(p):
+            return True
+    for h in article.find_all(['h3', 'h4']):
+        if classify(h.get_text(' ', strip=True)):
+            return True
+    return False
+
+
+def unwrap_div_layout(article: Tag) -> int:
+    """Вариант-B раскладки adilet: контент завёрнут в per-блок <div>
+    (article > div > p > b > Статья), поэтому маркеры НЕ прямые дети <article>,
+    и flatten_article видит только опаковые <div> → 0 статей.
+
+    Если среди ПРЯМЫХ детей нет ни одного структурного маркера, а глубже они
+    есть — разворачиваем <div>-обёртки на уровень (до 3 раз, на случай вложенных),
+    пока маркеры не станут прямыми детьми. ПЛОСКИЕ раскладки (маркеры уже прямые)
+    не трогаем вовсе → регресс на нормальных кодексах исключён по построению.
+    Возвращает число раундов разворота (0 = не тронуто).
+    Текст-инвариант сохраняется: узлы только переносятся на уровень выше."""
+    if _has_direct_marker(article) or not _has_deep_marker(article):
+        return 0
+    rounds = 0
+    for _ in range(3):
+        if _has_direct_marker(article):
+            break
+        changed = False
+        new_children = []
+        for el in list(article.children):
+            if isinstance(el, Tag) and el.name == 'div':
+                new_children.extend(list(el.children))
+                changed = True
+            else:
+                new_children.append(el)
+        if not changed:
+            break
+        article.clear()
+        for c in new_children:
+            article.append(c)
+        rounds += 1
+    return rounds
+
+
 def process_file(input_path: str, output_path: str):
     print(f'  {input_path} -> ', end='', flush=True)
 
@@ -414,6 +473,7 @@ def process_file(input_path: str, output_path: str):
         print('WARN: <article> не найден, пропускаю')
         return None
 
+    unwrap_div_layout(article)     # variant-B: развернуть div-обёртки статей
     flat = flatten_article(article, soup)
 
     # Строим дерево
