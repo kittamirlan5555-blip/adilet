@@ -143,6 +143,7 @@ def main():
         if sh["repealed"]:
             verdict = "REPEALED"            # документ утратил силу — в корпус НЕ берём
             repealed_l.append(ngr)          # в codes.json НЕ регистрируем, только в манифест
+            codes.pop(ngr, None)            # если был зарегистрирован раньше — вычищаем (идемпотентно)
         elif sh["sig"] == 0:
             verdict = "FETCH_THIN"          # 0 сигнатур: чужой формат ИЛИ raw-GET не тот DOM
             quarantine.append(ngr)

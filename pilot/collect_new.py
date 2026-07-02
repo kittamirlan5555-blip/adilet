@@ -43,6 +43,20 @@ def is_amendment(title: str) -> bool:
     t = (title or "").lower()
     return "внесени" in t and ("измен" in t or "дополнен" in t)
 
+
+# ── repealed detect (тот же критерий, что в 01_ingest_adilet): «утратил силу»
+#    в ШАПКЕ документа, до первой «Статья N.» (страница уже скачана — бесплатно) ──
+RE_ARTICLE_ANY = re.compile(r"Стать[яиею]\s+\d")
+RE_REPEALED = re.compile(r"утрати\w*\s+силу", re.IGNORECASE)
+
+
+def is_repealed(soup) -> bool:
+    art = soup.find("article") or soup
+    txt = art.get_text(" ", strip=True)
+    m = RE_ARTICLE_ANY.search(txt)
+    header = txt[:m.start()] if m else txt[:2000]
+    return bool(RE_REPEALED.search(header))
+
 # ── корпус + прошлый пилот -> исключить ──
 codes = json.loads((ROOT / "maps" / "codes.json").read_text(encoding="utf-8"))
 EXCL = set()
@@ -120,6 +134,8 @@ def main():
         # классификация текущего дока
         if excluded(ngr):
             cls = "excluded"
+        elif is_repealed(soup):
+            cls = "repealed"          # утратил силу — в кандидаты НЕ берём
         elif is_amendment(title):
             cls = "amend"
         else:
