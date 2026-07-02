@@ -56,7 +56,7 @@ _spec.loader.exec_module(_amap)
 RE_ZNAME = re.compile(r"^z\d+")
 RE_ART_B = re.compile(r"^Статья\s+\d+(?:-\d+)?\s*\.")
 PY = sys.executable
-ALL_STEPS = ["pre", "struct", "links", "gate", "chunk"]
+ALL_STEPS = ["pre", "struct", "links", "canon", "gate", "chunk"]
 
 
 def load_codes() -> dict:
@@ -145,7 +145,7 @@ def chunk_article_stats(slug: str) -> tuple:
 
 def process(slug: str, doc_id: str, steps: list, timeout: int) -> dict:
     row = {"slug": slug, "doc_id": doc_id, "n": 0, "pre": "-", "struct": "-",
-           "links": "-", "gate": "-", "chunk": "-", "sa": "-", "ca": "-",
+           "links": "-", "canon": "-", "gate": "-", "chunk": "-", "sa": "-", "ca": "-",
            "status": "", "note": ""}
     t0 = time.time()
 
@@ -179,6 +179,28 @@ def process(slug: str, doc_id: str, steps: list, timeout: int) -> dict:
             row["status"] = "PIPE_FAIL"
             row["note"] = msg
             # не выходим — гейт/чанк ещё могут дать сигнал; но статус уже зафиксирован
+
+    # 2.5 CANON — каноническая линковка (CLAUDE.md §7 / scripts/pipeline/README):
+    #     после pipeline.py (links) идут 68 (self full-URL -> относительный #z +
+    #     нормализация внешних), 71 (полный спан «пункт N статьи M»), 73 (спан
+    #     цепочек), 72 (внешние акты -> корень), 18 (снять ссылки в сносках).
+    #     КАЖДЫЙ шаг СТРОГО по одному slug — иначе их --all-дефолт затрёт корпус.
+    if "canon" in steps:
+        canon_cmds = [
+            ("68", [PY, str(PIPE / "68_link_canon.py"), "--doc-id", doc_id, "--form", "ready"]),
+            ("71", [PY, str(PIPE / "71_fullspan_wrap.py"), slug, "--apply", "--form", "ready"]),
+            ("73", [PY, str(PIPE / "73_fullspan_chains.py"), slug, "--apply"]),
+            ("72", [PY, str(PIPE / "72_external_root_link.py"), slug, "--apply"]),
+            ("18", [PY, str(PIPE / "18_strip_links_in_notes.py"), slug]),
+        ]
+        fails = []
+        for lbl, cmd in canon_cmds:
+            ok, msg = run(cmd, timeout)
+            if not ok:
+                fails.append(f"{lbl}({msg[:18]})")
+        row["canon"] = "ok" if not fails else "FAIL:" + ",".join(f.split("(")[0] for f in fails)
+        if fails and not row["note"]:
+            row["note"] = "canon " + "; ".join(fails)
 
     # 3 GATE
     if "gate" in steps:
@@ -241,7 +263,7 @@ def main():
         r = process(s, did, steps, args.timeout)
         rows.append(r)
         print(f"[{i}/{len(slugs)}] {s:<16} pre={r['pre']:<5} str={r['struct']:<4} "
-              f"lnk={r['links']:<4} gate={r['gate']:<5} chunk={r['chunk']:<4} "
+              f"lnk={r['links']:<4} canon={r['canon']:<6} gate={r['gate']:<5} chunk={r['chunk']:<4} "
               f"ст/чанк={r['sa']}/{r['ca']}  => {r['status']}  {r['note']}")
 
     # ── сводка ──
@@ -269,11 +291,11 @@ def main():
         if r["status"] in ("UNDER_CHUNK", "EMPTY"):
             md.append(f"| {r['slug']} | {r['sa']} | {r['ca']} | {r['status']} | {r['note']} |")
     md += ["", "## Все доки",
-           "| slug | doc_id | стат. | pre | struct | links | gate | chunk | ст/чанк | статус |",
-           "|---|---|--:|---|---|---|---|---|---|---|"]
+           "| slug | doc_id | стат. | pre | struct | links | canon | gate | chunk | ст/чанк | статус |",
+           "|---|---|--:|---|---|---|---|---|---|---|---|"]
     for r in rows:
         md.append(f"| {r['slug']} | {r['doc_id']} | {r['n']} | {r['pre']} | {r['struct']} | "
-                  f"{r['links']} | {r['gate']} | {r['chunk']} | {r['sa']}/{r['ca']} | {r['status']} |")
+                  f"{r['links']} | {r['canon']} | {r['gate']} | {r['chunk']} | {r['sa']}/{r['ca']} | {r['status']} |")
     (OUT / "pilot_report.md").write_text("\n".join(md) + "\n", encoding="utf-8")
     with (OUT / "pilot_report.csv").open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
