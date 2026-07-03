@@ -13,10 +13,16 @@ import importlib.util
 import io
 import json
 import os
+import re
 import shutil
 import sys
 import tempfile
 from pathlib import Path
+
+
+def clean_title(t: str) -> str:
+    """Срезаем хвост «- ИПС "Әділет"» (и вариации) из заголовка adilet."""
+    return re.sub(r"\s*-\s*ИПС.*$", "", t or "").strip()
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 from bs4 import BeautifulSoup
@@ -75,7 +81,7 @@ for s in active:
                    if a["href"].strip().startswith("#") and len(a["href"].strip()) > 1 and a["href"].strip()[1:] not in ids)
     ti = "OK" if norm(FINAL / f"{s}_ready.html") == norm(FINAL / f"{s}_structured.html") else "DIFF"
     rows.append({
-        "slug": s, "title": codes.get(s, {}).get("title", "")[:60],
+        "slug": s, "title": clean_title(codes.get(s, {}).get("title", ""))[:60],
         "arts": audit[s]["struct_arts"], "int": body_int, "ext": body_ext,
         "gaps": ng, "cov": cov, "status": status.get(s, "?"),
         "nested": nested, "dangling": dangling, "ti": ti,
