@@ -64,6 +64,20 @@ def load_codes() -> dict:
             if not k.startswith("_") and isinstance(v, dict)}
 
 
+def corpus_keys() -> set:
+    """Ключи ЗАКОММИЧЕННОГО corpus codes.json (HEAD) — их пилот-прогон трогать НЕ должен
+    (перезапись их final/*_ready|_structured.html = порча курируемого корпуса). Пилотные
+    НГР добавляются в codes.json на лету и в HEAD отсутствуют, поэтому сюда не попадают."""
+    try:
+        r = subprocess.run(["git", "show", "HEAD:maps/codes.json"], cwd=ROOT,
+                           capture_output=True, text=True, encoding="utf-8")
+        if r.returncode == 0:
+            return {k for k in json.loads(r.stdout) if not k.startswith("_")}
+    except Exception:
+        pass
+    return set()
+
+
 def preflight(slug: str) -> dict:
     """gate-0: статей(article_map) + сигнатуры. КРИВО -> карантин."""
     p = SOURCE / f"{slug}.html"
@@ -107,14 +121,22 @@ def run(cmd: list, timeout: int) -> tuple[bool, str]:
 
 
 def gate_pass(slug: str, timeout: int) -> tuple[str, str]:
-    """69_sixcheck_laws: ищем в выводе провалы. Возвращаем (GREEN/RED/ERR, нота)."""
+    """69_sixcheck_laws: вердикт по ЯВНОМУ clean=. Возвращаем (GREEN/RED/ERR, нота).
+
+    69 всегда завершается rc=0 и печатает ПОСЛЕДНЕЙ строкой
+    'written: … clean=True|False' (итог 6 проверок). Раньше gate_pass искал
+    в этой строке слова-провалы — их там нет никогда, поэтому гейт был no-op
+    (всегда GREEN, GATE_RED недостижим). Теперь парсим clean= напрямую."""
     ok, msg = run([PY, str(AUDIT / "69_sixcheck_laws.py"), slug], timeout)
     if not ok:
         return "ERR", msg
-    # 69 печатает строки проверок; считаем RED если встречается провал/FAIL/!=0 по сути.
     low = msg.lower()
-    bad = any(w in low for w in ("fail", "провал", "битая", "висяч"))
-    return ("RED" if bad else "GREEN"), msg[:60]
+    if "clean=false" in low:
+        return "RED", msg[:60]
+    if "clean=true" in low:
+        return "GREEN", msg[:60]
+    # неожиданный формат вывода 69 — не выдаём ложный GREEN
+    return "ERR", msg[:60]
 
 
 def struct_article_count(slug: str) -> int:
@@ -255,6 +277,15 @@ def main():
         slugs = args.slugs
     if not slugs:
         sys.exit("нет доков: дай slug или --all (и проверь, что source/{slug}.html есть)")
+
+    # ГАРД: пилот НЕ трогает закоммиченный корпус. Если в списке есть slug из HEAD
+    # codes.json (кодекс/готовый закон) — отказ (иначе шаги links/canon/chunk
+    # перезапишут курируемые final/*.html). --all цепляет корпус -> тоже упрётся сюда.
+    _corpus = corpus_keys()
+    clash = sorted(s for s in slugs if s in _corpus)
+    if clash:
+        sys.exit(f"ОТКАЗ: в списке {len(clash)} слаг(ов) из закоммиченного корпуса "
+                 f"(их править нельзя): {clash}. Дай только пилотные НГР (не --all).")
 
     print(f"батч: {len(slugs)} доков | шаги: {','.join(steps)} | timeout/шаг: {args.timeout}s\n")
     rows = []
