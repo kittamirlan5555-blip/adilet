@@ -47,7 +47,9 @@ def is_amendment(title: str) -> bool:
 # ── repealed detect (тот же критерий, что в 01_ingest_adilet): «утратил силу»
 #    в ШАПКЕ документа, до первой «Статья N.» (страница уже скачана — бесплатно) ──
 RE_ARTICLE_ANY = re.compile(r"Стать[яиею]\s+\d")
-RE_REPEALED = re.compile(r"утрати\w*\s+силу", re.IGNORECASE)
+# ФИНИТНЫЙ «утратил[а/о/и] силу» = статус этого акта; НЕ причастие «утративш…»
+# (про другие акты). Только в шапке (полнотекст ложно флагает действующие).
+RE_REPEALED = re.compile(r"[Уу]тратил[аио]?\s+силу")
 
 
 def is_repealed(soup) -> bool:
