@@ -83,3 +83,6 @@ reports/e5_build.log
 reports/e5_build.pid
 reports/e5_build.raw.out
 reports/e5_build.raw.err
+
+# Anara review docx — local only (§11: binary/metadata); parsed -> maps/anara_pilot_flags.json
+pilot/anara_pilot_remarks.docx

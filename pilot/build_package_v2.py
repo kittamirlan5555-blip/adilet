@@ -45,6 +45,7 @@ for s in active:
 shutil.copy2(ROOT / "reports" / "pilot" / "pilot_index.md", PKG / "reports" / "index.md")
 shutil.copy2(ROOT / "reports" / "anara_response.md", PKG / "reports" / "anara_response.md")
 shutil.copy2(ROOT / "reports" / "pilot" / "rerun_audit.md", PKG / "reports" / "rerun_audit.md")
+shutil.copy2(ROOT / "maps" / "anara_pilot_flags.json", PKG / "reports" / "anara_pilot_flags.json")
 for opt in ("repealed_list.md", "PILOT_SUMMARY.md"):
     srcp = ROOT / "deliverables" / "anara_pilot100" / "reports" / opt
     if srcp.exists():
