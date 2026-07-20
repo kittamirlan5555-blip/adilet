@@ -113,13 +113,37 @@ def verify(flag, ntext, ina, href):
     return status, f"вхождений {len(occ)}, залинковано {linked}", ";".join(tgts)
 
 
+PKG = ROOT / "deliverables" / "anara_pilot100_v2" / "codes"
+
+
+def ready_path(slug):
+    """Свежий final/ или (для проверки с чистого чекаута) сданный пакет v2."""
+    p = FINAL / f"{slug}_ready.html"
+    return p if p.exists() else PKG / f"{slug}_ready.html"
+
+
+def load_flags():
+    """Источник флагов: исходный docx (если есть локально), иначе — уже распарсенный
+    maps/anara_pilot_flags.json (коммитится). Так проверка воспроизводима с чистого
+    чекаута без docx (§11: сырой docx локальный)."""
+    docx = ROOT / "pilot" / "anara_pilot_remarks.docx"
+    if docx.exists():
+        return parse_docx(docx), "docx"
+    js = json.loads((ROOT / "maps" / "anara_pilot_flags.json").read_text(encoding="utf-8"))
+    for f in js:                       # старый вердикт стереть — пересчитаем
+        for k in ("status", "note", "target"):
+            f.pop(k, None)
+    return js, "flags.json"
+
+
 def main():
-    flags = parse_docx(ROOT / "pilot" / "anara_pilot_remarks.docx")
+    flags, src = load_flags()
+    print(f"источник флагов: {src}")
     caches = {}
     for f in flags:
         s = f["slug"]
         if s and s not in caches:
-            caches[s] = char_in_a((FINAL / f"{s}_ready.html").read_text(encoding="utf-8", errors="replace"))
+            caches[s] = char_in_a(ready_path(s).read_text(encoding="utf-8", errors="replace"))
     rows = []
     for f in flags:
         if not f["slug"]:
@@ -129,8 +153,9 @@ def main():
             f["status"], f["note"], f["target"] = verify(f, ntext, ina, href)
         rows.append(f)
 
-    (ROOT / "maps" / "anara_pilot_flags.json").write_text(
-        json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8")
+    if src == "docx":                  # JSON — источник истины только из docx
+        (ROOT / "maps" / "anara_pilot_flags.json").write_text(
+            json.dumps(rows, ensure_ascii=False, indent=2), encoding="utf-8")
 
     from collections import Counter
     st = Counter(r["status"] for r in rows)
