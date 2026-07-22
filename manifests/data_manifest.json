@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-22 09:52:54",
+ "generated": "2026-07-22 10:13:39",
  "root_hint": "ADILETkz",
  "dirs": {
   "source": {
@@ -2710,7 +2710,7 @@
   },
   "final": {
    "files": 798,
-   "bytes": 250651045,
+   "bytes": 250672072,
    "entries": [
     {
      "path": "final/alatau_ready.html",
@@ -2816,27 +2816,27 @@
     },
     {
      "path": "final/grazhdanskiy_osob_ready.html",
-     "size": 1522394,
-     "sha256": "2a3944f80679c93bea04fff78151dc551be9bcd690b72642080562b3a5cfa562",
-     "mtime": 1782455861
+     "size": 1522373,
+     "sha256": "c17b2e612484f7ff09ecf28c9fb71199a38722bf819db06f9c2bb5759b78e5ef",
+     "mtime": 1784696915
     },
     {
      "path": "final/grazhdanskiy_osob_structured.html",
-     "size": 1591750,
-     "sha256": "d6f253e3ae40f4571bc065d04e619e9c653287968efcc9487c2027193a3aaab2",
-     "mtime": 1782455861
+     "size": 1591729,
+     "sha256": "b85dce55c01a603415f1d86d4c3c12535ad1e5556068c2568a79cd7ea8659ed9",
+     "mtime": 1784696916
     },
     {
      "path": "final/grazhdanskiy_ready.html",
-     "size": 974272,
-     "sha256": "f50b843f9ead108a80003151243f7aa0a5141a8020f7cad0777186be65d5f643",
-     "mtime": 1782146339
+     "size": 981335,
+     "sha256": "15213b0f7da99b00bd301ca891faf21e8421e9dbb548540ab127d40f1ad74fbe",
+     "mtime": 1784696914
     },
     {
      "path": "final/grazhdanskiy_structured.html",
-     "size": 1030236,
-     "sha256": "9231903d4570ecdaa814e485f02ea0e9219ac5bbf0332e4986b34cd1b5785f90",
-     "mtime": 1782874563
+     "size": 1044367,
+     "sha256": "59bef5fa87fc1dd9cfc91d81a5911d0ebe55cce8f68a34518aaa1e1f73c8d527",
+     "mtime": 1784696915
     },
     {
      "path": "final/informatizacii_structured.html",
@@ -2858,15 +2858,15 @@
     },
     {
      "path": "final/koap_ready.html",
-     "size": 4024289,
-     "sha256": "ad756a2c72a0ee3425afa0e47c5f043c8b57f0120463a6aa41c50acc38eb4d43",
-     "mtime": 1782455861
+     "size": 4024270,
+     "sha256": "52acab752de2671bf30efb0f65274aff732ade0f4c7090c5b67c0fb1d07ed5c8",
+     "mtime": 1784697078
     },
     {
      "path": "final/koap_structured.html",
-     "size": 4212697,
-     "sha256": "9f5fb663be32e8ae45cce756ba6b05e1cd9d7272704a0544e235e950919aa60a",
-     "mtime": 1782874563
+     "size": 4212678,
+     "sha256": "69bdd73c76f9f82cb50d89de6274718238b93e9038077487c2435d3181f37e00",
+     "mtime": 1784697080
     },
     {
      "path": "final/konstsud_ready.html",
@@ -2936,9 +2936,9 @@
     },
     {
      "path": "final/obrazovanie_structured.html",
-     "size": 956266,
-     "sha256": "b6129baa55bb1a62d2e7a563c8afb3bb4ea4c354fbee7aec0a2727df767cedf1",
-     "mtime": 1782874563
+     "size": 956261,
+     "sha256": "4422bc37432974660b845b2b39e67e516dc26586a5998b89541cb52eee76fc2b",
+     "mtime": 1784696919
     },
     {
      "path": "final/ocorrupt_structured.html",
@@ -2996,15 +2996,15 @@
     },
     {
      "path": "final/predprinimatel_ready.html",
-     "size": 1723011,
-     "sha256": "edf4892ccf8a5c6a7882b1b9dc1d24ced4d94cfc9020b3858002f1054433839f",
-     "mtime": 1782455861
+     "size": 1722990,
+     "sha256": "a0528f013be95535a0618cfbfb879429a52f179e71cb4eeb994d84a06631b236",
+     "mtime": 1784696920
     },
     {
      "path": "final/predprinimatel_structured.html",
-     "size": 1807550,
-     "sha256": "8114462717407801ed25b597ca856107d5bb4e0be4477ce70cbec14a87200755",
-     "mtime": 1782874563
+     "size": 1807529,
+     "sha256": "8cd1421337e82cccf70a6f86b923c2d3f7d1b9f7d96fd2d82684ff0d5c13adec",
+     "mtime": 1784696921
     },
     {
      "path": "final/prezident_ready.html",
@@ -7484,21 +7484,21 @@
     },
     {
      "path": "final/zemelnyy_ready.html",
-     "size": 1284000,
-     "sha256": "48b1f8f401344c287a1766abcadc5b80780909b0f2a27ba843e6b21b50f3c9d3",
-     "mtime": 1782137870
+     "size": 1283983,
+     "sha256": "16ad8a62af21c61317fb1c92adcfeec17ee9dd8a12cb85f93e7c0382d8edc0a7",
+     "mtime": 1784696921
     },
     {
      "path": "final/zemelnyy_structured.html",
-     "size": 1330771,
-     "sha256": "26bbab11e26a313a7b710179f9390b391a28fb89d80c3977762212cfaa1c1f42",
-     "mtime": 1782874564
+     "size": 1330754,
+     "sha256": "6bc189079c08c6925bc0adf3afc42500ff192bacbb307272ccc7cadf53668aaa",
+     "mtime": 1784696922
     },
     {
      "path": "final/zhilishniy_structured.html",
-     "size": 811865,
-     "sha256": "89b38f39a344b267fc6c979ec89ea55d9b40fb3cd1d329b4402157a95ef2f3a0",
-     "mtime": 1782874564
+     "size": 811859,
+     "sha256": "6e1d1e8e8c779d7cf89c75fba0495a3e1faf82c7b1af641d60d959b3100d48c1",
+     "mtime": 1784696922
     }
    ]
   },
@@ -13474,5 +13474,5 @@
   }
  },
  "total_files": 2241,
- "total_bytes": 1118885202
+ "total_bytes": 1118906229
 }
