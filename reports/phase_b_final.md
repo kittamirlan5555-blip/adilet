@@ -117,17 +117,25 @@ cross-code, эталон ограничен целевым законом) → h
 
 ## 6. Состав пакета (форма июньской сдачи)
 
-**Тяжёлое (на диске, в манифесте, вне git):**
-- `derived/vector_layer/chunks.jsonl` — 42 175 чанков (20 029 parent + 21 640 sub + 506 rep), ~126 МБ.
-- `derived/vector_layer/index.faiss` — 37 030 × 1024, ~145 МБ.
-- `derived/vector_layer/index_meta.jsonl` — ~3.7 МБ.
-- `embed_kit/out/vectors.npy` + `ids.jsonl` — исходные векторы (ре-индекс без GPU).
+Сдаётся `deliverables/vector_layer_phaseB/` (+ архив `vector_layer_phaseB.zip`,
+275.5 МБ → **134.2 МБ**). Заказчик получает ДАННЫЕ + отчёты к ним — как июнь
+(chunks.jsonl + index_* + отчёты), дополнено `index.faiss` и `repealed_gaps.json`.
+Политика «тяжёлое не в git» — про репозиторий (эти файлы gitignored + в манифесте),
+а не про пакет: в сдаче артефакты присутствуют физически.
 
-**Лёгкое (в git + копия в `deliverables/vector_layer_phaseB/`):**
-- `index_config.json`.
-- Отчёты: `phase_b_final.md` (этот), `retrieval_eval.md` (28q + разбор),
-  `phase_b_newlaw_eval.md` (10 новых), `repealed_uniformity.md` (repealed=0),
-  `full_chunk_report.md`, `numbering_audit.md`, `summary_eval.md`, `phase_b_run.log`.
+**Данные:**
+- `chunks.jsonl` — 42 175 чанков (20 029 parent + 21 640 sub + 506 rep; 1329 summary), ~127 МБ.
+- `index.faiss` — 37 030 × 1024, `IndexFlatIP`, ~145 МБ.
+- `index_meta.jsonl` — 37 030 строк (uid/code/article/anchor/src), ~3.7 МБ.
+- `index_config.json`, `repealed_gaps.json`.
+
+**Отчёты:** `phase_b_final.md` (этот), `retrieval_eval.md` (28q + разбор),
+`phase_b_newlaw_eval.md` (10 новых), `repealed_uniformity.md` (repealed=0),
+`full_chunk_report.md` (parent+subchunk — заменяет июньский `subchunk_report.md`),
+`numbering_audit.md`, `summary_eval.md`, `README.md`.
+
+Исходные векторы `embed_kit/out/vectors.npy` + `ids.jsonl` (для ре-индекса без GPU)
+и `phase_b_run.log` — на диске/в манифесте, в пакет не кладу (промежуточные/журнал).
 
 ## 7. Воспроизводимость
 

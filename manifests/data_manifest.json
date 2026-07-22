@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-23 03:05:19",
+ "generated": "2026-07-23 03:28:20",
  "root_hint": "ADILETkz",
  "dirs": {
   "source": {
@@ -11997,8 +11997,8 @@
    ]
   },
   "deliverables": {
-   "files": 421,
-   "bytes": 276624528,
+   "files": 426,
+   "bytes": 706118252,
    "entries": [
     {
      "path": "deliverables/ADILETkz_anara_fixes.zip",
@@ -14473,16 +14473,34 @@
      "mtime": 1781593333
     },
     {
+     "path": "deliverables/vector_layer_phaseB/chunks.jsonl",
+     "size": 133175845,
+     "sha256": "8ef585bc24010ce74dd45b69ad78aab060e45d0d69381f7ffac32dd7c7737946",
+     "mtime": 1784759116
+    },
+    {
      "path": "deliverables/vector_layer_phaseB/full_chunk_report.md",
      "size": 1420,
      "sha256": "1b26797ffec3c3692df09b3457a37cbc08a36600d3ee12b04a30df31052700d8",
      "mtime": 1784755143
     },
     {
+     "path": "deliverables/vector_layer_phaseB/index.faiss",
+     "size": 151674925,
+     "sha256": "a114bbe91303213b46ff7abd1cf064aadff2855b7e4e7416608222331f4ada44",
+     "mtime": 1784759116
+    },
+    {
      "path": "deliverables/vector_layer_phaseB/index_config.json",
      "size": 285,
      "sha256": "7e885f1635b3dcb6500f16996e49103248e156dbc5c9c1dc8fe3ef86f1372711",
-     "mtime": 1784755143
+     "mtime": 1784759116
+    },
+    {
+     "path": "deliverables/vector_layer_phaseB/index_meta.jsonl",
+     "size": 3882929,
+     "sha256": "e7452d718659bc66e45e0dcf707aff43b0fa33082fa9111588e8a9261fb0ab24",
+     "mtime": 1784759116
     },
     {
      "path": "deliverables/vector_layer_phaseB/numbering_audit.md",
@@ -14492,9 +14510,9 @@
     },
     {
      "path": "deliverables/vector_layer_phaseB/phase_b_final.md",
-     "size": 10965,
-     "sha256": "6224d6f7b536aeffe36b4f3ca23f4385e11c52784713f749481b1babe1f8b634",
-     "mtime": 1784755143
+     "size": 11636,
+     "sha256": "14375671fafd18cd534fb1fa714c1b66cc2011521350de02a11ea13d80779a8e",
+     "mtime": 1784759284
     },
     {
      "path": "deliverables/vector_layer_phaseB/phase_b_newlaw_eval.md",
@@ -14504,9 +14522,15 @@
     },
     {
      "path": "deliverables/vector_layer_phaseB/README.md",
-     "size": 2280,
-     "sha256": "5acfc404d94db0bde88d5b03b5a6781dd3e34be888493be34ce8708bc05a1866",
-     "mtime": 1784742200
+     "size": 6068,
+     "sha256": "b8bd905dc6d026a0c706ee496551f4d7dab5c2b276f87e48ab0f173d7182982e",
+     "mtime": 1784759165
+    },
+    {
+     "path": "deliverables/vector_layer_phaseB/repealed_gaps.json",
+     "size": 4141,
+     "sha256": "7bf8b69888c79089f54f6eb7baf302a528cc91d98edd96c957f31287df11258a",
+     "mtime": 1784759116
     },
     {
      "path": "deliverables/vector_layer_phaseB/repealed_uniformity.md",
@@ -14525,6 +14549,12 @@
      "size": 36462,
      "sha256": "f9e7cb606be9c031bf832590a6980641a68707231491e4a9328754df09738ce2",
      "mtime": 1784755143
+    },
+    {
+     "path": "deliverables/vector_layer_phaseB.zip",
+     "size": 140751425,
+     "sha256": "ee520b4b21d0ee43d87955833025761cdf548167d72345d6242f9bb2f771d979",
+     "mtime": 1784759294
     }
    ]
   },
@@ -14625,6 +14655,6 @@
    ]
   }
  },
- "total_files": 2432,
- "total_bytes": 3768492753
+ "total_files": 2437,
+ "total_bytes": 4197986477
 }
