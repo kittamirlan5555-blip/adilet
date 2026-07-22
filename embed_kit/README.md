@@ -1,17 +1,24 @@
-# embed_kit — эмбеддинг вектор-слоя на RTX 5090 (по RDP)
+# embed_kit — эмбеддинг вектор-слоя (RTX 5090 по RDP ИЛИ CPU)
 
 Кладёт векторы для faiss-индекса корпуса законов РК. Модель `intfloat/multilingual-e5-large`
 (в `model/`, офлайн). Вход `chunks.jsonl`, выход `out/vectors.npy` + `out/ids.jsonl`.
+**Работает и на GPU, и на CPU** — `--device auto|cpu|cuda` (auto: GPU если есть, иначе CPU).
+GPU на сервере НЕ обязателен; если карты нет — считает на CPU (дольше, но идёт).
 
-## Запуск в 5 строк (RDP)
+## Запуск в 5 строк
 
 ```
-nvidia-smi                                                        # 1. карта видна? (RTX 5090)
-pip install torch --index-url https://download.pytorch.org/whl/cu128 && pip install -r requirements.txt   # 2. окружение (cu128!)
-python embed.py --limit 200                                       # 3. СМОУК: замер пасс/с, проверка sm_120
-python embed.py                                                   # 4. ПОЛНЫЙ прогон (resume при обрыве)
+nvidia-smi   # или: python -c "import torch;print(torch.cuda.is_available())"   # 1. есть ли GPU?
+pip install torch --index-url https://download.pytorch.org/whl/cu128 && pip install -r requirements.txt   # 2a. GPU: torch cu128
+#   БЕЗ GPU:  pip install torch && pip install -r requirements.txt              # 2b. CPU: обычный torch
+python embed.py --limit 200                                       # 3. СМОУК: печатает УСТРОЙСТВО + пасс/с + ETA
+python embed.py                                                   # 4. ПОЛНЫЙ (resume при обрыве); --device cpu если карты нет
 #  5. забрать назад: out/vectors.npy + out/ids.jsonl  ->  ноут: derived/vector_layer/
 ```
+
+При старте скрипт печатает выбранное УСТРОЙСТВО и ожидаемую длительность: CPU ≈ 0.75 пасс/с
+(полный корпус ~37k → ~14 ч), 5090 — оценка ~40 пасс/с (полный ~15 мин, смоук уточнит).
+Полный на CPU долгий — тогда лучше сначала `--limit 200`, либо разбить (resume-able).
 
 ## Что важно
 

@@ -53,27 +53,52 @@ def build_passages(rows, win=WIN):
     return passages, meta
 
 
-def check_gpu():
-    """5090 = Blackwell sm_120. Старый torch НЕ содержит kernel'ов sm_120 → упадёт
-    внятно ЗДЕСЬ, а не мистическим CUDA error в середине прогона."""
+# ориентиры скорости для ETA (замер на ноутном CPU: 0.75 пасс/с; GPU — оценка)
+RATE_CPU = 0.75            # пасс/с (реальный замер e5-large на этом классе CPU)
+RATE_GPU_EST = 40.0       # пасс/с, КОНСЕРВ. оценка для 5090 (смоук уточнит)
+
+
+def select_device(requested):
+    """Выбор устройства: auto|cpu|cuda. GPU НЕ обязателен (сервер может быть без карты).
+    Для cuda — проверка Blackwell sm_120 (старый torch карту не увидит) с внятной ошибкой.
+    Возвращает (torch, device_str, rate_hint)."""
     try:
         import torch
     except ImportError:
-        sys.exit("STOP: не установлен torch. См. requirements.txt (CUDA 12.8+ сборка).")
-    if not torch.cuda.is_available():
-        sys.exit("STOP: CUDA не видна (torch.cuda.is_available()=False). Проверь драйвер "
-                 "и что torch — СБОРКА ПОД CUDA (не +cpu). nvidia-smi должен показывать карту.")
-    cap = torch.cuda.get_device_capability(0)      # 5090 -> (12, 0)
-    name = torch.cuda.get_device_name(0)
-    arches = torch.cuda.get_arch_list()
-    sm = f"sm_{cap[0]}{cap[1]}"
-    print(f"GPU: {name}  capability {cap} ({sm})  torch {torch.__version__}")
-    print(f"    torch arch_list: {arches}")
-    if cap[0] >= 12 and not any(a in ("sm_120", "sm_90") for a in arches):
-        sys.exit(f"STOP: карта {sm} (Blackwell), но torch собран без sm_120 в arch_list "
-                 f"{arches}. Нужен torch под CUDA 12.8+ (cu128). Обнови по requirements.txt "
-                 "— иначе будет 'no kernel image is available for execution on the device'.")
-    return torch
+        sys.exit("STOP: не установлен torch. GPU: requirements.txt (cu128). "
+                 "CPU: pip install torch (обычная сборка).")
+    has_cuda = torch.cuda.is_available()
+    if requested == "cpu":
+        dev = "cpu"
+    elif requested == "cuda":
+        if not has_cuda:
+            sys.exit("STOP: --device cuda, но CUDA не видна (нет карты/драйвера, или torch=+cpu). "
+                     "nvidia-smi должен показывать карту. Для CPU: --device cpu (или auto).")
+        dev = "cuda"
+    else:                                   # auto
+        dev = "cuda" if has_cuda else "cpu"
+    if dev == "cuda":
+        cap = torch.cuda.get_device_capability(0)          # 5090 -> (12, 0)
+        arches = torch.cuda.get_arch_list()
+        sm = f"sm_{cap[0]}{cap[1]}"
+        print(f"УСТРОЙСТВО: GPU {torch.cuda.get_device_name(0)} ({sm}), torch {torch.__version__}")
+        print(f"    arch_list: {arches}")
+        if cap[0] >= 12 and not any(a in ("sm_120", "sm_90") for a in arches):
+            sys.exit(f"STOP: карта {sm} (Blackwell), но torch собран без sm_120 (arch_list {arches}). "
+                     "Нужен torch под CUDA 12.8+ (cu128) — иначе 'no kernel image ... for the device'. "
+                     "Либо гони на CPU: --device cpu.")
+        return torch, "cuda", RATE_GPU_EST
+    print(f"УСТРОЙСТВО: CPU (torch {torch.__version__}) — GPU не выбран/не найден. "
+          "fp16 отключён (на CPU медленно/неточно).")
+    return torch, "cpu", RATE_CPU
+
+
+def _eta(n, rate, dev):
+    sec = n / max(rate, 1e-9)
+    h = sec / 3600
+    t = f"{sec/60:.0f} мин" if sec < 5400 else f"{h:.1f} ч"
+    note = "(замер CPU 0.75 пасс/с)" if dev == "cpu" else "(ОЦЕНКА GPU ~40 пасс/с; смоук уточнит)"
+    return f"~{t} {note}"
 
 
 def main():
@@ -84,9 +109,11 @@ def main():
     ap.add_argument("--out", default=str(HERE / "out"))
     ap.add_argument("--batch", type=int, default=64)
     ap.add_argument("--limit", type=int, default=0, help="смоук: только первые N пассажей")
+    ap.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto",
+                    help="auto (GPU если есть, иначе CPU) | cpu | cuda")
     args = ap.parse_args()
 
-    torch = check_gpu()
+    torch, device, rate = select_device(args.device)
     from sentence_transformers import SentenceTransformer
 
     rows = [json.loads(l) for l in Path(args.chunks).read_text(encoding="utf-8").splitlines() if l.strip()]
@@ -95,6 +122,10 @@ def main():
         passages, meta = passages[:args.limit], meta[:args.limit]
     N = len(passages)
     print(f"пассажей к эмбеддингу: {N}" + (f" (СМОУК limit={args.limit})" if args.limit else ""))
+    print(f"ожидаемая длительность: {_eta(N, rate, device)}")
+    if device == "cpu" and not args.limit and N > 5000:
+        print("  ВНИМАНИЕ: полный прогон на CPU долгий — рекомендую сначала --limit 200 "
+              "(смоук), либо GPU. Прогон resume-able (обрыв → продолжит).")
 
     out = Path(args.out); out.mkdir(parents=True, exist_ok=True)
     vpath, ipath, ppath = out / "vectors.npy", out / "ids.jsonl", out / "progress.json"
@@ -116,9 +147,10 @@ def main():
         vecs = np.lib.format.open_memmap(vpath, mode="w+", dtype=np.float32, shape=(N, DIM))
         done = 0
 
-    model = SentenceTransformer(args.model, device="cuda")
+    model = SentenceTransformer(args.model, device=device)
     model.max_seq_length = 512
-    model.half()                     # fp16 на GPU
+    if device == "cuda":
+        model.half()                 # fp16 ТОЛЬКО на GPU (на CPU медленно/неточно)
     t0 = time.time(); t_start_done = done
     try:
         from tqdm import tqdm

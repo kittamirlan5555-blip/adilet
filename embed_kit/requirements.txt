@@ -3,10 +3,10 @@
 # («no kernel image is available for execution on the device»). embed.py проверяет это
 # в начале и падает ВНЯТНО.
 #
-# УСТАНОВКА (с интернетом):
-#   pip install torch --index-url https://download.pytorch.org/whl/cu128
-#   pip install -r requirements.txt
-# torch ставится ОТДЕЛЬНО (нужен cu128-индекс), остальное — отсюда:
+# УСТАНОВКА torch (ОТДЕЛЬНО, до остального):
+#   GPU (5090): pip install torch --index-url https://download.pytorch.org/whl/cu128
+#   CPU (нет карты): pip install torch          # обычная сборка, embed.py --device cpu/auto
+# затем остальное — отсюда:
 
 sentence-transformers>=3.0
 transformers>=4.44
