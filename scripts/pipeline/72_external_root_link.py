@@ -45,6 +45,47 @@ REPORTS = paths.GATES    # машинные гейт-отчёты (дерево 
 HOST = "https://adilet.zan.kz/rus/docs/"
 SKIP_PARENTS = {"a", "script", "style", "head", "title"}
 
+# Префикс акта ПЕРЕД кавычкой-именем: «Закон[ом/а/…]/Кодекс[…]/Конституционн[ым] закон[…]»
+# опц. «Республики Казахстан|РК», с завершающим пробелом, в КОНЦЕ текст-узла. Явные
+# склонения «закон», НЕ «\w*» — иначе поглотит «Законодательством…» (описательный класс §4).
+PREFIX_END = re.compile(
+    r"(?:(?<=\s)|^)"
+    r"(?:[Зз]акон(?:ом|а|е|у|ов|ами)?|[Кк]одекс(?:ом|а|е|у|ов|ами)?|"
+    r"[Кк]онституционны[йм]\s+закон(?:ом|а|е)?|[Кк]онституционного\s+закона)"
+    r"(?:\s+Республики\s+Казахстан|\s+РК)?\s+$")
+
+
+def absorb_prefix(soup):
+    """Корпусный стандарт (final/upk_ready.html): «<a>Законом РК "Название"</a>» —
+    ПРЕФИКС ВНУТРИ спана. 03 линкует только «"Название"», префикс остаётся плейн-текстом
+    снаружи (класс дефекта внешнего аудита). Двигаем ЛЕВУЮ границу <a> влево, поглощая
+    префикс из соседнего текст-узла. По DOM: text-invariant, вложенность невозможна
+    (переносим sibling-текст ВНУТРЬ), идемпотентно (после — <a> начинается не с кавычки)."""
+    moved = 0
+    for a in soup.find_all("a", href=True):
+        h = a["href"].strip()
+        if not (h.startswith(HOST) and "#" not in h):
+            continue                                   # только внешний КОРЕНЬ
+        txt = a.get_text()
+        if not txt or txt[0] not in '"«':              # спан должен начинаться с имени-кавычки
+            continue
+        prev = a.previous_sibling
+        if not isinstance(prev, NavigableString):
+            continue
+        s = str(prev)
+        m = PREFIX_END.search(s)
+        if not m:
+            continue
+        prefix, head = s[m.start():], s[:m.start()]    # «Законом Республики Казахстан », «…с »
+        first = a.contents[0] if a.contents else None
+        if isinstance(first, NavigableString):
+            first.replace_with(NavigableString(prefix + str(first)))
+        else:
+            a.insert(0, NavigableString(prefix))
+        prev.replace_with(NavigableString(head))
+        moved += 1
+    return moved
+
 
 def code_path(code):
     return FINAL / f"{code}_ready.html"
@@ -213,6 +254,9 @@ def run(code, apply_mode, min_len):
         # заменить узел на последовательность
         t.replace_with(*pieces)
 
+    # ---- ПОГЛОЩЕНИЕ ПРЕФИКСА «Законом РК» в уже-залинкованное имя (корп. стандарт) ----
+    absorbed = absorb_prefix(soup)
+
     sha1 = gettext_sha(soup)
     dangle1 = dangling(soup)
     nested1 = nested_count(soup)
@@ -222,6 +266,7 @@ def run(code, apply_mode, min_len):
 
     P("-" * 100)
     P(f"ДОБАВЛЕНО корневых ссылок: {added}")
+    P(f"ПОГЛОЩЕНО префиксов «Закон* РК» в спан: {absorbed}")
     P(f"ГЕЙТЫ: get_text sha ДО==ПОСЛЕ={sha0 == sha1} ({sha0[:12]})  nested<a>={nested1}  "
       f"dangling#z {dangle0}->{dangle1}")
 
@@ -230,8 +275,8 @@ def run(code, apply_mode, min_len):
     out = REPORTS / f"72_external_{code}_applied.txt"
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     print("\n".join(L[:60]))
-    print(f"\n[APPLIED] {code}: +{added} root links  sha-invariant={sha0 == sha1}  "
-          f"nested={nested1}  -> wrote {path.name}")
+    print(f"\n[APPLIED] {code}: +{added} root links, +{absorbed} prefix-absorbed  "
+          f"sha-invariant={sha0 == sha1}  nested={nested1}  -> wrote {path.name}")
 
 
 def main():
