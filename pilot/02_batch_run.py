@@ -267,16 +267,20 @@ def main():
     ap.add_argument("--all", action="store_true", help="все pilot-доки из codes.json с source/ на диске")
     ap.add_argument("--steps", default="all", help=f"подмножество из {','.join(ALL_STEPS)} или all")
     ap.add_argument("--timeout", type=int, default=900, help="потолок секунд на шаг")
+    ap.add_argument("--tag", default="pilot_report", help="базовое имя отчёта в reports/pilot/ (батч: batch_001)")
+    ap.add_argument("--list", default="", help="файл со списком slug (по одному в строке)")
     args = ap.parse_args()
 
     steps = ALL_STEPS if args.steps == "all" else [s.strip() for s in args.steps.split(",")]
     codes = load_codes()
     if args.all:
         slugs = [s for s in codes if (SOURCE / f"{s}.html").exists()]
+    elif args.list:
+        slugs = [l.strip() for l in Path(args.list).read_text(encoding="utf-8").split() if l.strip()]
     else:
         slugs = args.slugs
     if not slugs:
-        sys.exit("нет доков: дай slug или --all (и проверь, что source/{slug}.html есть)")
+        sys.exit("нет доков: дай slug / --list FILE / --all (и проверь, что source/{slug}.html есть)")
 
     # ГАРД: пилот НЕ трогает закоммиченный корпус. Если в списке есть slug из HEAD
     # codes.json (кодекс/готовый закон) — отказ (иначе шаги links/canon/chunk
@@ -327,8 +331,8 @@ def main():
     for r in rows:
         md.append(f"| {r['slug']} | {r['doc_id']} | {r['n']} | {r['pre']} | {r['struct']} | "
                   f"{r['links']} | {r['canon']} | {r['gate']} | {r['chunk']} | {r['sa']}/{r['ca']} | {r['status']} |")
-    (OUT / "pilot_report.md").write_text("\n".join(md) + "\n", encoding="utf-8")
-    with (OUT / "pilot_report.csv").open("w", newline="", encoding="utf-8") as f:
+    (OUT / f"{args.tag}.md").write_text("\n".join(md) + "\n", encoding="utf-8")
+    with (OUT / f"{args.tag}.csv").open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
         w.writeheader()
         w.writerows(rows)
@@ -337,7 +341,7 @@ def main():
     for st, c in by.most_common():
         print(f"  {st:<14} {c}")
     print(f"  гейт GREEN:    {green}/{len(rows)}")
-    print(f"отчёт: {(OUT / 'pilot_report.md').relative_to(ROOT)}")
+    print(f"отчёт: {(OUT / (args.tag + '.md')).relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

@@ -25,6 +25,7 @@
 """
 import csv
 import json
+import os
 import re
 import sys
 import time
@@ -38,6 +39,9 @@ except ImportError:
 from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
+# adilet отдаёт НЕПОЛНУЮ цепочку сертификата -> requests verify падает без бандла.
+# Бандл (certifi + промежуточный GoGetSSL) = pilot/certs/adilet_chain.pem (см. memory).
+os.environ.setdefault("REQUESTS_CA_BUNDLE", str(ROOT / "pilot" / "certs" / "adilet_chain.pem"))
 SOURCE = ROOT / "source"
 CODES_JSON = ROOT / "maps" / "codes.json"
 MANIFEST = ROOT / "pilot" / "ingest_manifest.csv"
@@ -125,7 +129,7 @@ def main():
     listfile = Path(argv[0])
     global MANIFEST
     if "--manifest" in sys.argv:
-        MANIFEST = Path(sys.argv[sys.argv.index("--manifest") + 1])
+        MANIFEST = Path(sys.argv[sys.argv.index("--manifest") + 1]).resolve()
     ngrs = [ln.strip() for ln in listfile.read_text(encoding="utf-8").splitlines()
             if ln.strip() and not ln.strip().startswith("#")]
     print(f"НГР в списке: {len(ngrs)}")
