@@ -110,9 +110,24 @@ def main():
     html = RE_SELF_BARE.sub(_bare_self, html)
     n_self_nofrag = len(RE_SELF_NOFRAG.findall(html))
     html = RE_SELF_NOFRAG.sub(r'href="#"', html)
+    # Шаг 2c: ОТНОСИТЕЛЬНЫЙ self-URL /rus/docs/{SELF}#zN -> #zN — ТОЛЬКО если zN есть в
+    # нашем документе (id ИЛИ name). Батч-пайплайн оставлял self-ссылки относительными
+    # (без схемы), Шаг 2 их не ловил. ЗАЩИТА (как 2b): безусловная конверсия ранее
+    # плодила висячие якоря (ссылка на якорную сетку живого adilet, которой у нас нет)
+    # -> откат. Неконвертируемые ОСТАВЛЯЕМ: относит. adilet-ссылка работает при хостинге,
+    # битый #z — нигде.
+    idset_full = idset | {a.get("name") for a in BeautifulSoup(before, "html.parser")
+                          .find_all(attrs={"name": True}) if a.get("name")}
+    RE_SELF_REL = re.compile(r'href="/rus/docs/' + re.escape(SELF) + r'(#z[\w-]+)"')
+    n_self_rel = len(RE_SELF_REL.findall(html))
+    n_self_rel_conv = sum(1 for m in RE_SELF_REL.finditer(html) if m.group(1)[1:] in idset_full)
+    html = RE_SELF_REL.sub(
+        lambda m: f'href="{m.group(1)}"' if m.group(1)[1:] in idset_full else m.group(0), html)
     P(f"\n[self-URL -> #z]")
     P(f"  с фрагментом сокращено : {n_self_frag}")
     P(f"  «голый» #N -> #z{{N}}     : {n_self_bare}")
+    P(f"  относит. self#z -> #z (якорь есть): {n_self_rel_conv}/{n_self_rel} "
+      f"(осталось {n_self_rel - n_self_rel_conv} без якоря)")
     P(f"  без фрагмента -> #      : {n_self_nofrag}")
     # остаточные self full-URL (whole-file, информационно: включает chrome-тулбар)
     rest_self_all = len(re.findall(r'/rus/docs/' + re.escape(SELF), html))
