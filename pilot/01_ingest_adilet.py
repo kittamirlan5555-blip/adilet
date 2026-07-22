@@ -163,8 +163,12 @@ def main():
             verdict = "FETCH_THIN"          # 0 сигнатур: чужой формат ИЛИ raw-GET не тот DOM
             quarantine.append(ngr)
         elif not sh["doc_id"]:
-            verdict = "NO_DOCID"            # панельных ссылок нет — подозрительно
-            quarantine.append(ngr)
+            # панельных self-ссылок нет, НО структура валидна (sig>0 гарантирован выше) —
+            # напр. U-указы-законы 1995. doc_id недоступен из панели -> берём САМ НГР
+            # (adilet.zan.kz/rus/docs/{НГР} валиден). Регистрируем, вердикт OK_FALLBACK.
+            verdict = "OK_FALLBACK"
+            codes[ngr] = {"doc_id": ngr, "title": sh["title"][:120] or ngr}
+            added += 1
         else:
             verdict = "OK"
             # регистрируем slug=НГР; doc_id из панели (надёжнее, чем НГР с суффиксом)

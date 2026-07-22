@@ -12,9 +12,10 @@ spec = importlib.util.spec_from_file_location("m72", "scripts/pipeline/72_extern
 m72 = importlib.util.module_from_spec(spec); spec.loader.exec_module(m72)
 
 PREFIX = re.compile(
-    r"(?:[Зз]акон(?:ом|а|е|у|ов|ами)?|[Кк]одекс(?:ом|а|е|у|ов|ами)?|"
+    r"(?:[Зз]акон(?:ами|ам|ах|ов|ом|а|е|у|ы)?|[Кк]одекс(?:ами|ам|ах|ов|ом|а|е|у|ы)?|"
     r"[Кк]онституционны[йм]\s+закон(?:ом|а|е)?)"
     r"(?:\s+Республики\s+Казахстан|\s+РК)?\s*$")
+NASTOYASH = re.compile(r"настоящ\w*\s*$", re.I)
 
 
 def defects(soup):
@@ -27,7 +28,8 @@ def defects(soup):
         if t[:1] in '"«':
             prev = a.previous_sibling
             pv = prev if isinstance(prev, str) else (prev.get_text(" ") if prev else "")
-            if PREFIX.search((pv or "").rstrip()):
+            m = PREFIX.search((pv or "").rstrip())
+            if m and not NASTOYASH.search((pv or "").rstrip()[:m.start()]):
                 n += 1
     return n
 

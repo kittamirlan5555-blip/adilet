@@ -16,8 +16,9 @@ ROOT = Path(__file__).resolve().parents[1]
 FINAL = ROOT / "final"
 RE_MERGE = re.compile(r"\d+стать")
 PREFIX = re.compile(
-    r"(?:[Зз]акон(?:ом|а|е|у|ов|ами)?|[Кк]одекс(?:ом|а|е|у|ов|ами)?|"
+    r"(?:[Зз]акон(?:ами|ам|ах|ов|ом|а|е|у|ы)?|[Кк]одекс(?:ами|ам|ах|ов|ом|а|е|у|ы)?|"
     r"[Кк]онституционны[йм]\s+закон(?:ом|а|е)?)(?:\s+Республики\s+Казахстан|\s+РК)?\s*$")
+NASTOYASH = re.compile(r"настоящ\w*\s*$", re.I)
 tag = sys.argv[1] if len(sys.argv) > 1 else "batch_001"
 rows = list(csv.DictReader((ROOT / "reports" / "pilot" / f"{tag}.csv").open(encoding="utf-8")))
 slugs = [r["slug"] for r in rows if r["status"] in ("DONE", "UNDER_CHUNK")]
@@ -53,7 +54,8 @@ for s in slugs:
             if t[:1] in '"«':
                 prev = a.previous_sibling
                 pv = prev if isinstance(prev, str) else (prev.get_text(" ") if prev else "")
-                if PREFIX.search((pv or "").rstrip()):
+                m = PREFIX.search((pv or "").rstrip())
+                if m and not NASTOYASH.search((pv or "").rstrip()[:m.start()]):
                     prefix += 1
         if h.startswith("#z"):
             zint += 1
