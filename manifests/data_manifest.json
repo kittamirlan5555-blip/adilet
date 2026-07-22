@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-23 02:35:54",
+ "generated": "2026-07-23 03:05:19",
  "root_hint": "ADILETkz",
  "dirs": {
   "source": {
@@ -11998,7 +11998,7 @@
   },
   "deliverables": {
    "files": 421,
-   "bytes": 276624481,
+   "bytes": 276624528,
    "entries": [
     {
      "path": "deliverables/ADILETkz_anara_fixes.zip",
@@ -14516,9 +14516,9 @@
     },
     {
      "path": "deliverables/vector_layer_phaseB/retrieval_eval.md",
-     "size": 8979,
-     "sha256": "8c212f10853eddebaf8e797c9909aeb92b9cb3e78f6eddb1266589b7e9b3adb3",
-     "mtime": 1784756126
+     "size": 9026,
+     "sha256": "f6c606e68b9dad23c52364854bc2ece3ae4c48feb35499f3f35824f28f740e81",
+     "mtime": 1784757919
     },
     {
      "path": "deliverables/vector_layer_phaseB/summary_eval.md",
@@ -14626,5 +14626,5 @@
   }
  },
  "total_files": 2432,
- "total_bytes": 3768492706
+ "total_bytes": 3768492753
 }

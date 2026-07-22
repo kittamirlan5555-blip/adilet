@@ -124,9 +124,15 @@ def main():
         L.append(f"| {q[:42]} | {gt_s} | {top_s} | {'✅' if hit1 else '—'} | "
                  f"{'✅' if hit3 else '❌'} |")
         if len(examples) < 4 and hit3:
-            par = by_art[got[0] if hit1 else next(g for g in got if g in gt)]
+            # метку/score печатаем ТОЙ статьи, чей payload показываем (совпавшей с
+            # эталоном), а не всегда топ-1 — иначе при hit@1-промах/hit@3-попадание
+            # метка и payload — разные документы (выглядит как дефект резолва)
+            chosen = got[0] if hit1 else next(g for g in got if g in gt)
+            rank = got.index(chosen) + 1
+            score = top[rank - 1][1]
+            par = by_art[chosen]
             examples.append(
-                f"**«{q}»** → {got[0][0]}/{got[0][1]} (score {top[0][1]:.2f}); "
+                f"**«{q}»** → {chosen[0]}/{chosen[1]} (ранг {rank}, score {score:.2f}); "
                 f"payload: «{(par['article_title'] or par['text'][:50])[:62]}…» "
                 f"(полный текст {par['char_len']} симв, uid {par['uid']})")
 
