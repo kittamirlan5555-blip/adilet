@@ -127,6 +127,11 @@ def done_set():
     if pf.exists():
         for l in pf.read_text(encoding="utf-8").split():
             done.setdefault(l.strip().rstrip("_"), "prev")
+    # батчи full-corpus: РЕАЛЬНО обработанные (драйвер DONE/UNDER_CHUNK) из отчётов
+    for rep in sorted((ROOT / "reports" / "pilot").glob("batch_*.csv")):
+        for row in csv.DictReader(rep.open(encoding="utf-8")):
+            if row.get("status") in ("DONE", "UNDER_CHUNK"):
+                done.setdefault(row["slug"].rstrip("_"), "batch")
     return done
 
 
