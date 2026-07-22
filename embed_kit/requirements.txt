@@ -1,0 +1,25 @@
+# RTX 5090 = Blackwell, compute capability sm_120. НУЖЕН torch под CUDA 12.8+ (cu128).
+# Старые torch (cu121/cu124, torch<2.7) НЕ содержат kernel'ов sm_120 -> карта не заведётся
+# («no kernel image is available for execution on the device»). embed.py проверяет это
+# в начале и падает ВНЯТНО.
+#
+# УСТАНОВКА (с интернетом):
+#   pip install torch --index-url https://download.pytorch.org/whl/cu128
+#   pip install -r requirements.txt
+# torch ставится ОТДЕЛЬНО (нужен cu128-индекс), остальное — отсюда:
+
+sentence-transformers>=3.0
+transformers>=4.44
+numpy>=1.26
+tqdm>=4.66
+faiss-cpu>=1.8            # не обязателен на сервере (индекс собираем на ноуте в BLOCK E)
+
+# ОФЛАЙН-сервер (без интернета):
+#   1) заранее (на машине с интернетом) скачать colёса:
+#        pip download torch --index-url https://download.pytorch.org/whl/cu128 -d wheels/
+#        pip download -r requirements.txt -d wheels/
+#      перенести wheels/ на сервер, затем:
+#        pip install --no-index --find-links wheels/ torch
+#        pip install --no-index --find-links wheels/ -r requirements.txt
+#   2) модель e5-large УЖЕ лежит в embed_kit/model/ (грузится по локальному пути,
+#      HF-интернет не требуется).

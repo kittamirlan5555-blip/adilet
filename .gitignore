@@ -101,3 +101,12 @@ source/_registry_cache/
 # только ОБЩИЕ индексы (codes.json, npa_mapping.json, corpus_registry.json, manual_overrides).
 maps/article_map_*.json
 maps/subpoint_map_*.json
+
+# embed_kit: тяжёлое (модель ~2.2ГБ, входные чанки, выход) — на диске/в манифесте, не в git.
+# В git — только embed.py, requirements.txt, README.md.
+embed_kit/model/
+embed_kit/out/
+embed_kit/chunks.jsonl
+embed_kit/wheels/
+# вектор-слой рабочие counts/bench от инвентаря
+scripts/vector/_fbA_*.json
