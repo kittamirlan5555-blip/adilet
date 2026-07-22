@@ -61,7 +61,16 @@ def save(rows):
     with tmp.open("w", encoding="utf-8") as f:
         for r in rows:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
-    os.replace(tmp, CHUNKS)
+    # Windows: цель может быть кратко залочена (Defender/читатель) -> os.replace
+    # даёт WinError 5. Ретраим с паузой; прогресс уже на диске в tmp, не теряем.
+    for attempt in range(6):
+        try:
+            os.replace(tmp, CHUNKS)
+            return
+        except PermissionError:
+            if attempt == 5:
+                raise
+            time.sleep(0.5 * (attempt + 1))
 
 
 def summarize(text, key):
