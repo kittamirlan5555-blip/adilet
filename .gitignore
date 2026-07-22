@@ -86,3 +86,14 @@ reports/e5_build.raw.err
 
 # Anara review docx — local only (§11: binary/metadata); parsed -> maps/anara_pilot_flags.json
 pilot/anara_pilot_remarks.docx
+
+# ── BLOCK 3 (масштаб 400+): тяжёлые артефакты вне git (docs/DATA_LAYOUT.md) ──
+# Целостность — manifests/data_manifest.json (path+size+sha256). На диске ОСТАЮТСЯ,
+# в git НЕ идут (для БУДУЩИХ файлов; вывод уже-трекнутых — по слову владельца).
+# Регенерация: source<-01_ingest; final<-02_batch_run; derived<-chunk/vector; deliverables<-build_package.
+source/
+final/
+derived/
+deliverables/
+# кэш listing реестра (регенерируется collect_registry.py)
+source/_registry_cache/
