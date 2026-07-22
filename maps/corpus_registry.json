@@ -26084,11 +26084,12 @@
   "status": "Обновленный",
   "status_cls": "status status_upd",
   "descr": "Закон Республики Казахстан от 21 июля 2007 года № 300. Утратил силу Законом Республики Казахстан от 28 декабря 2022 года",
-  "repealed": false,
+  "listing_lag": true,
+  "repealed": true,
   "amendment": false,
   "done": "",
-  "kind": "substantive",
-  "bucket": "TODO"
+  "kind": "",
+  "bucket": "repealed"
  },
  {
   "ngr": "Z070000298_",
@@ -26879,9 +26880,9 @@
   "descr": "Закон Республики Казахстан от 28 февраля 2007 года N 234.",
   "repealed": false,
   "amendment": false,
-  "done": "",
+  "done": "batch",
   "kind": "substantive",
-  "bucket": "TODO"
+  "bucket": "done"
  },
  {
   "ngr": "Z070000235_",
@@ -34898,11 +34899,12 @@
   "status": "Обновленный",
   "status_cls": "status status_upd",
   "descr": "Закон Республики Казахстан от 12 июня 2001 года N 210. Утратил силу Законом Республики Казахстан от 10 декабря 2008 года",
-  "repealed": false,
+  "listing_lag": true,
+  "repealed": true,
   "amendment": false,
   "done": "",
-  "kind": "substantive",
-  "bucket": "TODO"
+  "kind": "",
+  "bucket": "repealed"
  },
  {
   "ngr": "Z010000207_",
@@ -42531,9 +42533,9 @@
   "descr": "Закон Республики Казахстан от 28 апреля 1997 г. N 97-1.",
   "repealed": false,
   "amendment": false,
-  "done": "",
+  "done": "batch",
   "kind": "substantive",
-  "bucket": "TODO"
+  "bucket": "done"
  },
  {
   "ngr": "Z970000094_",

@@ -60,6 +60,14 @@ def build_article_map(html_path: str) -> dict:
             if parent:
                 m = re.match(r'\s*Статья\s+(\d+(?:-\d+)?)\s*\.',
                              parent.get_text(" ", strip=True)[:120])
+        if not m:
+            # БЕЗ ТОЧКИ И НАЗВАНИЯ (класс Z970000097_ вексель-1997): «<b><a name=z5>
+            # Статья 3  </b>» — заголовок = ТОЛЬКО «Статья N». СТРОГО fullmatch по
+            # тексту родителя (ин-текст отсылки «статьи N…» в генитиве не пройдут).
+            parent = a_tag.parent
+            if parent:
+                m = re.fullmatch(r'Статья\s+(\d+(?:-\d+)?)',
+                                 parent.get_text(" ", strip=True))
         if m:
             article_num = m.group(1)
             if article_num not in article_map:

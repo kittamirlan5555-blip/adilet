@@ -163,10 +163,24 @@ def main():
             acts.setdefault(row["ngr"], row)     # тип по первому появлению
         print(f"          собрано строк={len(allrows)} (уник итого={len(acts)})  запросов={fetches}")
 
+    # LISTING-LAG: ингест-детектор шапки нашёл «утратил силу», хотя listing adilet ещё
+    # показывает «действует» (Z010000210_, Z070000300_: отменён Z2200000172 28.12.2022,
+    # пруф в corpus_red_diagnosis/night_notes). Данные из манифестов, не хардкод.
+    lag_repealed = set()
+    for mf in list((ROOT / "pilot" / "batches").glob("manifest_*.csv")) + \
+               [ROOT / "pilot" / "ingest_manifest.csv"]:
+        if mf.exists():
+            for r in csv.DictReader(mf.open(encoding="utf-8")):
+                if r.get("verdict") == "REPEALED":
+                    lag_repealed.add(r["ngr"].rstrip("_"))
+
     # классификация + вычет сделанного
     done = done_set()
     for ngr, row in acts.items():
-        repealed = ("status_yts" in row["status_cls"]) or ("утратив" in row["status"].lower())
+        repealed = ("status_yts" in row["status_cls"]) or ("утратив" in row["status"].lower()) \
+            or (ngr.rstrip("_") in lag_repealed)
+        if ngr.rstrip("_") in lag_repealed and "status_yts" not in row["status_cls"]:
+            row["listing_lag"] = True          # listing врёт «действует», шапка = отменён
         amend = is_amendment(row["title"])
         row["repealed"] = repealed
         row["amendment"] = amend
