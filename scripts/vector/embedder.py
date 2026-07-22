@@ -21,11 +21,21 @@ MAX_TOKENS = 512
 _model = None
 
 
+def _resolve_model_path(name):
+    """Тот же e5-large лежит офлайн в embed_kit/model (им же собран индекс).
+    Предпочитаем ЛОКАЛЬНУЮ копию: идентичные веса + без интернета/HF-докачки."""
+    from pathlib import Path
+    local = Path(__file__).resolve().parents[2] / "embed_kit" / "model"
+    if local.exists() and (local / "config.json").exists():
+        return str(local)
+    return name
+
+
 def get_model(name=MODEL):
     global _model
     if _model is None:
         from sentence_transformers import SentenceTransformer
-        _model = SentenceTransformer(name)
+        _model = SentenceTransformer(_resolve_model_path(name))
         # e5-large: max_seq_length=512 (модель сама обрежет сверх — см. h_token_audit)
         _model.max_seq_length = MAX_TOKENS
     return _model

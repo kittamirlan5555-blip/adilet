@@ -18,6 +18,7 @@ repealed — ВНЕ индекса. Каждый вектор -> родител�
 h_token_audit (аудит лимита 512 токенов), чтобы мерить РОВНО то, что индексируется.
 """
 import json
+import os
 import sys
 import time
 from pathlib import Path
@@ -103,7 +104,8 @@ def main():
         (OUT / "index_config.json").write_text(json.dumps(
             {"model": MODEL, "dim": int(vecs.shape[1]), "vectors": len(meta),
              "prefix_query": QP, "prefix_passage": PP, "metric": "cosine(IP/normalized)",
-             "max_tokens": MT, "char_window": WIN, "embedded_on": "RTX5090/embed_kit"},
+             "max_tokens": MT, "char_window": WIN,
+             "embedded_on": os.environ.get("EMBED_DEVICE_NOTE", "GPU/embed_kit")},
             ensure_ascii=False, indent=1), encoding="utf-8")
         # проверка: repealed вне индекса (в meta их быть не может by build_passages)
         rep = sum(1 for m in meta if m[4] == "repealed")
