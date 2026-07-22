@@ -47902,7 +47902,8 @@
   "amendment": false,
   "done": "",
   "kind": "substantive",
-  "bucket": "edge"
+  "bucket": "TODO",
+  "edge_origin": true
  },
  {
   "ngr": "U960002790_",
@@ -48357,7 +48358,8 @@
   "amendment": false,
   "done": "",
   "kind": "substantive",
-  "bucket": "edge"
+  "bucket": "TODO",
+  "edge_origin": true
  },
  {
   "ngr": "U950002446_",
@@ -48513,7 +48515,8 @@
   "amendment": false,
   "done": "",
   "kind": "substantive",
-  "bucket": "edge"
+  "bucket": "TODO",
+  "edge_origin": true
  },
  {
   "ngr": "U950002340_",
@@ -48630,7 +48633,8 @@
   "amendment": false,
   "done": "",
   "kind": "substantive",
-  "bucket": "edge"
+  "bucket": "TODO",
+  "edge_origin": true
  },
  {
   "ngr": "U950002122_",
