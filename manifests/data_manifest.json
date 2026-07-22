@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-22 12:26:02",
+ "generated": "2026-07-22 22:43:41",
  "root_hint": "ADILETkz",
  "dirs": {
   "source": {
@@ -7503,8 +7503,8 @@
    ]
   },
   "derived": {
-   "files": 745,
-   "bytes": 523656053,
+   "files": 748,
+   "bytes": 676425242,
    "entries": [
     {
      "path": "derived/chunks/alatau.jsonl",
@@ -11971,16 +11971,34 @@
      "mtime": 1784703869
     },
     {
+     "path": "derived/vector_layer/index.faiss",
+     "size": 148955181,
+     "sha256": "d85b66f3fa46d388d924e2615cc592ab4330c11b5e812264515bae49d9b42924",
+     "mtime": 1784741827
+    },
+    {
+     "path": "derived/vector_layer/index_config.json",
+     "size": 285,
+     "sha256": "b5d055da85e42df58b6af9d5c4685f7a80062d09e645b605690dad2d512121b3",
+     "mtime": 1784741828
+    },
+    {
+     "path": "derived/vector_layer/index_meta.jsonl",
+     "size": 3813723,
+     "sha256": "e72693767e4c40692819047bb26bcf3e2ebaf9ebc7452bd42c32725dfe2863fd",
+     "mtime": 1784741828
+    },
+    {
      "path": "derived/vector_layer/repealed_gaps.json",
      "size": 4141,
      "sha256": "7bf8b69888c79089f54f6eb7baf302a528cc91d98edd96c957f31287df11258a",
-     "mtime": 1784704650
+     "mtime": 1784742005
     }
    ]
   },
   "deliverables": {
-   "files": 412,
-   "bytes": 276508327,
+   "files": 421,
+   "bytes": 276602880,
    "entries": [
     {
      "path": "deliverables/ADILETkz_anara_fixes.zip",
@@ -14453,18 +14471,72 @@
      "size": 10017,
      "sha256": "479612070b919ee601776d095d31f687e86d81c4a412b1124e5463a0200c6293",
      "mtime": 1781593333
+    },
+    {
+     "path": "deliverables/vector_layer_phaseB/full_chunk_report.md",
+     "size": 1420,
+     "sha256": "1b26797ffec3c3692df09b3457a37cbc08a36600d3ee12b04a30df31052700d8",
+     "mtime": 1784742184
+    },
+    {
+     "path": "deliverables/vector_layer_phaseB/index_config.json",
+     "size": 285,
+     "sha256": "b5d055da85e42df58b6af9d5c4685f7a80062d09e645b605690dad2d512121b3",
+     "mtime": 1784742184
+    },
+    {
+     "path": "deliverables/vector_layer_phaseB/numbering_audit.md",
+     "size": 44850,
+     "sha256": "f3ecdf823c87691ecbff3b6aebbf03aea4092e1bff9a5745fb230ab2ee9ab70c",
+     "mtime": 1784742184
+    },
+    {
+     "path": "deliverables/vector_layer_phaseB/phase_b_final.md",
+     "size": 12671,
+     "sha256": "685baaf2af21fe9d6611aa2255e79e495adccfe52d44ff9aae30d50a5bbff125",
+     "mtime": 1784742184
+    },
+    {
+     "path": "deliverables/vector_layer_phaseB/phase_b_newlaw_eval.md",
+     "size": 4203,
+     "sha256": "67b89cd919b5acf72d8991001cf8a58dd5e242ab7b91773cfef3f08b5f918809",
+     "mtime": 1784742184
+    },
+    {
+     "path": "deliverables/vector_layer_phaseB/README.md",
+     "size": 2280,
+     "sha256": "5acfc404d94db0bde88d5b03b5a6781dd3e34be888493be34ce8708bc05a1866",
+     "mtime": 1784742200
+    },
+    {
+     "path": "deliverables/vector_layer_phaseB/repealed_uniformity.md",
+     "size": 6710,
+     "sha256": "5487c5b3f8ec8d4755a6fd11702bd4e410f63dfb6b48fd97dd50218c0dd6e2d2",
+     "mtime": 1784742184
+    },
+    {
+     "path": "deliverables/vector_layer_phaseB/retrieval_eval.md",
+     "size": 8490,
+     "sha256": "791e1d8161116f0e4f6484f95973a81bdb29aef524e9eec1aa7ac0b1b4e7ad4c",
+     "mtime": 1784742184
+    },
+    {
+     "path": "deliverables/vector_layer_phaseB/summary_eval.md",
+     "size": 13644,
+     "sha256": "95df6402f6a598d175109da13a92b2832530449df971af2cf44988fab2f80dac",
+     "mtime": 1784742184
     }
    ]
   },
   "embed_kit": {
-   "files": 12,
-   "bytes": 2256869535,
+   "files": 15,
+   "bytes": 2409642300,
    "entries": [
     {
      "path": "embed_kit/embed.py",
-     "size": 7404,
-     "sha256": "a53cc37a016ae098a7f8da507cacbb05423adf186a353d8926b267132d49a14e",
-     "mtime": 1784704862
+     "size": 10266,
+     "sha256": "0ef5c382ce5f26865c0ddef06c296db2ce21669ba914fdfb61789af382dabb64",
+     "mtime": 1784741143
     },
     {
      "path": "embed_kit/model/1_Pooling/config.json",
@@ -14521,20 +14593,38 @@
      "mtime": 1784705005
     },
     {
+     "path": "embed_kit/out/ids.jsonl",
+     "size": 3813723,
+     "sha256": "e72693767e4c40692819047bb26bcf3e2ebaf9ebc7452bd42c32725dfe2863fd",
+     "mtime": 1784741241
+    },
+    {
+     "path": "embed_kit/out/progress.json",
+     "size": 27,
+     "sha256": "1dd6753d5c35121cb36fdeaca96c6b0615da2362c2308cf29af15d6071f22ea1",
+     "mtime": 1784741760
+    },
+    {
+     "path": "embed_kit/out/vectors.npy",
+     "size": 148955264,
+     "sha256": "e9f5cc85d1676b9fcc9959b983fcdc68164dc45d9654bdeada3cf86bd02509b3",
+     "mtime": 1784741241
+    },
+    {
      "path": "embed_kit/README.md",
-     "size": 2309,
-     "sha256": "c40f0c1663e23591a576e21d8f691300f7384dbd01fb456e4b51a749ff535533",
-     "mtime": 1784704893
+     "size": 3144,
+     "sha256": "8189009ce5ff8f530b4adbe27b9212e1676535694fbd83e36dfeab57a80ec684",
+     "mtime": 1784705347
     },
     {
      "path": "embed_kit/requirements.txt",
-     "size": 1507,
-     "sha256": "c8ee5d989f9ad670cce17c10a673e9429d87d26ad7329db386b650705dacfbd1",
-     "mtime": 1784704876
+     "size": 1561,
+     "sha256": "dd8705c4a160a0e66ea7b4fadfc626571b38e0c5c2a59c8d5afa82646da84946",
+     "mtime": 1784705354
     }
    ]
   }
  },
- "total_files": 2417,
- "total_bytes": 3456256753
+ "total_files": 2432,
+ "total_bytes": 3761893260
 }
