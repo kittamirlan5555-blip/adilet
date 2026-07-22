@@ -35,7 +35,9 @@ def main():
     for r in rows:
         if r["kind"] == "repealed":
             rep_chunks.setdefault(r["code"], set()).add(r["article_no"])
-    idx_uids = {json.loads(l)["uid"] for l in (OUT / "index_meta.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()}
+    meta_p = OUT / "index_meta.jsonl"
+    idx_uids = ({json.loads(l)["uid"] for l in meta_p.read_text(encoding="utf-8").splitlines() if l.strip()}
+                if meta_p.exists() else set())   # индекс ещё не построен (BLOCK E) -> проверка in-index на этапе E
     rep_uids = {r["uid"] for r in rows if r["kind"] == "repealed"}
 
     L = ["# Единый подход к repealed-статьям (вектор-слой)", "",
@@ -48,6 +50,9 @@ def main():
     nonuniform = []
     gaps_all = {}
     for slug in slugs:
+        if not ((paths.FINAL / f"{slug}_structured.html").exists()
+                and (paths.MAPS / f"article_map_{slug}.json").exists()):
+            continue                 # тонкие карантинные без структуры/карты
         raw = (paths.FINAL / f"{slug}_structured.html").read_text(encoding="utf-8")
         amap = json.loads((paths.MAPS / f"article_map_{slug}.json").read_text(encoding="utf-8"))
         # сноски из HTML

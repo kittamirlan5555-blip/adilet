@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-22 10:25:14",
+ "generated": "2026-07-22 12:07:56",
  "root_hint": "ADILETkz",
  "dirs": {
   "source": {
@@ -7504,7 +7504,7 @@
   },
   "derived": {
    "files": 748,
-   "bytes": 481729713,
+   "bytes": 552820601,
    "entries": [
     {
      "path": "derived/chunks/alatau.jsonl",
@@ -11960,15 +11960,15 @@
     },
     {
      "path": "derived/vector_layer/chunks.jsonl",
-     "size": 64251458,
-     "sha256": "9317fd0393836ac305dba86548767d6b6e3eef663c66042d7135dd8fb726fcc0",
-     "mtime": 1782455219
+     "size": 132175900,
+     "sha256": "47082b29d305a379dc13d7fd55372678b6dc5b1ad7f9c75ac00b41343b32e5fc",
+     "mtime": 1784703882
     },
     {
      "path": "derived/vector_layer/chunks_top100_backup.jsonl",
-     "size": 61087951,
-     "sha256": "a710eb0772cf3c857b62acdc6c6d8f7f801b0ccc0f24771bd6158ea6e6695fcc",
-     "mtime": 1782138083
+     "size": 64251458,
+     "sha256": "9317fd0393836ac305dba86548767d6b6e3eef663c66042d7135dd8fb726fcc0",
+     "mtime": 1784703869
     },
     {
      "path": "derived/vector_layer/index.faiss",
@@ -11990,15 +11990,15 @@
     },
     {
      "path": "derived/vector_layer/repealed_gaps.json",
-     "size": 1202,
-     "sha256": "f4609925bfbd693c41d51326f22002a9e00d7a868d299a6e3caeb3daf50ba7d1",
-     "mtime": 1782139268
+     "size": 4141,
+     "sha256": "7bf8b69888c79089f54f6eb7baf302a528cc91d98edd96c957f31287df11258a",
+     "mtime": 1784703974
     }
    ]
   },
   "deliverables": {
-   "files": 411,
-   "bytes": 272350794,
+   "files": 412,
+   "bytes": 276508327,
    "entries": [
     {
      "path": "deliverables/ADILETkz_anara_fixes.zip",
@@ -14407,6 +14407,12 @@
      "mtime": 1784697803
     },
     {
+     "path": "deliverables/full_corpus_delivery.rar",
+     "size": 4157533,
+     "sha256": "17cc4bbd6b3285d1f52a39c5b15f556d0900410477e85ed7feb1613f34e1d5f6",
+     "mtime": 1784698354
+    },
+    {
      "path": "deliverables/full_corpus_delivery.zip",
      "size": 4813927,
      "sha256": "59cfca6ecc009b1e1783c43f437e48331795c76fc715f4fb80f581b7e53600ec",
@@ -14469,6 +14475,6 @@
    ]
   }
  },
- "total_files": 2407,
- "total_bytes": 1153295556
+ "total_files": 2408,
+ "total_bytes": 1228543977
 }

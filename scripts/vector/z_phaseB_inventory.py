@@ -22,15 +22,20 @@ for l in (ROOT / "derived" / "vector_layer" / "chunks.jsonl").read_text(encoding
     if l.strip():
         old_codes.add(json.loads(l)["code"])
 
-# === порог summary: из старого слоя (min char_len у parent с summary) ===
+# === порог summary: НАСТОЯЩИЙ = c_summarize --min-body 5000 (body_len > 5000).
+# Проверено фиттингом по старому слою: T=5000 даёт РОВНО 665 (min summary body=5001,
+# max non-summary body=4997 — чистая граница). Метрика — body_len (char_len минус
+# заголовок), НЕ char_len. Расхождения с июнем нет. ===
+MIN_BODY = 5000
 oldrows = [json.loads(l) for l in (ROOT / "derived/vector_layer/chunks.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
 sums = [r for r in oldrows if r["kind"] == "parent" and r.get("summary")]
-SUM_THRESH = min(r["char_len"] for r in sums)      # 5031 наблюдаемо
-# сверка: сколько старых parent имеют char_len>=порога (должно ≈ числу summary)
+def _body(r):
+    t = r.get("article_title") or ""
+    return r["char_len"] - (len(t) + 1 if t else 0)
 oldpar = [r for r in oldrows if r["kind"] == "parent"]
-ge = sum(1 for r in oldpar if r["char_len"] >= SUM_THRESH)
-print(f"СВЕРКА summary-порога: min char_len у summary={SUM_THRESH}; "
-      f"старых parent с char_len>={SUM_THRESH}: {ge} (summary фактически: {len(sums)})")
+ge = sum(1 for r in oldpar if _body(r) > MIN_BODY)
+print(f"СВЕРКА summary-порога: c_summarize --min-body {MIN_BODY} (body_len>{MIN_BODY}); "
+      f"старых parent body>{MIN_BODY}: {ge} (summary фактически: {len(sums)}) — совпадение: {ge==len(sums)}")
 
 # === новые доки ===
 new_slugs = []
@@ -79,7 +84,7 @@ for slug in new_slugs:
             n_sub += len(F.greedy_subchunks(units))
         else:
             n_small += 1
-        if len(full) >= SUM_THRESH:
+        if len(body) > MIN_BODY:            # НАСТОЯЩИЙ критерий июня
             n_sumt += 1
             sum_body_chars += len(full)
     tot["parent"] += n_art; tot["small"] += n_small; tot["large"] += n_large
@@ -97,7 +102,7 @@ print(f"  repealed-сносок:       {tot['repealed']}")
 print(f"  без якоря (пропуск):   {tot['noanchor']}")
 print(f"  ВСЕГО чанков (без sum):{tot['parent']+tot['subchunk']+tot['repealed']}")
 print(f"  индексируемых (parent+sub, repealed вне): {tot['parent']+tot['subchunk']}")
-print(f"\n  к СУММАРИЗАЦИИ (char_len>={SUM_THRESH}): {big_summary} статей")
+print(f"\n  к СУММАРИЗАЦИИ (body_len>{MIN_BODY}): {big_summary} статей")
 print(f"  суммарно символов на суммаризацию: {sum_body_chars:,} (~{sum_body_chars//4:,} вход-токенов груб.)")
 # топ по summary-нагрузке
 per.sort(key=lambda x: -x[5])
@@ -107,5 +112,5 @@ for slug, a, lg, sb, rp, sm in per[:8]:
 # сохраним числа для сметы
 (ROOT / "scripts/vector/_fbA_counts.json").write_text(json.dumps({
     "docs": len(new_slugs), **dict(tot), "summary_needed": big_summary,
-    "summary_thresh": SUM_THRESH, "summary_input_chars": sum_body_chars,
+    "summary_min_body": MIN_BODY, "summary_input_chars": sum_body_chars,
     "new_slugs": new_slugs}, ensure_ascii=False, indent=1), encoding="utf-8")

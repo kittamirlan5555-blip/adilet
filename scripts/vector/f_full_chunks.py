@@ -112,12 +112,17 @@ def main():
     rows = []
     n_art = n_small = n_large = n_noanchor = n_repealed = 0
     carried = 0
+    n_skipped = 0
     repealed_by_doc = {}
     for slug in slugs:
         code = cj[slug]["doc_id"]
-        amap = json.loads((paths.MAPS / f"article_map_{slug}.json").read_text(encoding="utf-8"))
-        soup = BeautifulSoup((paths.FINAL / f"{slug}_structured.html").read_text(encoding="utf-8"),
-                             "html.parser")
+        stp = paths.FINAL / f"{slug}_structured.html"
+        amp = paths.MAPS / f"article_map_{slug}.json"
+        if not (stp.exists() and amp.exists()):
+            n_skipped += 1           # тонкие карантинные без структуры/карты — не корпус
+            continue
+        amap = json.loads(amp.read_text(encoding="utf-8"))
+        soup = BeautifulSoup(stp.read_text(encoding="utf-8"), "html.parser")
         for d in soup.find_all("div", class_="article"):
             if "статья" not in (d.get("data-type") or ""):
                 continue
@@ -173,7 +178,8 @@ def main():
     over = sum(1 for r in sub if r["char_len"] > SPLIT_IF)
     import statistics as st
     L = ["# Полный чанкинг корпуса (вектор-слой)", "",
-         f"25 документов, **{n_art} статей** -> parent-чанк на каждую (chunk_id = "
+         f"{len(slugs)-n_skipped} документов (пропущено без структуры/карты: {n_skipped}), "
+         f"**{n_art} статей** -> parent-чанк на каждую (chunk_id = "
          f"якорь zX, не изменён). Окно эмбеддера ≈ {SPLIT_IF} симв; тело > окна "
          f"режется по смыслу на сабчанки ≤ {SUB_MAX} симв (additive zX_1..).", "",
          f"- мелких статей (тело ≤ окна, без сабчанков): **{n_small}**",

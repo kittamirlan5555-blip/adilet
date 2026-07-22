@@ -100,7 +100,12 @@ def main():
          "| документ | статья | тип сбоя | фрагмент |", "|---|---|---|---|"]
     totals = Counter()
     clean = []
+    skipped = 0
     for slug in slugs:
+        if not ((paths.FINAL / f"{slug}_structured.html").exists()
+                and (paths.MAPS / f"article_map_{slug}.json").exists()):
+            skipped += 1
+            continue                 # тонкие карантинные без структуры/карты
         rows, nart = audit_doc(slug)
         hard = [r for r in rows if "INFO" not in r[0]]
         if not hard:
