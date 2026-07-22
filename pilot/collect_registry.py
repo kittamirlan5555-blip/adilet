@@ -210,11 +210,24 @@ def main():
     for nt, grp in groups.items():
         if len(grp) < 2:
             continue
-        keep = next((r for r in grp if r["bucket"] == "done"), None) \
+        # keep: корпусный done > любой done > самый новый по году НГР
+        keep = next((r for r in grp if r["done"] == "corpus"), None) \
+            or next((r for r in grp if r["bucket"] == "done"), None) \
             or max(grp, key=lambda r: year_key(r["ngr"]))
         for r in grp:
-            if r is not keep and r["bucket"] == "TODO":
+            if r is not keep:
+                # ЗАЩИТА ОТ ЗАТИРАНИЯ (D4): реклассифицируем И "done"-дубли тоже.
+                # Иначе done_set (batch_*.csv/codes.json) присваивает done ДО дедупа,
+                # и старая редакция навсегда застревает в done (двойная редакция).
+                if r["bucket"] == "done":
+                    r["done_note"] = f"обработан, но дубль-редакция {keep['ngr']} -> superseded"
                 r["bucket"] = "superseded"
+
+    # ИНВАРИАНТ (печатаем, не молчим): superseded не пересекается с done/TODO
+    sup = {r["ngr"] for r in acts.values() if r["bucket"] == "superseded"} | KNOWN_SUPERSEDED
+    leak = [r["ngr"] for r in acts.values() if r["bucket"] in ("done", "TODO") and r["ngr"] in sup]
+    if leak:
+        print(f"  !! ИНВАРИАНТ НАРУШЕН: superseded в done/TODO: {leak}")
 
     rows = list(acts.values())
     (ROOT / "maps" / "corpus_registry.json").write_text(

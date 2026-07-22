@@ -51,6 +51,15 @@ def build_article_map(html_path: str) -> dict:
                 next_text = parent.get_text(" ", strip=True)
 
         m = re.search(r'Статья\s+(\d+(?:-\d+)?)\s*\.', next_text)
+        if not m:
+            # РАЗОРВАННЫЙ заголовок (класс Z070000234_): «Статья 1<b>. </b>Название» —
+            # точка в ВЛОЖЕННОМ теге, сосед-текст «Статья 1» БЕЗ точки. Ретрай по
+            # родителю (get_text склеит куски: «Статья 1 . Название»); СТРОГО в
+            # начале текста родителя — иначе поймаем упоминания «статья N» из тела.
+            parent = a_tag.parent
+            if parent:
+                m = re.match(r'\s*Статья\s+(\d+(?:-\d+)?)\s*\.',
+                             parent.get_text(" ", strip=True)[:120])
         if m:
             article_num = m.group(1)
             if article_num not in article_map:
