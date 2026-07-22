@@ -97,3 +97,7 @@ derived/
 deliverables/
 # кэш listing реестра (регенерируется collect_registry.py)
 source/_registry_cache/
+# per-doc карты — ДЕРИВАТ (регенерируются 01_build_article_map/07 из source). В git —
+# только ОБЩИЕ индексы (codes.json, npa_mapping.json, corpus_registry.json, manual_overrides).
+maps/article_map_*.json
+maps/subpoint_map_*.json

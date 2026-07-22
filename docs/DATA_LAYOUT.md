@@ -16,9 +16,11 @@
 ## Решение: код в git, данные — на диске + манифест
 
 **В git (лёгкое, версионируем):**
-`scripts/`, `pilot/` (код), `maps/` (карты: `codes.json`, `npa_mapping.json`,
-`article_map_*`, `subpoint_map_*`, `corpus_registry.json`), `reports/` (отчёты, доски),
-`docs/`, `CLAUDE.md`, `README.md`, `manifests/`.
+`scripts/`, `pilot/` (код), `maps/` — только ОБЩИЕ индексы (`codes.json`,
+`npa_mapping.json`, `corpus_registry.json`, `manual_overrides.json`), `reports/`
+(отчёты, доски, `samples/`), `docs/`, `CLAUDE.md`, `README.md`, `manifests/`.
+Per-doc карты `article_map_*`/`subpoint_map_*` — ДЕРИВАТ (регенерируются
+`01_build_article_map`/`07` из `source/`), в git НЕ идут (на масштабе — сотни файлов/батч).
 
 **Вне git (тяжёлое, на диске):** `source/ final/ derived/ deliverables/`.
 Их **целостность** фиксирует `manifests/data_manifest.json` — `path + size + sha256 + mtime`
