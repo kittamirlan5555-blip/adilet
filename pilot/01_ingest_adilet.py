@@ -119,9 +119,13 @@ def save_codes(codes: dict) -> None:
 
 
 def main():
-    if len(sys.argv) < 2:
-        sys.exit("укажи файл со списком НГР:  python pilot/01_ingest_adilet.py pilot_100.txt")
-    listfile = Path(sys.argv[1])
+    argv = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if not argv:
+        sys.exit("укажи файл со списком НГР:  python pilot/01_ingest_adilet.py pilot_100.txt [--manifest PATH]")
+    listfile = Path(argv[0])
+    global MANIFEST
+    if "--manifest" in sys.argv:
+        MANIFEST = Path(sys.argv[sys.argv.index("--manifest") + 1])
     ngrs = [ln.strip() for ln in listfile.read_text(encoding="utf-8").splitlines()
             if ln.strip() and not ln.strip().startswith("#")]
     print(f"НГР в списке: {len(ngrs)}")

@@ -43937,7 +43937,7 @@
   "amendment": false,
   "done": "",
   "kind": "substantive",
-  "bucket": "TODO"
+  "bucket": "superseded"
  },
  {
   "ngr": "Z950002368_",
@@ -46030,7 +46030,7 @@
   "amendment": false,
   "done": "",
   "kind": "substantive",
-  "bucket": "TODO"
+  "bucket": "superseded"
  },
  {
   "ngr": "K1500000414",
@@ -46355,7 +46355,7 @@
   "amendment": false,
   "done": "",
   "kind": "substantive",
-  "bucket": "TODO"
+  "bucket": "superseded"
  },
  {
   "ngr": "Z970000206_",
@@ -46588,8 +46588,8 @@
   "repealed": false,
   "amendment": false,
   "done": "",
-  "kind": "substantive",
-  "bucket": "TODO"
+  "kind": "commentary",
+  "bucket": "nonsubst"
  },
  {
   "ngr": "Z2600000305",

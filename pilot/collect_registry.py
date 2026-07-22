@@ -43,7 +43,12 @@ def is_amendment(title):
 
 # под-классификация действующих неамендмент законов: только substantive — цель линковки.
 # ratification/budget/amnesty — «Закон» по типу, но не регуляторные акты со структурой.
+# §5 CLAUDE.md: старые редакции, чей ПРЕЕМНИК уже в корпусе (adilet может держать их
+# «действующими» в переходный период) — НЕ цель (мы уже на новой редакции).
+KNOWN_SUPERSEDED = {"K1700000120", "K080000095_", "K100000296_"}
+
 KIND_PATS = [
+    ("commentary",   re.compile(r"коммента\w+\s+к\b|^коммента", re.I)),   # «КОММЕНТАРИЙ К КОДЕКСУ…» — не акт
     ("repealer",     re.compile(r"призн\w+\s+утратив\w+\s+силу|признании\s+утратив", re.I)),
     ("ratification", re.compile(r"ратификац|присоединени[еи]|денонсац|о\s+принятии\b|"
                                 r"снятии\s+оговорк|о\s+выходе\s+из", re.I)),
@@ -167,14 +172,42 @@ def main():
             row["bucket"] = "repealed"
         elif amend:
             row["bucket"] = "amendment"
+        elif ngr in KNOWN_SUPERSEDED:
+            row["bucket"] = "superseded"           # §5: преемник уже в корпусе
         elif d:
             row["bucket"] = "done"
         elif row["kind"] != "substantive":
-            row["bucket"] = "nonsubst"             # ratif/budget/amnesty/repealer — вне цели
+            row["bucket"] = "nonsubst"             # ratif/budget/amnesty/repealer/commentary
         elif row["type"] in SCOPE_MAIN:
             row["bucket"] = "TODO"                 # цель линковки (осн. scope)
         else:
             row["bucket"] = "edge"                 # УЗАК/УКОН субстантивные — решение владельца
+
+    # ── ДЕДУП по нормализованному title: старые редакции того же акта (напр. УПК 1997
+    #    K970000206 vs УПК 2014 K1400000231) adilet держит «действующими». Оставляем
+    #    ОДНУ: если в группе есть done — остальные superseded; иначе — самую новую (по году в НГР). ──
+    def norm_title(t):
+        t = re.sub(r"\s*-\s*ИПС.*$", "", t or "").lower()
+        t = re.sub(r"\s+республики\s+казахстан", "", t)
+        return re.sub(r"[^а-яёa-z0-9]+", "", t)
+
+    def year_key(ngr):
+        m = re.match(r"[A-Z](\d\d)", ngr)
+        yy = int(m.group(1)) if m else 0
+        return yy + (1900 if yy >= 90 else 2000)     # 97->1997, 14->2014, 25->2025
+
+    groups = {}
+    for row in acts.values():
+        if row["bucket"] in ("TODO", "done"):
+            groups.setdefault(norm_title(row["title"]), []).append(row)
+    for nt, grp in groups.items():
+        if len(grp) < 2:
+            continue
+        keep = next((r for r in grp if r["bucket"] == "done"), None) \
+            or max(grp, key=lambda r: year_key(r["ngr"]))
+        for r in grp:
+            if r is not keep and r["bucket"] == "TODO":
+                r["bucket"] = "superseded"
 
     rows = list(acts.values())
     (ROOT / "maps" / "corpus_registry.json").write_text(
