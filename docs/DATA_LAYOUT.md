@@ -22,12 +22,12 @@
 
 **Вне git (тяжёлое, на диске):** `source/ final/ derived/ deliverables/`.
 Их **целостность** фиксирует `manifests/data_manifest.json` — `path + size + sha256 + mtime`
-по каждому файлу (генератор `scripts/data_manifest.py`). Манифест мал (~0.3 МБ на 1449
+по каждому файлу (генератор `scripts/batch/data_manifest.py`). Манифест мал (~0.3 МБ на 1449
 файлов) и коммитится.
 
 ## Как проверить свой набор данных
 ```
-python scripts/data_manifest.py --verify
+python scripts/batch/data_manifest.py --verify
 ```
 → сверяет диск с манифестом: `ok / ОТСУТСТВУЕТ / ИЗМЕНЁН / новых-вне-манифеста`,
 вердикт `ЦЕЛОСТНО`/`РАСХОЖДЕНИЯ`. Расхождение = у тебя не тот набор (или устаревший
@@ -43,22 +43,22 @@ python scripts/data_manifest.py --verify
 5. Либо получить готовый архив тяжёлых каталогов у владельца и проверить манифестом.
 
 После каждого прогона, меняющего данные, — **обновить манифест**:
-`python scripts/data_manifest.py` и закоммитить `manifests/data_manifest.json`.
+`python scripts/batch/data_manifest.py` и закоммитить `manifests/data_manifest.json`.
 
-## Миграция существующего git (ТРЕБУЕТ СЛОВА ВЛАДЕЛЬЦА — НЕ выполнено)
-Тяжёлые каталоги уже в истории. Чтобы вывести их из индекса (файлы на диске
-ОСТАЮТСЯ, это не удаление данных):
+## Миграция существующего git — ВЫПОЛНЕНО (по слову владельца)
+Тяжёлые каталоги выведены из индекса git (файлы на диске ОСТАЛИСЬ — это не удаление
+данных). Порядок был:
 ```
-# 1. манифест уже собран и закоммичен (целостность зафиксирована)
-python scripts/data_manifest.py            # обновить при необходимости
-# 2. вывести из индекса (диск не трогает):
+git tag pre-data-migration                       # точка отката
+python scripts/batch/data_manifest.py --verify    # ЦЕЛОСТНО (обязательно ДО)
 git rm -r --cached source final derived deliverables
 git commit -m "data: move heavy artifacts out of git (manifest-tracked)"
+python scripts/batch/data_manifest.py --verify    # ЦЕЛОСТНО (файлы на диске целы)
 ```
-> `.gitignore` уже исключает эти каталоги для БУДУЩИХ файлов (прогон 400 не забьёт git).
-> История `.git` от прошлых коммитов не уменьшится без `filter-repo`/`gc` — это
-> ОТДЕЛЬНЫЙ разрушительный шаг, тоже по слову владельца.
+После: `git status` чист, `source/final/derived/deliverables` на диске нетронуты,
+целостность — `manifests/data_manifest.json`. `.gitignore` держит их вне git впредь.
+Откат до миграции: `git checkout pre-data-migration`.
 
-**Что НЕ сделано без подтверждения:** сам `git rm --cached` и чистка истории. Сначала
-план + манифест (этот файл + `manifests/data_manifest.json`) — по правилу «не удаляй
-ничего без моего слова».
+> История `.git` от ПРОШЛЫХ коммитов не уменьшилась (blob'ы в истории). Чистка истории
+> (`git filter-repo`/`gc`) — ОТДЕЛЬНЫЙ разрушительный шаг, переписывающий SHA; по
+> отдельному слову владельца, т.к. ломает клоны/форки.
