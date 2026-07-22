@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-22 10:13:39",
+ "generated": "2026-07-22 10:25:14",
  "root_hint": "ADILETkz",
  "dirs": {
   "source": {
@@ -11997,8 +11997,8 @@
    ]
   },
   "deliverables": {
-   "files": 245,
-   "bytes": 237961467,
+   "files": 411,
+   "bytes": 272350794,
    "entries": [
     {
      "path": "deliverables/ADILETkz_anara_fixes.zip",
@@ -13417,6 +13417,1002 @@
      "mtime": 1782289090
     },
     {
+     "path": "deliverables/full_corpus_delivery/laws/K1500000377_ready.html",
+     "size": 1395043,
+     "sha256": "4e99c206c31e664a79e70e860a57dc4ebd1078902b6ec68ea2070000bf57b679",
+     "mtime": 1784686049
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/U950002255__ready.html",
+     "size": 146081,
+     "sha256": "68f3e98c153e6407fac3fb39ae49731b57a2d848a5472824a000b37c24a4e93e",
+     "mtime": 1784691262
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/U950002337__ready.html",
+     "size": 89145,
+     "sha256": "9c631b15fc8b956bd58a3939d0a19e74b5e6f65266946304ce6297002112172d",
+     "mtime": 1784691269
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/U950002723__ready.html",
+     "size": 183242,
+     "sha256": "326651f48db9de4424a3725b9ae4948d53d8fc6678c12f19982776e050a5d3ed",
+     "mtime": 1784691279
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z000000078__ready.html",
+     "size": 109900,
+     "sha256": "f563601c47bf34a997d7e243746ea6677e0ac6ea2eb455ee49ea8d8eaf56ab3c",
+     "mtime": 1784686059
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z000000113__ready.html",
+     "size": 114908,
+     "sha256": "5e656d9f978615c6e391c7343e7ac9dec669eb2278574b9b3b343ed22bba3973",
+     "mtime": 1784686067
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z010000178__ready.html",
+     "size": 102670,
+     "sha256": "4b35b096e6238cc888c16762756c7d1be1f50d3e26ec7952a498b678c95ca848",
+     "mtime": 1784686082
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z010000197__ready.html",
+     "size": 145670,
+     "sha256": "b5a82482cb9279c730e05b3fa93329df4d4584ec959dcdd4d799c08975d3ca9b",
+     "mtime": 1784686091
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z010000211__ready.html",
+     "size": 205311,
+     "sha256": "9bc679e904584b0fd5da0dcf07139a269ff4c71c5b8cfd3d52575f3303fff70e",
+     "mtime": 1784686102
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z010000217__ready.html",
+     "size": 90185,
+     "sha256": "24bf8e06d9a94f90b39ac5de928c475fa0f53c3bf0c7992342a3de5a63400934",
+     "mtime": 1784686109
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z010000264__ready.html",
+     "size": 58350,
+     "sha256": "57ec70e997dabaa5b1062b066a6605006f8a48c41c440757b18cdf850cb3933b",
+     "mtime": 1784686116
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z010000266__ready.html",
+     "size": 466281,
+     "sha256": "e450d2c0acb01d515a780802f05fc1dd40537c290ee11806738e097279131cc6",
+     "mtime": 1784686133
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z010000268__ready.html",
+     "size": 26107,
+     "sha256": "c03bca0d67365ea631eee1e4e49e6c6b9490a53f132cf17034cdec8c81a65962",
+     "mtime": 1784686139
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z020000303__ready.html",
+     "size": 65891,
+     "sha256": "3990182585722f5fe694d28e6b3d588394f3482a7a008014ea446c844b742391",
+     "mtime": 1784686147
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z020000330__ready.html",
+     "size": 66565,
+     "sha256": "956a7f6b758cf68414c3da7892f42c49a395db0f4b0dd171eb10912ae6ab4367",
+     "mtime": 1784686154
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z020000343__ready.html",
+     "size": 100061,
+     "sha256": "363e2b39f4f36c27e82c7b5af387cd0d1d37309769ac1c9900e22b4ff668e4ba",
+     "mtime": 1784686163
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z020000344__ready.html",
+     "size": 113687,
+     "sha256": "8fba7e7eb10909692b7dc458b0f8aad7d7f79a704db9aa061b117a2e4e23e686",
+     "mtime": 1784686171
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z020000345__ready.html",
+     "size": 410834,
+     "sha256": "885ac6f5628654c23ee4dd6c5564d5adc43e83ab4fe4c019363edff005c51071",
+     "mtime": 1784686186
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z030000387__ready.html",
+     "size": 158761,
+     "sha256": "d1aaaab412d0616b6f4672885341a2671ce4deb40a5d0ea1cd68140823b2c0f7",
+     "mtime": 1784686196
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z030000400__ready.html",
+     "size": 86858,
+     "sha256": "56fa1ee668e5c896d074dbcc343a60ed7921a9ccfcaa2b60def17e96369a5aa8",
+     "mtime": 1784686204
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z030000435__ready.html",
+     "size": 115321,
+     "sha256": "0dfe012dd9a9e9e90db3aa8b105d2740abd246b4a64f6e42de82ea1af3966fb1",
+     "mtime": 1784686213
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z030000439__ready.html",
+     "size": 67515,
+     "sha256": "3ed4e69f4c1c657166015a8a1a77690c9d6c1f26c1798fcf61e16d7f3206e32e",
+     "mtime": 1784686220
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z030000440__ready.html",
+     "size": 120041,
+     "sha256": "f94922f2a3a01cfad69f99b66d24baee79211f22d5492ee050af6d67983f7521",
+     "mtime": 1784686229
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z030000490__ready.html",
+     "size": 84076,
+     "sha256": "3226b452e2b3db8d7b834fc72bacee94f72417c21bab6efa727306fc3a9f3484",
+     "mtime": 1784686237
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z030000508__ready.html",
+     "size": 170092,
+     "sha256": "8c9d58b0c9c05288bd27f9575c3104a88a7adb20b386b14a301023bf1caf0864",
+     "mtime": 1784686246
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z030000510__ready.html",
+     "size": 111704,
+     "sha256": "5144f1baddc1b6aab1dd88c95d5236bc8a423b13964d74b46d00a4c36436bf75",
+     "mtime": 1784686255
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z030000513__ready.html",
+     "size": 150179,
+     "sha256": "e27fef9f9fc0ff56a9178a354b85209840c2d2c8db2e071a62ba51318ebfefaa",
+     "mtime": 1784686265
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z040000544__ready.html",
+     "size": 323080,
+     "sha256": "4188b808626fa4f29052279f04b88606c6e1c4ec6269e5b6b0a88c74ada142d5",
+     "mtime": 1784686277
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z040000567__ready.html",
+     "size": 441558,
+     "sha256": "e2ce8921861bc043523209415ad93fb5fa99c1a5259e0642738ba7df0fcb69ac",
+     "mtime": 1784686294
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z040000576__ready.html",
+     "size": 309662,
+     "sha256": "3fc30ff2f3a843ee059c6e5a8b8e93338f950aa35ed0b73920b4fc6dd763db7a",
+     "mtime": 1784686308
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z040000580__ready.html",
+     "size": 152002,
+     "sha256": "7b6bc0df2114220f6f0dc595a30ea33df40ebc1a394e0934c4c3456857cdf2de",
+     "mtime": 1784686317
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z040000593__ready.html",
+     "size": 589125,
+     "sha256": "98ead7ab16b254878d63ddb1f12a26ed4a54cd8f1efaaa124b0df0bdc3a2e227",
+     "mtime": 1784686338
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z040000602__ready.html",
+     "size": 179365,
+     "sha256": "1dbf7269e588e60976ebd334e65f4396a3f9cf2f50b641a05f77476d109bf108",
+     "mtime": 1784686348
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z050000031__ready.html",
+     "size": 74691,
+     "sha256": "4c612e6786be84883ca35199773533bacba0b6d19c13709f0c642bd87f6d725d",
+     "mtime": 1784686356
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z050000036__ready.html",
+     "size": 114068,
+     "sha256": "028b97532ea4e1eb174155c12183479e8725641eeb31593567cac6ee17b44fd9",
+     "mtime": 1784686364
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z050000066__ready.html",
+     "size": 260244,
+     "sha256": "fed4d4a27de52c00fd9f3ba4a63838b93f21128b81c651b6575099069ee025dc",
+     "mtime": 1784686377
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z050000093__ready.html",
+     "size": 123383,
+     "sha256": "bf1267003b299d35a1a51e25a33a1a46bc58696c15249d89f835db00b393411e",
+     "mtime": 1784686386
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z060000121__ready.html",
+     "size": 55793,
+     "sha256": "9f424b609361ff76e78f4169cefd084858c67a2ffc4880ea71fc55a8cdc0eb38",
+     "mtime": 1784686393
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z060000126__ready.html",
+     "size": 159181,
+     "sha256": "2aeb34edd2227e046c75219eb64e898e4e718e4c545b0197bb193c39fe351597",
+     "mtime": 1784686403
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z060000163__ready.html",
+     "size": 85072,
+     "sha256": "a0401d98a95290f3ada600f019c7c2b9f035e72ea65b7a87f2f570bb70e9e823",
+     "mtime": 1784686411
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z060000169__ready.html",
+     "size": 167709,
+     "sha256": "b229af8de73b7b64c116b057340545c690e351807a8363bdd7f9dc3e21944121",
+     "mtime": 1784686421
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z060000175__ready.html",
+     "size": 448019,
+     "sha256": "b4e66e36b256a6951c16d80478859788cb674a7f42c2128c29abcd6556b9c670",
+     "mtime": 1784686438
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z060000207__ready.html",
+     "size": 294611,
+     "sha256": "d7d71be22852b26485f0a60751f5c9cd4de67957b76d9f1a48e04d7b6f4c5d3d",
+     "mtime": 1784686451
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z070000005__ready.html",
+     "size": 37582,
+     "sha256": "29ec9bebd9cc49b1d18c97cbd424df9a7c73befb5b221a1f5febade69be946d1",
+     "mtime": 1784686457
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z070000234__ready.html",
+     "size": 146453,
+     "sha256": "f9fa7a71c744f42a6a578c59d2de31404e033e09b3e0010045359d12d4f331bf",
+     "mtime": 1784695856
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z070000301__ready.html",
+     "size": 155931,
+     "sha256": "f66cc5f4d4d2a535fd1e9e6b0347f8378f1d00e6d35b6a04a9f60c7d39f71962",
+     "mtime": 1784686467
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z070000302__ready.html",
+     "size": 98711,
+     "sha256": "c17991f951e3dae67a6edf78bc19164a7f9e95ae38ca9cf40057ad3cc6f11fa1",
+     "mtime": 1784686475
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z070000305__ready.html",
+     "size": 89067,
+     "sha256": "c82b83191a7ca73cb5e820193440702be29c2eb46134d4904b9b2b37a69e53bf",
+     "mtime": 1784686483
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z070000306__ready.html",
+     "size": 78495,
+     "sha256": "732d830bd55eebc87729011dd1708a6b5e9d756ec2f08e6a254e51e18900256f",
+     "mtime": 1784686491
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z080000061__ready.html",
+     "size": 165890,
+     "sha256": "d8c47ca2ea150a45a1ef3ae6113cc37c2162c2e6a7317777a9ec957ab5fad1d9",
+     "mtime": 1784686501
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z080000067__ready.html",
+     "size": 216488,
+     "sha256": "ba443c7ea3c3b4a8859ecdc31e917c2ecc64fe08fe59df973de9077c68b1f980",
+     "mtime": 1784686512
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z090000155__ready.html",
+     "size": 182201,
+     "sha256": "0888331a172d8faeedf9119159db6ade8909f046967ddfa405736a8b06bb6b1f",
+     "mtime": 1784686522
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z090000165__ready.html",
+     "size": 171362,
+     "sha256": "2add489e3b5b1dd28aa3f043c708b1413e86ec41cc6bdda1dc8ebf05ca226e6c",
+     "mtime": 1784686532
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z090000223__ready.html",
+     "size": 55707,
+     "sha256": "0132ef245e714643941ffe2ceb3ea1cacd29d6479febe31152d59973b4e509fb",
+     "mtime": 1784686540
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1000000351_ready.html",
+     "size": 83537,
+     "sha256": "e329d82a86db922e68f63fcb2855911daf4785a60c97763adc0e890939b96470",
+     "mtime": 1784686548
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1000000359_ready.html",
+     "size": 43322,
+     "sha256": "8c29b76a763d28a1cc0030deeb9f8b854cd233da6126fef78393d3c5cb60222c",
+     "mtime": 1784686555
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z100000257__ready.html",
+     "size": 183766,
+     "sha256": "e458ee2059ce0631177a868432722a8f536a6e320584032356746a942666c8b5",
+     "mtime": 1784686565
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z100000274__ready.html",
+     "size": 282199,
+     "sha256": "a182990d1310086373ba30058fe61dcf5eb55a1d195942a23eb2368e716f8d09",
+     "mtime": 1784686577
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z100000277__ready.html",
+     "size": 115827,
+     "sha256": "c000643210beda0d4940678779c928313934062a3feff563fe3046b10187d264",
+     "mtime": 1784686586
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z100000339__ready.html",
+     "size": 991692,
+     "sha256": "379dba484348540a9893879ea91e504b0548cb005acd7ba308fc397bbe958b12",
+     "mtime": 1784686615
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1100000394_ready.html",
+     "size": 95386,
+     "sha256": "2281df3af5bdc0fd3c10b9b699d8d144c688eb3faba44970eea3a6fe0326f3e5",
+     "mtime": 1784686624
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1100000401_ready.html",
+     "size": 125697,
+     "sha256": "cd263ffd8bce7a6d91a80c717924ca58d7cc93ec7096d9358bcb58818b17a8f6",
+     "mtime": 1784686632
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1100000463_ready.html",
+     "size": 211885,
+     "sha256": "6892fec0874379335d4e765552e8c8f9ecf9c56b382c6d3645fb047bf92419f1",
+     "mtime": 1784686642
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1100000483_ready.html",
+     "size": 125972,
+     "sha256": "fe7b420ed8528e6bfc49cffc62f297eb731e901e7ab8d0d6a783715479fced24",
+     "mtime": 1784686651
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1200000020_ready.html",
+     "size": 152284,
+     "sha256": "d82d0337b433e4f5ccc49829308ee348a2c6523fb518331f4b3f657cdd1cd446",
+     "mtime": 1784686660
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1200000528_ready.html",
+     "size": 135291,
+     "sha256": "003709ad292165399aac181f1e4dcd143d7f86c3706b54b7c030f3adfa083c84",
+     "mtime": 1784686669
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1200000532_ready.html",
+     "size": 320675,
+     "sha256": "3bdc7228659e14f71b89cef5a854a7bd2a80c75aff8155ff6f71b30d6dbbfcb5",
+     "mtime": 1784686682
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1200000541_ready.html",
+     "size": 189440,
+     "sha256": "14bc9a532a0d1b91d1c5446b95165143abc70806073d428f7f6073e2024c4d80",
+     "mtime": 1784686693
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1300000067_ready.html",
+     "size": 174622,
+     "sha256": "140cefef74d3121b64823a1c3226a41fe1b208541908814eac42669553286a65",
+     "mtime": 1784686704
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1300000070_ready.html",
+     "size": 424065,
+     "sha256": "ef9e6585c70f309fd2c81978e1c545b24359348ae8b28cd6d6293f9932e59cfe",
+     "mtime": 1784686719
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1300000149_ready.html",
+     "size": 314086,
+     "sha256": "3a00c1dae987f03fbbdba95ad83a4e7e4a814f4b2eb1fcfe6666edb5f19bb15c",
+     "mtime": 1784686738
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1400000188_ready.html",
+     "size": 909145,
+     "sha256": "038eaf39c8f111aa3812fb2a4aad8165b3f268d453ef5c653e071b9774233ce5",
+     "mtime": 1784686767
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1400000207_ready.html",
+     "size": 70760,
+     "sha256": "6a9562f2859380c3a8882a80e9e612ce364ee0a6c23b6ab519c7e0373408883b",
+     "mtime": 1784686776
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1400000211_ready.html",
+     "size": 102305,
+     "sha256": "f6f7cc905a886553212088c48e0b76df9cbbe6fbfa4f43ff00286fa8924ac1e8",
+     "mtime": 1784686784
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1400000228_ready.html",
+     "size": 438492,
+     "sha256": "49b2160d43210623d350e2b84bd363d192016b7d83a84363ddd1596bb464f5e8",
+     "mtime": 1784686801
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1400000263_ready.html",
+     "size": 58549,
+     "sha256": "8af8dcaecb8f17a7dded47212b1e06f6ee09b14620b9c16c339097a8549ffb09",
+     "mtime": 1784686809
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1500000285_ready.html",
+     "size": 111782,
+     "sha256": "ce44e865ae4a049555c60b1f9685168f39673c4ee4d1234145de1cce9cf0d794",
+     "mtime": 1784686817
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1500000314_ready.html",
+     "size": 95381,
+     "sha256": "8f2761ae4b689a32a6347df6790e687348f2c09a33fefa2cdfec3b84f0baed00",
+     "mtime": 1784686825
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1500000316_ready.html",
+     "size": 372071,
+     "sha256": "5f3069d34749ca910d603ba14d7e384ecf709f21eaac4e5b4001ea43d0855596",
+     "mtime": 1784686840
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1500000372_ready.html",
+     "size": 157792,
+     "sha256": "d3bcf7139885ca21fec02087fc620c6441fd62c00c0d765ed6f84ed41e419404",
+     "mtime": 1784686849
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1500000379_ready.html",
+     "size": 327757,
+     "sha256": "56641706fcc76c1d527b4a9310ceea524f6025cb6499717b7a60f9644868d735",
+     "mtime": 1784686863
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1500000390_ready.html",
+     "size": 180635,
+     "sha256": "551d733a570163f03002aeef41c5f009042302e99854a56cf36cd6441cb9c8c7",
+     "mtime": 1784686873
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1500000402_ready.html",
+     "size": 110269,
+     "sha256": "489c71bc0fa53e189dbfccdb61487b4ee20d3b0518406a62ba4788715f02cced",
+     "mtime": 1784686882
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1500000405_ready.html",
+     "size": 236817,
+     "sha256": "917c2c3006799947d2aa14a54a0974cd37d4fbb1022bde187f433fdd72541985",
+     "mtime": 1784686893
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1500000438_ready.html",
+     "size": 102787,
+     "sha256": "f60272d782c271281dd1316aae7d5ef44208c9f2c7184d0abd0731141af0250a",
+     "mtime": 1784686901
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1600000038_ready.html",
+     "size": 85139,
+     "sha256": "a3493eaf6433a899ce959d87c2f71b55f2592cfbd0a394e7cd1a01c95846a2e1",
+     "mtime": 1784686909
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1600000042_ready.html",
+     "size": 87424,
+     "sha256": "4a786171b60ac527c624041994c5c59792052868f0ce2d329a2e2b5aeb01573e",
+     "mtime": 1784686917
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1600000442_ready.html",
+     "size": 221989,
+     "sha256": "af7fdf5d6b71b0c9eadf3f0d4219936a1ae87e45b64f4d9a95239bc04c354452",
+     "mtime": 1784686928
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1600000444_ready.html",
+     "size": 114856,
+     "sha256": "e75093417c5302fa2d4a01bb6873840e9a6f90bb146c390755f91599767de59c",
+     "mtime": 1784686937
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1600000495_ready.html",
+     "size": 94067,
+     "sha256": "670a3b4a0a8d5622d4888b1d2114a2e7bb03f602307ff3e03f9786f3fd86a476",
+     "mtime": 1784686945
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1600000498_ready.html",
+     "size": 220496,
+     "sha256": "4ed445c7822c5c888634cf63247d691aa014165f8d4e652a844be884fa08c3f7",
+     "mtime": 1784686955
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1700000047_ready.html",
+     "size": 94746,
+     "sha256": "08fd0266fe8a8f103baf9dc766750849638a9119b231021f9fede75846326dcf",
+     "mtime": 1784686963
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1700000062_ready.html",
+     "size": 305338,
+     "sha256": "ef2aaf6acad26d60fd0a3474477953fc980e59c7deaac972408fbc5e130f2a85",
+     "mtime": 1784686976
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1800000131_ready.html",
+     "size": 73283,
+     "sha256": "bafd7afc746fc3e65590fd67e71d9515eded995869974713c9d46ddd9845efd6",
+     "mtime": 1784686984
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1800000133_ready.html",
+     "size": 160398,
+     "sha256": "f054ea314e59b626dc89bc7fae4bde00e954000689bcbe91e51bc85cd04efce4",
+     "mtime": 1784686993
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1800000167_ready.html",
+     "size": 212348,
+     "sha256": "a0b08e0044790d030363a0d8683fded0f70f193e2fcaa5a8e594d83590dbc6d8",
+     "mtime": 1784691290
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1800000169_ready.html",
+     "size": 77603,
+     "sha256": "3396f5f6289bea26e5f8cc59fe77e24e0789550fb01db02dd731d9a91cd17c77",
+     "mtime": 1784691297
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1800000178_ready.html",
+     "size": 41290,
+     "sha256": "0683e4b00da318af6200341a13e437717c1e4aa84d15d4cc4379f5a952f08150",
+     "mtime": 1784691304
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1800000183_ready.html",
+     "size": 135342,
+     "sha256": "e7329489a0bd8e07950ae3706f42a8e85708aabc15f25b2b094a6e4d80c93071",
+     "mtime": 1784691314
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1800000204_ready.html",
+     "size": 345017,
+     "sha256": "ba9e49fe4927e40658a0cac7f7b8ea691a7e135df63a4f3142b2b92784cf644d",
+     "mtime": 1784691329
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1900000212_ready.html",
+     "size": 115063,
+     "sha256": "ab99da1ae3ad0b2b39aa315666096f3ad61946e7de25551906600810551aafc7",
+     "mtime": 1784691338
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1900000236_ready.html",
+     "size": 261715,
+     "sha256": "e5ed78b3324455879460143745e86dc8fbef68a3d3fad10224ed2ca29c8f5552",
+     "mtime": 1784691350
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1900000242_ready.html",
+     "size": 388518,
+     "sha256": "337314de5763f75f096cf5a1b05085d6f5cf744d1b1fbd231211ebb16447a778",
+     "mtime": 1784691365
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1900000288_ready.html",
+     "size": 158879,
+     "sha256": "b88d2068458fc5219c8adf896195cf3e99960e690280bf5386eec59b6891c995",
+     "mtime": 1784691382
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z1900000293_ready.html",
+     "size": 83737,
+     "sha256": "b70a59c5ffc3ebbf86c9cf7d45cdd6b29c0f2125884ee6190bc69a97ce428d39",
+     "mtime": 1784691389
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2000000333_ready.html",
+     "size": 122300,
+     "sha256": "8e6f6a7dd12c0cfff41b19db7e83bbbdf9995aa1d65423bfcfec4e6bdc400b51",
+     "mtime": 1784691398
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2000000396_ready.html",
+     "size": 256388,
+     "sha256": "5b8eceaf9164be1c51a59d37f2dac29546fdaff3a682f051658f286da831f27c",
+     "mtime": 1784691410
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2100000097_ready.html",
+     "size": 144506,
+     "sha256": "335c00a95100f1a58c6fed2c03933016bcbd85a27aa1157a88b9a056c991e04d",
+     "mtime": 1784691420
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2200000154_ready.html",
+     "size": 102635,
+     "sha256": "a07053dbbcaf9af6aecce32755826a7566abab74f7cb6a5ca61776d31fecb1e0",
+     "mtime": 1784691428
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2200000155_ready.html",
+     "size": 201813,
+     "sha256": "4261f7bfa28b6405cf59dc8cf869ef3133372b9581090fdfcecd62590aab19a3",
+     "mtime": 1784691438
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2200000166_ready.html",
+     "size": 139238,
+     "sha256": "91b6ec326eb11bcf3d6255db6f83fbbf3f4f4b27e96756d1271caa22bfabdbaa",
+     "mtime": 1784691448
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2200000172_ready.html",
+     "size": 164086,
+     "sha256": "089af3e02852b17273b34f838b6933419674341ce78ad8af035fcc98da6c97c6",
+     "mtime": 1784691458
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2200000178_ready.html",
+     "size": 253144,
+     "sha256": "2127ba3cbc1ceec709890f71663df07810e2cbba95a50ccb843ae367bd9cd89f",
+     "mtime": 1784691470
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2300000016_ready.html",
+     "size": 69666,
+     "sha256": "54ba28d574cd33a6f1b3f5072a70f042e172209f0991ff7dcfb63fd95473ea11",
+     "mtime": 1784691478
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2300000018_ready.html",
+     "size": 81442,
+     "sha256": "9a325f01386e56439c73afb5a62122054e817fcf01b5a2c747dab5d3dfb2525b",
+     "mtime": 1784691486
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2300000030_ready.html",
+     "size": 67145,
+     "sha256": "87aec405d3aa6d0a51cc309b56e86f2c1cc669aa75a5d4f05907b3f45470fb95",
+     "mtime": 1784691494
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2300000181_ready.html",
+     "size": 64425,
+     "sha256": "a5e1e57756ec291c4675fdc9e624f298618c8a6c6b1aac725182123295875149",
+     "mtime": 1784691502
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2300000183_ready.html",
+     "size": 196003,
+     "sha256": "f5d2d4d0bba5fe659e4913b928d7ed1405becefb44d9c6779c631d58cbf8ef0a",
+     "mtime": 1784691514
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2300000205_ready.html",
+     "size": 92111,
+     "sha256": "cd8c7699c2517558c7291fe85cfad0be76de146d2c9d0a5b219e8f93e42d134a",
+     "mtime": 1784691522
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2400000089_ready.html",
+     "size": 69416,
+     "sha256": "ef13744d59bf0266b500530a2300fecb9599a9b10bfd20649c257c746a8d2dae",
+     "mtime": 1784691530
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2400000093_ready.html",
+     "size": 292441,
+     "sha256": "7776a6b16073bbc3386946ba806462d5f0c72315144906d53d11e1cb148dbf08",
+     "mtime": 1784691543
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2400000120_ready.html",
+     "size": 310587,
+     "sha256": "96c97d556d78e9da64c670768d4a8acfbbd0168b279458092141e8e9b207aba1",
+     "mtime": 1784691557
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2500000193_ready.html",
+     "size": 139515,
+     "sha256": "0c98fd948d5dacd0f75580cb8e103897d81ba66f1d93634e559ef16621f49702",
+     "mtime": 1784691567
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2500000199_ready.html",
+     "size": 159233,
+     "sha256": "6d5ffddffc53671f219de69330d13ab7fdaeccfcd63d4ef6713bd42eb13ab513",
+     "mtime": 1784691578
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2500000201_ready.html",
+     "size": 120647,
+     "sha256": "0bde12bbce5073103ee33b77b993dd3a698dff40ecd312783b5a4c951dd935f5",
+     "mtime": 1784691587
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2500000230_ready.html",
+     "size": 92408,
+     "sha256": "744f8766503168df7e3092220a172f89a7dac3048862c9b881b3c65c0ffa8379",
+     "mtime": 1784691595
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2500000238_ready.html",
+     "size": 267473,
+     "sha256": "d8569d9ff15acf2aa9b72491e17c4b5d29e426c41814780c9e60df060369128f",
+     "mtime": 1784691619
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2500000245_ready.html",
+     "size": 355009,
+     "sha256": "9e0d4d900008b8432e1f940671ada82020f2fc8e0ee29a687b6485675ea0e683",
+     "mtime": 1784691635
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2600000290_ready.html",
+     "size": 664974,
+     "sha256": "35a538bb582b4d0e92317f4e8fda9a992c1d49c9a4b2e9952181e27e4fcd75d0",
+     "mtime": 1784691664
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2600000296_ready.html",
+     "size": 112660,
+     "sha256": "abfc39e9d3f01b5db09d58363d05d7d1dda0f3238d3f35084d9ad333d51d50cd",
+     "mtime": 1784691677
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2600000297_ready.html",
+     "size": 172350,
+     "sha256": "fa96c3e230175d03bbfe51e3f6dcf6d82b632a4319eee6fa81eaaf85e15a1d06",
+     "mtime": 1784691698
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2600000298_ready.html",
+     "size": 78258,
+     "sha256": "e605eaaa3ecd1bea9418ff8fbb30e62ca81789895f05a6342780f6a804fd77a9",
+     "mtime": 1784691714
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2600000299_ready.html",
+     "size": 76616,
+     "sha256": "f168c2adb49e875b5d6b6d6cbd32b0c22aa1059f5537428214c8e90e0e2a849f",
+     "mtime": 1784691729
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2600000300_ready.html",
+     "size": 88385,
+     "sha256": "21c65613719ec673f099e7a804d85a8525603f4fba53a0c363c8e3c81d711253",
+     "mtime": 1784691745
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2600000332_ready.html",
+     "size": 68128,
+     "sha256": "b139c731bca56d53175ecf9931598fbca3045b4beb3d8446e3e891cd6f6a0ca7",
+     "mtime": 1784691759
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2600000335_ready.html",
+     "size": 170576,
+     "sha256": "2f54faa37b261114ab8f97e49c45a7fc359ced31d54412e452ee649dc6c89a9f",
+     "mtime": 1784691779
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z2600000341_ready.html",
+     "size": 70711,
+     "sha256": "06420af2ad5c4a0473d8583a10f7a8037a4d840b280cc381cb4672a3500d4a42",
+     "mtime": 1784691794
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z910004400__ready.html",
+     "size": 38533,
+     "sha256": "3fbdfda6dab8159111b5e4b3f5ed49b117540d6f2db72756d74a3426539d2d32",
+     "mtime": 1784691807
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z920002600__ready.html",
+     "size": 65632,
+     "sha256": "e654e5306a907d97e0bf9bfa4f36a7b814453c39652394feea3dfc84152adc71",
+     "mtime": 1784691821
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z920003600__ready.html",
+     "size": 70053,
+     "sha256": "2347dc9cdb8360d30ee94067fddb5b163203ac3b53698bb4e64f4f22478fd01d",
+     "mtime": 1784691835
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z930002200__ready.html",
+     "size": 73052,
+     "sha256": "22880e7f5a6bbfbad8e57368a6e645954296e01723f48618485c9b4cde683355",
+     "mtime": 1784691850
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z940001100__ready.html",
+     "size": 58229,
+     "sha256": "75ec9136b64aadf556ea526fc4a4c3cee041296c46c7335177183f548c701344",
+     "mtime": 1784691859
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z940004000__ready.html",
+     "size": 154392,
+     "sha256": "7fd078cf3d0591cde75c28a3ab4803886a9c7c6a6e72987569546d62c622efe1",
+     "mtime": 1784691870
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z950002486__ready.html",
+     "size": 122144,
+     "sha256": "a6c9b2c0acbb2dec8226bc923160618accdfd70028018ae551f82b776c9980c3",
+     "mtime": 1784691882
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z950002676__ready.html",
+     "size": 99626,
+     "sha256": "018d883cac5a8fda7cb88a7749a1448e22109691cf1b051c7a9e79a056f4a461",
+     "mtime": 1784691895
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z950002688__ready.html",
+     "size": 88856,
+     "sha256": "bcaa2a0703083a8a2dc138e3a6c2021478808a4a3d70c3217db59dfe79803b34",
+     "mtime": 1784691906
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z960000006__ready.html",
+     "size": 312199,
+     "sha256": "9f4a5b8e25d8f7d65830d35a8a69fb1759b1f33decd317da67d18b61778aa2f6",
+     "mtime": 1784691926
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z970000097__ready.html",
+     "size": 154579,
+     "sha256": "b0a8718abc67e992e0919bd7deea5f18eb583cc54ff23f342e8fef27e45488c0",
+     "mtime": 1784695861
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z970000150__ready.html",
+     "size": 55917,
+     "sha256": "9f9993241316643d2ddf0dd9993040647e8943514c39d30e2314434626317a6b",
+     "mtime": 1784691937
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z970000151__ready.html",
+     "size": 135772,
+     "sha256": "d7e6b939ee71891f43c991c3346503f0e1d47b3b85a3297286d319e4b84df056",
+     "mtime": 1784691949
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z980000220__ready.html",
+     "size": 309162,
+     "sha256": "1c61ff345c87d380d1a28f320081dd035b339c73116113bbb74b59baf09225eb",
+     "mtime": 1784691981
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z980000254__ready.html",
+     "size": 121432,
+     "sha256": "6cf41f1806861f060e5083e2accfe7d214f437d1eae6f8e403e9063cf96e1f98",
+     "mtime": 1784691994
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z980000278__ready.html",
+     "size": 205428,
+     "sha256": "66b4a961add6e43665b34fc562a2d51e58fd192ef7951baa5b803cf9337f6d0c",
+     "mtime": 1784692009
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z980000279__ready.html",
+     "size": 239971,
+     "sha256": "e66f54c795bba6eb04cce143d73af2bec5c19c8230739ace6d0cfecf00b640c5",
+     "mtime": 1784692025
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z980000304__ready.html",
+     "size": 198263,
+     "sha256": "cf56a8e12a6ac40524b3275fb251ed9156afb4a40fa57c3165f97e429753cad7",
+     "mtime": 1784692040
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z990000344__ready.html",
+     "size": 213291,
+     "sha256": "74cecd081b137b6a93e663f21d54ea877efc31c478292c4187b1cf06f2b75ac2",
+     "mtime": 1784692056
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z990000414__ready.html",
+     "size": 56866,
+     "sha256": "e4118e70b9d9880edefc9462148894f90c0eb74dee5030cf4e73256456da26c9",
+     "mtime": 1784692066
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z990000422__ready.html",
+     "size": 186998,
+     "sha256": "b7a8a16e0a456541f1fcc772a338e0ace9df4d2cdfaba7b85517388969768196",
+     "mtime": 1784692081
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z990000427__ready.html",
+     "size": 278857,
+     "sha256": "f6b2f2c0dc90000dfbb0ebbc66f78df506eb44ff1302b2b4ca8905f37cfaaace",
+     "mtime": 1784692099
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z990000429__ready.html",
+     "size": 113467,
+     "sha256": "db3f65d7cecb4c46c213db915bc3492bc480fd4f55011b9289ea71c1945ff863",
+     "mtime": 1784692112
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/laws/Z990000456__ready.html",
+     "size": 276666,
+     "sha256": "e23263e60371fe1606db8e4e6e909c0c1c72e2dc0339320c096e072d10b2ea7e",
+     "mtime": 1784692130
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/README.md",
+     "size": 2578,
+     "sha256": "a8dadd92a205a25b8b46c608d6988544beaffdc209c9e58667560a58573ca1f0",
+     "mtime": 1784697803
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/reports/corpus_red_fix.md",
+     "size": 5010,
+     "sha256": "ec36a3bcb6a29e11a3988d1596e7245b96f46920d161f0fb8df432fe8b678580",
+     "mtime": 1784697133
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/reports/index.md",
+     "size": 20531,
+     "sha256": "99b96e5561bba544270067f4c9dc03071382e8c63bb25b05d074fa16083b035d",
+     "mtime": 1784697803
+    },
+    {
+     "path": "deliverables/full_corpus_delivery/reports/registry_summary.md",
+     "size": 2143,
+     "sha256": "549cbd65d2ed042964b8576bde96d49bb7f595fb9f44de450ddde092f793c82b",
+     "mtime": 1784697803
+    },
+    {
+     "path": "deliverables/full_corpus_delivery.zip",
+     "size": 4813927,
+     "sha256": "59cfca6ecc009b1e1783c43f437e48331795c76fc715f4fb80f581b7e53600ec",
+     "mtime": 1784697914
+    },
+    {
      "path": "deliverables/README.md",
      "size": 1326,
      "sha256": "e509eaa1c6d29003c5a00aeaf14aa83462e2b2ea4bbc075a5618a63ebf934775",
@@ -13473,6 +14469,6 @@
    ]
   }
  },
- "total_files": 2241,
- "total_bytes": 1118906229
+ "total_files": 2407,
+ "total_bytes": 1153295556
 }
