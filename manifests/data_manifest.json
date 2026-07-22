@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-22 12:24:21",
+ "generated": "2026-07-22 12:26:02",
  "root_hint": "ADILETkz",
  "dirs": {
   "source": {
@@ -7503,8 +7503,8 @@
    ]
   },
   "derived": {
-   "files": 748,
-   "bytes": 552820601,
+   "files": 745,
+   "bytes": 523656053,
    "entries": [
     {
      "path": "derived/chunks/alatau.jsonl",
@@ -11971,24 +11971,6 @@
      "mtime": 1784703869
     },
     {
-     "path": "derived/vector_layer/index.faiss",
-     "size": 27319341,
-     "sha256": "7bdfe7eda00689ab5ae14c4f24d9e616055cd6e39054e18625ea38ff4d1dec56",
-     "mtime": 1782139212
-    },
-    {
-     "path": "derived/vector_layer/index_config.json",
-     "size": 226,
-     "sha256": "118f45497e2f40a9ad8bce6862f44f474bd2beee736cedde622f6b27658639b2",
-     "mtime": 1782455861
-    },
-    {
-     "path": "derived/vector_layer/index_meta.jsonl",
-     "size": 1844981,
-     "sha256": "b176f509598d2a46e58973a6ed90572d8a715c7b5b748733bc501787b78dc323",
-     "mtime": 1782139212
-    },
-    {
      "path": "derived/vector_layer/repealed_gaps.json",
      "size": 4141,
      "sha256": "7bf8b69888c79089f54f6eb7baf302a528cc91d98edd96c957f31287df11258a",
@@ -14553,6 +14535,6 @@
    ]
   }
  },
- "total_files": 2420,
- "total_bytes": 3485421301
+ "total_files": 2417,
+ "total_bytes": 3456256753
 }
