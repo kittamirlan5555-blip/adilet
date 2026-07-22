@@ -17,7 +17,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="repla
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]   # scripts/batch/ -> repo root
-HEAVY = ["source", "final", "derived", "deliverables"]
+HEAVY = ["source", "final", "derived", "deliverables", "embed_kit"]
 MANIFEST = ROOT / "manifests" / "data_manifest.json"
 # регенерируемый кэш/мусор — в манифест НЕ включаем (не эталонные данные)
 SKIP_DIRS = {"_registry_cache", "__pycache__"}

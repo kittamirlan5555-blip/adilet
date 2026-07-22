@@ -1,5 +1,5 @@
 {
- "generated": "2026-07-22 12:17:30",
+ "generated": "2026-07-22 12:24:21",
  "root_hint": "ADILETkz",
  "dirs": {
   "source": {
@@ -14473,8 +14473,86 @@
      "mtime": 1781593333
     }
    ]
+  },
+  "embed_kit": {
+   "files": 12,
+   "bytes": 2256869535,
+   "entries": [
+    {
+     "path": "embed_kit/embed.py",
+     "size": 7404,
+     "sha256": "a53cc37a016ae098a7f8da507cacbb05423adf186a353d8926b267132d49a14e",
+     "mtime": 1784704862
+    },
+    {
+     "path": "embed_kit/model/1_Pooling/config.json",
+     "size": 95,
+     "sha256": "cdb965e189d86376053ea50617e3a62a0bcb7189ce6af70e5e7ce81b141e4543",
+     "mtime": 1784705005
+    },
+    {
+     "path": "embed_kit/model/config.json",
+     "size": 773,
+     "sha256": "e7f59cdec7e89fdd10bbf94f72c9eb640d4beac88d5d6a51dc06fed90c49d590",
+     "mtime": 1784705003
+    },
+    {
+     "path": "embed_kit/model/config_sentence_transformers.json",
+     "size": 294,
+     "sha256": "77760470b12b97cbf9482edfa4f30ca9617dac337414ce1e3cbaf913a82ee1a7",
+     "mtime": 1784705003
+    },
+    {
+     "path": "embed_kit/model/model.safetensors",
+     "size": 2239607176,
+     "sha256": "b97ef8b3fe70ff51008184da99b70a0df37ed377bb538a224f3951f2ed388234",
+     "mtime": 1784705005
+    },
+    {
+     "path": "embed_kit/model/modules.json",
+     "size": 448,
+     "sha256": "5286260f53f0f5d318eb02f1565fd30f7ec7c6d305f41ad29e2bb3ec974046a6",
+     "mtime": 1784705005
+    },
+    {
+     "path": "embed_kit/model/README.md",
+     "size": 166146,
+     "sha256": "16bcb1b76f2f139831b3f76bd6d5f290ac35051f0253e741a32678b2850c2e68",
+     "mtime": 1784705005
+    },
+    {
+     "path": "embed_kit/model/sentence_bert_config.json",
+     "size": 250,
+     "sha256": "5fee3fcdc4a727fad422f0fed0c867b0921eefa9051de221521956ed42eb4c19",
+     "mtime": 1784705005
+    },
+    {
+     "path": "embed_kit/model/tokenizer.json",
+     "size": 17082734,
+     "sha256": "3a56def25aa40facc030ea8b0b87f3688e4b3c39eb8b45d5702b3a1300fe2a20",
+     "mtime": 1784705005
+    },
+    {
+     "path": "embed_kit/model/tokenizer_config.json",
+     "size": 399,
+     "sha256": "24cea6fe45e76106f05791b9f9318deeba286f6f04ae918d20160fb727e068ef",
+     "mtime": 1784705005
+    },
+    {
+     "path": "embed_kit/README.md",
+     "size": 2309,
+     "sha256": "c40f0c1663e23591a576e21d8f691300f7384dbd01fb456e4b51a749ff535533",
+     "mtime": 1784704893
+    },
+    {
+     "path": "embed_kit/requirements.txt",
+     "size": 1507,
+     "sha256": "c8ee5d989f9ad670cce17c10a673e9429d87d26ad7329db386b650705dacfbd1",
+     "mtime": 1784704876
+    }
+   ]
   }
  },
- "total_files": 2408,
- "total_bytes": 1228551766
+ "total_files": 2420,
+ "total_bytes": 3485421301
 }
