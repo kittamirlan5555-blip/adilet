@@ -50,11 +50,16 @@ SKIP_PARENTS = {"a", "script", "style", "head", "title"}
 # склонения «закон», НЕ «\w*» — иначе поглотит «Законодательством…» (описательный класс §4).
 # склонения (ами|ам ДО ам — «законами» не должно резаться до «законам»); мн.ч. ах/ы для
 # «согласно законам РК», «в законах РК», «Законы РК "…"».
+# BLOCK 4 (anara2): дата акта ВНУТРИ фразы — «Закон* РК от 10 февраля 2017 года "Имя"».
+# Опц. хвост «от DD месяц YYYY года» ПОСЛЕ префикса поглощается в спан вместе с ним
+# (полная фраза с датой = один <a>). Дата специфична (не «\w*») — не ловит лишнего.
+_MON = (r"(?:январ|феврал|март|апрел|ма[йя]|июн|июл|август|сентябр|октябр|ноябр|декабр)\w*")
+_DATE_TAIL = r"(?:\s+от\s+\d{1,2}\s+" + _MON + r"\s+\d{4}\s*года)?"
 PREFIX_END = re.compile(
     r"(?:(?<=\s)|^)"
     r"(?:[Зз]акон(?:ами|ам|ах|ов|ом|а|е|у|ы)?|[Кк]одекс(?:ами|ам|ах|ов|ом|а|е|у|ы)?|"
     r"[Кк]онституционны[йм]\s+закон(?:ом|а|е)?|[Кк]онституционного\s+закона)"
-    r"(?:\s+Республики\s+Казахстан|\s+РК)?\s+$")
+    r"(?:\s+Республики\s+Казахстан|\s+РК)?" + _DATE_TAIL + r"\s+$")
 # ЛАТЕНТНАЯ ЛОВУШКА (внешний аудит): «настоящего/настоящим Закон*» = САМ этот закон
 # (внутренняя ссылка), НЕ внешний «Законом РК "X"». Не поглощаем такой префикс.
 NASTOYASH = re.compile(r"настоящ\w*\s*$", re.I)
@@ -100,6 +105,56 @@ def code_path(code):
 
 def root_url(docid):
     return HOST + docid
+
+
+# BLOCK 4 (anara2): СПЛИТ-кейс полного спана с датой. Реальная раскладка выгрузки:
+# «<a href=X#z0>Закон</a> Республики Казахстан от 2 июля 2003 года <a href=X>"Имя"</a>»
+# — «Закон» отдельным (часто битым #z0) спаном, дата в зазоре плейн-текстом, имя вторым
+# спаном на корень. Схлопываем в ОДИН корневой спан всей фразы. Только если оба спана
+# ссылаются на ОДИН docid (игнор #фрагмента) и зазор — лишь «(Республики Казахстан|РК)?
+# от <дата>». Дропаем #z0 (не резолвится; §4: внешний акт → корень). text-invariant, nested=0.
+_ACT_HEAD = re.compile(
+    r"^\s*(?:[Зз]акон(?:ами|ам|ах|ов|ом|а|е|у|ы)?|[Кк]одекс(?:ами|ам|ах|ов|ом|а|е|у|ы)?|"
+    r"[Кк]онституционны[йм]\s+закон\w*)\s*$")
+_DATE_GAP = re.compile(
+    r"^\s*(?:Республики\s+Казахстан|РК)?\s*"
+    r"от\s+\d{1,2}\s+" + _MON + r"\s+\d{4}\s*года\s*$", re.I)
+
+
+def _docid_of(href):
+    m = re.search(r"/rus/docs/([^#\"?]+)", href or "")
+    return m.group(1) if m else None
+
+
+def coalesce_split_act(soup):
+    """Схлопнуть «<a>Закон</a> <дата-зазор> <a>"Имя"</a>» (один и тот же акт) в один
+    корневой спан. Возвращает число слияний."""
+    merged = 0
+    for a2 in list(soup.find_all("a", href=True)):
+        if a2.parent is None:                         # уже поглощён
+            continue
+        t2 = a2.get_text()
+        if not t2 or t2.lstrip()[:1] not in '"«':      # второй спан = имя-кавычка
+            continue
+        d2 = _docid_of(a2["href"])
+        if not d2:
+            continue
+        gap = a2.previous_sibling
+        if not isinstance(gap, NavigableString) or not _DATE_GAP.match(str(gap)):
+            continue
+        a1 = gap.previous_sibling
+        if not isinstance(a1, Tag) or a1.name != "a" or not _ACT_HEAD.match(a1.get_text()):
+            continue
+        if _docid_of(a1.get("href", "")) != d2:        # тот же акт (игнор #фрагмента)
+            continue
+        merged_text = a1.get_text() + str(gap) + t2    # «Закон … от <дата> "Имя"»
+        a1["href"] = HOST + d2                          # корень (§4), дропаем #z0
+        a1.clear()
+        a1.append(NavigableString(merged_text))
+        gap.extract()
+        a2.decompose()
+        merged += 1
+    return merged
 
 
 def gettext_sha(soup):
@@ -261,7 +316,9 @@ def run(code, apply_mode, min_len):
         # заменить узел на последовательность
         t.replace_with(*pieces)
 
-    # ---- ПОГЛОЩЕНИЕ ПРЕФИКСА «Законом РК» в уже-залинкованное имя (корп. стандарт) ----
+    # ---- СХЛОПЫВАНИЕ СПЛИТ-ФРАЗЫ С ДАТОЙ «<a>Закон</a> от <дата> <a>"Имя"</a>» (BLOCK 4) ----
+    coalesced = coalesce_split_act(soup)
+    # ---- ПОГЛОЩЕНИЕ ПРЕФИКСА «Законом РК [от <дата>]» в уже-залинкованное имя (корп. стандарт) ----
     absorbed = absorb_prefix(soup)
 
     sha1 = gettext_sha(soup)
@@ -273,6 +330,7 @@ def run(code, apply_mode, min_len):
 
     P("-" * 100)
     P(f"ДОБАВЛЕНО корневых ссылок: {added}")
+    P(f"СХЛОПНУТО сплит-фраз с датой (BLOCK4): {coalesced}")
     P(f"ПОГЛОЩЕНО префиксов «Закон* РК» в спан: {absorbed}")
     P(f"ГЕЙТЫ: get_text sha ДО==ПОСЛЕ={sha0 == sha1} ({sha0[:12]})  nested<a>={nested1}  "
       f"dangling#z {dangle0}->{dangle1}")
@@ -282,8 +340,9 @@ def run(code, apply_mode, min_len):
     out = REPORTS / f"72_external_{code}_applied.txt"
     out.write_text("\n".join(L) + "\n", encoding="utf-8")
     print("\n".join(L[:60]))
-    print(f"\n[APPLIED] {code}: +{added} root links, +{absorbed} prefix-absorbed  "
-          f"sha-invariant={sha0 == sha1}  nested={nested1}  -> wrote {path.name}")
+    print(f"\n[APPLIED] {code}: +{added} root links, +{coalesced} date-coalesced, "
+          f"+{absorbed} prefix-absorbed  sha-invariant={sha0 == sha1}  nested={nested1}  "
+          f"-> wrote {path.name}")
 
 
 def main():
