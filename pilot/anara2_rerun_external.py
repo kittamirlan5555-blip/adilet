@@ -116,9 +116,13 @@ def main():
             selfset = (HOST + self_id, HOST + self_id.rstrip("_"))
             t0 = norm(soup); d0 = dangling(soup)
             sr0 = sum(1 for a in soup.find_all("a", href=True) if a["href"].rstrip("/") in selfset)
-            w = wrap_keys(soup, self_id)
+            # coalesce/absorb ДО wrap_keys: они работают по УЖЕ существующим внешним
+            # спанам (сплит «<a>Закон</a> от <дата> <a>"Имя"</a>»); новые обёртки wrap_keys
+            # дату-сплитов не создают. Порядок «wrap → coalesce» рвал sibling-цепочку
+            # coalesce (получалось 12 вместо 47) — потому сначала дата/префикс, потом имена.
             co = m72.coalesce_split_act(soup)
             ab = m72.absorb_prefix(soup)
+            w = wrap_keys(soup, self_id)
             if w == 0 and co == 0 and ab == 0:
                 continue
             t1 = norm(soup); d1 = dangling(soup)
