@@ -107,7 +107,7 @@ def main():
     ap.add_argument("--model", default=str(HERE / "model"),
                     help="локальный путь к e5-large (офлайн) или HF-имя")
     ap.add_argument("--out", default=str(HERE / "out"))
-    ap.add_argument("--batch", type=int, default=64)
+    ap.add_argument("--batch", type=int, default=32)
     ap.add_argument("--limit", type=int, default=0, help="смоук: только первые N пассажей")
     ap.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto",
                     help="auto (GPU если есть, иначе CPU) | cpu | cuda")
@@ -157,11 +157,28 @@ def main():
         bar = tqdm(total=N, initial=done, unit="пасс")
     except ImportError:
         bar = None
+    cur_bs = args.batch          # текущий batch; при OOM снижается вдвое и ПЕРСИСТИТ
+    OOMError = getattr(torch.cuda, "OutOfMemoryError", RuntimeError)
+
+    def encode_slice(texts):
+        """Энкод среза с автоснижением batch при OOM (не краш). Внутр. batch_size
+        управляет памятью GPU; снижение персистит на последующие срезы."""
+        nonlocal cur_bs
+        while True:
+            try:
+                return model.encode(texts, batch_size=cur_bs, normalize_embeddings=True,
+                                    show_progress_bar=False, convert_to_numpy=True)
+            except OOMError:
+                if device == "cuda":
+                    torch.cuda.empty_cache()
+                if cur_bs <= 1:
+                    raise
+                cur_bs = max(1, cur_bs // 2)
+                print(f"  OOM на 8 ГБ → снижаю batch до {cur_bs}, повтор среза…", flush=True)
+
     for i in range(done, N, args.batch):
         j = min(i + args.batch, N)
-        emb = model.encode([PASSAGE_PREFIX + p for p in passages[i:j]],
-                            batch_size=args.batch, normalize_embeddings=True,
-                            show_progress_bar=False, convert_to_numpy=True)
+        emb = encode_slice([PASSAGE_PREFIX + p for p in passages[i:j]])
         vecs[i:j] = emb.astype(np.float32)
         done = j
         ppath.write_text(json.dumps({"done": done, "N": N}))
